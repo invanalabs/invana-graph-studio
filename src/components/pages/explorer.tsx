@@ -32,7 +32,7 @@ export default function ExplorerPage() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900 text-gray-100">
+    <div className="flex flex-col min-h-screen ">
       <Header theme={theme} toggleTheme={toggleTheme} initialWorkspaces={initialWorkspaces} />
       <div className="flex flex-1 overflow-hidden">
         <LeftNav currentWorkspace={currentWorkspace} setCurrentWorkspace={setCurrentWorkspace} />

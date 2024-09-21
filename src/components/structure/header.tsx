@@ -94,7 +94,7 @@ export function Header({ theme, toggleTheme, initialWorkspaces }: HeaderProps) {
   }
 
   return (
-    <header className="border-b border-gray-700 bg-gray-800">
+    <header className="border-b border-gray-700 ">
       <div className="container-fluid mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <span className="text-2xl font-bold">Invana Studio</span>
@@ -108,7 +108,7 @@ export function Header({ theme, toggleTheme, initialWorkspaces }: HeaderProps) {
                 <ChevronDown className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56  text-gray-800 border-gray-700  bg-gray-600">
+            <DropdownMenuContent align="end" className="w-56  ">
               <DropdownMenuLabel>Switch workspace</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <div className="px-2 py-1.5">
@@ -149,7 +149,7 @@ export function Header({ theme, toggleTheme, initialWorkspaces }: HeaderProps) {
       </div>
 
       <Dialog open={isAddWorkspaceOpen} onOpenChange={setIsAddWorkspaceOpen}>
-        <DialogContent className="sm:max-w-[540px] bg-gray-800 text-gray-400 border-1 border-gray-700">
+        <DialogContent className="sm:max-w-[540px]  text-gray-400 border-1 border-gray-700">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold">Add New Workspace</DialogTitle>
           </DialogHeader>

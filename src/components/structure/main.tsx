@@ -166,7 +166,7 @@ export function MainContent({
       {/* Body: Main content area */}
       <div className="flex-1 overflow-hidden flex relative">
         {isQueryConsoleOpen && (
-          <div className="left-0 top-0 bottom-0 w-80 bg-gray-800 border-r border-gray-700 p-4 flex flex-col overflow-auto z-10">
+          <div className="left-0 top-0 bottom-0 w-80  border-r border-gray-700 p-4 flex flex-col overflow-auto z-10">
             <h3 className="text-lg font-semibold mb-2 text-gray-100">Query Console</h3>
             <form onSubmit={handleQuerySubmit} className="flex-1 flex flex-col">
               <div className="flex-1">
@@ -182,14 +182,14 @@ export function MainContent({
             </form>
           </div>
         )}
-        <main className="flex-1 overflow-auto bg-gray-900">
+        <main className="flex-1 overflow-auto ">
           <div className="h-full w-full p-6">
             <h2 className="text-xl font-semibold mb-4 text-gray-100">{currentPage}</h2>
             <p className="text-gray-400">This is the content for {currentPage}. You can add your specific dashboard components or information here.</p>
           </div>
         </main>
         {isRightPanelOpen && (
-          <div className="w-80 border-l border-gray-700 p-4 overflow-auto bg-gray-800">
+          <div className="w-80 border-l border-gray-700 p-4 overflow-auto ">
             <h3 className="text-lg font-semibold mb-2 text-gray-100">Right Panel</h3>
             <p className="text-gray-400">This is the right side panel. You can add additional information or controls here.</p>
           </div>
@@ -197,7 +197,7 @@ export function MainContent({
       </div>
 
       {/* Bottom: Pages list section */}
-      <div className="h-[30px] border-t border-gray-700 flex items-center justify-between bg-gray-800">
+      <div className="h-[30px] border-t border-gray-700 flex items-center justify-between ">
         <div className="flex-1 flex overflow-x-auto">
           {pages.map((page, index) => (
             <Button

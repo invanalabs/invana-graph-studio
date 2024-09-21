@@ -81,9 +81,9 @@ export function LeftNav({ currentWorkspace, setCurrentWorkspace }: LeftNavProps)
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="bg-gray-800 text-gray-100">
+          <DropdownMenuContent align="end"  >
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator className="bg-gray-700" />
+            <DropdownMenuSeparator   />
             <DropdownMenuItem className="focus:bg-gray-700">Profile</DropdownMenuItem>
             <DropdownMenuItem className="focus:bg-gray-700">Settings</DropdownMenuItem>
             <DropdownMenuItem className="focus:bg-gray-700">Log out</DropdownMenuItem>
@@ -96,7 +96,7 @@ export function LeftNav({ currentWorkspace, setCurrentWorkspace }: LeftNavProps)
               <span className="truncate">{currentWorkspace}</span>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="bg-gray-800 text-gray-100">
+          <DropdownMenuContent align="end" >
             <DropdownMenuItem onSelect={() => setCurrentWorkspace('Personal')} className="focus:bg-gray-700">
               Personal
             </DropdownMenuItem>
