@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { FilePlus, Trash2, Square, Circle, Triangle, Link, Terminal, PanelRightOpen, Maximize2, ChevronLeft, ChevronRight, Plus } from 'lucide-react'
 import { Button } from "@/components/ui/button"
@@ -11,7 +13,12 @@ interface MainContentProps {
   addPage: () => void;
 }
 
-export function MainContent({ pages, currentPageIndex, setCurrentPageIndex, addPage }: MainContentProps) {
+export function MainContent({ 
+  pages = ['Dashboard'], 
+  currentPageIndex = 0, 
+  setCurrentPageIndex = () => {}, 
+  addPage = () => {}
+}: MainContentProps) {
   const [isQueryConsoleOpen, setIsQueryConsoleOpen] = useState(false)
   const [isRightPanelOpen, setIsRightPanelOpen] = useState(false)
   const [query, setQuery] = useState('')
@@ -39,15 +46,17 @@ export function MainContent({ pages, currentPageIndex, setCurrentPageIndex, addP
   }
 
   const goToNextPage = () => {
-    if (currentPageIndex < pages.length - 1) {
+    if (currentPageIndex < (pages.length - 1)) {
       setCurrentPageIndex(currentPageIndex + 1)
     }
   }
 
+  const currentPage = pages[currentPageIndex] || 'Unknown Page'
+
   return (
     <div className="flex flex-col flex-1 overflow-hidden">
-      {/* Top: Toolbar */}
-      <div className="h-[40px] border-b border-gray-700 flex items-center px-2 space-x-2">
+    {/* Top: Toolbar */}
+    <div className="h-10 border-b border-gray-700 flex items-center px-2 space-x-2 ">    
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -157,7 +166,7 @@ export function MainContent({ pages, currentPageIndex, setCurrentPageIndex, addP
       {/* Body: Main content area */}
       <div className="flex-1 overflow-hidden flex relative">
         {isQueryConsoleOpen && (
-          <div className="absolute left-0 top-0 bottom-0 w-80 bg-gray-800 border-r border-gray-700 p-4 flex flex-col overflow-auto z-10">
+          <div className="left-0 top-0 bottom-0 w-80 bg-gray-800 border-r border-gray-700 p-4 flex flex-col overflow-auto z-10">
             <h3 className="text-lg font-semibold mb-2 text-gray-100">Query Console</h3>
             <form onSubmit={handleQuerySubmit} className="flex-1 flex flex-col">
               <div className="flex-1">
@@ -175,8 +184,8 @@ export function MainContent({ pages, currentPageIndex, setCurrentPageIndex, addP
         )}
         <main className="flex-1 overflow-auto bg-gray-900">
           <div className="h-full w-full p-6">
-            <h2 className="text-xl font-semibold mb-4 text-gray-100">{pages[currentPageIndex]}</h2>
-            <p className="text-gray-400">This is the content for {pages[currentPageIndex]}. You can add your specific dashboard components or information here.</p>
+            <h2 className="text-xl font-semibold mb-4 text-gray-100">{currentPage}</h2>
+            <p className="text-gray-400">This is the content for {currentPage}. You can add your specific dashboard components or information here.</p>
           </div>
         </main>
         {isRightPanelOpen && (
@@ -207,15 +216,15 @@ export function MainContent({ pages, currentPageIndex, setCurrentPageIndex, addP
           ))}
         </div>
         <div className="flex items-center flex-shrink-0">
-          <Button variant="ghost" size="icon" onClick={goToPreviousPage} disabled={currentPageIndex === 0} className="h-[30px] w-[30px] p-0 text-gray-400 hover:text-gray-100 disabled:text-gray-600">
+          <Button variant="ghost" size="icon" onClick={goToPreviousPage} disabled={currentPageIndex === 0} className="h-10 w-10 p-0 text-gray-400 hover:text-gray-100 disabled:text-gray-600">
             <ChevronLeft className="h-4 w-4" />
             <span className="sr-only">Previous Page</span>
           </Button>
-          <Button variant="ghost" size="icon" onClick={addPage} className="h-[30px] w-[30px] p-0 text-gray-400 hover:text-gray-100">
+          <Button variant="ghost" size="icon" onClick={addPage} className="h-10 w-10 p-0 text-gray-400 hover:text-gray-100">
             <Plus className="h-4 w-4" />
             <span className="sr-only">Add Page</span>
           </Button>
-          <Button variant="ghost" size="icon" onClick={goToNextPage} disabled={currentPageIndex === pages.length - 1} className="h-[30px] w-[30px] p-0 text-gray-400 hover:text-gray-100 disabled:text-gray-600">
+          <Button variant="ghost" size="icon" onClick={goToNextPage} disabled={currentPageIndex === (pages.length - 1)} className="h-10 w-10 p-0 text-gray-400 hover:text-gray-100 disabled:text-gray-600">
             <ChevronRight className="h-4 w-4" />
             <span className="sr-only">Next Page</span>
           </Button>
