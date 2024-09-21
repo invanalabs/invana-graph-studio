@@ -13,6 +13,8 @@ export const GET_TEST_CONNECTION_QUERY = gql`
 
 export const GENERIC_GREMLIN_QUERY = gql`
   query {
-    execute_query(gremlin: "g.V().elementMap().limit(5)", timeout: 100)
+    _execute_query(query: "g.V().elementMap().limit(5)", timeout: 100){
+      data
+    }
   }
 `
