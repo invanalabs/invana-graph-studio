@@ -23,7 +23,7 @@ export default function DarkThemeDashboardLayout() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-gray-900 text-gray-100">
+    <div className="flex flex-col min-h-screen bg-gray-900 text-gray-100">
       <Header theme={theme} toggleTheme={toggleTheme} />
       <div className="flex flex-1 overflow-hidden">
         <LeftNav currentWorkspace={currentWorkspace} setCurrentWorkspace={setCurrentWorkspace} />
