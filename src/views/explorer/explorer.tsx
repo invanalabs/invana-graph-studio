@@ -57,7 +57,7 @@ const ExplorerView = () => {
         if (data) {
             // const graphDataConverted = convertSchemaDataToVisJsData(data);
             // canvasCtrl.addNewData(graphDataConverted.nodes, graphDataConverted.edges);
-                const graphDataConverted = convertToVisJsData(data.execute_query, [])
+                const graphDataConverted = convertToVisJsData(data._execute_query.data, [])
                 // canvasCtrl.addNewData(graphDataConverted.nodes, graphDataConverted.edges);
 
                 dispatch(addCanvasData(graphDataConverted))
