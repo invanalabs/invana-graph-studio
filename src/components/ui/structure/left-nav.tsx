@@ -21,7 +21,7 @@ export function LeftNav({ currentWorkspace, setCurrentWorkspace }: LeftNavProps)
     <aside className="w-16 flex-shrink-0 border-r border-gray-700 flex flex-col justify-between py-4">
       <nav className="flex flex-col items-center space-y-6">
         <TooltipProvider>
-          <Tooltip>
+          {/* <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="ghost" size="icon" className="text-gray-400 hover:text-gray-100">
                 <Menu className="h-5 w-5" />
@@ -31,7 +31,7 @@ export function LeftNav({ currentWorkspace, setCurrentWorkspace }: LeftNavProps)
             <TooltipContent side="right">
               <p>Menu</p>
             </TooltipContent>
-          </Tooltip>
+          </Tooltip> */}
           <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="ghost" size="icon" className="text-gray-400 hover:text-gray-100">
