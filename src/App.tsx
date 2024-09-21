@@ -1,11 +1,11 @@
-import { useState } from 'react'
-
+import { DashboardLayout } from './components/dashboard-layout'
 
 function App() {
 
   return (
     <> 
-      <h1>Vite + Shadcn + React</h1>
+    <DashboardLayout />
+      {/* <h1>Vite + Shadcn + React</h1> */}
     </>
   )
 }
