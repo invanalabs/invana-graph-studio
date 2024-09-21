@@ -10,6 +10,9 @@ export default {
 	  ],
   theme: {
   	extend: {
+		// borderColor: {
+		// 	DEFAULT: 'rgb(55 65 81 / var(--tw-border-opacity))'
+		// },
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

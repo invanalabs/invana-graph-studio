@@ -12,6 +12,14 @@ export default function DarkThemeDashboardLayout() {
   const [pages, setPages] = useState(['Page 1', 'Page 2', 'Page 3'])
   const [theme, setTheme] = useState('dark')
 
+  const initialWorkspaces = [
+    { id: 1, name: "Personal", connectionString: "mongodb://localhost:27017/personal" },
+    { id: 2, name: "Team A", connectionString: "mongodb://localhost:27017/teamA" },
+    { id: 3, name: "Team B", connectionString: "mongodb://localhost:27017/teamB" },
+    { id: 4, name: "Client Project", connectionString: "mongodb://localhost:27017/client" },
+  ]
+
+  
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }
@@ -24,7 +32,7 @@ export default function DarkThemeDashboardLayout() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-gray-100">
-      <Header theme={theme} toggleTheme={toggleTheme} />
+      <Header theme={theme} toggleTheme={toggleTheme} initialWorkspaces={initialWorkspaces} />
       <div className="flex flex-1 overflow-hidden">
         <LeftNav currentWorkspace={currentWorkspace} setCurrentWorkspace={setCurrentWorkspace} />
         <MainContent

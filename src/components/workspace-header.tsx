@@ -1,10 +1,4 @@
-
-
-
-
-
-
-
+'use client'
 
 import { useState, useEffect } from "react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -36,16 +30,7 @@ const initialWorkspaces = [
   { id: 4, name: "Client Project", connectionString: "mongodb://localhost:27017/client" },
 ]
 
-
-interface HeaderProps {
-  theme: string;
-  toggleTheme: () => void;
-  initialWorkspaces: any
-}
-
-
-export  function Header({theme, toggleTheme, initialWorkspaces}: HeaderProps) {
-  
+export function WorkspaceHeader() {
   const [workspaces, setWorkspaces] = useState(initialWorkspaces)
   const [currentWorkspace, setCurrentWorkspace] = useState(workspaces[0])
   const [searchQuery, setSearchQuery] = useState("")
@@ -94,21 +79,18 @@ export  function Header({theme, toggleTheme, initialWorkspaces}: HeaderProps) {
   }
 
   return (
-    <header className="border-b border-gray-700 bg-gray-800">
-      <div className="container-fluid mx-auto px-4 py-3 flex items-center justify-between">
+    <header className="bg-background border-b">
+      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <span className="text-2xl font-bold">Invana Studio</span>
-      
-        </div>
-        <div className="flex items-center space-x-4">
-        <DropdownMenu>
+          <span className="text-2xl font-bold">Logo</span>
+          <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="flex items-center space-x-2 ">
+              <Button variant="outline" className="flex items-center space-x-2">
                 <span>{currentWorkspace.name}</span>
                 <ChevronDown className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56  text-gray-800 border-gray-700  bg-gray-600">
+            <DropdownMenuContent align="start" className="w-56">
               <DropdownMenuLabel>Switch workspace</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <div className="px-2 py-1.5">
@@ -127,43 +109,68 @@ export  function Header({theme, toggleTheme, initialWorkspaces}: HeaderProps) {
                 <DropdownMenuItem
                   key={workspace.id}
                   onClick={() => setCurrentWorkspace(workspace)}
-                  className="cursor-pointer"
                 >
                   {workspace.name}
                 </DropdownMenuItem>
               ))}
               <DropdownMenuSeparator />
-              <DropdownMenuItem onSelect={() => setIsAddWorkspaceOpen(true)} className="cursor-pointer">
+              <DropdownMenuItem onSelect={() => setIsAddWorkspaceOpen(true)}>
                 <Plus className="mr-2 h-4 w-4" />
                 Add Workspace
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-      
+        </div>
+        <div className="flex items-center space-x-4">
           <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
             {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
-      
-      
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                <Avatar className="h-8 w-8">
+                  <AvatarImage src="/placeholder.svg?height=32&width=32" alt="User" />
+                  <AvatarFallback>U</AvatarFallback>
+                </Avatar>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <User className="mr-2 h-4 w-4" />
+                <span>Profile</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Settings className="mr-2 h-4 w-4" />
+                <span>Settings</span>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <LogOut className="mr-2 h-4 w-4" />
+                <span>Log out</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
 
       <Dialog open={isAddWorkspaceOpen} onOpenChange={setIsAddWorkspaceOpen}>
-        <DialogContent className="sm:max-w-[540px] bg-gray-800 text-gray-400 border-1 border-gray-700">
+        <DialogContent>
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold">Add New Workspace</DialogTitle>
+            <DialogTitle>Add New Workspace</DialogTitle>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="workspace-name" className="text-right">
-                Name
+                Workspace Name
               </Label>
               <Input
                 id="workspace-name"
                 placeholder="Enter workspace name"
                 value={newWorkspaceName}
                 onChange={(e) => setNewWorkspaceName(e.target.value)}
-                className="col-span-3 "
+                className="col-span-3"
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
