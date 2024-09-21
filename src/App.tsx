@@ -1,10 +1,10 @@
-import { DashboardLayout } from './components/dashboard-layout'
+import  DarkThemeDashboardLayout  from './components/dashboard-layout'
 
 function App() {
 
   return (
     <> 
-    <DashboardLayout />
+    <DarkThemeDashboardLayout />
       {/* <h1>Vite + Shadcn + React</h1> */}
     </>
   )
