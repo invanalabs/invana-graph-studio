@@ -1,13 +1,19 @@
-import  DarkThemeDashboardLayout  from './components/dashboard-layout'
+// src/App.jsx
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ConnectPage } from './components/pages/connect';
+import ExplorerPage from './components/pages/explorer';
+ ;
 
-function App() {
-
+const App = () => {
   return (
-    <> 
-    <DarkThemeDashboardLayout />
-      {/* <h1>Vite + Shadcn + React</h1> */}
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<ConnectPage />} />
+        <Route path="/explorer" element={<ExplorerPage />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
