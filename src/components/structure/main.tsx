@@ -56,7 +56,7 @@ export function MainContent({
   return (
     <div className="flex flex-col flex-1 overflow-hidden">
     {/* Top: Toolbar */}
-    <div className="h-10 border-b border-gray-700 flex items-center px-2 space-x-2 ">    
+    <div className="h-10 border-b  flex items-center px-2 space-x-2 ">    
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -166,7 +166,7 @@ export function MainContent({
       {/* Body: Main content area */}
       <div className="flex-1 overflow-hidden flex relative">
         {isQueryConsoleOpen && (
-          <div className="left-0 top-0 bottom-0 w-80  border-r border-gray-700 p-4 flex flex-col overflow-auto z-10">
+          <div className="left-0 top-0 bottom-0 w-80  border-r  p-4 flex flex-col overflow-auto z-10">
             <h3 className="text-lg font-semibold mb-2 text-gray-100">Query Console</h3>
             <form onSubmit={handleQuerySubmit} className="flex-1 flex flex-col">
               <div className="flex-1">
@@ -175,21 +175,21 @@ export function MainContent({
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Enter your query here..."
-                  className="w-full h-full resize-none bg-gray-700 text-gray-100 border-gray-600 focus:border-gray-500"
+                  className="w-full h-full resize-none focus:border-gray-500"
                 />
               </div>
-              <Button type="submit" className="mt-2 bg-blue-600 hover:bg-blue-700 text-white">Submit Query</Button>
+              <Button type="submit" className="mt-2 bg-blue-600 hover:bg-blue-700  ">Submit Query</Button>
             </form>
           </div>
         )}
         <main className="flex-1 overflow-auto ">
           <div className="h-full w-full p-6">
-            <h2 className="text-xl font-semibold mb-4 text-gray-100">{currentPage}</h2>
-            <p className="text-gray-400">This is the content for {currentPage}. You can add your specific dashboard components or information here.</p>
+            <h2 className="text-xl font-semibold mb-4  ">{currentPage}</h2>
+            <p className=" ">This is the content for {currentPage}. You can add your specific dashboard components or information here.</p>
           </div>
         </main>
         {isRightPanelOpen && (
-          <div className="w-80 border-l border-gray-700 p-4 overflow-auto ">
+          <div className="w-80 border-l  p-4 overflow-auto ">
             <h3 className="text-lg font-semibold mb-2 text-gray-100">Right Panel</h3>
             <p className="text-gray-400">This is the right side panel. You can add additional information or controls here.</p>
           </div>
@@ -197,7 +197,7 @@ export function MainContent({
       </div>
 
       {/* Bottom: Pages list section */}
-      <div className="h-[30px] border-t border-gray-700 flex items-center justify-between ">
+      <div className="h-[30px] border-t  flex items-center justify-between ">
         <div className="flex-1 flex overflow-x-auto">
           {pages.map((page, index) => (
             <Button
@@ -206,7 +206,7 @@ export function MainContent({
               size="sm"
               className={`h-[30px] px-4 rounded-none flex-shrink-0 ${
                 index === currentPageIndex
-                  ? 'text-blue-400 border-t-2 border-blue-400'
+                  ? 'text-blue-400 border-t-2 '
                   : 'text-gray-400 hover:text-gray-100'
               }`}
               onClick={() => setCurrentPageIndex(index)}

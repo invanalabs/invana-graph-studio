@@ -52,23 +52,22 @@ export function Header({ theme, toggleTheme, initialWorkspaces }: HeaderProps) {
   const [isAddWorkspaceOpen, setIsAddWorkspaceOpen] = useState(false)
   const [newWorkspaceName, setNewWorkspaceName] = useState("")
   const [newConnectionString, setNewConnectionString] = useState("")
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(true)
+
+ 
 
   useEffect(() => {
-    // Check for user's preferred color scheme
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setIsDarkMode(true)
-    }
-  }, [])
-
-  useEffect(() => {
-    // Apply dark mode class to body
+    // Apply dark mode class to body based on isDarkMode state
+    console.log("=====isDarkMode", isDarkMode);
     if (isDarkMode) {
-      document.documentElement.classList.add('dark')
+      document.documentElement.classList.add('dark');
+      document.documentElement.style.setProperty("color-scheme", "dark")
     } else {
-      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.remove('dark');
+      document.documentElement.style.removeProperty("color-scheme")
+
     }
-  }, [isDarkMode])
+  }, [isDarkMode]);
 
   const filteredWorkspaces = workspaces.filter((workspace) =>
     workspace.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -94,7 +93,7 @@ export function Header({ theme, toggleTheme, initialWorkspaces }: HeaderProps) {
   }
 
   return (
-    <header className="border-b border-gray-700 ">
+    <header className="border-b  ">
       <div className="container-fluid mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <span className="text-2xl font-bold">Invana Studio</span>
@@ -149,7 +148,7 @@ export function Header({ theme, toggleTheme, initialWorkspaces }: HeaderProps) {
       </div>
 
       <Dialog open={isAddWorkspaceOpen} onOpenChange={setIsAddWorkspaceOpen}>
-        <DialogContent className="sm:max-w-[540px]  text-gray-400 border-1 border-gray-700">
+        <DialogContent className="sm:max-w-[540px]  text-gray-400 border-1 ">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold">Add New Workspace</DialogTitle>
           </DialogHeader>
