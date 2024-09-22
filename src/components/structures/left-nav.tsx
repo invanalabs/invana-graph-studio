@@ -4,12 +4,12 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Link } from 'react-router-dom';
 
 
-interface LeftNavProps {
-  currentWorkspace: string;
-  setCurrentWorkspace: (workspace: string) => void;
-}
+// interface LeftNavProps {
+//   activeWorkspace: string;
+//   setActiveWorkspace: (workspace: string) => void;
+// }
 
-export function LeftNav({ currentWorkspace, setCurrentWorkspace }: LeftNavProps) {
+export function LeftNav() {
   return (
     <aside className="w-16 flex-shrink-0 border-r flex flex-col justify-between">
       <nav className="flex flex-col items-center ">
@@ -17,8 +17,8 @@ export function LeftNav({ currentWorkspace, setCurrentWorkspace }: LeftNavProps)
 
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link href="/modeller" className="text-gray-400 hover:text-gray-100 relative transition 
-                   duration-300 ease-in-out hover:bg-gray-200 hover:text-gray-100 p-5  border-b" >
+              <Link to="/modeller"  className="text-gray-400 hover:text-gray-100 relative transition 
+                   duration-300 ease-in-out hover:bg-accent p-5 border-b" >
                 <GitMerge className="h-5 w-5" />
                 <span className="sr-only">Modeller</span>
               </Link>
@@ -29,8 +29,8 @@ export function LeftNav({ currentWorkspace, setCurrentWorkspace }: LeftNavProps)
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link href="/explorer" className="text-gray-400 hover:text-gray-100 relative transition 
-                   duration-300 ease-in-out hover:bg-gray-600 hover:text-gray-100 p-5 border-b" >
+              <Link to="/explorer" className="text-gray-400 hover:text-gray-100 relative transition 
+                   duration-300 ease-in-out hover:bg-accent p-5 border-b" >
                 <Search className="h-5 w-5" />
                 <span className="sr-only">Explorer</span>
               </Link>
@@ -41,8 +41,8 @@ export function LeftNav({ currentWorkspace, setCurrentWorkspace }: LeftNavProps)
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-            <Link href="/data"  className="text-gray-400 hover:text-gray-100 relative transition 
-                   duration-300 ease-in-out hover:bg-gray-600 hover:text-gray-100 p-5 border-b" >
+            <Link to="/data"   className="text-gray-400 hover:text-gray-100 relative transition 
+                   duration-300 ease-in-out hover:bg-accent p-5 border-b" >
             <Table className="h-5 w-5" />
                 <span className="sr-only">Data Management</span>
               </Link>
