@@ -30,10 +30,7 @@ export function Header() {
   const navigate = useNavigate();
   const { activeWorkspace, setActiveWorkspace, workspaces } = useWorkspaceStore();
   const { theme, setTheme} = useThemeStore();
-
   const [searchQuery, setSearchQuery] = useState("")
-
-
 
   const filteredWorkspaces = workspaces.filter((workspace) =>
     workspace.name.toLowerCase().includes(searchQuery.toLowerCase())
