@@ -7,15 +7,7 @@
 
 
 import { useState, useEffect } from "react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-} from "@/components/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,49 +19,48 @@ import {
 import { Input } from "@/components/ui/input"
 import { ChevronDown, Moon, Plus, Search, Sun, } from "lucide-react"
 import { useWorkspaceStore } from '@/store/workspaceStore'
-import { Link, Navigate } from "react-router-dom"
+import { Link } from "react-router-dom"
+import { Workspace } from "@/models/workspace"
+import { useNavigate } from 'react-router-dom';
+import { useThemeStore } from "@/store/themeStore"
 
 
 export function Header() {
 
-  const { createWorkspace, activeWorkspace, setActiveWorkspace, workspaces } = useWorkspaceStore();
+  const navigate = useNavigate();
+  const { activeWorkspace, setActiveWorkspace, workspaces } = useWorkspaceStore();
+  const { theme, setTheme} = useThemeStore();
 
   const [searchQuery, setSearchQuery] = useState("")
-  const [isAddWorkspaceOpen, setIsAddWorkspaceOpen] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(true)
 
-  useEffect(() => {
-    // Apply dark mode class to body based on isDarkMode state
-    console.log("=====isDarkMode", isDarkMode);
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      document.documentElement.style.setProperty("color-scheme", "dark")
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.style.removeProperty("color-scheme")
 
-    }
-  }, [isDarkMode]);
 
   const filteredWorkspaces = workspaces.filter((workspace) =>
     workspace.name.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
-  const handleAddWorkspace = () => {
-       setIsAddWorkspaceOpen(false)
-      return <Navigate to={ "/connect"} replace />;
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme)
+    if (newTheme === "dark") {
+      document.documentElement.classList.add('dark');
+      document.documentElement.style.setProperty("color-scheme", "dark")
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.style.removeProperty("color-scheme")
+    }
   }
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode)
+  const navigateToWorkspace = (workspace: Workspace) => {
+    setActiveWorkspace(workspace)
+    navigate("/modeller")
   }
 
   return (
     <header className="border-b  ">
       <div className="container-fluid mx-auto px-4 py-1 flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <span className="text-2xl font-bold">Invana Studio</span>
-
+          <span className="text-xl font-bold">Invana Studio</span>
         </div>
         <div className="flex items-center space-x-4">
           {workspaces.length > 0 ? 
@@ -98,7 +89,7 @@ export function Header() {
               {filteredWorkspaces.map((workspace) => (
                 <DropdownMenuItem
                   key={workspace.id}
-                  onClick={() => setActiveWorkspace(workspace.id)}
+                  onClick={() => navigateToWorkspace(workspace)}
                   className="cursor-pointer"
                 >
                   {workspace.name}
@@ -113,15 +104,11 @@ export function Header() {
             </DropdownMenuContent>
           </DropdownMenu> 
           : <></>}
-          <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
-            {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          <Button variant="ghost" size="icon" onClick={toggleTheme}>
+            {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
-
-
         </div>
-      </div>
-
- 
+      </div> 
     </header>
   )
 }
