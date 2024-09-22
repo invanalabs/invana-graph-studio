@@ -13,6 +13,9 @@ export default {
 		// borderColor: {
 		// 	DEFAULT: 'rgb(55 65 81 / var(--tw-border-opacity))'
 		// },
+		fontSize: {
+			base: '13px', // Set your default font size here
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

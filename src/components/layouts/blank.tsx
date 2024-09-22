@@ -10,7 +10,7 @@ interface BlankLayoutProps {
 export default function BlankLayout({children}: BlankLayoutProps) {
 
     return (
-        <div className="flex flex-col min-h-screen bg-background">
+        <div className="flex flex-col min-h-screen bg-background text-base">
             <Header />
             <div className="flex flex-1 overflow-hidden">
                 {children}
