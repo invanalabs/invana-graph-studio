@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ConnectPage from './components/pages/connect';
 import ModellerPage from "./components/pages/modeller"
-import ExplorerPage from './components/pages/explorer';
+import ExplorerPage from './components/pages/explorer/explorer';
 import DataManagementPage from "./components/pages/data"
 import ProtectedRoute from './components/routes/protected-routes';
 
