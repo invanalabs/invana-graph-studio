@@ -6,7 +6,7 @@
 
 
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -23,6 +23,7 @@ import { Link } from "react-router-dom"
 import { Workspace } from "@/models/workspace"
 import { useNavigate } from 'react-router-dom';
 import { useThemeStore } from "@/store/themeStore"
+// import logoIcon from '@/static/images/logo.svg';
 
 
 export function Header() {
@@ -57,6 +58,7 @@ export function Header() {
     <header className="border-b  ">
       <div className="container-fluid mx-auto px-4 py-1 flex items-center justify-between">
         <div className="flex items-center space-x-4">
+          {/* <img src={logoIcon} className="w-5 h-5" alt="Invana Studio"/> */}
           <span className="text-xl font-bold">Invana Studio</span>
         </div>
         <div className="flex items-center space-x-4">
