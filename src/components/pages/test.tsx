@@ -13,11 +13,11 @@ interface MainContentProps {
   addPage: () => void;
 }
 
-export function MainContent({ 
-  pages = ['Dashboard'], 
-  currentPageIndex = 0, 
-  setCurrentPageIndex = () => {}, 
-  addPage = () => {}
+export function MainContent({
+  pages = ['Dashboard'],
+  currentPageIndex = 0,
+  setCurrentPageIndex = () => { },
+  addPage = () => { }
 }: MainContentProps) {
   const [isQueryConsoleOpen, setIsQueryConsoleOpen] = useState(false)
   const [isRightPanelOpen, setIsRightPanelOpen] = useState(false)
@@ -55,8 +55,8 @@ export function MainContent({
 
   return (
     <div className="flex flex-col flex-1 overflow-hidden">
-    {/* Top: Toolbar */}
-    <div className="h-10 border-b  flex items-center px-2 space-x-2 ">    
+      {/* Top: Toolbar */}
+      <div className="h-10 border-b  flex items-center px-2 space-x-2 ">
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -204,11 +204,10 @@ export function MainContent({
               key={page}
               variant="ghost"
               size="sm"
-              className={`h-[30px] px-4 rounded-none flex-shrink-0 ${
-                index === currentPageIndex
+              className={`h-[30px] px-4 rounded-none flex-shrink-0 ${index === currentPageIndex
                   ? 'text-blue-400 border-t-2 '
                   : 'text-gray-400 hover:text-gray-100'
-              }`}
+                }`}
               onClick={() => setCurrentPageIndex(index)}
             >
               {page}
