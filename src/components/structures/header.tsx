@@ -104,7 +104,7 @@ export function Header() {
           </DropdownMenu> 
           : <></>}
           <Button variant="ghost" size="icon" onClick={toggleTheme}>
-            {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </Button>
         </div>
       </div> 
