@@ -15,7 +15,7 @@ export default function WorkspaceLayout(props: WorkspaceLayoutProps) {
     return (
         <div className="flex flex-col min-h-screen bg-background  text-base">
             <Header />
-            <div className="flex flex-1 overflow-hidden">
+            <div className="flex  overflow-hidden">
                 <LeftNav />
                 <MainContent>{props.children}</MainContent>
             </div>
