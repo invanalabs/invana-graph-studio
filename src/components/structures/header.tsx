@@ -66,7 +66,7 @@ export function Header() {
 
   return (
     <header className="border-b  ">
-      <div className="container-fluid mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="container-fluid mx-auto px-4 py-1 flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <span className="text-2xl font-bold">Invana Studio</span>
 
