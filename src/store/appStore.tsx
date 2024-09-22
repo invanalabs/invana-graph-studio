@@ -1,0 +1,54 @@
+import { create } from 'zustand';
+
+interface Workspace {
+  id: number;
+  name: string;
+  connectionString: string;
+}
+
+interface AppState {
+  theme: 'light' | 'dark';
+  workspaces: Workspace[];
+  activeWorkspace: string;
+  currentPageIndex: number;
+  pages: string[];
+  
+  toggleTheme: () => void;
+  setWorkspaces: (workspaces: Workspace[]) => void;
+  setActiveWorkspace: (workspaceName: string) => void;
+  setCurrentPageIndex: (index: number) => void;
+  addPage: () => void;
+}
+
+export const useAppStore = create<AppState>((set) => ({
+  theme: 'dark', // Initial theme
+  workspaces: [
+    { id: 1, name: "Personal", connectionString: "mongodb://localhost:27017/personal" }
+  ], // Initial workspaces
+  activeWorkspace: 'Personal',
+  currentPageIndex: 0,
+  pages: ['default'], // Initial pages
+
+  toggleTheme: () =>
+    set((state) => ({
+      theme: state.theme === 'dark' ? 'light' : 'dark',
+    })),
+
+  setWorkspaces: (workspaces: Workspace[]) =>
+    set(() => ({ workspaces })),
+
+  setActiveWorkspace: (workspaceName: string) =>
+    set(() => ({ activeWorkspace: workspaceName })),
+
+  setCurrentPageIndex: (index: number) =>
+    set(() => ({ currentPageIndex: index })),
+
+  addPage: () =>
+    set((state) => {
+      const newPage = `Page ${state.pages.length + 1}`;
+      return {
+        pages: [...state.pages, newPage],
+        currentPageIndex: state.pages.length,
+      };
+    }),
+}));
