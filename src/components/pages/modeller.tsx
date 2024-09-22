@@ -6,7 +6,7 @@ import { LeftNav } from '@/components/structures/left-nav'
 import { MainContent } from '@/components/structures/main'
 
 
-export default function ExplorerPage() {
+export default function ModellerPage() {
   const [workspaces, setWorkspaces] = useState([])
   const [activeWorkspace, setActiveWorkspace] = useState('Personal')
   const [currentPageIndex, setCurrentPageIndex] = useState(0)
@@ -35,7 +35,7 @@ export default function ExplorerPage() {
     <div className="flex flex-col min-h-screen bg-background">
       <Header theme={theme} toggleTheme={toggleTheme} initialWorkspaces={initialWorkspaces} />
       <div className="flex flex-1 overflow-hidden">
-        <LeftNav activeWorkspace={activeWorkspace} setActiveWorkspace={setActiveWorkspace} />
+        <LeftNav />
         <MainContent
           pages={pages}
           currentPageIndex={currentPageIndex}
