@@ -53,7 +53,7 @@ export function Header() {
 
   const navigateToWorkspace = (workspace: Workspace) => {
     setActiveWorkspace(workspace)
-    navigate("/modeller")
+    navigate("/explorer")
   }
 
   return (

@@ -34,7 +34,7 @@ export default function ConnectPage() {
             setSubmitStatus('success')
             console.log("====workspace", workspace)
             setActiveWorkspace(workspace)
-            navigate("/modeller?workspace" + workspace.name )
+            navigate("/explorer?workspace" + workspace.name )
         }).catch((error)=>{
             console.log("error", error)
             setSubmitStatus('error')
