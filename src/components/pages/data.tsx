@@ -9,7 +9,7 @@ import { MainContent } from '@/components/structures/main'
 export default function DataManagementPage() {
   const [workspaces, setWorkspaces] = useState([])
   const [activeWorkspace, setActiveWorkspace] = useState('Personal')
-  const [currentPageIndex, setCurrentPageIndex] = useState(0)
+  const [activePage, setActivePage] = useState(0)
   const [pages, setPages] = useState(['Page 1', 'Page 2', 'Page 3'])
   const [theme, setTheme] = useState('dark')
 
@@ -28,7 +28,7 @@ export default function DataManagementPage() {
   const addPage = () => {
     const newPage = `Page ${pages.length + 1}`
     setPages([...pages, newPage])
-    setCurrentPageIndex(pages.length)
+    setActivePage(pages.length)
   }
 
   return (
@@ -38,8 +38,8 @@ export default function DataManagementPage() {
         <LeftNav />
         <MainContent
           pages={pages}
-          currentPageIndex={currentPageIndex}
-          setCurrentPageIndex={setCurrentPageIndex}
+          activePage={activePage}
+          setActivePage={setActivePage}
           addPage={addPage}
         />
       </div>

@@ -10,13 +10,13 @@ interface AppState {
   theme: 'light' | 'dark';
   workspaces: Workspace[];
   activeWorkspace: string;
-  currentPageIndex: number;
+  activePage: number;
   pages: string[];
   
   toggleTheme: () => void;
   setWorkspaces: (workspaces: Workspace[]) => void;
   setActiveWorkspace: (workspaceName: string) => void;
-  setCurrentPageIndex: (index: number) => void;
+  setActivePage: (index: number) => void;
   addPage: () => void;
 }
 
@@ -26,7 +26,7 @@ export const useAppStore = create<AppState>((set) => ({
     { id: 1, name: "Personal", connectionString: "mongodb://localhost:27017/personal" }
   ], // Initial workspaces
   activeWorkspace: 'Personal',
-  currentPageIndex: 0,
+  activePage: 0,
   pages: ['default'], // Initial pages
 
   toggleTheme: () =>
@@ -40,15 +40,15 @@ export const useAppStore = create<AppState>((set) => ({
   setActiveWorkspace: (workspaceName: string) =>
     set(() => ({ activeWorkspace: workspaceName })),
 
-  setCurrentPageIndex: (index: number) =>
-    set(() => ({ currentPageIndex: index })),
+  setActivePage: (index: number) =>
+    set(() => ({ activePage: index })),
 
   addPage: () =>
     set((state) => {
       const newPage = `Page ${state.pages.length + 1}`;
       return {
         pages: [...state.pages, newPage],
-        currentPageIndex: state.pages.length,
+        activePage: state.pages.length,
       };
     }),
 }));

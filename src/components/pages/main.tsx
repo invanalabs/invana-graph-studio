@@ -8,15 +8,15 @@ import { Input } from "@/components/ui/input"
 
 interface MainContentProps {
   pages: string[];
-  currentPageIndex: number;
-  setCurrentPageIndex: (index: number) => void;
+  activePage: number;
+  setActivePage: (index: number) => void;
   addPage: () => void;
 }
 
 export function MainContent({ 
   pages = ['Dashboard'], 
-  currentPageIndex = 0, 
-  setCurrentPageIndex = () => {}, 
+  activePage = 0, 
+  setActivePage = () => {}, 
   addPage = () => {}
 }: MainContentProps) {
   const [isQueryConsoleOpen, setIsQueryConsoleOpen] = useState(false)
@@ -40,18 +40,18 @@ export function MainContent({
   }
 
   const goToPreviousPage = () => {
-    if (currentPageIndex > 0) {
-      setCurrentPageIndex(currentPageIndex - 1)
+    if (activePage > 0) {
+      setActivePage(activePage - 1)
     }
   }
 
   const goToNextPage = () => {
-    if (currentPageIndex < (pages.length - 1)) {
-      setCurrentPageIndex(currentPageIndex + 1)
+    if (activePage < (pages.length - 1)) {
+      setActivePage(activePage + 1)
     }
   }
 
-  const currentPage = pages[currentPageIndex] || 'Unknown Page'
+  const currentPage = pages[activePage] || 'Unknown Page'
 
   return (
     <div className="flex flex-col flex-1 overflow-hidden">
@@ -205,18 +205,18 @@ export function MainContent({
               variant="ghost"
               size="sm"
               className={`h-[30px] px-4 rounded-none flex-shrink-0 ${
-                index === currentPageIndex
+                index === activePage
                   ? 'text-blue-400 border-t-2 '
                   : 'text-gray-400 hover:text-gray-100'
               }`}
-              onClick={() => setCurrentPageIndex(index)}
+              onClick={() => setActivePage(index)}
             >
               {page}
             </Button>
           ))}
         </div>
         <div className="flex items-center flex-shrink-0">
-          <Button variant="ghost" size="icon" onClick={goToPreviousPage} disabled={currentPageIndex === 0} className="h-10 w-10 p-0 text-gray-400 hover:text-gray-100 disabled:text-gray-600">
+          <Button variant="ghost" size="icon" onClick={goToPreviousPage} disabled={activePage === 0} className="h-10 w-10 p-0 text-gray-400 hover:text-gray-100 disabled:text-gray-600">
             <ChevronLeft className="h-4 w-4" />
             <span className="sr-only">Previous Page</span>
           </Button>
@@ -224,7 +224,7 @@ export function MainContent({
             <Plus className="h-4 w-4" />
             <span className="sr-only">Add Page</span>
           </Button>
-          <Button variant="ghost" size="icon" onClick={goToNextPage} disabled={currentPageIndex === (pages.length - 1)} className="h-10 w-10 p-0 text-gray-400 hover:text-gray-100 disabled:text-gray-600">
+          <Button variant="ghost" size="icon" onClick={goToNextPage} disabled={activePage === (pages.length - 1)} className="h-10 w-10 p-0 text-gray-400 hover:text-gray-100 disabled:text-gray-600">
             <ChevronRight className="h-4 w-4" />
             <span className="sr-only">Next Page</span>
           </Button>
