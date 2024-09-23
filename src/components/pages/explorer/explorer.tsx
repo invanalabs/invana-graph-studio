@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import WorkspaceLayout from '../../layouts/workspace'
 import ExplorerMainToolBar from './main-toolbar'
+import PageListFooter from './pages-list'
+import PageSection from './page-section'
 
 
 export default function ExplorerPage() {
@@ -18,7 +20,9 @@ export default function ExplorerPage() {
 
   return (
     <WorkspaceLayout>
-      <ExplorerMainToolBar></ExplorerMainToolBar>
+      <ExplorerMainToolBar/>
+      <PageSection />
+      <PageListFooter />
     </WorkspaceLayout>
 
 
