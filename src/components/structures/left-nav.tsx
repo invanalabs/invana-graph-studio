@@ -9,11 +9,11 @@ export function LeftNav() {
 
   const getLinkClass = (path: string) =>
     location.pathname === path 
-      ? "w-full min-w-full p-3 bg-emerald-600 dark:bg-emerald-700 text-white flex flex-col items-center justify-center border-b"
-      : "w-full min-w-full p-3 hover:bg-gray-200 dark:hover:bg-gray-800 flex flex-col items-center justify-center border-b";
+      ? "w-full min-w-full p-3 bg-gray-400 dark:bg-gray-800 text-white flex flex-col items-center justify-center border-b"
+      : "w-full min-w-full p-3 hover:bg-gray-200 dark:hover:bg-gray-900 flex flex-col items-center justify-center border-b";
 
   return (
-    <aside className="w-16 flex-shrink-0 border-r flex flex-col justify-between">
+    <aside className="w-14 flex-shrink-0 border-r flex flex-col justify-between">
       <TooltipProvider>
         <nav className="flex flex-col items-center w-full">
           <Tooltip>

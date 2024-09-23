@@ -122,11 +122,10 @@ export default function ExplorerMainToolBar() {
         </div>
       </div>
       <div className="flex flex-1 bg-background">
-        <div className="flex-1">
           {/* Main content area */}
-        </div>
+        <div className="flex-1"></div>
         {rightPanel !== "none" && (
-          <Card className="w-[460px] h-[calc(100vh-30px)] relative rounded-none shadow-none">
+          <Card className="w-[460px] h-[calc(100vh-30px-40px)] absolute rounded-none rounded-none shadow-none">
             <CardHeader className="bg-muted">
               <CardTitle>{rightPanel === "settings" ? "Display Settings" : "Right Panel Content"}</CardTitle>
             </CardHeader>
@@ -159,6 +158,8 @@ export default function ExplorerMainToolBar() {
             </CardContent>
           </Card>
         )}
+
+        
       </div>
     </div>
   )
