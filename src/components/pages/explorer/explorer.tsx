@@ -8,14 +8,14 @@ import PageSection from './page-section'
 
 
 export default function ExplorerPage() {
-  const [currentPageIndex, setCurrentPageIndex] = useState(0)
+  const [activePage, setActivePage] = useState(0)
   const [pages, setPages] = useState(['Page 1', 'Page 2', 'Page 3'])
 
 
   const addPage = () => {
     const newPage = `Page ${pages.length + 1}`
     setPages([...pages, newPage])
-    setCurrentPageIndex(pages.length)
+    setActivePage(pages.length)
   }
 
   return (
