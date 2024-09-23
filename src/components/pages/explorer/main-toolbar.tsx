@@ -38,7 +38,7 @@ export default function ExplorerMainToolBar() {
   )
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col">
       <div className="flex items-center justify-between space-x-2 px-2 bg-background border-b h-[30px]">
         <div className="flex items-center space-x-2 h-full">
           <div className="flex space-x-1 h-full">
