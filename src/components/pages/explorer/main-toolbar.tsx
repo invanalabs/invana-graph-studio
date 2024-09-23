@@ -126,7 +126,7 @@ export default function ExplorerMainToolBar() {
           {/* Main content area */}
         </div>
         {rightPanel !== "none" && (
-          <Card className="w-[460px] h-[calc(100vh-30px)] rounded-none shadow-none">
+          <Card className="w-[460px] h-[calc(100vh-30px)] relative rounded-none shadow-none">
             <CardHeader className="bg-muted">
               <CardTitle>{rightPanel === "settings" ? "Display Settings" : "Right Panel Content"}</CardTitle>
             </CardHeader>

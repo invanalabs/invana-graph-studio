@@ -21,7 +21,7 @@ export default function NotFoundPage() {
           The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="mt-6">
-          <Link to="/modeller">
+          <Link to="/">
             <Button>
               Go back home
             </Button>

@@ -10,7 +10,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<ProtectedRoute><Navigate to={"/modeller"} /></ProtectedRoute>} />
+        <Route path="/" element={<ProtectedRoute><Navigate to={"/explorer"} /></ProtectedRoute>} />
         <Route path="/connect" element={<ConnectPage />} />
         <Route path="/modeller" element={<ProtectedRoute><ModellerPage /></ProtectedRoute>} />
         <Route path="/explorer" element={<ProtectedRoute><ExplorerPage /></ProtectedRoute>} />
