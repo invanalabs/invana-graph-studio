@@ -9,7 +9,7 @@ export default function PageSection() {
 
 
     return (
-        <div className="flex-1 overflow-hidden flex relative">
+        <div className="flex-1 overflow-hidden flex relative bg-gray-900">
             <h1>Page {activePage}</h1>
         </div>
     )

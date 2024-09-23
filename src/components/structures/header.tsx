@@ -57,8 +57,8 @@ export function Header() {
   }
 
   return (
-    <header className="border-b  ">
-      <div className="container-fluid mx-auto px-3 py-1 flex items-center justify-between">
+    <header className=" ">
+      <div className="container-fluid mx-auto border-b h-[50px] px-3 py-1 flex items-center justify-between">
         <div className="flex items-center space-x-4">
           {/* <img src={logoIcon} className="w-5 h-5" alt="Invana Studio"/> */}
           <span className="text-xl font-bold">Invana Studio</span>

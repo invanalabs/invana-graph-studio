@@ -89,7 +89,7 @@ export default function PageListFooter() {
 
   return (
     <TooltipProvider>
-      <div className="h-[30px] border-t flex items-center justify-between ">
+      <div className="h-[30px] border-t border-b border-r flex items-center justify-between ">
         <div className="flex items-center">
           <Popover open={isSearchOpen} onOpenChange={setIsSearchOpen}>
             <PopoverTrigger asChild>
