@@ -7,10 +7,10 @@ export default function PageSection() {
 
     const { pages, activePage, setActivePage, addPage } = usePagesStore()
 
-
+    console.log("==activePage", activePage)
     return (
-        <div className="flex-1 overflow-hidden flex relative bg-gray-900">
-            <h1>Page {activePage}</h1>
+        <div className="flex-1 overflow-hidden flex relative bg-neutral-950">
+            <h1>Page {activePage.id}</h1>
         </div>
     )
 }

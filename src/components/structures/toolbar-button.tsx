@@ -8,10 +8,11 @@ interface ToolBarButtonProps {
     tooltip: string,
     onClick: () => void,
     isActive?: false
+    label?: string | null
 }
 
 
-export const ToolBarButton = ({ icon, tooltip, onClick, isActive = false }: ToolBarButtonProps) => {
+export const ToolBarButton = ({ icon, tooltip, onClick, isActive = false, label=null }: ToolBarButtonProps) => {
     // # Make sure to call `ToolBarButton` within ` <TooltipProvider>  </TooltipProvider>`
     /* 
         {
@@ -25,10 +26,10 @@ export const ToolBarButton = ({ icon, tooltip, onClick, isActive = false }: Tool
         <TooltipTrigger asChild>
             <Button
                 variant={isActive ? "secondary" : "ghost"}
-                size="icon"
+                size="default"
                 onClick={onClick}
-                className="h-full px-2 py-2" >
-                {icon}
+                className="h-full px-2 py-2 rounded-none text-zinc-500 hover:bg-transparent hover:text-zinc-100" >
+                {icon} {label? <span className="text-xs">{label}</span>: <></> }
             </Button>
         </TooltipTrigger>
         <TooltipContent>

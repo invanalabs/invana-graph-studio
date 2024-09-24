@@ -27,7 +27,7 @@ export default function ExplorerPage() {
       <PageSection />
       {/* Right Side bar  starts */}
       <Card
-        className="w-[360px] h-[calc(100vh-109px)] absolute right-0 top-[80px] rounded-none shadow-none">
+        className="w-[320px] h-[calc(100vh-109px)] absolute right-0 top-[80px] rounded-none shadow-none">
         <CardHeader className="bg-muted">
           <CardTitle className="flex items-center"><Copy className='w-4 h-4 mr-2' /> Hello World</CardTitle>
           <Button variant={"ghost"} className="hover:bg-transparent hover:text-primary p-2 absolute right-0 -top-2"
