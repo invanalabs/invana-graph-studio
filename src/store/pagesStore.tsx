@@ -9,13 +9,17 @@ interface Page {
 
 interface PageState {
   pages: Page[];
-  currentPageId: string;
+
+  // activePage: string;
   editingId: string | null;
   editingValue: string;
   deletePageId: string | null;
   isSearchOpen: boolean;
+  activePage: Page;
+  setActivePage: (page: Page) => void;
+
   setPages: (pages: Page[]) => void;
-  setCurrentPageId: (id: string) => void;
+  // setActivePage: (id: string) => void;
   setEditingId: (id: string | null) => void;
   setEditingValue: (value: string) => void;
   setDeletePageId: (id: string | null) => void;
@@ -27,18 +31,20 @@ interface PageState {
   goToNextPage: () => void;
 }
 
+const defaultPage: Page = {id: 1, pageName: "default"}
+
 export const usePagesStore = create<PageState>()(
   persist(
     (set, get) => ({
-      pages: [{ id: "1", pageName: "Page 1" }],
-      currentPageId: "1",
+      pages: [defaultPage, ],
+      activePage: defaultPage,
       editingId: null,
       editingValue: "",
       deletePageId: null,
       isSearchOpen: false,
 
       setPages: (pages) => set({ pages }),
-      setCurrentPageId: (id) => set({ currentPageId: id }),
+      setActivePage: (page) => set({ activePage: page }),
       setEditingId: (id) => set({ editingId: id }),
       setEditingValue: (value) => set({ editingValue: value }),
       setDeletePageId: (id) => set({ deletePageId: id }),
@@ -50,7 +56,7 @@ export const usePagesStore = create<PageState>()(
         const newPage = { id: newId, pageName: `Page ${newId}` };
         set((state) => ({
           pages: [newPage, ...state.pages],
-          currentPageId: newId,
+          activePage: newPage,
         }));
       },
 
@@ -68,34 +74,33 @@ export const usePagesStore = create<PageState>()(
           const newPages = state.pages.filter(page => page.id !== id);
 
           if (newPages.length === 0) {
-            const defaultPage = { id: "1", pageName: "Page 1" };
-            return { pages: [defaultPage], currentPageId: "1", deletePageId: null };
+            return { pages: [defaultPage], activePage: defaultPage, deletePageId: null };
           }
 
           const currentIndex = state.pages.findIndex(page => page.id === id);
-          let newCurrentPageId = state.currentPageId;
+          let newCurrentPageId = state.activePage;
 
-          if (id === state.currentPageId) {
+          if (id === state.activePage.id) {
             newCurrentPageId = currentIndex > 0 ? newPages[currentIndex - 1].id : newPages[0].id;
           }
 
-          return { pages: newPages, currentPageId: newCurrentPageId, deletePageId: null };
+          return { pages: newPages, activePage: newCurrentPageId, deletePageId: null };
         });
       },
 
       goToPreviousPage: () => {
-        const { pages, currentPageId } = get();
-        const currentIndex = pages.findIndex(page => page.id === currentPageId);
+        const { pages, activePage } = get();
+        const currentIndex = pages.findIndex(page => page.id === activePage.id);
         if (currentIndex > 0) {
-          set({ currentPageId: pages[currentIndex - 1].id });
+          set({ activePage: pages[currentIndex - 1] });
         }
       },
 
       goToNextPage: () => {
-        const { pages, currentPageId } = get();
-        const currentIndex = pages.findIndex(page => page.id === currentPageId);
+        const { pages, activePage } = get();
+        const currentIndex = pages.findIndex(page => page.id === activePage.id);
         if (currentIndex < pages.length - 1) {
-          set({ currentPageId: pages[currentIndex + 1].id });
+          set({ activePage: pages[currentIndex + 1] });
         }
       },
     }),

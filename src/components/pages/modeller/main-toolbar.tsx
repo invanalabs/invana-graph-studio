@@ -51,7 +51,7 @@ export default function ModellerMainToolBar() {
                 </div>
                 {rightPanel !== "none" && (
                     <Card className="w-[460px] h-[calc(100vh-30px)] rounded-none shadow-none">
-                        <CardHeader className="bg-muted">
+                        <CardHeader className="bg-background">
                             <CardTitle>{rightPanel === "settings" ? "Display Settings" : "Right Panel Content"}</CardTitle>
                         </CardHeader>
                         <CardContent>
