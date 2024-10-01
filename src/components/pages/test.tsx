@@ -6,19 +6,19 @@ import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Input } from "@/components/ui/input"
 
-interface MainContentProps {
+interface MainBodyProps {
   pages: string[];
   activePage: number;
   setActivePage: (index: number) => void;
   addPage: () => void;
 }
 
-export function MainContent({
+export function MainBody({
   pages = ['Dashboard'],
   activePage = 0,
   setActivePage = () => { },
   addPage = () => { }
-}: MainContentProps) {
+}: MainBodyProps) {
   const [isQueryConsoleOpen, setIsQueryConsoleOpen] = useState(false)
   const [isRightPanelOpen, setIsRightPanelOpen] = useState(false)
   const [query, setQuery] = useState('')

@@ -1,7 +1,7 @@
 'use client'
 import { Header } from '@/components/structures/header'
 import { LeftNav } from '@/components/structures/left-nav'
-import { MainContent } from '@/components/structures/main'
+import { MainBody } from '@/components/structures/main-body'
 import { ReactNode } from 'react'
 
 
@@ -13,11 +13,11 @@ interface WorkspaceLayoutProps {
 export default function WorkspaceLayout(props: WorkspaceLayoutProps) {
 
     return (
-        <div className="flex flex-col min-h-screen bg-background  text-base">
-            <Header />
-            <div className="flex overflow-hidden flex-1 h-screen">
-                <LeftNav />
-                <MainContent>{props.children}</MainContent>
+        <div className="flex h-screen bg-background text-foreground">
+            <LeftNav />
+            <div className="flex-1 flex flex-col  flex-1 h-screen">
+                <Header />
+                <MainBody>{props.children}</MainBody>
             </div>
         </div>
     )
