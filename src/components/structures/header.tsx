@@ -17,7 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
-import { ChevronDown, ExpandIcon, Moon, Plus, Search, Sun, } from "lucide-react"
+import { ChevronDown, ExpandIcon, Notebook, Moon, Plus, Search, Sun, } from "lucide-react"
 import { useWorkspaceStore } from '@/store/workspaceStore'
 import { Link } from "react-router-dom"
 import { Workspace } from "@/models/workspace"
@@ -71,7 +71,8 @@ export function Header() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" className="flex items-center space-x-2 ">
-                  <span>{activeWorkspace?.name || "select workspace"}</span>
+                  <Notebook className=" h-4 " />
+                  <span >{activeWorkspace?.name || "select workspace"}</span>
                   <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -95,7 +96,7 @@ export function Header() {
                     key={workspace.id}
                     onClick={() => navigateToWorkspace(workspace)}
                     className="cursor-pointer"
-                  >
+                  ><Notebook className=" h-4 " />
                     {workspace.name}
                   </DropdownMenuItem>
                 ))}
