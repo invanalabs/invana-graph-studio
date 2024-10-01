@@ -2,12 +2,12 @@
 import { ReactNode } from 'react'
 
 
-interface MainContentProps {
+interface MainProps {
   children: ReactNode
 }
 
 
-export function MainContent(props: MainContentProps) {
+export function Main(props: MainProps) {
  
   return (
     <div className="flex flex-col flex-1 overflow-hidden">

@@ -7,7 +7,7 @@ import LeftNav from './components/LeftNav'
 import LeftSidebar from './components/LeftSidebar'
 import RightSidebar from './components/RightSidebar'
 import MainTop from './components/MainTop'
-import MainContent from './components/MainContent'
+import MainBody from './components/MainBody'
 import MainBottom from './components/MainBottom'
 import Footer from './components/Footer'
 import QueryConsole from './components/QueryConsole'
@@ -113,7 +113,7 @@ export function DatabaseExplorerComponent() {
                 ) : (
                   <>
                     <MainTop />
-                    <MainContent />
+                    <MainBody />
                   </>
                 )}
 

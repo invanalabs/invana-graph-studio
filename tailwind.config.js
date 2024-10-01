@@ -12,7 +12,8 @@ export default {
   	extend: {
   		backgroundImage: {},
   		fontSize: {
-  			base: '13px'
+  			base: '13px',
+			xxs: '0.625rem', // 10px
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

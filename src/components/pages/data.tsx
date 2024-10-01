@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Header } from '@/components/structures/header'
 import { LeftNav } from '@/components/structures/left-nav'
-import { MainContent } from '@/components/structures/main'
+import { MainBody } from '@/components/structures/main-body'
 
 
 export default function DataManagementPage() {
@@ -36,7 +36,7 @@ export default function DataManagementPage() {
       <Header theme={theme} toggleTheme={toggleTheme} initialWorkspaces={initialWorkspaces} />
       <div className="flex flex-1 overflow-hidden">
         <LeftNav />
-        <MainContent
+        <MainBody
           pages={pages}
           activePage={activePage}
           setActivePage={setActivePage}
