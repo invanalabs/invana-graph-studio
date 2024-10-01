@@ -13,7 +13,7 @@ export function LeftNav() {
       : "w-full min-w-full p-3 hover:bg-gray-200 dark:hover:bg-gray-900 flex flex-col items-center justify-center border-b";
 
   return (
-    <aside className="w-12 flex-shrink-0 border-r flex flex-col justify-between">
+    <aside className="w-14 flex-shrink-0 border-r flex flex-col justify-between">
       <TooltipProvider>
         <nav className="flex flex-col items-center w-full">
         <Tooltip>

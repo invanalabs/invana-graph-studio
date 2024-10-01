@@ -10,7 +10,8 @@ interface MainProps {
 export function Main(props: MainProps) {
  
   return (
-    <div className="flex flex-col flex-1 overflow-hidden">
+    // flex-1 flex flex-col  flex-1 h-screen  overflow-hidden
+    <div className="flex flex-col flex-1  h-screen overflow-hidden">
       {props.children}
     </div>
   )
