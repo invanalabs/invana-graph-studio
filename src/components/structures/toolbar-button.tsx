@@ -28,7 +28,7 @@ export const ToolBarButton = ({ icon, tooltip, onClick, isActive = false, label=
                 variant={isActive ? "secondary" : "ghost"}
                 size="default"
                 onClick={onClick}
-                className="h-full px-2 py-2 rounded-none text-zinc-600 dark:text-zinc-500 hover:bg-transparent hover:text-zinc-950 dark:hover:text-zinc-100" >
+                className="h-full px-[10px] py-2 rounded-none text-zinc-600 dark:text-zinc-500 hover:bg-transparent hover:text-zinc-950 dark:hover:text-zinc-100" >
                 {icon} {label? <span className="text-xs">{label}</span>: <></> }
             </Button>
         </TooltipTrigger>
