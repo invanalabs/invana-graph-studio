@@ -8,7 +8,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
-import { FileIcon, Trash2Icon, RefreshCwIcon, ZoomInIcon, ZoomOutIcon, MaximizeIcon, TableIcon, NetworkIcon, GlobeIcon, PanelRightOpenIcon, PanelRightCloseIcon, ExpandIcon, SettingsIcon, GridIcon, ShareIcon, CircleIcon, GitCommitIcon, GitBranchIcon, FilterIcon, DamIcon, SearchCode, Search, SwitchCamera } from "lucide-react"
+import { FileIcon, Trash2Icon, RefreshCwIcon, ZoomInIcon, ZoomOutIcon, MaximizeIcon, TableIcon, NetworkIcon, GlobeIcon, PanelRightOpenIcon, PanelRightCloseIcon, ExpandIcon, SettingsIcon, GridIcon, ShareIcon, CircleIcon, GitCommitIcon, GitBranchIcon, FilterIcon, DamIcon, SearchCode, Search, SwitchCamera, MoveLeft, MoveRight, RotateCcw } from "lucide-react"
 import { DatabaseSync } from "node:sqlite"
 import { ToolBarButton } from "@/components/structures/toolbar-button"
 
@@ -49,6 +49,13 @@ export default function ExplorerMainToolBar() {
             <ToolBarButton icon={<FileIcon className="h-4 w-4 stroke-2" />} tooltip="New Page" onClick={() => { }} />
             <ToolBarButton icon={<Trash2Icon className="h-4 w-4 stroke-2" />} tooltip="Clear" onClick={() => { }} />
             <ToolBarButton icon={<RefreshCwIcon className="h-4 w-4 stroke-2" />} tooltip="Redraw" onClick={() => { }} />
+          </div>
+          <div className="w-px h-4 bg-border mx-2" />
+
+          <div className="flex space-x-1 h-full">
+            <ToolBarButton icon={<MoveLeft className="h-4 w-4 stroke-2" />} tooltip="New Page" onClick={() => { }} />
+            <ToolBarButton icon={<RotateCcw className="h-4 w-4 stroke-2" />} tooltip="Clear" onClick={() => { }} />
+            <ToolBarButton icon={<MoveRight className="h-4 w-4 stroke-2" />} tooltip="Redraw" onClick={() => { }} />
           </div>
           <div className="w-px h-4 bg-border mx-2" />
           <div className="flex space-x-1 h-full">
