@@ -28,7 +28,7 @@ import { TooltipProvider } from "@radix-ui/react-tooltip"
 // import logoIcon from '@/static/images/logo.svg';
 
 
-export function Header() {
+export function WorkspaceHeader() {
 
   const navigate = useNavigate();
   const { activeWorkspace, setActiveWorkspace, workspaces } = useWorkspaceStore();
@@ -71,7 +71,7 @@ export function Header() {
           {workspaces.length > 0 ?
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex items-center space-x-2 ">
+                <Button variant="outline" className="flex items-center space-x-2 ">
                   <Database className=" h-4 " />
                   <span >{activeWorkspace?.name || "select workspace"}</span>
                   <ChevronDown className="h-4 w-4" />
