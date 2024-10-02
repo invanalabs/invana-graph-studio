@@ -1,6 +1,6 @@
 "use client"
 
-import { Compass, Network, Activity, HelpCircle, FileText, Notebook } from 'lucide-react'
+import { CirclePlus, Network, Activity, HelpCircle, FileText, Notebook } from 'lucide-react'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,7 +21,7 @@ export function LeftNav() {
         <nav className="flex flex-col items-center w-full">
         <Tooltip>
             <TooltipTrigger asChild>
-              <Link to="/" className=" w-full min-w-full p-3 hover:bg-green-600 text-white py-1
+              <Link to="/" className=" w-full min-w-full p-3 hover:bg-green-800 text-white py-1
               dark:hover:bg-green-800 bg-green-900 flex flex-col items-center justify-center border-b">
                 {/* <Compass className="w-10" /> */}
                 <FontAwesomeIcon icon="user-astronaut" className='text-xl' style={{fontSize: "1.6rem"}} />
@@ -34,9 +34,21 @@ export function LeftNav() {
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
+              <Link to="/add-canvas" className={getLinkClass("/add-canvas") + " text-green-700 dark:text-green-600"}>
+                <CirclePlus className="w-5" />
+                <span className="text-xxs">Canvas</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">
+              <p>New Canvas</p>
+            </TooltipContent>
+          </Tooltip>
+
+          <Tooltip>
+            <TooltipTrigger asChild>
               <Link to="/graphbook" className={getLinkClass("/graphbook")}>
                 <Notebook className="w-5" />
-                <span className="text-xxs">Graphbook</span>
+                <span className="text-xxs">Books</span>
               </Link>
             </TooltipTrigger>
             <TooltipContent side="right">
