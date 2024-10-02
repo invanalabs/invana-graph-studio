@@ -6,6 +6,7 @@ import DataManagementPage from "./components/pages/data"
 import ProtectedRoute from './components/routes/protected-routes';
 import NotFoundPage from './components/pages/not-found';
 import "./icons/fontawesome"
+import GraphBookPage from './components/pages/graphbook/graphbook';
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<ProtectedRoute><Navigate to={"/explorer"} /></ProtectedRoute>} />
         <Route path="/connect" element={<ConnectPage />} />
+        <Route path="/graphbook" element={<ProtectedRoute><GraphBookPage /></ProtectedRoute>} />
         <Route path="/modeller" element={<ProtectedRoute><ModellerPage /></ProtectedRoute>} />
         <Route path="/explorer" element={<ProtectedRoute><ExplorerPage /></ProtectedRoute>} />
         <Route path="/data" element={<ProtectedRoute><DataManagementPage /></ProtectedRoute>} />
