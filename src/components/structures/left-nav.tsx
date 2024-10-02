@@ -1,8 +1,11 @@
 "use client"
 
-import { Compass, Network, Activity } from 'lucide-react'
+import { Compass, Network, Activity, HelpCircle, FileText } from 'lucide-react'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Link, useLocation } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
 
 export function LeftNav() {
   const location = useLocation();
@@ -18,10 +21,11 @@ export function LeftNav() {
         <nav className="flex flex-col items-center w-full">
         <Tooltip>
             <TooltipTrigger asChild>
-              <Link to="/explorer" className=" w-full min-w-full p-3 hover:bg-gray-200 
-              dark:hover:bg-gray-900 flex flex-col items-center justify-center border-b">
-                <Compass className="w-10" />
-                {/* <span className="text-xs">Invana</span> */}
+              <Link to="/explorer" className=" w-full min-w-full p-3 hover:bg-green-600 text-white py-1
+              dark:hover:bg-green-800 bg-green-900 flex flex-col items-center justify-center border-b">
+                {/* <Compass className="w-10" /> */}
+                <FontAwesomeIcon icon="user-astronaut" className='text-xl' style={{fontSize: "1.6rem"}} />
+                <span className="text-xxs">Invana</span>
               </Link>
             </TooltipTrigger>
             <TooltipContent side="right">
@@ -32,7 +36,7 @@ export function LeftNav() {
             <TooltipTrigger asChild>
               <Link to="/explorer" className={getLinkClass("/explorer")}>
                 <Compass className="w-5" />
-                {/* <span className="text-xxs">Explorer</span> */}
+                <span className="text-xxs">Explorer</span>
               </Link>
             </TooltipTrigger>
             <TooltipContent side="right">
@@ -44,25 +48,58 @@ export function LeftNav() {
             <TooltipTrigger asChild>
               <Link to="/modeller" className={getLinkClass("/modeller")}>
                 <Network className="w-5" />
-                {/* <span className="text-xs">Modeller</span> */}
+                <span className="text-xxs">Modeller</span>
               </Link>
             </TooltipTrigger>
             <TooltipContent side="right">
               <p>Model data</p>
             </TooltipContent>
           </Tooltip>
-        </nav>
-
-        <div className="flex flex-col items-center space-y-4 w-full">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link to="/reports" className={getLinkClass("/reports")}>
+                <FileText className="w-5 " />
+                <span className="text-xxs">Reports</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">
+              <p>View Reports</p>
+            </TooltipContent>
+          </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
               <Link to="/activity" className={getLinkClass("/activity")}>
-                <Activity className="w-6 h-6 mb-1" />
+                <Activity className="w-5 " />
+                <span className="text-xxs">Activity</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">
+              <p>View activity</p>
+            </TooltipContent>
+          </Tooltip>
+        </nav>
+
+        <div className="flex flex-col items-center space-y-0 w-full">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link to="/activity" className={getLinkClass("/activity")}>
+                <Activity className="w-5 mb-1" />
                 <span className="text-xs">Activity</span>
               </Link>
             </TooltipTrigger>
             <TooltipContent side="right">
               <p>View activity</p>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link to="/activity" className={getLinkClass("/help")}>
+                <HelpCircle className="w-5 mb-1" />
+                <span className="text-xs">Help</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">
+              <p>Get Help</p>
             </TooltipContent>
           </Tooltip>
         </div>

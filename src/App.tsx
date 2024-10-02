@@ -5,6 +5,8 @@ import ExplorerPage from './components/pages/explorer/explorer';
 import DataManagementPage from "./components/pages/data"
 import ProtectedRoute from './components/routes/protected-routes';
 import NotFoundPage from './components/pages/not-found';
+import "./icons/fontawesome"
+
 
 const App = () => {
   return (
