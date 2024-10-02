@@ -1,6 +1,6 @@
 "use client"
 
-import { Compass, Network, Activity, HelpCircle, FileText } from 'lucide-react'
+import { Compass, Network, Activity, HelpCircle, FileText, Notebook } from 'lucide-react'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,7 +21,7 @@ export function LeftNav() {
         <nav className="flex flex-col items-center w-full">
         <Tooltip>
             <TooltipTrigger asChild>
-              <Link to="/explorer" className=" w-full min-w-full p-3 hover:bg-green-600 text-white py-1
+              <Link to="/" className=" w-full min-w-full p-3 hover:bg-green-600 text-white py-1
               dark:hover:bg-green-800 bg-green-900 flex flex-col items-center justify-center border-b">
                 {/* <Compass className="w-10" /> */}
                 <FontAwesomeIcon icon="user-astronaut" className='text-xl' style={{fontSize: "1.6rem"}} />
@@ -34,13 +34,13 @@ export function LeftNav() {
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link to="/explorer" className={getLinkClass("/explorer")}>
-                <Compass className="w-5" />
-                <span className="text-xxs">Explorer</span>
+              <Link to="/graphbook" className={getLinkClass("/graphbook")}>
+                <Notebook className="w-5" />
+                <span className="text-xxs">Graphbook</span>
               </Link>
             </TooltipTrigger>
             <TooltipContent side="right">
-              <p>Explore data</p>
+              <p>Graphbooks</p>
             </TooltipContent>
           </Tooltip>
 
