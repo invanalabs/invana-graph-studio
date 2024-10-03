@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import WorkspaceLayout from '../../layouts/workspace'
 import ExplorerMainToolBar from './main-toolbar'
-import PageListFooter from './pages-list'
+import PageListSection from './pages-list'
 import PageSection from './page-section'
 import RightSideBar from '@/components/structures/right-sidebar'
 import GraphBookLayout from '@/components/layouts/graphbook'
@@ -51,7 +51,7 @@ export default function GraphBookPage() {
                   <LeftSideBar />
                 ) : (
                   <>
-                    <PageListFooter />
+                    <PageListSection />
                     <PageSection />
                   </>
                 )}

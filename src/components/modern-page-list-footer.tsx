@@ -35,7 +35,7 @@ interface Page {
   pageName: string
 }
 
-export function ModernPageListFooterComponent() {
+export function ModernPageListSectionComponent() {
   const [pages, setPages] = useState<Page[]>([{ id: "1", pageName: "Page 1" }])
   const [currentPageId, setCurrentPageId] = useState<string>("1")
   const [editingId, setEditingId] = useState<string | null>(null)
