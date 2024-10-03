@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { ReactNode, useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -20,7 +20,12 @@ import { TooltipProvider } from "@radix-ui/react-tooltip"
 // import logoIcon from '@/static/images/logo.svg';
 
 
-export function Header() {
+export interface HeaderProps {
+    left?: ReactNode,
+    middle?: ReactNode,
+}
+
+export function Header(props: HeaderProps) {
 
   const navigate = useNavigate();
   const { activeWorkspace, setActiveWorkspace, workspaces } = useWorkspaceStore();
@@ -54,49 +59,13 @@ export function Header() {
         <div className="flex items-center space-x-1">
           {/* <img src={logoIcon} className="w-5 h-5" alt="Invana Studio"/> */}
           {/* <span ><Notebook className="text-xxs" /></span>
-          <span className="font-bold">hello-world</span> */}
-           {workspaces.length > 0 ?
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex items-center space-x-2 ">
-                  <Notebook className=" h-4 " />
-                  <span >{activeWorkspace?.name || "select workspace"}</span>
-                  {/* <ChevronDown className="h-4 w-4" /> */}
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-56  ">
-                <DropdownMenuLabel>Switch workspace</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <div className="px-2 py-1.5">
-                  <div className="relative">
-                    <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input
-                      placeholder="Search workspaces..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-8 h-8"
-                    />
-                  </div>
-                </div>
-                <DropdownMenuSeparator />
-                {filteredWorkspaces.map((workspace) => (
-                  <DropdownMenuItem
-                    key={workspace.id}
-                    onClick={() => navigateToWorkspace(workspace)}
-                    className="cursor-pointer"
-                  ><Notebook className=" h-4 " />
-                    {workspace.name}
-                  </DropdownMenuItem>
-                ))}
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="cursor-pointer">
-                  <Link to={"/connect"} className="inline-flex">
-                    <Plus className="mr-2 h-4 w-4" />Add Workspace
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            : <></>}
+          <span className="font-bold">Query Console</span> */}
+          {props.left}
+         
+        </div>
+
+        <div className="flex items-center space-x-2 h-full">
+          {props.middle}
         </div>
  
         <div className="flex items-center space-x-2 h-full">

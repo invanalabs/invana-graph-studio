@@ -1,6 +1,6 @@
 "use client"
 
-import { CirclePlus, Network, Activity, HelpCircle, FileText, Notebook, Compass } from 'lucide-react'
+import { CirclePlus, Network, Activity, HelpCircle, FileText, Search, Compass } from 'lucide-react'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -47,7 +47,7 @@ export function LeftNav() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link to="/graphbook" className={getLinkClass("/graphbook")}>
-                <Compass className="w-5" />
+                <Search className="w-5" />
                 <span className="text-xxs">Explorer</span>
               </Link>
             </TooltipTrigger>
