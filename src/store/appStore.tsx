@@ -9,7 +9,7 @@ interface Workspace {
 interface AppState {
   theme: 'light' | 'dark';
   workspaces: Workspace[];
-  activeWorkspace: string;
+  activeWorkspace: string | null;
   activePage: number;
   pages: string[];
 
@@ -28,14 +28,12 @@ interface AppState {
 
 export const useAppStore = create<AppState>((set) => ({
   theme: 'dark', // Initial theme
-  workspaces: [
-    { id: 1, name: "Personal", connectionString: "mongodb://localhost:27017/personal" }
-  ], // Initial workspaces
-  activeWorkspace: 'Personal',
+  workspaces: [], // Initial workspaces
+  activeWorkspace: null,
   activePage: 0,
   pages: ['default'], // Initial pages
 
-  leftSidebar: "null",
+  leftSidebar: "query-console",
   setLeftSidebar: (leftSidebar: string | null) => 
     set(()=> ({leftSidebar})),
 
@@ -60,7 +58,7 @@ export const useAppStore = create<AppState>((set) => ({
 
   addPage: () =>
     set((state) => {
-      const newPage = `Page ${state.pages.length + 1}`;
+      const newPage = `Canvas ${state.pages.length + 1}`;
       return {
         pages: [...state.pages, newPage],
         activePage: state.pages.length,

@@ -1,44 +1,39 @@
 'use client'
-
-import { useState } from 'react'
-import WorkspaceLayout from '../../layouts/workspace'
-import ExplorerMainToolBar from './main-toolbar'
 import PageListSection from './pages-list'
 import PageSection from './page-section'
 import RightSideBar from '@/components/structures/right-sidebar'
 import DefaultLayout from '@/components/layouts/default'
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable'
-import { GripVertical } from 'lucide-react'
+import { Compass, GripVertical, Search, SearchCode } from 'lucide-react'
 import LeftSideBar from '@/components/structures/left-sidebar'
 import Footer from '@/components/structures/footer'
 import { useAppStore } from "@/store/appStore"
 import { Notebook } from 'lucide-react'
+import { Header } from '@/components/structures/header'
+import { spawn } from 'child_process'
+import CanvasToolBar from './canvas/toolbar'
 
-export default function GraphBookPage() {
+export default function ExplorerPage() {
   // const [activePage, setActivePage] = useState(0)
   // const [pages, setPages] = useState(['Page 1', 'Page 2', 'Page 3'])
   // const [showQueryConsole, setShowQueryConsole] = useState(false)
   const { rightSidebar, setRightSidebar, addPage, pages, setActivePage, leftSidebar, setLeftSidebar } = useAppStore()
 
-
-  // const addPage = () => {
-  //   const newPage = `Page ${pages.length + 1}`
-  //   setPages([...pages, newPage])
-  //   setActivePage(pages.length)
-  // }
-
-  // const [leftSidebarContent, setLeftSidebarContent] = useState<'database' | 'settings' | null>("database")
-
+  const defaultLeftSize = 35;
   return (
     <DefaultLayout>
 
+      <Header
+        left={<span className="font-bold">Explorer</span> }       
+        middle={<CanvasToolBar />}
+        ></Header>
       <div className="flex-1 flex overflow-hidden relative">
         <ResizablePanelGroup direction="horizontal">
-          {leftSidebar && (
+          { (leftSidebar && leftSidebar == "query-console") && (
             <>
-              <ResizablePanel defaultSize={22} minSize={17} maxSize={40}>
+              <ResizablePanel defaultSize={defaultLeftSize} minSize={17} maxSize={40}>
                 <LeftSideBar onClose={() => setLeftSidebar(null)}
-                  title={<div className='flex'><Notebook className='w-4 h-4 mr-2' /> Hello World</div>}>
+                  title={<div className='flex'><SearchCode className='w-4 h-4 mr-2' /> Query Console</div>}>
                   <p>content here</p>
                 </LeftSideBar>
               </ResizablePanel>
@@ -49,8 +44,8 @@ export default function GraphBookPage() {
               </ResizableHandle>
             </>
           )}
+          <ResizablePanel defaultSize={leftSidebar ? 100-defaultLeftSize : 100}>
 
-          <ResizablePanel defaultSize={leftSidebar ? 80 : 100}>
             <div className="flex flex-col h-full border-r">
               {/* {showQueryConsole ? (
                 <LeftSideBar />

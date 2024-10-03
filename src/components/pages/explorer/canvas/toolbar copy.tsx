@@ -1,29 +1,22 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { TooltipProvider  } from "@/components/ui/tooltip"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { Slider } from "@/components/ui/slider"
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
 import { FileIcon, Trash2Icon, RefreshCwIcon, ZoomInIcon, ZoomOutIcon, MaximizeIcon, TableIcon, NetworkIcon, GlobeIcon, PanelRightOpenIcon, PanelRightCloseIcon, ExpandIcon, SettingsIcon, GridIcon, ShareIcon, CircleIcon, GitCommitIcon, GitBranchIcon, FilterIcon, DamIcon, SearchCode, Search, SwitchCamera, MoveLeft, MoveRight, RotateCcw } from "lucide-react"
-import { DatabaseSync } from "node:sqlite"
 import { ToolBarButton } from "@/components/structures/toolbar-button"
 
-export default function ExplorerMainToolBar() {
+
+export default function CanvasToolBar() {
   const [activeView, setActiveView] = useState("table")
-  const [nodeSize, setNodeSize] = useState(10)
-  const [showLabels, setShowLabels] = useState(true)
   const [networkLayout, setNetworkLayout] = useState("force-directed")
   const [rightPanel, setRightPanel] = useState<"none" | "settings" | "content">("none")
 
 
-
   return (
     <div className="flex flex-col">
-      <div className="flex items-center justify-between space-x-2 bg-background border-b h-[30px]">
+      {/* h-[30px] */}
+      <div className="flex items-center justify-between space-x-2 bg-background "> 
         <TooltipProvider>
         <div className="flex items-center space-x-2 h-full">
           <div className="flex space-x-1 h-full">
@@ -121,7 +114,7 @@ export default function ExplorerMainToolBar() {
             </>
           )}
         </div>
-        <div className="flex space-x-1 h-full">
+        {/* <div className="flex space-x-1 h-full">
 
           <ToolBarButton
             icon={<SettingsIcon className="h-4 w-4 stroke-2" />}
@@ -135,11 +128,10 @@ export default function ExplorerMainToolBar() {
             onClick={() => setRightPanel(rightPanel === "content" ? "none" : "content")}
             isActive={rightPanel === "content"}
           />
-        </div>
+        </div> */}
         </TooltipProvider>
       </div>
-      <div className="flex flex-1 bg-background">
-        {/* Main content area */}
+      {/* <div className="flex flex-1 bg-background">
         <div className="flex-1"></div>
         {rightPanel !== "none" && (
           <Card className="w-[460px] h-[calc(100vh-30px-40px)] absolute rounded-none rounded-none shadow-none">
@@ -177,7 +169,7 @@ export default function ExplorerMainToolBar() {
         )}
 
 
-      </div>
+      </div> */}
     </div>
   )
 }
