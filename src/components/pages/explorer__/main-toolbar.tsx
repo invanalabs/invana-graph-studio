@@ -12,7 +12,7 @@ import { FileIcon, Trash2Icon, RefreshCwIcon, ZoomInIcon, ZoomOutIcon, MaximizeI
 import { DatabaseSync } from "node:sqlite"
 import { ToolBarButton } from "@/components/structures/toolbar-button"
 
-export default function ExplorerMainToolBar() {
+export default function CanvasToolBar() {
   const [activeView, setActiveView] = useState("table")
   const [nodeSize, setNodeSize] = useState(10)
   const [showLabels, setShowLabels] = useState(true)

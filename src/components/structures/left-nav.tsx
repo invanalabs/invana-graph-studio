@@ -36,7 +36,7 @@ export function LeftNav() {
             <TooltipTrigger asChild>
               <Link to="/add-canvas" className={getLinkClass("/add-canvas") + " text-green-700 dark:text-green-600"}>
                 <CirclePlus className="w-5" />
-                <span className="text-xxs">Canvas</span>
+                <span className="text-xxs">Query</span>
               </Link>
             </TooltipTrigger>
             <TooltipContent side="right">
@@ -46,8 +46,8 @@ export function LeftNav() {
 
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link to="/graphbook" className={getLinkClass("/graphbook")}>
-                <Search className="w-5" />
+              <Link to="/explorer" className={getLinkClass("/explorer")}>
+                <Compass className="w-5" />
                 <span className="text-xxs">Explorer</span>
               </Link>
             </TooltipTrigger>

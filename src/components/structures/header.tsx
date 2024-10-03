@@ -21,8 +21,8 @@ import { TooltipProvider } from "@radix-ui/react-tooltip"
 
 
 export interface HeaderProps {
-    left?: ReactNode,
-    middle?: ReactNode,
+  left?: ReactNode,
+  middle?: ReactNode,
 }
 
 export function Header(props: HeaderProps) {
@@ -57,84 +57,80 @@ export function Header(props: HeaderProps) {
     <header className=" ">
       <div className="container-fluid mx-auto border-b h-[50px] px-3 py-1 flex items-center justify-between">
         <div className="flex items-center space-x-1">
-          {/* <img src={logoIcon} className="w-5 h-5" alt="Invana Studio"/> */}
-          {/* <span ><Notebook className="text-xxs" /></span>
-          <span className="font-bold">Query Console</span> */}
           {props.left}
-         
         </div>
 
-        <div className="flex items-center space-x-2 h-full">
+        <div className="flex items-center space-x-2">
           {props.middle}
         </div>
- 
-        <div className="flex items-center space-x-2 h-full">
 
-        <TooltipProvider>
-          {workspaces.length > 0 ?
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex items-center space-x-2 ">
-                  <Database className=" h-4 " />
-                  <span >{activeWorkspace?.name || "select workspace"}</span>
-                  <ChevronDown className="h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56  ">
-                <DropdownMenuLabel>Switch workspace</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <div className="px-2 py-1.5">
-                  <div className="relative">
-                    <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input
-                      placeholder="Search workspaces..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-8 h-8"
-                    />
+        <div className="flex items-center space-x-2">
+
+          <TooltipProvider>
+            {workspaces.length > 0 ?
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="flex items-center space-x-2 ">
+                    <Database className=" h-4 " />
+                    <span >{activeWorkspace?.name || "select workspace"}</span>
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56  ">
+                  <DropdownMenuLabel>Switch workspace</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <div className="px-2 py-1.5">
+                    <div className="relative">
+                      <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        placeholder="Search workspaces..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="pl-8 h-8"
+                      />
+                    </div>
                   </div>
-                </div>
-                <DropdownMenuSeparator />
-                {filteredWorkspaces.map((workspace) => (
-                  <DropdownMenuItem
-                    key={workspace.id}
-                    onClick={() => navigateToWorkspace(workspace)}
-                    className="cursor-pointer"
-                  ><Database className=" h-4 " />
-                    {workspace.name}
+                  <DropdownMenuSeparator />
+                  {filteredWorkspaces.map((workspace) => (
+                    <DropdownMenuItem
+                      key={workspace.id}
+                      onClick={() => navigateToWorkspace(workspace)}
+                      className="cursor-pointer"
+                    ><Database className=" h-4 " />
+                      {workspace.name}
+                    </DropdownMenuItem>
+                  ))}
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem className="cursor-pointer">
+                    <Link to={"/connect"} className="inline-flex">
+                      <Plus className="mr-2 h-4 w-4" />Add Workspace
+                    </Link>
                   </DropdownMenuItem>
-                ))}
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="cursor-pointer">
-                  <Link to={"/connect"} className="inline-flex">
-                    <Plus className="mr-2 h-4 w-4" />Add Workspace
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            : <></>}
-          
-      
+                </DropdownMenuContent>
+              </DropdownMenu>
+              : <></>}
 
-              <ToolBarButton
-                icon={theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-                tooltip={  theme === 'dark' ? 'light theme' : 'dark theme'}
-                onClick={toggleTheme}
-              />
 
-              <ToolBarButton
-                icon={<ExpandIcon className="h-4 w-4 stroke-2" />}
-                tooltip="Full Screen"
-                onClick={() => {
-                  if (document.fullscreenElement) {
-                    document.exitFullscreen();
-                  } else {
-                    document.documentElement.requestFullscreen();
-                  }
-                }}
-              />
-            </TooltipProvider>
-       
+
+            <ToolBarButton
+              icon={theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              tooltip={theme === 'dark' ? 'light theme' : 'dark theme'}
+              onClick={toggleTheme}
+            />
+
+            <ToolBarButton
+              icon={<ExpandIcon className="h-4 w-4 stroke-2" />}
+              tooltip="Full Screen"
+              onClick={() => {
+                if (document.fullscreenElement) {
+                  document.exitFullscreen();
+                } else {
+                  document.documentElement.requestFullscreen();
+                }
+              }}
+            />
+          </TooltipProvider>
+
         </div>
       </div>
     </header>
