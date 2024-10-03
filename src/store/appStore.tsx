@@ -12,6 +12,12 @@ interface AppState {
   activeWorkspace: string;
   activePage: number;
   pages: string[];
+
+  leftSidebar: string | null;
+  setLeftSidebar: (s: string | null) => void;
+
+  rightSidebar: string | null;
+  setRightSidebar: (s: string | null) => void;
   
   toggleTheme: () => void;
   setWorkspaces: (workspaces: Workspace[]) => void;
@@ -28,6 +34,15 @@ export const useAppStore = create<AppState>((set) => ({
   activeWorkspace: 'Personal',
   activePage: 0,
   pages: ['default'], // Initial pages
+
+  leftSidebar: "null",
+  setLeftSidebar: (leftSidebar: string | null) => 
+    set(()=> ({leftSidebar})),
+
+  rightSidebar: null,
+  setRightSidebar: (rightSidebar: string | null) => 
+    set(() => ({ rightSidebar })),
+
 
   toggleTheme: () =>
     set((state) => ({
