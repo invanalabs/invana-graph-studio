@@ -6,7 +6,7 @@ import ExplorerMainToolBar from './main-toolbar'
 import PageListSection from './pages-list'
 import PageSection from './page-section'
 import RightSideBar from '@/components/structures/right-sidebar'
-import GraphBookLayout from '@/components/layouts/graphbook'
+import DefaultLayout from '@/components/layouts/default'
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable'
 import { GripVertical } from 'lucide-react'
 import LeftSideBar from '@/components/structures/left-sidebar'
@@ -30,7 +30,7 @@ export default function GraphBookPage() {
   // const [leftSidebarContent, setLeftSidebarContent] = useState<'database' | 'settings' | null>("database")
 
   return (
-    <GraphBookLayout>
+    <DefaultLayout>
 
       <div className="flex-1 flex overflow-hidden relative">
         <ResizablePanelGroup direction="horizontal">
@@ -77,7 +77,7 @@ export default function GraphBookPage() {
             setSelectedQuery={setSelectedQuery}
           /> */}
       </div>
-    </GraphBookLayout>
+    </DefaultLayout>
 
 
   )

@@ -6,7 +6,7 @@ import ExplorerMainToolBar from './main-toolbar'
 import PageListSection from './pages-list'
 import PageSection from './page-section'
 import RightSideBar from '@/components/structures/right-sidebar'
-import GraphBookLayout from '@/components/layouts/graphbook'
+import DefaultLayout from '@/components/layouts/default'
 
 
 export default function ExplorerPage() {
@@ -21,13 +21,13 @@ export default function ExplorerPage() {
   }
 
   return (
-    <GraphBookLayout>
+    <DefaultLayout>
       <ExplorerMainToolBar />
       <PageSection />
       <PageListSection />
       <RightSideBar />
 
-    </GraphBookLayout>
+    </DefaultLayout>
 
 
   )

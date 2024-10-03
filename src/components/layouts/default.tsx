@@ -3,22 +3,23 @@ import { Header } from '@/components/structures/header'
 import { LeftNav } from '@/components/structures/left-nav'
 import { MainBody } from '@/components/structures/main-body'
 import { ReactNode } from 'react'
-import { Main } from '../../structures/main'
+import { Main } from '../structures/main'
 
 
-interface GraphBookLayoutProps {
+interface DefaultLayoutProps {
     children: ReactNode
+    // header: ReactNode
+    // Main: ReactNode
 }
   
 
-export default function GraphBookLayout(props: GraphBookLayoutProps) {
+export default function DefaultLayout(props: DefaultLayoutProps) {
 
     return (
         <div className="flex h-screen bg-background text-foreground">
             <LeftNav />
             <Main>
-                <Header />
-                <MainBody>{props.children}</MainBody>
+               {props.children}
             </Main>
         </div>
     )
