@@ -9,7 +9,7 @@ export default function PageSection() {
 
     console.log("==activePage", activePage)
     return (
-        <div className="flex-1 overflow-hidden flex relative bg-neutral-950">
+        <div className="flex-1 overflow-hidden flex relative  ">
             <h1>Page {activePage.id}</h1>
         </div>
     )

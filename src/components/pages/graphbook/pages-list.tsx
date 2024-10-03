@@ -34,7 +34,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { usePagesStore } from "@/store/pagesStore"
 
 
-export default function PageListFooter() {
+export default function PageListSection() {
   const {
     pages,
     activePage,
