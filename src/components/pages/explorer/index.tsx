@@ -1,6 +1,6 @@
 'use client'
-import PageListSection from './pages-list'
-import PageSection from './page-section'
+import PageListSection from './canvas-list'
+import PageSection from './canvas-detail'
 import DefaultLayout from '@/components/layouts/default'
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable'
 import {  GripVertical, SearchCode } from 'lucide-react'
@@ -15,7 +15,7 @@ export default function ExplorerPage() {
   // const [activePage, setActivePage] = useState(0)
   // const [pages, setPages] = useState(['Page 1', 'Page 2', 'Page 3'])
   // const [showQueryConsole, setShowQueryConsole] = useState(false)
-  const { rightSidebar, setRightSidebar, addPage, pages, setActivePage, leftSidebar, setLeftSidebar } = useAppStore()
+  const { rightSidebar, setRightSidebar, leftSidebar, setLeftSidebar } = useAppStore()
 
   const defaultLeftSize = 35;
   return (

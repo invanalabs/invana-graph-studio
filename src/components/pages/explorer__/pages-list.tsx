@@ -31,7 +31,7 @@ import {
   CommandList,
 } from "@/components/ui/command"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { usePagesStore } from "@/store/pagesStore"
+import { useGraphBookStore } from "@/store/graphBookStore"
 
 
 export default function PageListSection() {
@@ -52,7 +52,7 @@ export default function PageListSection() {
     deletePage,
     goToPreviousPage,
     goToNextPage,
-  } = usePagesStore()
+  } = useGraphBookStore()
 
   const handleEditPage = useCallback((id: string) => {
     const page = pages.find(page => page.id === id)
@@ -78,7 +78,7 @@ export default function PageListSection() {
       
       const newId = (Math.max(...pages.map(page => parseInt(page.id)), 0) + 1).toString()
       const newPage = { id: newId, pageName: newPageName }
-      usePagesStore.getState().setPages([newPage, ...pages])
+      useGraphBookStore.getState().setPages([newPage, ...pages])
       setActivePage(newPage)
     }
   }, [pages, setActivePage])

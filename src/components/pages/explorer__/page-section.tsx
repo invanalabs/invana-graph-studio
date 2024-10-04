@@ -1,11 +1,11 @@
 "use client"
 
-import { usePagesStore } from "@/store/pagesStore"
+import { useGraphBookStore } from "@/store/graphBookStore"
 
 
 export default function PageSection() {
 
-    const { pages, activePage, setActivePage, addPage } = usePagesStore()
+    const { pages, activePage, setActivePage, addPage } = useGraphBookStore()
 
     console.log("==activePage", activePage)
     return (
