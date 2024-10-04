@@ -31,61 +31,62 @@ import {
   CommandList,
 } from "@/components/ui/command"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { usePagesStore } from "@/store/pagesStore"
+import { useGraphBookStore } from "@/store/graphBookStore"
 
 
-export default function PageListSection() {
+
+export default function CanvasListSection() {
   const {
-    pages,
-    activePage,
+    canvases,
+    activeCanvas,
     editingId,
     editingValue,
-    deletePageId,
+    deleteCanvasId,
     isSearchOpen,
-    setActivePage,
+    setActiveCanvas,
     setEditingId,
     setEditingValue,
-    setDeletePageId,
+    setDeleteCanvasId,
     setIsSearchOpen,
-    addPage,
-    updatePage,
-    deletePage,
-    goToPreviousPage,
-    goToNextPage,
-  } = usePagesStore()
+    addCanvas,
+    updateCanvas,
+    deleteCanvas,
+    goToPreviousCanvas,
+    goToNextCanvas,
+  } = useGraphBookStore()
 
-  const handleEditPage = useCallback((id: string) => {
-    const page = pages.find(page => page.id === id)
-    if (page) {
+  const handleEditCanvas = useCallback((id: string) => {
+    const canvas = canvases.find(canvas => canvas.id === id)
+    if (canvas) {
       setEditingId(id)
-      setEditingValue(page.pageName)
+      setEditingValue(canvas.name)
     }
-  }, [pages, setEditingId, setEditingValue])
+  }, [canvases, setEditingId, setEditingValue])
 
-  const handleUpdatePage = useCallback((id: string) => {
+  const handleUpdateCanvas = useCallback((id: string) => {
     if (editingValue.trim() !== "") {
-      updatePage(id, editingValue)
+      updateCanvas(id, editingValue)
     }
-  }, [editingValue, updatePage])
+  }, [editingValue, updateCanvas])
 
-  const handleDuplicatePage = useCallback((id: string) => {
-    const pageToDuplicate = pages.find(page => page.id === id)
-    if (pageToDuplicate) {
-      const basePageName = pageToDuplicate.pageName.replace(/ \(Copy( \d+)?$$/, '')
-      const copyPages = pages.filter(page => page.pageName.startsWith(`${basePageName} (Copy`))
-      const copyNumber = copyPages.length + 1
-      const newPageName = copyNumber === 1 ? `${basePageName} (Copy)` : `${basePageName} (Copy ${copyNumber})`
+  const handleDuplicateCanvas = useCallback((id: string) => {
+    const canvasToDuplicate = canvases.find(canvas => canvas.id === id)
+    if (canvasToDuplicate) {
+      const baseCanvasName = canvasToDuplicate.name.replace(/ \(Copy( \d+)?$$/, '')
+      const copyCanvass = canvases.filter(canvas => canvas.name.startsWith(`${baseCanvasName} (Copy`))
+      const copyNumber = copyCanvass.length + 1
+      const newCanvasName = copyNumber === 1 ? `${baseCanvasName} (Copy)` : `${baseCanvasName} (Copy ${copyNumber})`
       
-      const newId = (Math.max(...pages.map(page => parseInt(page.id)), 0) + 1).toString()
-      const newPage = { id: newId, pageName: newPageName }
-      usePagesStore.getState().setPages([newPage, ...pages])
-      setActivePage(newPage)
+      const newId = (Math.max(...canvases.map(canvas => parseInt(canvas.id)), 0) + 1).toString()
+      const newCanvas = { id: newId, name: newCanvasName }
+      useGraphBookStore.getState().setCanvass([newCanvas, ...canvases])
+      setActiveCanvas(newCanvas)
     }
-  }, [pages, setActivePage])
+  }, [canvases, setActiveCanvas])
 
-  const getCurrentPageIndex = useCallback(() => {
-    return pages.findIndex(page => page.id === activePage.id)
-  }, [pages, activePage])
+  const getCurrentCanvasIndex = useCallback(() => {
+    return canvases.findIndex(canvas => canvas.id === activeCanvas.id)
+  }, [canvases, activeCanvas])
 
   return (
     <TooltipProvider>
@@ -96,16 +97,16 @@ export default function PageListSection() {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={goToPreviousPage}
-                disabled={getCurrentPageIndex() === 0}
+                onClick={goToPreviousCanvas}
+                disabled={getCurrentCanvasIndex() === 0}
                 className="h-[30px] w-[30px] p-0 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 disabled:text-gray-300"
               >
                 <ChevronLeft className="h-5 w-5" />
-                <span className="sr-only">Previous Page</span>
+                <span className="sr-only">Previous Canvas</span>
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Previous Page</p>
+              <p>Previous Canvas</p>
             </TooltipContent>
           </Tooltip>
           <Tooltip>
@@ -113,15 +114,15 @@ export default function PageListSection() {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={addPage}
+                onClick={addCanvas}
                 className="h-[30px] w-[30px] p-0 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
               >
                 <Plus className="h-5 w-5" />
-                <span className="sr-only">Add Page</span>
+                <span className="sr-only">Add Canvas</span>
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Add Page</p>
+              <p>Add Canvas</p>
             </TooltipContent>
           </Tooltip>
           <Tooltip>
@@ -129,16 +130,16 @@ export default function PageListSection() {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={goToNextPage}
-                disabled={getCurrentPageIndex() === pages.length - 1}
+                onClick={goToNextCanvas}
+                disabled={getCurrentCanvasIndex() === canvases.length - 1}
                 className="h-[30px] w-[30px] p-0 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 disabled:text-gray-300"
               >
                 <ChevronRight className="h-5 w-5" />
-                <span className="sr-only">Next Page</span>
+                <span className="sr-only">Next Canvas</span>
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Next Page</p>
+              <p>Next Canvas</p>
             </TooltipContent>
           </Tooltip>
 
@@ -146,22 +147,22 @@ export default function PageListSection() {
         </div>
         <ScrollArea className="flex-1">
           <div className="flex">
-            {pages.map((page) => (
+            {canvases.map((canvas) => (
               <div
-                key={page.id}
+                key={canvas.id}
                 className={`flex items-center relative 
                   ${
-                  page.id === activePage.id ? '' : ''
-                  // page.id === activePage.id ? 'w-[160px]' : 'w-[100px]'
+                  canvas.id === activeCanvas.id ? '' : ''
+                  // canvas.id === activeCanvas.id ? 'w-[160px]' : 'w-[100px]'
                 }
                   `}
               >
-                {editingId === page.id ? (
+                {editingId === canvas.id ? (
                   <Input
                     value={editingValue}
                     onChange={(e) => setEditingValue(e.target.value)}
-                    onBlur={() => handleUpdatePage(page.id)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleUpdatePage(page.id)}
+                    onBlur={() => handleUpdateCanvas(canvas.id)}
+                    onKeyPress={(e) => e.key === 'Enter' && handleUpdateCanvas(canvas.id)}
                     className="h-[30px] w-full px-2 rounded-none "
                     autoFocus
                   />
@@ -170,16 +171,16 @@ export default function PageListSection() {
                     variant="ghost"
                     size="sm"
                     className={`h-[30px] w-full px-2 rounded-none flex-shrink-0 ${
-                      page.id === activePage.id
+                      canvas.id === activeCanvas.id
                         ? 'text-blue-500 border-t-2 border-blue-500 bg-neutral-100 dark:bg-neutral-900'
                         : 'text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'
                     }`}
-                    onClick={() => setActivePage(page)}
+                    onClick={() => setActiveCanvas(canvas)}
                   >
-                    <span className="truncate text-xs pr-5">{page.pageName}</span>
+                    <span className="truncate text-xs pr-5">{canvas.name}</span>
                   </Button>
                 )}
-                {page.id === activePage.id && (
+                {canvas.id === activeCanvas.id && (
                   <div className="absolute right-0 top-0 bottom-0 flex items-center">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
@@ -193,17 +194,17 @@ export default function PageListSection() {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem onSelect={() => handleEditPage(page.id)}>
+                        <DropdownMenuItem onSelect={() => handleEditCanvas(canvas.id)}>
                           <Edit className="mr-2 h-4 w-4" />
                           <span>Edit</span>
                         </DropdownMenuItem>
-                        <DropdownMenuItem onSelect={() => handleDuplicatePage(page.id)}>
+                        <DropdownMenuItem onSelect={() => handleDuplicateCanvas(canvas.id)}>
                           <Copy className="mr-2 h-4 w-4" />
                           <span>Duplicate</span>
                         </DropdownMenuItem>
                         <DropdownMenuItem
-                          onSelect={() => setDeletePageId(page.id)}
-                          disabled={pages.length === 1}
+                          onSelect={() => setDeleteCanvasId(canvas.id)}
+                          disabled={canvases.length === 1}
                         >
                           <Trash2 className="mr-2 h-4 w-4" />
                           <span>Delete</span>
@@ -222,26 +223,26 @@ export default function PageListSection() {
             <PopoverTrigger asChild>
               <Button variant="ghost" size="icon" className="h-[30px] w-[30px]">
                 <MoreVertical className="h-5 w-5" />
-                <span className="sr-only">Show all pages</span>
+                <span className="sr-only">Show all canvases</span>
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-[320px] p-0">
               <Command>
-                <CommandInput placeholder="Search pages..." />
+                <CommandInput placeholder="Search canvases..." />
                 <CommandList>
-                  <CommandEmpty>No pages found.</CommandEmpty>
+                  <CommandEmpty>No canvases found.</CommandEmpty>
                   <CommandGroup>
-                    {pages.map((page) => (
+                    {canvases.map((canvas) => (
                       <CommandItem
-                        key={page.id}
+                        key={canvas.id}
                         className="cursor-pointer "
                         onSelect={() => {
-                          setActivePage(page.id)
+                          setActiveCanvas(canvas.id)
                           setIsSearchOpen(false)
                         }}
                       >
                         <div className="flex items-center justify-between w-full">
-                          <span>{page.pageName}</span>
+                          <span>{canvas.name}</span>
                           <div className="flex items-center">
                             <Button
                               variant="ghost"
@@ -249,11 +250,11 @@ export default function PageListSection() {
                               className="h-6 w-6 p-0 mr-1"
                               onClick={(e) => {
                                 e.stopPropagation()
-                                handleDuplicatePage(page.id)
+                                handleDuplicateCanvas(canvas.id)
                               }}
                             >
                               <Copy className="h-4 w-4" />
-                              <span className="sr-only">Duplicate page</span>
+                              <span className="sr-only">Duplicate canvas</span>
                             </Button>
                             <Button
                               variant="ghost"
@@ -261,11 +262,11 @@ export default function PageListSection() {
                               className="h-6 w-6 p-0"
                               onClick={(e) => {
                                 e.stopPropagation()
-                                setDeletePageId(page.id)
+                                setDeleteCanvasId(canvas.id)
                               }}
                             >
                               <Trash2 className="h-4 w-4" />
-                              <span className="sr-only">Delete page</span>
+                              <span className="sr-only">Delete canvas</span>
                             </Button>
                           </div>
                         </div>
@@ -278,17 +279,17 @@ export default function PageListSection() {
           </Popover>
         </div>
       </div>
-      <AlertDialog open={deletePageId !== null} onOpenChange={() => setDeletePageId(null)}>
+      <AlertDialog open={deleteCanvasId !== null} onOpenChange={() => setDeleteCanvasId(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle> Are you sure you want to delete page - {pages.find(page => page.id === deletePageId)?.pageName}?</AlertDialogTitle>
+            <AlertDialogTitle> Are you sure you want to delete canvas - {canvases.find(canvas => canvas.id === deleteCanvasId)?.name}?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete the page.
+              This action cannot be undone. This will permanently delete the canvas.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={() => deletePageId && deletePage(deletePageId)}>
+            <AlertDialogAction onClick={() => deleteCanvasId && deleteCanvas(deleteCanvasId)}>
               Delete
             </AlertDialogAction>
           </AlertDialogFooter>

@@ -28,7 +28,6 @@ export const useWorkspaceStore = create<WorkspaceState>()(
             activeWorkspace: null,
 
             setWorkspaces: (workspaces: Workspace[]) => set(() => ({ workspaces })),
-
             setActiveWorkspace: (workspace: Workspace) => set(() => ({ activeWorkspace: workspace })),
 
             // Create a new workspace
