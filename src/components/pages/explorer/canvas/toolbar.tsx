@@ -14,7 +14,7 @@ export default function CanvasToolBar() {
 
   const toggleQueryConsole = () => {
     if (leftSidebar === "query-console"){
-      setLeftSidebar( null)
+      setLeftSidebar(null)
     }else{
       setLeftSidebar("query-console")
     }

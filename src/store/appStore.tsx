@@ -37,7 +37,7 @@ export const useAppStore = create<AppState>((set) => ({
   setLeftSidebar: (leftSidebar: string | null) => 
     set(()=> ({leftSidebar})),
 
-  rightSidebar: null,
+  rightSidebar: "Hello",
   setRightSidebar: (rightSidebar: string | null) => 
     set(() => ({ rightSidebar })),
 
