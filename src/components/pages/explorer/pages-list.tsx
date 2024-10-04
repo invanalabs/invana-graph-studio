@@ -171,12 +171,12 @@ export default function PageListSection() {
                     size="sm"
                     className={`h-[30px] w-full px-2 rounded-none flex-shrink-0 ${
                       page.id === activePage.id
-                        ? 'text-blue-500 border-b-2 border-blue-500 bg-white dark:bg-gray-700'
+                        ? 'text-blue-500 border-t-2 border-blue-500 bg-neutral-100 dark:bg-neutral-900'
                         : 'text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'
                     }`}
                     onClick={() => setActivePage(page)}
                   >
-                    <span className="truncate text-sm pr-5">{page.pageName}</span>
+                    <span className="truncate text-xs pr-5">{page.pageName}</span>
                   </Button>
                 )}
                 {page.id === activePage.id && (

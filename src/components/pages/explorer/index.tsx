@@ -1,17 +1,15 @@
 'use client'
 import PageListSection from './pages-list'
 import PageSection from './page-section'
-import RightSideBar from '@/components/structures/right-sidebar'
 import DefaultLayout from '@/components/layouts/default'
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable'
-import { Compass, GripVertical, Search, SearchCode } from 'lucide-react'
+import {  GripVertical, SearchCode } from 'lucide-react'
 import LeftSideBar from '@/components/structures/left-sidebar'
 import Footer from '@/components/structures/footer'
 import { useAppStore } from "@/store/appStore"
-import { Notebook } from 'lucide-react'
 import { Header } from '@/components/structures/header'
-import { spawn } from 'child_process'
 import CanvasToolBar from './canvas/toolbar'
+import RightSideBar from '@/components/structures/right-sidebar'
 
 export default function ExplorerPage() {
   // const [activePage, setActivePage] = useState(0)
@@ -33,7 +31,7 @@ export default function ExplorerPage() {
             <>
               <ResizablePanel defaultSize={defaultLeftSize} minSize={17} maxSize={40}>
                 <LeftSideBar onClose={() => setLeftSidebar(null)}
-                  title={<div className='flex'><SearchCode className='w-4 h-4 mr-2' /> Query Console</div>}>
+                  header={<div className='flex text-xs'><SearchCode className='w-4 h-4 mr-2' /> Query Console</div>}>
                   <p>content here</p>
                 </LeftSideBar>
               </ResizablePanel>
@@ -61,16 +59,14 @@ export default function ExplorerPage() {
           </ResizablePanel>
         </ResizablePanelGroup>
 
-        {/* {showRightSidebar && <RightSidebar />} */}
+        {rightSidebar &&
+          <RightSideBar onClose={() => setRightSidebar(null)}
+          header={<div className='flex text-xs'><SearchCode className='w-4 h-4 mr-2' /> Right sidebar test</div>}>
+          <p>content here</p>
+        </RightSideBar>
+       }
 
-        {/* <MainBottom
-            showBottomPanel={showBottomPanel}
-            bottomPanelTab={bottomPanelTab}
-            setBottomPanelTab={setBottomPanelTab}
-            setShowBottomPanel={setShowBottomPanel}
-            selectedQuery={selectedQuery}
-            setSelectedQuery={setSelectedQuery}
-          /> */}
+   
       </div>
     </DefaultLayout>
 
