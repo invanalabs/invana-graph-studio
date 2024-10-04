@@ -22,10 +22,8 @@ export default function CanvasToolBar() {
 
   return (
     <div className="flex flex-col">
-      {/* h-[30px] */}
       <div className="flex items-center justify-between space-x-2 bg-background ">
         <TooltipProvider>
-
           <div className="flex items-center space-x-2 h-full">
             <div className="flex space-x-1 h-full">
               <ToolBarButton icon={<Search className="h-4 w-4 stroke-2" />} tooltip="Start a query"
