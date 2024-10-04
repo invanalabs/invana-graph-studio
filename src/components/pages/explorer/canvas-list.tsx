@@ -1,7 +1,7 @@
 "use client"
 
-import { useCallback } from "react"
-import { ChevronLeft, Plus, ChevronRight, MoreVertical, Edit, Trash2, Copy, AlertCircleIcon } from "lucide-react"
+import { useCallback, useState, useRef, useEffect, KeyboardEvent } from "react"
+import { ChevronLeft, Plus, ChevronRight, MoreVertical, Edit, Trash2, Copy, Monitor } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -31,21 +31,22 @@ import {
   CommandList,
 } from "@/components/ui/command"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog"
 import { useGraphBookStore } from "@/store/graphBookStore"
-
-
 
 export default function CanvasListSection() {
   const {
     canvases,
     activeCanvas,
-    editingId,
-    editingValue,
     deleteCanvasId,
     isSearchOpen,
     setActiveCanvas,
-    setEditingId,
-    setEditingValue,
     setDeleteCanvasId,
     setIsSearchOpen,
     addCanvas,
@@ -55,31 +56,36 @@ export default function CanvasListSection() {
     goToNextCanvas,
   } = useGraphBookStore()
 
+  const [editingCanvas, setEditingCanvas] = useState<{ id: string; name: string } | null>(null)
+  const scrollAreaRef = useRef<HTMLDivElement>(null)
+  const canvasRefs = useRef<{ [id: string]: HTMLDivElement | null }>({})
+  const editInputRef = useRef<HTMLInputElement>(null)
+
   const handleEditCanvas = useCallback((id: string) => {
     const canvas = canvases.find(canvas => canvas.id === id)
     if (canvas) {
-      setEditingId(id)
-      setEditingValue(canvas.name)
+      setEditingCanvas({ id, name: canvas.name })
     }
-  }, [canvases, setEditingId, setEditingValue])
+  }, [canvases])
 
-  const handleUpdateCanvas = useCallback((id: string) => {
-    if (editingValue.trim() !== "") {
-      updateCanvas(id, editingValue)
+  const handleUpdateCanvas = useCallback(() => {
+    if (editingCanvas && editingCanvas.name.trim() !== "") {
+      updateCanvas(editingCanvas.id, editingCanvas.name)
+      setEditingCanvas(null)
     }
-  }, [editingValue, updateCanvas])
+  }, [editingCanvas, updateCanvas])
 
   const handleDuplicateCanvas = useCallback((id: string) => {
     const canvasToDuplicate = canvases.find(canvas => canvas.id === id)
     if (canvasToDuplicate) {
-      const baseCanvasName = canvasToDuplicate.name.replace(/ \(Copy( \d+)?$$/, '')
-      const copyCanvass = canvases.filter(canvas => canvas.name.startsWith(`${baseCanvasName} (Copy`))
-      const copyNumber = copyCanvass.length + 1
+      const baseCanvasName = canvasToDuplicate.name.replace(/ \(Copy( \d+)?$/, '')
+      const copyCanvases = canvases.filter(canvas => canvas.name.startsWith(`${baseCanvasName} (Copy`))
+      const copyNumber = copyCanvases.length + 1
       const newCanvasName = copyNumber === 1 ? `${baseCanvasName} (Copy)` : `${baseCanvasName} (Copy ${copyNumber})`
-      
+
       const newId = (Math.max(...canvases.map(canvas => parseInt(canvas.id)), 0) + 1).toString()
       const newCanvas = { id: newId, name: newCanvasName }
-      useGraphBookStore.getState().setCanvass([newCanvas, ...canvases])
+      useGraphBookStore.getState().setCanvases([newCanvas, ...canvases])
       setActiveCanvas(newCanvas)
     }
   }, [canvases, setActiveCanvas])
@@ -88,11 +94,40 @@ export default function CanvasListSection() {
     return canvases.findIndex(canvas => canvas.id === activeCanvas.id)
   }, [canvases, activeCanvas])
 
+  const scrollToActiveCanvas = useCallback(() => {
+    if (activeCanvas && canvasRefs.current[activeCanvas.id]) {
+      canvasRefs.current[activeCanvas.id]?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      })
+    }
+  }, [activeCanvas])
+
+  useEffect(() => {
+    scrollToActiveCanvas()
+  }, [activeCanvas, scrollToActiveCanvas])
+
+  const handleEditKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      handleUpdateCanvas()
+    }
+  }
+
+  const handleDeleteKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      deleteCanvasId && deleteCanvas(deleteCanvasId)
+      setDeleteCanvasId(null)
+    }
+  }
+
   return (
     <TooltipProvider>
-      <div className="h-[30px] border-t border-b border-r flex items-center justify-between ">
+      <div className="h-[30px] border-t border-b border-r flex items-center justify-between">
         <div className="flex items-center">
-        <Tooltip>
+          <Tooltip>
             <TooltipTrigger asChild>
               <Button
                 variant="ghost"
@@ -142,44 +177,28 @@ export default function CanvasListSection() {
               <p>Next Canvas</p>
             </TooltipContent>
           </Tooltip>
-
-
         </div>
-        <ScrollArea className="flex-1">
+        <ScrollArea className="flex-1" ref={scrollAreaRef}>
           <div className="flex">
             {canvases.map((canvas) => (
               <div
                 key={canvas.id}
-                className={`flex items-center relative 
-                  ${
-                  canvas.id === activeCanvas.id ? '' : ''
-                  // canvas.id === activeCanvas.id ? 'w-[160px]' : 'w-[100px]'
-                }
-                  `}
+                ref={el => canvasRefs.current[canvas.id] = el}
+                className={`flex items-center relative ${canvas.id === activeCanvas.id ? '' : ''}`}
               >
-                {editingId === canvas.id ? (
-                  <Input
-                    value={editingValue}
-                    onChange={(e) => setEditingValue(e.target.value)}
-                    onBlur={() => handleUpdateCanvas(canvas.id)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleUpdateCanvas(canvas.id)}
-                    className="h-[30px] w-full px-2 rounded-none "
-                    autoFocus
-                  />
-                ) : (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className={`h-[30px] w-full px-2 rounded-none flex-shrink-0 ${
-                      canvas.id === activeCanvas.id
-                        ? 'text-blue-500 border-t-2 border-blue-500 bg-neutral-100 dark:bg-neutral-900'
-                        : 'text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'
-                    }`}
-                    onClick={() => setActiveCanvas(canvas)}
-                  >
-                    <span className="truncate text-xs pr-5">{canvas.name}</span>
-                  </Button>
-                )}
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={`h-[30px] w-full px-2 rounded-none flex-shrink-0 ${
+                    canvas.id === activeCanvas.id
+                      ? 'text-blue-500 border-t-2 border-blue-500 bg-neutral-100 dark:bg-neutral-900'
+                      : 'text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'
+                  }`}
+                  onClick={() => setActiveCanvas(canvas)}
+                  onDoubleClick={() => handleEditCanvas(canvas.id)}
+                >
+                  <span className="truncate text-xs pr-5">{canvas.name}</span>
+                </Button>
                 {canvas.id === activeCanvas.id && (
                   <div className="absolute right-0 top-0 bottom-0 flex items-center">
                     <DropdownMenu>
@@ -218,8 +237,7 @@ export default function CanvasListSection() {
           </div>
         </ScrollArea>
         <div className="flex items-center flex-shrink-0">
-             
-        <Popover open={isSearchOpen} onOpenChange={setIsSearchOpen}>
+          <Popover open={isSearchOpen} onOpenChange={setIsSearchOpen}>
             <PopoverTrigger asChild>
               <Button variant="ghost" size="icon" className="h-[30px] w-[30px]">
                 <MoreVertical className="h-5 w-5" />
@@ -235,9 +253,9 @@ export default function CanvasListSection() {
                     {canvases.map((canvas) => (
                       <CommandItem
                         key={canvas.id}
-                        className="cursor-pointer "
+                        className="cursor-pointer"
                         onSelect={() => {
-                          setActiveCanvas(canvas.id)
+                          setActiveCanvas(canvas)
                           setIsSearchOpen(false)
                         }}
                       >
@@ -277,24 +295,50 @@ export default function CanvasListSection() {
               </Command>
             </PopoverContent>
           </Popover>
+          <span className="flex">
+            <Button>
+              <Monitor className="w-4" />
+            </Button>
+          </span>
         </div>
       </div>
       <AlertDialog open={deleteCanvasId !== null} onOpenChange={() => setDeleteCanvasId(null)}>
-        <AlertDialogContent>
+        <AlertDialogContent onKeyDown={handleDeleteKeyDown}>
           <AlertDialogHeader>
-            <AlertDialogTitle> Are you sure you want to delete canvas - {canvases.find(canvas => canvas.id === deleteCanvasId)?.name}?</AlertDialogTitle>
+            <AlertDialogTitle>
+              Are you sure you want to delete canvas - {canvases.find(canvas => canvas.id === deleteCanvasId)?.name}?
+            </AlertDialogTitle>
             <AlertDialogDescription>
               This action cannot be undone. This will permanently delete the canvas.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={() => deleteCanvasId && deleteCanvas(deleteCanvasId)}>
+            <AlertDialogAction autoFocus onClick={() => deleteCanvasId && deleteCanvas(deleteCanvasId)}>
               Delete
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+      <Dialog open={editingCanvas !== null} onOpenChange={(open) => !open && setEditingCanvas(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Edit Canvas Name</DialogTitle>
+          </DialogHeader>
+          <Input
+            ref={editInputRef}
+            value={editingCanvas?.name || ''}
+            onChange={(e) => setEditingCanvas(prev => prev ? { ...prev, name: e.target.value } : null)}
+            onKeyDown={handleEditKeyDown}
+            className="mt-4"
+            autoFocus
+          />
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setEditingCanvas(null)}>Cancel</Button>
+            <Button onClick={handleUpdateCanvas}>Save</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </TooltipProvider>
   )
 }
