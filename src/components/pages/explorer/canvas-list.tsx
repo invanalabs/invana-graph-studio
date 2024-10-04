@@ -39,6 +39,8 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog"
 import { useGraphBookStore } from "@/store/graphBookStore"
+import { useAppStore } from "@/store/appStore"
+import { ToolBarButton } from "@/components/structures/toolbar-button"
 
 export default function CanvasListSection() {
   const {
@@ -55,6 +57,8 @@ export default function CanvasListSection() {
     goToPreviousCanvas,
     goToNextCanvas,
   } = useGraphBookStore()
+
+  const {rightSidebar, setRightSidebar} = useAppStore()
 
   const [editingCanvas, setEditingCanvas] = useState<{ id: string; name: string } | null>(null)
   const scrollAreaRef = useRef<HTMLDivElement>(null)
@@ -122,6 +126,16 @@ export default function CanvasListSection() {
       setDeleteCanvasId(null)
     }
   }
+
+
+  const toggleCanvasDisplaySettings = () => {
+    if (rightSidebar === "canvas-display-settings"){
+      setRightSidebar(null)
+    }else{
+      setRightSidebar("canvas-display-settings")
+    }
+  }
+
 
   return (
     <TooltipProvider>
@@ -296,9 +310,11 @@ export default function CanvasListSection() {
             </PopoverContent>
           </Popover>
           <span className="flex">
-            <Button>
-              <Monitor className="w-4" />
-            </Button>
+          <TooltipProvider>
+      
+            <ToolBarButton icon={<Monitor className="h-4 w-4 stroke-2" />} tooltip="View canvas display settings"
+               onClick={toggleCanvasDisplaySettings} />
+            </TooltipProvider>
           </span>
         </div>
       </div>
