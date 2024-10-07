@@ -18,7 +18,7 @@ interface GraphBookState {
   activeCanvas: Canvas;
   setActiveCanvas: (canvas: Canvas) => void;
 
-  setCanvass: (canvases: Canvas[]) => void;
+  setCanvases: (canvases: Canvas[]) => void;
   // setActiveCanvas: (id: string) => void;
   setEditingId: (id: string | null) => void;
   setEditingValue: (value: string) => void;
@@ -43,7 +43,7 @@ export const useGraphBookStore = create<GraphBookState>()(
       deleteCanvasId: null,
       isSearchOpen: false,
 
-      setCanvass: (canvases) => set({ canvases }),
+      setCanvases: (canvases) => set({ canvases }),
       setActiveCanvas: (canvas) => set({ activeCanvas: canvas }),
       setEditingId: (id) => set({ editingId: id }),
       setEditingValue: (value) => set({ editingValue: value }),

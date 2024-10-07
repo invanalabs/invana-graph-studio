@@ -39,8 +39,6 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog"
 import { useGraphBookStore } from "@/store/graphBookStore"
-import { useAppStore } from "@/store/appStore"
-import { ToolBarButton } from "@/components/structures/toolbar-button"
 
 export default function CanvasListSection() {
   const {
@@ -57,8 +55,6 @@ export default function CanvasListSection() {
     goToPreviousCanvas,
     goToNextCanvas,
   } = useGraphBookStore()
-
-  const {rightSidebar, setRightSidebar} = useAppStore()
 
   const [editingCanvas, setEditingCanvas] = useState<{ id: string; name: string } | null>(null)
   const scrollAreaRef = useRef<HTMLDivElement>(null)
@@ -122,20 +118,25 @@ export default function CanvasListSection() {
   const handleDeleteKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault()
-      deleteCanvasId && deleteCanvas(deleteCanvasId)
+      handleDeleteCanvas()
+    }
+  }
+
+  const handleDeleteCanvas = useCallback(() => {
+    if (deleteCanvasId) {
+      const currentIndex = canvases.findIndex(canvas => canvas.id === deleteCanvasId)
+      deleteCanvas(deleteCanvasId)
+
+      // Select the next canvas, or the previous one if deleting the last canvas
+      if (currentIndex < canvases.length - 1) {
+        setActiveCanvas(canvases[currentIndex + 1])
+      } else if (currentIndex > 0) {
+        setActiveCanvas(canvases[currentIndex - 1])
+      }
+
       setDeleteCanvasId(null)
     }
-  }
-
-
-  const toggleCanvasDisplaySettings = () => {
-    if (rightSidebar === "canvas-display-settings"){
-      setRightSidebar(null)
-    }else{
-      setRightSidebar("canvas-display-settings")
-    }
-  }
-
+  }, [deleteCanvasId, canvases, deleteCanvas, setActiveCanvas])
 
   return (
     <TooltipProvider>
@@ -203,9 +204,9 @@ export default function CanvasListSection() {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className={`h-[30px] w-full px-2 rounded-none flex-shrink-0 ${
+                  className={`h-[30px] w-full px-2 rounded-none border-r flex-shrink-0 ${
                     canvas.id === activeCanvas.id
-                      ? 'text-blue-500 border-t-2 border-blue-500 bg-neutral-100 dark:bg-neutral-900'
+                      ? 'text-blue-500 border-t-2  border-l border-r border-blue-500 bg-neutral-100 dark:bg-neutral-900'
                       : 'text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'
                   }`}
                   onClick={() => setActiveCanvas(canvas)}
@@ -310,11 +311,9 @@ export default function CanvasListSection() {
             </PopoverContent>
           </Popover>
           <span className="flex">
-          <TooltipProvider>
-      
-            <ToolBarButton icon={<Monitor className="h-4 w-4 stroke-2" />} tooltip="View canvas display settings"
-               onClick={toggleCanvasDisplaySettings} />
-            </TooltipProvider>
+            <Button>
+              <Monitor className="w-4" />
+            </Button>
           </span>
         </div>
       </div>
@@ -330,7 +329,7 @@ export default function CanvasListSection() {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction autoFocus onClick={() => deleteCanvasId && deleteCanvas(deleteCanvasId)}>
+            <AlertDialogAction autoFocus onClick={handleDeleteCanvas}>
               Delete
             </AlertDialogAction>
           </AlertDialogFooter>
