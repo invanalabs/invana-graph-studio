@@ -6,7 +6,7 @@ import ModellerPage from "./components/pages/modeller/modeller"
 import ProtectedRoute from './components/routes/protected-routes';
 import NotFoundPage from './components/pages/not-found';
 import "./icons/fontawesome"
-import ExplorerPage from './components/pages/explorer';
+import ExplorerPage from './components/pages/app';
 
 
 const App = () => {
