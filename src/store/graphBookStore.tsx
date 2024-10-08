@@ -2,12 +2,13 @@ import { LOCALSTORAGE_KEYS } from '@/services/constants';
 import { create } from 'zustand';
 import { persist, PersistOptions } from 'zustand/middleware';
 
-interface Canvas {
+export interface Canvas {
   id: string;
   name: string;
+  created_at: Date
 }
 
-interface GraphBookState {
+export interface GraphBookState {
   canvases: Canvas[];
 
   // activeCanvas: string;
@@ -24,7 +25,7 @@ interface GraphBookState {
   setEditingValue: (value: string) => void;
   setDeleteCanvasId: (id: string | null) => void;
   setIsSearchOpen: (isOpen: boolean) => void;
-  addCanvas: () => void;
+  addCanvas: (name: string) => void;
   updateCanvas: (id: string, newName: string) => void;
   deleteCanvas: (id: string) => void;
   goToPreviousCanvas: () => void;
@@ -50,10 +51,10 @@ export const useGraphBookStore = create<GraphBookState>()(
       setDeleteCanvasId: (id) => set({ deleteCanvasId: id }),
       setIsSearchOpen: (isOpen) => set({ isSearchOpen: isOpen }),
 
-      addCanvas: () => {
+      addCanvas: (name: string) => {
         const { canvases } = get();
         const newId = (Math.max(...canvases.map(canvas => parseInt(canvas.id)), 0) + 1).toString();
-        const newCanvas = { id: newId, name: `Canvas ${newId}` };
+        const newCanvas = { id: newId, name: name, created_at: new Date() };
         set((state) => ({
           canvases: [newCanvas, ...state.canvases],
           activeCanvas: newCanvas,
