@@ -1,17 +1,11 @@
 "use client"
 
-import { useCallback, useState, useRef, useEffect, KeyboardEvent } from "react"
-import { ChevronLeft, Plus, ChevronRight, MoreVertical, Edit, Trash2, Copy, Monitor } from "lucide-react"
+import { useCallback, useState, useRef, useEffect, KeyboardEvent, MouseEvent, ChangeEvent } from "react"
+import { ChevronLeft, Plus, ChevronRight, MoreVertical, Edit, Trash2, Copy, Monitor, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,14 +16,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import {
   Dialog,
@@ -38,6 +24,12 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog"
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu"
 import { useGraphBookStore } from "@/store/graphBookStore"
 
 export default function CanvasListSection() {
@@ -57,6 +49,7 @@ export default function CanvasListSection() {
   } = useGraphBookStore()
 
   const [editingCanvas, setEditingCanvas] = useState<{ id: string; name: string } | null>(null)
+  const [searchTerm, setSearchTerm] = useState("")
   const scrollAreaRef = useRef<HTMLDivElement>(null)
   const canvasRefs = useRef<{ [id: string]: HTMLDivElement | null }>({})
   const editInputRef = useRef<HTMLInputElement>(null)
@@ -136,7 +129,20 @@ export default function CanvasListSection() {
 
       setDeleteCanvasId(null)
     }
-  }, [deleteCanvasId, canvases, deleteCanvas, setActiveCanvas])
+  }, [deleteCanvasId, canvases, setActiveCanvas])
+
+  const handleContextMenu = (e: MouseEvent, canvasId: string) => {
+    e.preventDefault()
+    setActiveCanvas(canvases.find(canvas => canvas.id === canvasId)!)
+  }
+
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value)
+  }
+
+  const filteredCanvases = canvases.filter(canvas => 
+    canvas.name.toLowerCase().includes(searchTerm.toLowerCase())
+  )
 
   return (
     <TooltipProvider>
@@ -196,58 +202,92 @@ export default function CanvasListSection() {
         <ScrollArea className="flex-1" ref={scrollAreaRef}>
           <div className="flex">
             {canvases.map((canvas) => (
-              <div
-                key={canvas.id}
-                ref={el => canvasRefs.current[canvas.id] = el}
-                className={`flex items-center relative ${canvas.id === activeCanvas.id ? '' : ''}`}
-              >
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className={`h-[30px] w-full px-2 rounded-none border-r flex-shrink-0 ${
-                    canvas.id === activeCanvas.id
-                      ? 'text-blue-500 border-t-2  border-l border-r border-blue-500 bg-neutral-100 dark:bg-neutral-900'
-                      : 'text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'
-                  }`}
-                  onClick={() => setActiveCanvas(canvas)}
-                  onDoubleClick={() => handleEditCanvas(canvas.id)}
-                >
-                  <span className="truncate text-xs pr-5">{canvas.name}</span>
-                </Button>
-                {canvas.id === activeCanvas.id && (
-                  <div className="absolute right-0 top-0 bottom-0 flex items-center">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-[30px] w-[30px] p-0 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
-                        >
-                          <MoreVertical className="h-4 w-4" />
-                          <span className="sr-only">More options</span>
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem onSelect={() => handleEditCanvas(canvas.id)}>
-                          <Edit className="mr-2 h-4 w-4" />
-                          <span>Edit</span>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem onSelect={() => handleDuplicateCanvas(canvas.id)}>
-                          <Copy className="mr-2 h-4 w-4" />
-                          <span>Duplicate</span>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                          onSelect={() => setDeleteCanvasId(canvas.id)}
-                          disabled={canvases.length === 1}
-                        >
-                          <Trash2 className="mr-2 h-4 w-4" />
-                          <span>Delete</span>
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
+              <ContextMenu key={canvas.id}>
+                <ContextMenuTrigger asChild>
+                  <div
+                    ref={el => canvasRefs.current[canvas.id] = el}
+                    className={`flex items-center relative ${canvas.id === activeCanvas.id ? '' : ''}`}
+                    onContextMenu={(e) => handleContextMenu(e, canvas.id)}
+                  >
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className={`h-[30px w-full] px-2 rounded-none flex-shrink-0 ${
+                        canvas.id === activeCanvas.id
+                          ? 'text-blue-500 border-t-2 border-l border-blue-500 bg-neutral-100 dark:bg-neutral-900'
+                          : 'text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'
+                      }`}
+                      onClick={() => setActiveCanvas(canvas)}
+                      onDoubleClick={() => handleEditCanvas(canvas.id)}
+                    >
+                      <span className="truncate text-xs">{canvas.name}</span>
+                    </Button>
+                    {canvas.id === activeCanvas.id && (
+                      <div className=" right-0 top-0 bottom-0 flex items-center bg-neutral-100 dark:bg-neutral-900">
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-[30px] w-[30px] text-gray-400 rounded-none hover:text-gray-600 dark:hover:text-gray-200"
+                            >
+                              <MoreVertical className="h-4 w-4" />
+                              <span className="sr-only">Canvas options</span>
+                            </Button>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-40 !p-0 m-0" align="end">
+                            <Button
+                              variant="ghost"
+                              size={"sm"}
+                              className="w-full !justify-start rounded-none"
+                              onClick={() => handleEditCanvas(canvas.id)}
+                            >
+                              <Edit className="mr-2 h-4 w-4" />
+                              Edit
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size={"sm"}
+                              className="w-full !justify-start rounded-none"
+                              onClick={() => handleDuplicateCanvas(canvas.id)}
+                            >
+                              <Copy className="mr-2 h-4 w-4" />
+                              Duplicate
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size={"sm"}
+                              className="w-full !justify-start rounded-none"
+                              onClick={() => setDeleteCanvasId(canvas.id)}
+                              disabled={canvases.length === 1}
+                            >
+                              <Trash2 className="mr-2 h-4 w-4" />
+                              Delete
+                            </Button>
+                          </PopoverContent>
+                        </Popover>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
+                </ContextMenuTrigger>
+                <ContextMenuContent>
+                  <ContextMenuItem onSelect={() => handleEditCanvas(canvas.id)}>
+                    <Edit className="mr-2 h-4 w-4" />
+                    <span>Edit</span>
+                  </ContextMenuItem>
+                  <ContextMenuItem onSelect={() => handleDuplicateCanvas(canvas.id)}>
+                    <Copy className="mr-2 h-4 w-4" />
+                    <span>Duplicate</span>
+                  </ContextMenuItem>
+                  <ContextMenuItem
+                    onSelect={() => setDeleteCanvasId(canvas.id)}
+                    disabled={canvases.length === 1}
+                  >
+                    <Trash2 className="mr-2 h-4 w-4" />
+                    <span>Delete</span>
+                  </ContextMenuItem>
+                </ContextMenuContent>
+              </ContextMenu>
             ))}
           </div>
         </ScrollArea>
@@ -255,59 +295,60 @@ export default function CanvasListSection() {
           <Popover open={isSearchOpen} onOpenChange={setIsSearchOpen}>
             <PopoverTrigger asChild>
               <Button variant="ghost" size="icon" className="h-[30px] w-[30px]">
-                <MoreVertical className="h-5 w-5" />
-                <span className="sr-only">Show all canvases</span>
+                <MoreVertical className="h-4 w-4" />
+                <span className="sr-only">Search canvases</span>
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-[320px] p-0">
-              <Command>
-                <CommandInput placeholder="Search canvases..." />
-                <CommandList>
-                  <CommandEmpty>No canvases found.</CommandEmpty>
-                  <CommandGroup>
-                    {canvases.map((canvas) => (
-                      <CommandItem
-                        key={canvas.id}
-                        className="cursor-pointer"
-                        onSelect={() => {
-                          setActiveCanvas(canvas)
-                          setIsSearchOpen(false)
-                        }}
-                      >
-                        <div className="flex items-center justify-between w-full">
-                          <span>{canvas.name}</span>
-                          <div className="flex items-center">
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="h-6 w-6 p-0 mr-1"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                handleDuplicateCanvas(canvas.id)
-                              }}
-                            >
-                              <Copy className="h-4 w-4" />
-                              <span className="sr-only">Duplicate canvas</span>
-                            </Button>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="h-6 w-6 p-0"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                setDeleteCanvasId(canvas.id)
-                              }}
-                            >
-                              <Trash2 className="h-4 w-4" />
-                              <span className="sr-only">Delete canvas</span>
-                            </Button>
-                          </div>
-                        </div>
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </CommandList>
-              </Command>
+              <div className="p-2 space-y-2 text-sm">
+                <Input
+                  placeholder="Search canvases..."
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                  className="w-full"
+                />
+                <ScrollArea className="h-[200px]">
+                  {filteredCanvases.map((canvas) => (
+                    <div
+                      key={canvas.id}
+                      className="flex items-center justify-between p-1 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
+                      onClick={() => {
+                        setActiveCanvas(canvas)
+                        setIsSearchOpen(false)
+                      }}
+                    >
+                      <span>{canvas.name}</span>
+                      <div className="flex items-center">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-6 w-6 p-0 mr-1"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            handleDuplicateCanvas(canvas.id)
+                          }}
+                        >
+                          <Copy className="h-4 w-4" />
+                          <span className="sr-only">Duplicate canvas</span>
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-6 w-6 p-0"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            setDeleteCanvasId(canvas.id)
+                          }}
+                        >
+                          <Trash2 className="h-4 w-4" />
+                          <span className="sr-only">Delete canvas</span>
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </ScrollArea>
+              
+              </div>
             </PopoverContent>
           </Popover>
           <span className="flex">
