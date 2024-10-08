@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { useCallback, useState, useRef, useEffect, KeyboardEvent, MouseEvent, ChangeEvent } from "react"
 import { ChevronLeft, Plus, ChevronRight, MoreVertical, Edit, Trash2, Copy, Monitor, Search } from "lucide-react"
@@ -30,17 +30,17 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu"
-import { useGraphBookStore } from "@/store/graphBookStore"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Badge } from "@/components/ui/badge"
+import { Canvas, useGraphBookStore } from "@/store/graphBookStore"
 
-export default function CanvasListSection() {
+ 
+
+export default function Component() {
   const {
     canvases,
     activeCanvas,
-    deleteCanvasId,
-    isSearchOpen,
     setActiveCanvas,
-    setDeleteCanvasId,
-    setIsSearchOpen,
     addCanvas,
     updateCanvas,
     deleteCanvas,
@@ -50,6 +50,11 @@ export default function CanvasListSection() {
 
   const [editingCanvas, setEditingCanvas] = useState<{ id: string; name: string } | null>(null)
   const [searchTerm, setSearchTerm] = useState("")
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [selectedCanvases, setSelectedCanvases] = useState<string[]>([])
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false)
+  const [isMorePopoverOpen, setIsMorePopoverOpen] = useState(false)
+  const [popoverSearchTerm, setPopoverSearchTerm] = useState("")
   const scrollAreaRef = useRef<HTMLDivElement>(null)
   const canvasRefs = useRef<{ [id: string]: HTMLDivElement | null }>({})
   const editInputRef = useRef<HTMLInputElement>(null)
@@ -77,11 +82,19 @@ export default function CanvasListSection() {
       const newCanvasName = copyNumber === 1 ? `${baseCanvasName} (Copy)` : `${baseCanvasName} (Copy ${copyNumber})`
 
       const newId = (Math.max(...canvases.map(canvas => parseInt(canvas.id)), 0) + 1).toString()
-      const newCanvas = { id: newId, name: newCanvasName }
+      const newCanvas: Canvas = { id: newId, name: newCanvasName, created_at: new Date() }
       useGraphBookStore.getState().setCanvases([newCanvas, ...canvases])
       setActiveCanvas(newCanvas)
     }
   }, [canvases, setActiveCanvas])
+
+  const handleAddCanvas = useCallback(() => {
+    const newId = (Math.max(...canvases.map(canvas => parseInt(canvas.id)), 0) + 1).toString()
+    // const newCanvas: Canvas = { id: newId, name: `New Canvas ${newId}`, created_at: new Date() }
+    // addCanvas(newCanvas)
+    addCanvas(`New Canvas ${newId}`)
+    // setActiveCanvas(newCanvas)
+  }, [canvases, addCanvas])
 
   const getCurrentCanvasIndex = useCallback(() => {
     return canvases.findIndex(canvas => canvas.id === activeCanvas.id)
@@ -111,25 +124,23 @@ export default function CanvasListSection() {
   const handleDeleteKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault()
-      handleDeleteCanvas()
+      handleDeleteSelectedCanvases()
     }
   }
 
-  const handleDeleteCanvas = useCallback(() => {
-    if (deleteCanvasId) {
-      const currentIndex = canvases.findIndex(canvas => canvas.id === deleteCanvasId)
-      deleteCanvas(deleteCanvasId)
+  const handleDeleteSelectedCanvases = useCallback(() => {
+    selectedCanvases.forEach(id => deleteCanvas(id))
+    setSelectedCanvases([])
+    setIsDeleteDialogOpen(false)
 
-      // Select the next canvas, or the previous one if deleting the last canvas
-      if (currentIndex < canvases.length - 1) {
-        setActiveCanvas(canvases[currentIndex + 1])
-      } else if (currentIndex > 0) {
-        setActiveCanvas(canvases[currentIndex - 1])
+    // If the active canvas was deleted, select a new one
+    if (selectedCanvases.includes(activeCanvas.id)) {
+      const remainingCanvases = canvases.filter(canvas => !selectedCanvases.includes(canvas.id))
+      if (remainingCanvases.length > 0) {
+        setActiveCanvas(remainingCanvases[0])
       }
-
-      setDeleteCanvasId(null)
     }
-  }, [deleteCanvasId, canvases, setActiveCanvas])
+  }, [selectedCanvases, deleteCanvas, activeCanvas, canvases, setActiveCanvas])
 
   const handleContextMenu = (e: MouseEvent, canvasId: string) => {
     e.preventDefault()
@@ -140,9 +151,35 @@ export default function CanvasListSection() {
     setSearchTerm(e.target.value)
   }
 
+  const handlePopoverSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPopoverSearchTerm(e.target.value)
+  }
+
   const filteredCanvases = canvases.filter(canvas => 
     canvas.name.toLowerCase().includes(searchTerm.toLowerCase())
   )
+
+  const popoverFilteredCanvases = canvases.filter(canvas => 
+    canvas.name.toLowerCase().includes(popoverSearchTerm.toLowerCase())
+  )
+
+  const handleCanvasSelection = (canvasId: string) => {
+    setSelectedCanvases(prev => 
+      prev.includes(canvasId) 
+        ? prev.filter(id => id !== canvasId)
+        : [...prev, canvasId]
+    )
+  }
+
+  const handleSelectAll = () => {
+    setSelectedCanvases(canvases.map(canvas => canvas.id))
+  }
+
+  const handleDeselectAll = () => {
+    setSelectedCanvases([])
+  }
+
+  const isAllSelected = selectedCanvases.length === canvases.length
 
   return (
     <TooltipProvider>
@@ -170,7 +207,7 @@ export default function CanvasListSection() {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={addCanvas}
+                onClick={handleAddCanvas}
                 className="h-[30px] w-[30px] p-0 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
               >
                 <Plus className="h-5 w-5" />
@@ -212,7 +249,7 @@ export default function CanvasListSection() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className={`h-[30px w-full] px-2 rounded-none flex-shrink-0 ${
+                      className={`h-[30px] w-full px-2 rounded-none flex-shrink-0 ${
                         canvas.id === activeCanvas.id
                           ? 'text-blue-500 border-t-2 border-l border-blue-500 bg-neutral-100 dark:bg-neutral-900'
                           : 'text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'
@@ -223,7 +260,7 @@ export default function CanvasListSection() {
                       <span className="truncate text-xs">{canvas.name}</span>
                     </Button>
                     {canvas.id === activeCanvas.id && (
-                      <div className=" right-0 top-0 bottom-0 flex items-center bg-neutral-100 dark:bg-neutral-900">
+                      <div className="right-0 top-0 bottom-0 flex items-center bg-neutral-100 dark:bg-neutral-900">
                         <Popover>
                           <PopoverTrigger asChild>
                             <Button
@@ -258,7 +295,10 @@ export default function CanvasListSection() {
                               variant="ghost"
                               size={"sm"}
                               className="w-full !justify-start rounded-none"
-                              onClick={() => setDeleteCanvasId(canvas.id)}
+                              onClick={() => {
+                                setSelectedCanvases([canvas.id])
+                                setIsDeleteDialogOpen(true)
+                              }}
                               disabled={canvases.length === 1}
                             >
                               <Trash2 className="mr-2 h-4 w-4" />
@@ -280,7 +320,10 @@ export default function CanvasListSection() {
                     <span>Duplicate</span>
                   </ContextMenuItem>
                   <ContextMenuItem
-                    onSelect={() => setDeleteCanvasId(canvas.id)}
+                    onSelect={() => {
+                      setSelectedCanvases([canvas.id])
+                      setIsDeleteDialogOpen(true)
+                    }}
                     disabled={canvases.length === 1}
                   >
                     <Trash2 className="mr-2 h-4 w-4" />
@@ -295,12 +338,13 @@ export default function CanvasListSection() {
           <Popover open={isSearchOpen} onOpenChange={setIsSearchOpen}>
             <PopoverTrigger asChild>
               <Button variant="ghost" size="icon" className="h-[30px] w-[30px]">
-                <MoreVertical className="h-4 w-4" />
+                <Search className="h-4 w-4" />
                 <span className="sr-only">Search canvases</span>
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-[320px] p-0">
               <div className="p-2 space-y-2 text-sm">
+                
                 <Input
                   placeholder="Search canvases..."
                   value={searchTerm}
@@ -337,7 +381,8 @@ export default function CanvasListSection() {
                           className="h-6 w-6 p-0"
                           onClick={(e) => {
                             e.stopPropagation()
-                            setDeleteCanvasId(canvas.id)
+                            setSelectedCanvases([canvas.id])
+                            setIsDeleteDialogOpen(true)
                           }}
                         >
                           <Trash2 className="h-4 w-4" />
@@ -347,30 +392,117 @@ export default function CanvasListSection() {
                     </div>
                   ))}
                 </ScrollArea>
-              
               </div>
             </PopoverContent>
           </Popover>
-          <span className="flex">
-            <Button>
-              <Monitor className="w-4" />
-            </Button>
-          </span>
+          <Popover open={isMorePopoverOpen} onOpenChange={setIsMorePopoverOpen}>
+            <PopoverTrigger asChild>
+              <Button variant="ghost" size="icon" className="h-[30px] w-[30px] relative">
+                <MoreVertical className="h-4 w-4" />
+                {selectedCanvases.length > 0 && (
+                  <Badge
+                    variant="destructive"
+                    className="absolute -top-1 -right-1 px-1 min-w-[1.25rem] h-5"
+                  >
+                    {selectedCanvases.length}
+                  </Badge>
+                )}
+                <span className="sr-only">More options</span>
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-[250px] p-0">
+              <div className="py-2">
+                <div className="px-2 pb-2">
+                  <div className="flex items-center space-x-2">
+                    <Checkbox
+                      id="select-all"
+                      checked={isAllSelected}
+                      onCheckedChange={(checked) => {
+                        if (checked) {
+                          handleSelectAll()
+                        } else {
+                          handleDeselectAll()
+                        }
+                      }}
+                    />
+                    <label
+                      htmlFor="select-all"
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      Select Canvases
+                    </label>
+                  </div>
+                </div>
+                <div className="px-2 pb-2">
+                  <Input
+                    placeholder="Search canvases..."
+                    value={popoverSearchTerm}
+                    onChange={handlePopoverSearchChange}
+                    className="w-full"
+                  />
+                </div>
+                <ScrollArea className="h-[200px] px-2">
+                  {popoverFilteredCanvases.map((canvas) => (
+                    <div key={canvas.id} className="flex items-center space-x-2 py-1">
+                      <Checkbox
+                        id={`select-${canvas.id}`}
+                        checked={selectedCanvases.includes(canvas.id)}
+                        onCheckedChange={() => handleCanvasSelection(canvas.id)}
+                      />
+                      <label
+                        htmlFor={`select-${canvas.id}`}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
+                        onClick={() => {
+                          setActiveCanvas(canvas)
+                          setIsMorePopoverOpen(false)
+                        }}
+                      >
+                        {canvas.name}
+                      </label>
+                    </div>
+                  ))}
+                </ScrollArea>
+                <div className="border-t mt-2 pt-2 px-2">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="w-full justify-start"
+                    onClick={() => {
+                      setIsDeleteDialogOpen(true)
+                      setIsMorePopoverOpen(false)
+                    }}
+                    disabled={selectedCanvases.length === 0}
+                  >
+                    <Trash2 className="mr-2 h-4 w-4" />
+                    Delete Selected ({selectedCanvases.length})
+                  </Button>
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
+          <Button>
+            <Monitor className="w-4" />
+          </Button>
         </div>
       </div>
-      <AlertDialog open={deleteCanvasId !== null} onOpenChange={() => setDeleteCanvasId(null)}>
+      <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
         <AlertDialogContent onKeyDown={handleDeleteKeyDown}>
           <AlertDialogHeader>
             <AlertDialogTitle>
-              Are you sure you want to delete canvas - {canvases.find(canvas => canvas.id === deleteCanvasId)?.name}?
+              Are you sure you want to delete {selectedCanvases.length} canvas{selectedCanvases.length > 1 ? 'es' : ''}?
             </AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete the canvas.
+              This action cannot be undone. This will permanently delete the following canvas{selectedCanvases.length > 1 ? 'es' : ''}:
+              <ul className="mt-2 list-disc list-inside">
+                {selectedCanvases.map(id => (
+                  <li key={id}>{canvases.find(canvas => canvas.id === id)?.name}</li>
+                ))}
+              </ul>
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction autoFocus onClick={handleDeleteCanvas}>
+            <AlertDialogAction onClick={handleDeleteSelectedCanvases}>
               Delete
             </AlertDialogAction>
           </AlertDialogFooter>
