@@ -3,7 +3,8 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@invana/ui": ["./src/*"]
     },
     "target": "ES2020",
     "useDefineForClassFields": true,
