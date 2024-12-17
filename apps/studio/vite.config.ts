@@ -13,6 +13,20 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'dist',
+    lib: {
+      entry: path.resolve(__dirname, 'src/main.tsx'), // Entry point of your library
+      name: 'invana-studio', // Global variable name for UMD builds
+      fileName: (format) => `invana-studio.${format}.js`,
+    },
+    rollupOptions: {
+      external: ['react', 'react-dom', 'react/jsx-runtime'], // Peer dependencies
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+          'react/jsx-runtime': 'jsxRuntime', // Add the global variable for the runtime
+        },
+      },
+    },
   },
 })
