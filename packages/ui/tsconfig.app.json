@@ -4,7 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@invana/ui": ["./src/*"]
+      "@invana/ui": ["./src"],
+      "@invana/ui/*": ["./src/*"]
     },
     "target": "ES2020",
     "useDefineForClassFields": true,
