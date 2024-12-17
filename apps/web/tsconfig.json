@@ -1,4 +1,4 @@
 {
-  "extends": "@repo/typescript-config/vite.json",
+  "extends": "@invana/typescript-config/vite.json",
   "include": ["src"]
 }
