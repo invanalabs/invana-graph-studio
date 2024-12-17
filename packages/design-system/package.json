@@ -1,5 +1,5 @@
 {
-  "name": "@repo/design-system",
+  "name": "@invana/design-system",
   "version": "0.0.0",
   "scripts": {
     "build": "tsc -b && vite build",

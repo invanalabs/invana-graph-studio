@@ -9,6 +9,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
+      "@invana/design-system": path.resolve(__dirname, "src"),
     },
   },
   build: {
