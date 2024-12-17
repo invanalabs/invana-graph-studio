@@ -9,14 +9,14 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
-      "@invana/design-system": path.resolve(__dirname, "src"),
+      "@invana/ui": path.resolve(__dirname, "src"),
     },
   },
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'), // Entry point of your library
-      name: 'design-system', // Global variable name for UMD builds
-      fileName: (format) => `design-system.${format}.js`,
+      name: 'invana-ui', // Global variable name for UMD builds
+      fileName: (format) => `invana-ui.${format}.js`,
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'], // Peer dependencies
