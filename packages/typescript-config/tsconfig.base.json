@@ -16,9 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@invana/ui": ["../../packages/ui/src"],
-      "@invana/ui/*": ["../../packages/ui/src/*"],
-      // "@/lib": ["../../packages/ui/src/lib"],
-      // "@/lib/*": ["../../packages/ui/src/lib/*"],
+      "@invana/ui/*": ["../../packages/ui/src/*"]
     },
     "strict": true,
     "esModuleInterop": true,
