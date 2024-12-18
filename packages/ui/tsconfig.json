@@ -4,8 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@invana/ui": ["./src"],
-      "@invana/ui/*": ["./src/*"]
+      "@invana/ui": ["../../packages/ui/src"],
+      "@invana/ui/*": ["../../packages/ui/src/*"],
     }
   }
 }

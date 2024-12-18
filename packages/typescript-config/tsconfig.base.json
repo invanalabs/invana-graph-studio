@@ -17,7 +17,8 @@
     "paths": {
       "@invana/ui": ["../../packages/ui/src"],
       "@invana/ui/*": ["../../packages/ui/src/*"],
-      // "@/*": ["../../packages/*/src/*"]
+      // "@/lib": ["../../packages/ui/src/lib"],
+      // "@/lib/*": ["../../packages/ui/src/lib/*"],
     },
     "strict": true,
     "esModuleInterop": true,
