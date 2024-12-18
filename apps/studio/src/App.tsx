@@ -1,6 +1,5 @@
-import "./styles/globals.css";
-import {Button} from "@invana/ui";
-import "./styles/globals.css"
+import { Button } from "@invana/ui";
+import "@invana/ui/index.css";
 
 
 function App() {
