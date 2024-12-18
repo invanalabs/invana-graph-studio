@@ -1,0 +1,11 @@
+{
+  "extends": "@invana/typescript-config/tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@invana/flow-canvas": ["../../packages/flow-canvas/src"],
+      "@invana/flow-canvas/*": ["../../packages/flow-canvas/src/*"],
+    }
+  }
+}
