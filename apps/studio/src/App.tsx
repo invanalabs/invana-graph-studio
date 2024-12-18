@@ -1,11 +1,12 @@
-import "@invana/ui/styles/globals.css"
+import "./styles/globals.css";
 import {Button} from "@invana/ui";
+import "./styles/globals.css"
 
 
 function App() {
   return (
     <>
-      <Button>Test Button</Button>
+      <Button variant={'outline'}>Test Button</Button>
     </>
   )
 }
