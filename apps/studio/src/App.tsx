@@ -1,3 +1,4 @@
+import "@invana/ui/styles/globals.css"
 import {Button} from "@invana/ui";
 
 
@@ -8,5 +9,6 @@ function App() {
     </>
   )
 }
+
 
 export default App
