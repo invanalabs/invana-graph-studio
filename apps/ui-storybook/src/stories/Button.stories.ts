@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import "@invana/ui/styles/globals.css";
+import "@invana/ui/index.css";
 import { Button } from '@invana/ui';
 
 
@@ -28,5 +28,13 @@ export const Secondary: Story = {
   args: {
     // primary: true,
     variant: 'secondary',
+  },
+};
+
+// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+export const Destructive: Story = {
+  args: {
+    // primary: true,
+    variant: 'destructive',
   },
 };
