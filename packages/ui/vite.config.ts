@@ -2,10 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import * as path from 'path';
 import dts from "vite-plugin-dts";
-// import { peerDependencies, dependencies } from './package.json'
 
-
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react({
@@ -18,7 +15,6 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
-      // "@invana/ui": path.resolve(__dirname, "src"),
     },
   },
   build: {
@@ -29,22 +25,19 @@ export default defineConfig({
       fileName: (ext) => `index.${ext}.js`,
     },
     rollupOptions: {
-      // dont include dependencies and peerDependencies in the bundle
-      external: ['react', 'react-dom', 'react/jsx-runtime'], // Peer dependencies
-      // external: [...Object.keys(peerDependencies), ...Object.keys(dependencies)],
+      external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-          'react/jsx-runtime': 'jsxRuntime', // Add the global variable for the runtime
+          'react/jsx-runtime': 'jsxRuntime',
         },
-        //  preserveModules: true,
-        //  inlineDynamicImports: false,
-         exports: 'named'
-        }
+        exports: 'named'
+      }
     },
-
     target: 'esnext',
-    sourcemap: true
+    sourcemap: true,
+    cssCodeSplit: false,
+    cssMinify: true
   }
 })
