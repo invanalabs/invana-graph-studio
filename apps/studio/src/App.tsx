@@ -5,7 +5,7 @@ import "@invana/ui/index.css";
 function App() {
   return (
     <>
-      <Button variant={'outline'}>Test Button</Button>
+      <Button variant={'destructive'}>Test Button</Button>
     </>
   )
 }

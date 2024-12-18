@@ -7,17 +7,17 @@
     "dev": "storybook dev -p 6006",
     "build": "storybook build",
     "dev_": "vite",
-
     "build_": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@invana/tailwind-config": "^0.0.0",
     "@invana/ui": "^0.0.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "clsx": "^2.1.1",
     "radix-ui": "^1.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {

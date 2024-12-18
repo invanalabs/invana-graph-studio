@@ -10,6 +10,8 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, 'src'),
       "@invana/ui": path.resolve(__dirname, '../../packages/ui/src'),
+      "@invana/tailwind-config": path.resolve(__dirname, '../../packages/tailwind-config/tailwind.config.js'),
+
       // "@/lib": path.resolve(__dirname, '../../packages/ui/src/lib')
     },
   }
