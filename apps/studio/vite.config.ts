@@ -10,7 +10,7 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, 'src'),
       "@invana/ui": path.resolve(__dirname, '../../packages/ui/src'),
-      "@/lib": path.resolve(__dirname, '../../packages/ui/src/lib')
+      // "@/lib": path.resolve(__dirname, '../../packages/ui/src/lib')
     },
   }
 })
