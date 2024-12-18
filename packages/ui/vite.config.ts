@@ -13,20 +13,21 @@ export default defineConfig({
     },
   },
   build: {
-    lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'), // Entry point of your library
-      name: 'invana-ui', // Global variable name for UMD builds
-      fileName: (format) => `invana-ui.${format}.js`,
-    },
-    rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'], // Peer dependencies
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'react/jsx-runtime': 'jsxRuntime', // Add the global variable for the runtime
+      cssCodeSplit: true,
+      lib: {
+        entry: path.resolve(__dirname, 'src/index.ts'), // Entry point of your library
+        name: 'invana-ui', // Global variable name for UMD builds
+        fileName: (format) => `invana-ui.${format}.js`,
+      },
+      rollupOptions: {
+        external: ['react', 'react-dom', 'react/jsx-runtime'], // Peer dependencies
+        output: {
+          globals: {
+            react: 'React',
+            'react-dom': 'ReactDOM',
+            'react/jsx-runtime': 'jsxRuntime', // Add the global variable for the runtime
+          },
         },
       },
-    },
   },
 })
