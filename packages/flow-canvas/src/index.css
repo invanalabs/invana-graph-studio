@@ -99,6 +99,10 @@
   }
 }
 
+.react-flow__node {
+  width: auto !important;
+}
+
 /* .react-flow__node {
   border: 0;
   padding: 0 !important;

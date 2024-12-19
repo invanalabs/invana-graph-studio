@@ -46,9 +46,14 @@ const DataTypeFieldsNode = ({ id, data, selected = false }: DataTypeFieldsNodePr
 
   return (
     <BaseNodeTemplate id={id} selected={selected} className="min-w-[240px] p-0">
+      <Handle type="source" className="absolute top-5" position={Position.Right} id={id} />
+      <Handle type="target" className="absolute top-5" position={Position.Left} id={id} />
+
       <div className={"bg-zinc-900 rounded-t-sm border-b border-neutral-700 " +
         " p-2 text-sm font-bold"}>{data.label}
       </div>
+
+      <div className="absolute top-10"></div>
 
 
       <div>

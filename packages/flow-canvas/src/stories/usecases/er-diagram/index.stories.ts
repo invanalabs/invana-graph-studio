@@ -1,30 +1,24 @@
-import FlowCanvas from '@/app/app';
 import type { Meta, StoryObj } from '@storybook/react';
 import { data } from "./data";
+import FlowCanvas from '../../../app/app';
 
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'NodeTemplates/DataTypeFieldsNode',
+  title: 'Use Cases/ER Driagram',
   component: FlowCanvas,
   parameters: {
     layout: 'fullscreen',
   },
-  tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
-  // argTypes: {
-  //   backgroundColor: { control: 'color' },
-  // },
 } satisfies Meta<typeof FlowCanvas>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 
-export const DataTypeFieldsNode: Story = {
+export const ERDriagram: Story = {
   args: {
     nodes: data.nodes,
-    edges: data.edges,
-    layoutDirection: "LR"
+    edges: data.edges
   },
 };
