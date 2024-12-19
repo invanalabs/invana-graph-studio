@@ -6,7 +6,7 @@ export const data = {
       data: { label: "Group Node" },
       width: 380,
       height: 200,
-      type: "labeledGroupNode"
+      type: "LabeledGroupNode"
     },
     {
       id: "2",

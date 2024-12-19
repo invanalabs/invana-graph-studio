@@ -13,8 +13,8 @@ export const BaseNodeTemplate = React.forwardRef<
       ref={ref}
       id={"node-" + id}
       className={cn(
-        "default-node rounded-md border border-zinc-700 bg-card p-2 m-0 text-card-foreground",
-        "dark:bg-zinc-800 dark:text-dark-card-foreground",
+        "default-node rounded-md border border-neutral-700 bg-card p-2 m-0 text-card-foreground",
+        "dark:bg-neutral-800 dark:text-dark-card-foreground",
         // " text-center",
         className,
         selected ? "border-muted-foreground shadow-lg" : "",
