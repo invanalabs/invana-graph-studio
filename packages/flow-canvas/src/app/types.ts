@@ -20,4 +20,5 @@ export interface FlowCanvasOptions {
   extraEdgeTypes?: EdgeTypes;
   // layout
   layoutDirection: "TB" | "LR" | "BT" | "RL";
+  debug?: boolean;
 }

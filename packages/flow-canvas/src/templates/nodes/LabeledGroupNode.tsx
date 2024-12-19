@@ -8,11 +8,12 @@ export type LabeledGroupNode = Node<{
 }>;
 
 
-const LabeledGroupNode = ({ id, data, selected = false }: NodeProps<LabeledGroupNode>) => {
-  console.log("LabelGroupNode", id, data, selected);
+const LabeledGroupNode = ({ id, data, selected = false, ...props }: NodeProps<LabeledGroupNode>) => {
+  console.log("LabeledGroupNode", id, data, selected, props);
   return (
     <BaseNodeTemplate id={id} selected={selected}
-      className="bg-white !text-left !bg-opacity-50 h-full rounded-sm overflow-hidden p-0">
+      // !w-[${props.width}px]
+      className={`bg-white !text-left !bg-opacity-50 h-full rounded-sm overflow-hidden p-0 `}>
       {data.label && (
         <div className="bg-neutral-600 border-r border-b border-neutral-700 w-fit p-2 text-xs rounded-br-sm text-card-foreground">
           {data.label}

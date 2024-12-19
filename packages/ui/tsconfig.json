@@ -3,9 +3,15 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@invana/ui": ["../../packages/ui/src"],
-      "@invana/ui/*": ["../../packages/ui/src/*"],
+      "@/*": [
+        "./src/*"
+      ],
+      "@invana/ui": [
+        "../../packages/ui/src"
+      ],
+      "@invana/ui/*": [
+        "../../packages/ui/src/*"
+      ],
     }
   }
 }

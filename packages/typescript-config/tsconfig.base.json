@@ -4,7 +4,10 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "lib": ["ESNext", "DOM"],
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
     "declaration": true,
     "declarationMap": true,
     "outDir": "./dist",
@@ -18,8 +21,10 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "@invana/ui": ["../../packages/ui/src"],
-      "@invana/ui/*": ["../../packages/ui/src/*"],
+      // "@invana/ui": ["../../packages/ui/src"],
+      "@invana/ui/*": [
+        "../../packages/ui/src/*"
+      ],
       // "@invana/tailwind-config": ["../../packages/tailwind-config/tailwind.config.js"],
       // "@/lib": ["../../packages/ui/src/lib"],
       // "@/lib/*": ["../../packages/ui/src/lib/*"]
@@ -28,5 +33,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true
   },
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

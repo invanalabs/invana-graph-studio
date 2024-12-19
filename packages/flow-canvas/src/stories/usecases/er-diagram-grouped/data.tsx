@@ -1,7 +1,14 @@
 
-
 export const data = {
   "nodes": [
+    {
+      id: "1",
+      position: { x: 200, y: 100 },
+      data: { label: "Group Node" },
+      width: 480,
+      height: 500,
+      type: "LabeledGroupNode"
+    },
     {
       "id": "1.1",
       "type": "DataTypeFieldsNode",
@@ -73,6 +80,8 @@ export const data = {
           }
         ]
       },
+      "parentId": "1",
+      "extent": "parent",
       "style": {
         "width": "200px"
       },
@@ -115,6 +124,8 @@ export const data = {
           }
         ]
       },
+      "parentId": "1",
+      "extent": "parent",
       "style": {
         "width": "200px"
       },

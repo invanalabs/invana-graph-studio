@@ -28,7 +28,6 @@ export const defaultFlowCanvasOptions: FlowCanvasOptions = {
                 // color: '#b1b1b7',
             }
         },
-        debug: true,
         nodeTypes: defaultNodeTypes
     },
     nodes: [],
@@ -36,5 +35,6 @@ export const defaultFlowCanvasOptions: FlowCanvasOptions = {
     style: defaultCanvasStyle,
     extraNodeTypes: {},
     extraEdgeTypes: {},
-    layoutDirection: "TB"
+    layoutDirection: "TB",
+    debug: true
 }

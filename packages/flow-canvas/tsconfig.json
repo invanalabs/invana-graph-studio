@@ -3,9 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@invana/flow-canvas": ["../../packages/flow-canvas/src"],
-      "@invana/flow-canvas/*": ["../../packages/flow-canvas/src/*"],
+      "@/*": [
+        "./src/*"
+      ],
+      "@invana/ui/*": [
+        "../../packages/ui/src/*"
+      ]
     }
   }
 }

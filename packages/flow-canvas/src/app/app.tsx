@@ -12,6 +12,7 @@ import '@xyflow/react/dist/style.css';
 import { defaultFlowCanvasOptions } from "./defaults";
 import { addNodeDefaults } from "./utils";
 import "../index.css";
+import { DevTools } from "@/plugins/DevTools";
 
 
 const FlowCanvas = (options: FlowCanvasOptions) => {
@@ -46,6 +47,8 @@ const FlowCanvas = (options: FlowCanvasOptions) => {
           <Background />
           {/* <Controls /> */}
 
+
+          {options.debug && <DevTools />}
           {options.children}
         </ReactFlow>
       </ReactFlowProvider>
