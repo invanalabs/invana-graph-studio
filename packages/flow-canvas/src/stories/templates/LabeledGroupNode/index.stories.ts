@@ -1,11 +1,11 @@
 import FlowCanvas from '@/app/app';
 import type { Meta, StoryObj } from '@storybook/react';
-import { data  } from "./data";
+import { data } from "./data";
 
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Use Cases/SimpleStory',
+  title: 'NodeTemplates/LabeledGroupNode',
   component: FlowCanvas,
   parameters: {
     layout: 'fullscreen',
@@ -21,7 +21,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 
-export const SimpleStory: Story = {
+export const LabeledGroupNode: Story = {
   args: {
     nodes: data.nodes,
     edges: data.edges,
