@@ -2,7 +2,7 @@ export const data = {
   "nodes": [
     {
       "id": "1a",
-      "type": "input",
+      "type": "GenericNode",
       "data": {
         "label": "Node 1"
       },
@@ -41,6 +41,7 @@ export const data = {
       "data": {
         "label": "Node 2"
       },
+      type: "GenericNode",
       "position": {
         "x": -176.03989774330168,
         "y": 125.9873935230946
@@ -54,6 +55,7 @@ export const data = {
     },
     {
       "id": "3a",
+      type: "GenericNode",
       "data": {
         "label": "Node 3"
       },

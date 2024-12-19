@@ -1,11 +1,11 @@
 import { NodeTypes } from "@xyflow/react";
-import { BaseNode } from "./BaseNode";
+import { GenericNode } from "./GenericNode";
 import CommentNode from "./CommentNode";
 import { LabeledGroupNode } from "./LabeledGroupNode";
 
 
 export const defaultNodeTypes: NodeTypes = {
-    default: BaseNode,
+    GenericNode: GenericNode,
     CommentNode: CommentNode,
     LabeledGroupNode: LabeledGroupNode
 };

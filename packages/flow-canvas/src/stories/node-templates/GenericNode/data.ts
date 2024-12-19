@@ -5,7 +5,7 @@ export const data = {
   nodes: [
     {
       id: '1',
-
+      type: 'GenericNode',
       data: {
         label: 'Input Node',
       },
@@ -13,6 +13,7 @@ export const data = {
     },
     {
       id: '2',
+      type: 'GenericNode',
       data: {
         label: 'Default Node',
       },
@@ -20,7 +21,7 @@ export const data = {
     },
     {
       id: '3',
-
+      type: 'GenericNode',
       data: {
         label: 'Output Node',
       },
@@ -28,7 +29,7 @@ export const data = {
     },
     {
       id: '4',
-
+      type: 'GenericNode',
       position: { x: 100, y: 200 },
       data: {
         label: 'Default Node 4',
@@ -37,7 +38,7 @@ export const data = {
     },
     {
       id: '5',
-
+      type: 'GenericNode',
       data: {
         label: 'custom style',
       },

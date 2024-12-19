@@ -23,7 +23,10 @@ export const defaultFlowCanvasOptions: FlowCanvasOptions = {
             // targetPosition: Position.Top,
         },
         defaultEdgeOptions: {
-            markerEnd: MarkerType.ArrowClosed,
+            markerEnd: {
+                type: MarkerType.ArrowClosed,
+                // color: '#b1b1b7',
+            }
         },
         debug: true,
         nodeTypes: defaultNodeTypes
