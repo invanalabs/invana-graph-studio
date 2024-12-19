@@ -10,6 +10,11 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
+  tags: ['autodocs'],
+  // More on argTypes: https://storybook.js.org/docs/api/argtypes
+  // argTypes: {
+  //   backgroundColor: { control: 'color' },
+  // },
 } satisfies Meta<typeof FlowCanvas>;
 
 export default meta;
@@ -18,7 +23,7 @@ type Story = StoryObj<typeof meta>;
 
 export const SimpleStory: Story = {
   args: {
-    initialNodes: data.nodes,
-    initialEdges: data.edges,
+    nodes: data.nodes,
+    edges: data.edges,
   },
 };
