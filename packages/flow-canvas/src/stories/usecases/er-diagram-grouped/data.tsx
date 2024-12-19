@@ -1,4 +1,3 @@
-
 export const data = {
   "nodes": [
     {
@@ -21,14 +20,10 @@ export const data = {
           }
         ]
       },
-      "style": {
-        "width": "200px"
-      },
       "position": {
         "x": -496.97885451264744,
         "y": 315.68869493757217
-      },
-
+      }
     },
     {
       "id": "1.2",
@@ -43,19 +38,10 @@ export const data = {
           }
         ]
       },
-      "style": {
-        "width": "200px"
-      },
       "position": {
         "x": -492.208293379902,
         "y": 32.51959844232988
-      },
-      "measured": {
-        "width": 200,
-        "height": 71
-      },
-      "selected": false,
-      "dragging": false
+      }
     },
     {
       "id": "2.1",
@@ -77,19 +63,10 @@ export const data = {
       },
       "parentId": "1",
       "extent": "parent",
-      "style": {
-        "width": "200px"
-      },
       "position": {
         "x": 83.406993557437914,
         "y": 334.948494158737
-      },
-      "measured": {
-        "width": 200,
-        "height": 104
-      },
-      "selected": true,
-      "dragging": false
+      }
     },
     {
       "id": "2.2",
@@ -121,19 +98,10 @@ export const data = {
       },
       "parentId": "1",
       "extent": "parent",
-      "style": {
-        "width": "200px"
-      },
       "position": {
-        "x": 83.406993557437836,
+        "x": 83.406,
         "y": 49.17755469018326
-      },
-      "measured": {
-        "width": 200,
-        "height": 170
-      },
-      "selected": false,
-      "dragging": false
+      }
     },
     {
       "id": "3.1",
@@ -163,19 +131,10 @@ export const data = {
           }
         ]
       },
-      "style": {
-        "width": "200px"
-      },
       "position": {
         "x": 463.948494158737,
         "y": 187.49807461916893
-      },
-      "measured": {
-        "width": 200,
-        "height": 170
-      },
-      "selected": false,
-      "dragging": false
+      }
     },
     {
       "id": "3.2",
@@ -195,19 +154,10 @@ export const data = {
           }
         ]
       },
-      "style": {
-        "width": "200px"
-      },
       "position": {
         "x": 796.9580873611033,
         "y": 216.08262286679
-      },
-      "measured": {
-        "width": 200,
-        "height": 104
-      },
-      "selected": false,
-      "dragging": false
+      }
     }
   ],
   "edges": [
@@ -217,16 +167,7 @@ export const data = {
       "sourceHandle": "crawlerflow",
       "target": "2.1",
       "targetHandle": "2.1",
-      "animated": false,
-      "type": "step",
-      "markerEnd": {
-        "type": "arrowclosed"
-      },
-      "style": {
-        "opacity": 1,
-        "stroke": "#ccc"
-      },
-      "hidden": false
+      "type": "step"
     },
     {
       "id": "e0-2",
@@ -234,16 +175,7 @@ export const data = {
       "sourceHandle": "myfile-csv",
       "target": "2.2",
       "targetHandle": "2.2",
-      "animated": false,
-      "type": "step",
-      "markerEnd": {
-        "type": "arrowclosed"
-      },
-      "style": {
-        "opacity": 1,
-        "stroke": "#ccc"
-      },
-      "hidden": false
+      "type": "step"
     },
     {
       "id": "e0-3",
@@ -251,16 +183,7 @@ export const data = {
       "sourceHandle": "identifier",
       "target": "3.1",
       "targetHandle": "identifier",
-      "animated": false,
-      "type": "step",
-      "markerEnd": {
-        "type": "arrowclosed"
-      },
-      "style": {
-        "opacity": 1,
-        "stroke": "#ccc"
-      },
-      "hidden": false
+      "type": "step"
     },
     {
       "id": "e0-4",
@@ -268,16 +191,7 @@ export const data = {
       "sourceHandle": "candle",
       "target": "3.1",
       "targetHandle": "candle",
-      "animated": false,
-      "type": "step",
-      "markerEnd": {
-        "type": "arrowclosed"
-      },
-      "style": {
-        "opacity": 1,
-        "stroke": "#ccc"
-      },
-      "hidden": false
+      "type": "step"
     },
     {
       "id": "e0-5",
@@ -285,16 +199,7 @@ export const data = {
       "sourceHandle": "title",
       "target": "3.1",
       "targetHandle": "title",
-      "animated": false,
-      "type": "step",
-      "markerEnd": {
-        "type": "arrowclosed"
-      },
-      "style": {
-        "opacity": 1,
-        "stroke": "#ccc"
-      },
-      "hidden": false
+      "type": "step"
     },
     {
       "id": "e0-6",
@@ -302,16 +207,7 @@ export const data = {
       "sourceHandle": "identifier",
       "target": "3.2",
       "targetHandle": "identifier",
-      "animated": false,
-      "type": "step",
-      "markerEnd": {
-        "type": "arrowclosed"
-      },
-      "style": {
-        "opacity": 1,
-        "stroke": "#ccc"
-      },
-      "hidden": false
+      "type": "step"
     },
     {
       "id": "e0-7",
@@ -319,16 +215,7 @@ export const data = {
       "sourceHandle": "description",
       "target": "3.2",
       "targetHandle": "analysed_field",
-      "animated": false,
-      "type": "step",
-      "markerEnd": {
-        "type": "arrowclosed"
-      },
-      "style": {
-        "opacity": 1,
-        "stroke": "#ccc"
-      },
-      "hidden": false
+      "type": "step"
     }
   ],
   "viewport": {
