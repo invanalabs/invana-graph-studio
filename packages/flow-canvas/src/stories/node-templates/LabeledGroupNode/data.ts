@@ -4,8 +4,8 @@ export const data = {
       id: "1",
       position: { x: 200, y: 200 },
       data: { label: "Group Node" },
-      width: 580,
-      height: 800,
+      width: 380,
+      height: 200,
       type: "LabeledGroupNode"
     },
     {

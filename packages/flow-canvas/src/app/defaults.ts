@@ -35,6 +35,6 @@ export const defaultFlowCanvasOptions: FlowCanvasOptions = {
     style: defaultCanvasStyle,
     extraNodeTypes: {},
     extraEdgeTypes: {},
-    layoutDirection: "TB",
+    layoutDirection: "LR",
     debug: true
 }

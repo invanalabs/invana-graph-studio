@@ -98,18 +98,3 @@
     color: var(--destructive-foreground);
   }
 }
-
-.react-flow__node {
-  width: auto !important;
-}
-
-/* .react-flow__node {
-  border: 0;
-  padding: 0 !important;
-  margin: 0 !important;
-  background-color: transparent !important;
-}
-
-.react-flow__node.selected {
-  border: none !important
-} */
