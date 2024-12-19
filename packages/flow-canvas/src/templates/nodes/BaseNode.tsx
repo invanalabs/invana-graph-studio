@@ -1,11 +1,11 @@
 import React from "react";
-import { BaseNodeTemplate } from "@/components/templates/BaseNode";
+import { BaseNodeTemplate } from "@/components/BaseNodeTemplate";
 import { Handle, Node } from "@xyflow/react";
 import { defaultFlowCanvasOptions } from "@/app/defaults";
 import { computeHandlePositions } from "@/app/utils";
 
 
-type BaseNodeProps = Node<{
+export type BaseNodeProps = Node<{
   label: string;
 }>;
 
@@ -15,7 +15,7 @@ export const BaseNode = ({ id, data, selected = false, ...props }: BaseNodeProps
   const { sourcePosition, targetPosition } = computeHandlePositions(defaultFlowCanvasOptions.layoutDirection);
 
   return (
-    <BaseNodeTemplate>
+    <BaseNodeTemplate id={id} selected={selected}>
       <>
         {data.label}
         <Handle type="source" position={props.sourcePosition ?? sourcePosition} />

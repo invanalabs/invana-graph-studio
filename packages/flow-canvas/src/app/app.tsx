@@ -11,6 +11,7 @@ import { FlowCanvasOptions } from "./types";
 import '@xyflow/react/dist/style.css';
 import { defaultFlowCanvasOptions } from "./defaults";
 import { addNodeDefaults } from "./utils";
+import "../index.css";
 
 
 const FlowCanvas = (options: FlowCanvasOptions) => {

@@ -20,16 +20,16 @@
   "dependencies": {
     "@invana/ui": "^0.0.0",
     "@xyflow/react": "^12.3.6",
-    "lucide-react": "^0.468.0",
-    "tailwind-merge": "^2.5.5",
-    "tailwindcss": "^3.4.16",
-    "tailwindcss-animate": "^1.0.7"
+    "lucide-react": "^0.468.0"
   },
   "peerDependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss": "^3.4.16",
+    "tailwindcss-animate": "^1.0.7",
     "@chromatic-com/storybook": "^3.2.2",
     "@eslint/js": "^9.15.0",
     "@storybook/addon-essentials": "^8.4.7",
