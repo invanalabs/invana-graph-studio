@@ -1,4 +1,4 @@
-import { MarkerType, Position } from "@xyflow/react";
+import { MarkerType } from "@xyflow/react";
 
 
 export const data = {

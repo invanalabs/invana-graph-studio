@@ -1,24 +1,24 @@
-import React from "react";
+import React, { memo } from "react";
 import { BaseNodeTemplate } from "@/components/BaseNodeTemplate";
-import { Handle, Node, NodeResizer } from "@xyflow/react";
+import { Handle, Node, NodeProps, NodeResizer } from "@xyflow/react";
 import { defaultFlowCanvasOptions } from "@/app/defaults";
 import { computeHandlePositions } from "@/app/utils";
 
 
-export type BaseNodeProps = Node<{
+export type GenericNodeProps = Node<{
   label: string;
 }>;
 
 
-export const GenericNode = ({ id, data, selected = false, ...props }: BaseNodeProps) => {
+export const GenericNode = ({ id, data, selected = false, ...props }: NodeProps<GenericNodeProps>) => {
   console.log("GenericNode", id, data, selected, props);
   const { sourcePosition, targetPosition } = computeHandlePositions(defaultFlowCanvasOptions.layoutDirection);
+  const resizable = false;
 
   return (
     <BaseNodeTemplate id={id} selected={selected} className="min-w-[200px] text-center">
       <>
-        {/* <NodeResizer minWidth={100} minHeight={30} /> */}
-
+        {resizable && <NodeResizer minWidth={100} minHeight={30} />}
         {data.label}
         <Handle type="source" position={props.sourcePosition ?? sourcePosition} />
         <Handle type="target" position={props.targetPosition ?? targetPosition} />
@@ -26,3 +26,5 @@ export const GenericNode = ({ id, data, selected = false, ...props }: BaseNodePr
     </BaseNodeTemplate>
   );
 }
+
+export default memo(GenericNode);

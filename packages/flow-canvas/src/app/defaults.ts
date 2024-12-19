@@ -1,6 +1,6 @@
 import { defaultNodeTypes } from "@/templates/nodes"
 import { FlowCanvasOptions } from "./types"
-import { MarkerType, Position, ConnectionLineType } from "@xyflow/react"
+import { MarkerType } from "@xyflow/react"
 
 
 export const defaultCanvasStyle = {

@@ -7,6 +7,7 @@ export const BaseNodeTemplate = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement> & { selected?: boolean }
 >(({ className, id, selected, ...props }, ref) => {
   console.log("BaseNodeTemplate", id, selected, props);
+
   return (
     <div
       ref={ref}
