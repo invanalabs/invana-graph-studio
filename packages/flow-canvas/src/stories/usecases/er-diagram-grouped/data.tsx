@@ -3,7 +3,7 @@ export const data = {
   "nodes": [
     {
       id: "1",
-      position: { x: 200, y: 100 },
+      position: { x: -79, y: 17 },
       data: { label: "Group Node" },
       width: 480,
       height: 500,
@@ -25,15 +25,10 @@ export const data = {
         "width": "200px"
       },
       "position": {
-        "x": -374.97885451264744,
-        "y": 287.68869493757217
+        "x": -496.97885451264744,
+        "y": 315.68869493757217
       },
-      "measured": {
-        "width": 200,
-        "height": 71
-      },
-      "selected": false,
-      "dragging": false
+
     },
     {
       "id": "1.2",
@@ -52,8 +47,8 @@ export const data = {
         "width": "200px"
       },
       "position": {
-        "x": -376.208293379902,
-        "y": 88.51959844232988
+        "x": -492.208293379902,
+        "y": 32.51959844232988
       },
       "measured": {
         "width": 200,
@@ -86,8 +81,8 @@ export const data = {
         "width": "200px"
       },
       "position": {
-        "x": -50.406993557437914,
-        "y": 331.948494158737
+        "x": 83.406993557437914,
+        "y": 334.948494158737
       },
       "measured": {
         "width": 200,
@@ -130,7 +125,7 @@ export const data = {
         "width": "200px"
       },
       "position": {
-        "x": -50.406993557437836,
+        "x": 83.406993557437836,
         "y": 49.17755469018326
       },
       "measured": {
@@ -172,8 +167,8 @@ export const data = {
         "width": "200px"
       },
       "position": {
-        "x": 331.948494158737,
-        "y": 179.49807461916893
+        "x": 463.948494158737,
+        "y": 187.49807461916893
       },
       "measured": {
         "width": 200,
