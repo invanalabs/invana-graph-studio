@@ -1,5 +1,6 @@
+import { defaultNodeTypes } from "@/templates/nodes"
 import { FlowCanvasOptions } from "./types"
-import { MarkerType, Position } from "@xyflow/react"
+import { MarkerType, Position, ConnectionLineType } from "@xyflow/react"
 
 
 export const defaultCanvasStyle = {
@@ -18,17 +19,19 @@ export const defaultFlowCanvasOptions: FlowCanvasOptions = {
         proOptions: { hideAttribution: true },
         defaultNodeOptions: {
             position: { x: 0, y: 0 },
-            sourcePosition: Position.Bottom,
-            targetPosition: Position.Top,
+            // sourcePosition: Position.Bottom,
+            // targetPosition: Position.Top,
         },
         defaultEdgeOptions: {
-            markerEnd: MarkerType.Arrow,
+            markerEnd: MarkerType.ArrowClosed,
         },
-        debug: true
+        debug: true,
+        nodeTypes: defaultNodeTypes
     },
     nodes: [],
     edges: [],
     style: defaultCanvasStyle,
     extraNodeTypes: {},
     extraEdgeTypes: {},
+    layoutDirection: "TB"
 }

@@ -1,0 +1,12 @@
+{
+  // Associate file extensions with specific languages
+  "files.associations": {
+    "*.tsx": "typescriptreact",
+    "*.ts": "typescript",
+    "*.js": "javascript",
+    "*.jsx": "javascriptreact"
+  },
+  // Enable or configure the editor's behavior
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2
+}

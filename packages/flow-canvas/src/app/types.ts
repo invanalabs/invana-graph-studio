@@ -5,15 +5,19 @@ import { Node, Edge, NodeTypes, EdgeTypes, ReactFlowProps as ReactFlowPropsOrigi
 
 
 interface ReactFlowProps extends ReactFlowPropsOriginal {
-    defaultNodeOptions?: Partial<Node>;
-  }
+  defaultNodeOptions?: Partial<Node>;
+}
 
 export interface FlowCanvasOptions {
-    children?: ReactNode;
-    canvas: Omit<ReactFlowProps, "nodes" | "edges">;
-    nodes: Node[];
-    edges: Edge[];
-    style?: CSSProperties;
-    extraNodeTypes: NodeTypes;
-    extraEdgeTypes?: EdgeTypes;
+  children?: ReactNode;
+  canvas: Omit<ReactFlowProps, "nodes" | "edges">;
+  style?: CSSProperties;
+  // data
+  nodes: Node[];
+  edges: Edge[];
+  // templates
+  extraNodeTypes: NodeTypes;
+  extraEdgeTypes?: EdgeTypes;
+  // layout
+  layoutDirection: "TB" | "LR" | "BT" | "RL";
 }

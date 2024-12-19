@@ -16,12 +16,14 @@ import { addNodeDefaults } from "./utils";
 const FlowCanvas = (options: FlowCanvasOptions) => {
   console.log("FlowCanvas options", options);
   options = { ...defaultFlowCanvasOptions, ...options };
+  options.canvas.nodeTypes = { ...options.canvas.nodeTypes, ...options.extraNodeTypes };
   const ref = useRef<HTMLDivElement>(null);
 
   const [nodes, setNodes, onNodesChange] = useNodesState(options.nodes.map(
-    node => addNodeDefaults(node, options.canvas.defaultNodeOptions || {})
+    node => addNodeDefaults(node, options.canvas.defaultNodeOptions || {}, options.layoutDirection || "TB")
   ));
   const [edges, setEdges, onEdgesChange] = useEdgesState(options?.edges || []);
+
 
   return (
     <div style={options.style}>

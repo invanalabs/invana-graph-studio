@@ -5,7 +5,7 @@ export const data = {
   nodes: [
     {
       id: '1',
- 
+
       data: {
         label: 'Input Node',
       },
@@ -20,7 +20,7 @@ export const data = {
     },
     {
       id: '3',
-    
+
       data: {
         label: 'Output Node',
       },
@@ -28,7 +28,7 @@ export const data = {
     },
     {
       id: '4',
- 
+
       position: { x: 100, y: 200 },
       data: {
         label: 'Default Node 4',
@@ -37,7 +37,7 @@ export const data = {
     },
     {
       id: '5',
- 
+
       data: {
         label: 'custom style',
       },
@@ -47,8 +47,8 @@ export const data = {
         color: 'white',
       },
       position: { x: 400, y: 200 },
-      sourcePosition: Position.Right,
-      targetPosition: Position.Left,
+      // sourcePosition: Position.Right,
+      // targetPosition: Position.Left,
     }],
   edges: [
     { id: 'e1-2', source: '1', target: '2', label: 'this is an edge label' },
