@@ -14,6 +14,7 @@ export const defaultFlowCanvasOptions: FlowCanvasOptions = {
         minZoom: 0.1,
         maxZoom: 4,
         fitView: true,
+        fitViewOptions: { padding: .2 },
         proOptions: { hideAttribution: true },
         defaultNodeOptions: {
             position: { x: 0, y: 0 },

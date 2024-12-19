@@ -32,7 +32,9 @@ const FlowCanvas = (options: FlowCanvasOptions) => {
           onEdgesChange={onEdgesChange}
           nodes={nodes}
           edges={edges}
-        // {...options.canvas}
+          {...(options.canvas ? Object.fromEntries(
+            Object.entries(options.canvas).filter(([key]) => key !== 'defaultNodeOptions')
+          ) : {})}
         >
           <MiniMap zoomable pannable />
           <Background />
