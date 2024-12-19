@@ -10,12 +10,11 @@ export type DataField = {
 }
 
 export type DataTypeFieldsNodeProps = NodeProps & {
-  label: string
-  labelIcon?: React.ReactNode
-  fields: DataField[]
-
-  // data: CanvasNodeData
-  // selected: boolean
+  data: {
+    label: string
+    labelIcon?: React.ReactNode
+    fields: DataField[]
+  }
 }
 
 
@@ -42,6 +41,7 @@ const DataTypeFieldsNode = ({ id, data, selected = false }: DataTypeFieldsNodePr
     onMouseOver(e);
   };
 
+  console.log("DataTypeFieldsNode", data);
   const fields = data.fields || [];
 
   return (
@@ -52,7 +52,7 @@ const DataTypeFieldsNode = ({ id, data, selected = false }: DataTypeFieldsNodePr
 
 
       <div>
-        {fields && fields.map((field: DataField, index) => (
+        {fields && fields.map((field: DataField, index: number) => (
           <div
             className={`p-1 pl-2 pr-2 nodeField relative ${index !== fields.length - 1 ? 'border-b border-neutral-700' : ''}`}
             onMouseOver={onMouseOver}
