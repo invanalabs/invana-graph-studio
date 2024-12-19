@@ -1,5 +1,5 @@
 import { FlowCanvasOptions } from "./types"
-import { MarkerType } from "@xyflow/react"
+import { MarkerType, Position } from "@xyflow/react"
 
 
 export const defaultCanvasStyle = {
@@ -15,9 +15,15 @@ export const defaultFlowCanvasOptions: FlowCanvasOptions = {
         maxZoom: 4,
         fitView: true,
         proOptions: { hideAttribution: true },
+        defaultNodeOptions: {
+            position: { x: 0, y: 0 },
+            sourcePosition: Position.Bottom,
+            targetPosition: Position.Top,
+        },
         defaultEdgeOptions: {
             markerEnd: MarkerType.Arrow,
-        }
+        },
+        debug: true
     },
     nodes: [],
     edges: [],
