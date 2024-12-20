@@ -5,6 +5,7 @@ import LabeledGroupNode from "./LabeledGroupNode";
 import DataTypeFieldsNode from "./DataTypeFieldsNode";
 import DataTreeNode from "./DataTreeNode";
 import CardNode from "./CardNode";
+import AnnotationNode from "./AnnotationNode";
 
 
 export const defaultNodeTypes: NodeTypes = {
@@ -13,5 +14,6 @@ export const defaultNodeTypes: NodeTypes = {
     LabeledGroupNode: LabeledGroupNode,
     DataTypeFieldsNode: DataTypeFieldsNode,
     DataTreeNode: DataTreeNode,
-    CardNode: CardNode
+    CardNode: CardNode,
+    AnnotationNode: AnnotationNode
 };

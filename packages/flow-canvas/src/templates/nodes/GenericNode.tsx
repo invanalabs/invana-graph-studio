@@ -7,6 +7,8 @@ import { computeHandlePositions } from "@/app/utils";
 
 export type GenericNodeProps = Node<{
   label: string;
+  align?: "left" | "center" | "right";
+  icon: React.ReactNode
 }>;
 
 

@@ -13,7 +13,7 @@ export const BaseNodeTemplate = React.forwardRef<
       ref={ref}
       id={"node-" + id}
       className={cn(
-        "default-node rounded-md border   bg-card p-2 m-0 text-card-foreground",
+        "default-node rounded-md border  bg-card p-2 m-0 text-card-foreground",
         "dark:bg-neutral-800 dark:text-dark-card-foreground",
         // "with-auto",
         // " text-center",
