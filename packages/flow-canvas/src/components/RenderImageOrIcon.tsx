@@ -11,7 +11,7 @@ const RenderIconOrImg = ({ icon, style }: { icon: React.ReactNode, style?: CSSPr
           width={16}
           height={16}
           style={style}
-          className="mr-2 bg-center bg-no-repeat border-none bg-cover"
+          className="bg-center bg-no-repeat border-none bg-cover"
           alt="icon"
         />
       );
@@ -20,10 +20,10 @@ const RenderIconOrImg = ({ icon, style }: { icon: React.ReactNode, style?: CSSPr
     }
   }
   else if (typeof icon === "function") {
-    return <span className="mr-2">{React.createElement(icon)}</span>;
+    return <span>{React.createElement(icon)}</span>;
   }
   else {
-    return <span className="mr-2">{icon}</span>;
+    return <span>{icon}</span>;
   }
 };
 

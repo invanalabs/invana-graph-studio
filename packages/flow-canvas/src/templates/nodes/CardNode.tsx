@@ -18,12 +18,14 @@ const CardNode = ({ id, data, selected = false }: NodeProps<CardNodeProps>) => {
     <BaseNodeTemplate
       selected={selected}
       id={id}
-      className="min-w-[240px] text-card-foreground"
+      className="min-w-[240px] text-card-foreground p-0"
     >
-      <div className="flex items-center mb-2 border-b pb-2 border-b border-gray-600 dark:border-gray-300 ">
+      {/* border-gray-600 dark:border-gray-300 */}
+      <div className="flex items-center p-2 mb-2 border-b pb-2 border-b bg-neutral-900 rounded-t-md ">
         {data?.icon && <RenderIconOrImg icon={data.icon} />} <strong className="ml-1">{data.label}</strong>
       </div>
-      <RenderHTML html={data.body} />
+      <div className="p-2"><RenderHTML html={data.body} /></div>
+
     </BaseNodeTemplate>
   );
 };
