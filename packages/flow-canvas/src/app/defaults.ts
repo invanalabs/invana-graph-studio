@@ -1,6 +1,6 @@
 import { defaultNodeTypes } from "@/templates/nodes"
 import { FlowCanvasOptions } from "./types"
-import { MarkerType } from "@xyflow/react"
+import { BackgroundVariant, MarkerType, type BackgroundProps } from "@xyflow/react"
 
 
 export const defaultCanvasStyle = {
@@ -36,5 +36,13 @@ export const defaultFlowCanvasOptions: FlowCanvasOptions = {
     extraNodeTypes: {},
     extraEdgeTypes: {},
     layoutDirection: "LR",
-    debug: true
+    debug: true,
+    background: {
+        variant: BackgroundVariant.Dots,
+        color: "#4f4f4f",
+        // size: 10,
+        // color: "--color-neutral-800",
+        // variant: BackgroundVariant.Lines,
+        // color: "#2f2f2f"
+    }
 }

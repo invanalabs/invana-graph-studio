@@ -44,7 +44,7 @@ const FlowCanvas = (options: FlowCanvasOptions) => {
           ) : {})}
         >
           <MiniMap zoomable pannable />
-          <Background />
+          <Background {...options.background} />
           {/* <Controls /> */}
 
 
