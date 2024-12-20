@@ -18,7 +18,7 @@ const CommentNode = ({ id, data, selected = false }: NodeProps<CommentNode>) => 
     <BaseNodeTemplate
       selected={selected}
       id={id}
-      className="w-[220px] text-card-foreground text-xs dark:!bg-yellow-200 dark:!text-gray-800"
+      className="w-[220px] text-card-foreground text-xs dark:!bg-yellow-200 dark:!text-gray-800 !rounded-none !border-none !shadow-none"
     >
       <RenderIconOrImg icon={icon} />
       <RenderHTML html={data?.commentText || ""} />

@@ -7,7 +7,7 @@ interface RenderHTMLProps {
 }
 
 
-const RenderHTML = ({ html, className }: RenderHTMLProps) => {
+const RenderHTML = ({ html, className = "" }: RenderHTMLProps) => {
   if (typeof html === "string") {
     return <div className={className + ""} dangerouslySetInnerHTML={{ __html: html || "" }} />
   } else {
