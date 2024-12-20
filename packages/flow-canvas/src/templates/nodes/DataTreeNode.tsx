@@ -50,12 +50,12 @@ const DataTreeNode = ({ id, data, selected = false }: DataTreeNodeProps) => {
 
       {!collapsed && fields && fields.map((field: DataField, index: number) => (
         <div
-          className={`p-1 ml-6 pl-2 pr-2 nodeField relative ${index !== fields.length - 1 ? '  border-neutral-700' : ''}`}
+          className={`p-1 ml-6 pl-2 pr-2 nodeField relative ${index !== fields.length - 1 ? ' border-neutral-700' : ''}`}
           data-node-id={id}
           data-handle-id={field.id}
           key={"i-" + field.label}
         >
-          <div className="flex   text-gray-600 dark:text-gray-400 items-center">
+          <div className="flex text-sm text-gray-600 dark:text-gray-400 items-center">
             <span className="mr-2"><File className="h-4 w-4" /></span>
             <div> {field.label} </div>
           </div>
