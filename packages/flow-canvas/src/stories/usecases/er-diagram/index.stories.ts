@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { data } from "./data";
+import { data } from "./simple-data";
+import { data as groupdData } from "./grouped-data";
 import FlowCanvas from '../../../app/app';
 
 
@@ -16,9 +17,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 
-export const ERDriagram: Story = {
+export const Basic: Story = {
   args: {
     nodes: data.nodes,
     edges: data.edges
+  },
+};
+
+
+export const ERDriagramGrouped: Story = {
+  name: "Grouped ER",
+  args: {
+    nodes: groupdData.nodes,
+    edges: groupdData.edges
   },
 };
