@@ -14,14 +14,18 @@ export type CommentNode = Node<{
 
 const CommentNode = ({ id, data, selected = false }: NodeProps<CommentNode>) => {
   const icon = data.icon ? data.icon : <StickyNoteIcon className="w-4 h-4" />
+
+
   return (
     <BaseNodeTemplate
       selected={selected}
       id={id}
       className="w-[220px] text-card-foreground text-xs dark:!bg-yellow-200 dark:!text-gray-800 !rounded-none !border-none !shadow-none"
     >
+      {/* <div className="flex"> */}
       <RenderIconOrImg icon={icon} />
-      <RenderHTML html={data?.commentText || ""} />
+      <RenderHTML className="inline" html={data?.commentText || ""} />
+      {/* </div> */}
     </BaseNodeTemplate>
   );
 };
