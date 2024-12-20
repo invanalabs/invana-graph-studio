@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Handle, NodeProps, Position, ReactFlowState, useStore, useStoreApi } from "@xyflow/react";
+import { Handle, NodeProps, Position } from "@xyflow/react";
 import { BaseNodeTemplate } from "@/components/BaseNodeTemplate";
 
 
@@ -19,27 +19,6 @@ export type DataTypeFieldsNodeProps = NodeProps & {
 
 
 const DataTypeFieldsNode = ({ id, data, selected = false }: DataTypeFieldsNodeProps) => {
-  const store = useStoreApi();
-  const nodes = useStore((state: ReactFlowState) => state.nodes);
-  const edges = useStore((state: ReactFlowState) => state.edges);
-  const { setNodes, setEdges } = store.getState();
-
-  const onMouseOver = (e: React.MouseEvent) => {
-    const el = e.currentTarget;
-    const nodeId: string = el.getAttribute("data-node-id") || "";
-    const handleId: string | null = el.getAttribute("data-handle-id");
-    // highlightHandlePathByNodeHandleId(nodeId, handleId, nodes, edges, setNodes, setEdges);
-    // https://github.com/wbkd/react-flow/issues/2418
-  };
-
-  const onMouseOut = (e: React.MouseEvent) => {
-    console.log("onMouseOut", e);
-    // resetHandlePathHighlight(nodes, edges, setNodes, setEdges);
-  };
-
-  const handleClick = (e: React.MouseEvent) => {
-    onMouseOver(e);
-  };
 
   console.log("DataTypeFieldsNode", data);
   const fields = data.fields || [];
@@ -60,10 +39,10 @@ const DataTypeFieldsNode = ({ id, data, selected = false }: DataTypeFieldsNodePr
         {fields && fields.map((field: DataField, index: number) => (
           <div
             className={`p-1 pl-2 pr-2 nodeField relative ${index !== fields.length - 1 ? 'border-b border-neutral-700' : ''}`}
-            onMouseOver={onMouseOver}
-            onMouseOut={onMouseOut}
+            // onMouseOver={onMouseOver}
+            // onMouseOut={onMouseOut}
             // id={generateFieldName(id, field.id)}
-            onClick={handleClick}
+            // onClick={handleClick}
             data-node-id={id}
             data-handle-id={field.id}
             key={"i-" + field.label}
@@ -74,9 +53,8 @@ const DataTypeFieldsNode = ({ id, data, selected = false }: DataTypeFieldsNodePr
             </div>
             {/* <Handle type="source" position={Position.Top} id={field.id}/>
                 <Handle type="source" position={Position.Bottom} id={field.id}/> */}
-
-            <Handle type="source" position={Position.Right} id={field.id} />
-            <Handle type="target" position={Position.Left} id={field.id} />
+            <Handle type="source" className="bg-neutral-600 border-neutral-800" position={Position.Right} id={field.id} />
+            <Handle type="target" className="bg-neutral-600 border-neutral-800" position={Position.Left} id={field.id} />
           </div>
         ))}
       </div>

@@ -1,6 +1,6 @@
 import { defaultNodeTypes } from "@/templates/nodes"
 import { FlowCanvasOptions } from "./types"
-import { BackgroundVariant, MarkerType, type BackgroundProps } from "@xyflow/react"
+import { BackgroundVariant, MarkerType } from "@xyflow/react"
 
 
 export const defaultCanvasStyle = {

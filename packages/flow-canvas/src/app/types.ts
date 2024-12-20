@@ -1,7 +1,5 @@
 import type { ReactNode, CSSProperties } from "react";
-import { Node, Edge, NodeTypes, EdgeTypes, ReactFlowProps as ReactFlowPropsOriginal, BackgroundVariant, BackgroundProps } from "@xyflow/react"
-
-
+import { Node, Edge, NodeTypes, EdgeTypes, ReactFlowProps as ReactFlowPropsOriginal, BackgroundProps } from "@xyflow/react"
 
 
 interface ReactFlowProps extends ReactFlowPropsOriginal {
