@@ -2,8 +2,17 @@ import type { ReactNode, CSSProperties } from "react";
 import { Node, Edge, NodeTypes, EdgeTypes, ReactFlowProps as ReactFlowPropsOriginal, BackgroundProps } from "@xyflow/react"
 
 
-interface ReactFlowProps extends ReactFlowPropsOriginal {
+export interface ReactFlowProps extends ReactFlowPropsOriginal {
   defaultNodeOptions?: Partial<Node>;
+}
+
+export interface CanvasPlugin {
+  name: string;
+  component: ReactNode;
+  options: {
+    [key: string]: string | boolean | number;
+  };
+  isHidden: boolean;
 }
 
 export interface FlowCanvasOptions {
@@ -19,5 +28,8 @@ export interface FlowCanvasOptions {
   // layout
   layoutDirection: "TB" | "LR" | "BT" | "RL";
   debug?: boolean;
-  background?: BackgroundProps
+  background?: BackgroundProps;
+  display: {
+    plugins: { [key: string]: boolean; }
+  }
 }

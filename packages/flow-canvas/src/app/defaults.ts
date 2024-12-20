@@ -36,7 +36,7 @@ export const defaultFlowCanvasOptions: FlowCanvasOptions = {
     extraNodeTypes: {},
     extraEdgeTypes: {},
     layoutDirection: "LR",
-    debug: true,
+    // debug: true,
     background: {
         variant: BackgroundVariant.Dots,
         color: "#4f4f4f",
@@ -44,5 +44,13 @@ export const defaultFlowCanvasOptions: FlowCanvasOptions = {
         // color: "--color-neutral-800",
         // variant: BackgroundVariant.Lines,
         // color: "#2f2f2f"
+    },
+    display: {
+        plugins: {
+            devTools: true,
+            miniMap: true,
+            controls: true,
+            background: true
+        }
     }
 }

@@ -64,7 +64,7 @@ function ChangeInfo({ change }: ChangeInfoProps) {
   );
 }
 
-export function ChangeLogger({ limit = 20 }: ChangeLoggerProps) {
+export const ChangeLogger: React.FC<ChangeLoggerProps> = ({ limit = 20 }) => {
   const [changes, setChanges] = useState<NodeChange[]>([]);
   const store = useStoreApi();
 

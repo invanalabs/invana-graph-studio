@@ -6,6 +6,7 @@ import {
   Background,
   useNodesState,
   useEdgesState,
+  Controls,
 } from "@xyflow/react";
 import { FlowCanvasOptions } from "./types";
 import '@xyflow/react/dist/style.css';
@@ -15,7 +16,7 @@ import "../index.css";
 import { DevTools } from "@/plugins/DevTools";
 
 
-const FlowCanvas = (options: FlowCanvasOptions) => {
+const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
   console.log("FlowCanvas options", options);
   options = { ...defaultFlowCanvasOptions, ...options };
   // options.canvas.nodeTypes = { ...options.canvas.nodeTypes, ...options.extraNodeTypes };
@@ -43,12 +44,10 @@ const FlowCanvas = (options: FlowCanvasOptions) => {
             Object.entries(options.canvas).filter(([key]) => key !== 'defaultNodeOptions')
           ) : {})}
         >
-          <MiniMap zoomable pannable />
-          <Background {...options.background} />
-          {/* <Controls /> */}
-
-
-          {options.debug && <DevTools />}
+          {options.display?.plugins?.miniMap && <MiniMap zoomable pannable />}
+          {options.display?.plugins?.background && <Background {...options.background} />}
+          {options.display?.plugins?.controls && <Controls />}
+          {options.display?.plugins?.devTools && <DevTools />}
           {options.children}
         </ReactFlow>
       </ReactFlowProvider>
