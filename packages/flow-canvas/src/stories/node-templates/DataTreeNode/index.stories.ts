@@ -10,7 +10,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   // argTypes: {
   //   backgroundColor: { control: 'color' },
