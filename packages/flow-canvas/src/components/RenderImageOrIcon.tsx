@@ -2,6 +2,7 @@ import React, { CSSProperties } from "react";
 
 
 const RenderIconOrImg = ({ icon, style }: { icon: React.ReactNode, style?: CSSProperties }) => {
+  console.log("RenderIconOrImg", icon);
   if (typeof icon === "string") {
     if (icon.startsWith("http")) {
       return (
