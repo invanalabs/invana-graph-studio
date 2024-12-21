@@ -50,8 +50,7 @@ const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
           {options.display?.plugins?.background && <Background {...options.background} />}
           {options.display?.plugins?.controls && <Controls />}
           {/* {options.display?.plugins?.devTools && <DevTools position="top-left" className="p-0 border rounded shadow-sm" />} */}
-
-          <Panel position="top-left" className="bg-neutral-800 flex items-center 
+          <Panel position="top-left" className="bg-neutral-800 border-1 flex items-center 
            text-card-foreground transition-colors"> <CanvasToolBar /> </Panel>
           {options.children}
         </ReactFlow>

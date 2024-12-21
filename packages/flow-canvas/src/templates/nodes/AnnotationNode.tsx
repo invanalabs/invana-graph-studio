@@ -22,7 +22,7 @@ const AnnotationNode = ({ id, data, selected = false }: NodeProps<AnnotationNode
                 relative flex  items-start p-2 text-xs"
     >
       {typeof data.level === 'number' && (
-        <div className="mr-1 leading-snug">{data.level}.</div>
+        <div className="mr-1  text-xs">{data.level}.</div>
       )}
       {typeof data.level === 'number' && (
         <RenderHTML html={data.label} className="text-xs " />
