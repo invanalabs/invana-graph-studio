@@ -7,6 +7,7 @@ module.exports = {
   ],
   theme: {
     fontSize: {
+      xs: ['10px', '16px'],
       sm: ['12px', '18px'],
       base: ['14px', '22px'],
       lg: ['18px', '26px'],
