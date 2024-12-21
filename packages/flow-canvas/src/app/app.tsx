@@ -14,7 +14,6 @@ import '@xyflow/react/dist/style.css';
 import { defaultFlowCanvasOptions } from "./defaults";
 import { addNodeDefaults } from "./utils";
 import "../index.css";
-import { DevTools } from "@/plugins/toolbars/DevTools";
 import { CanvasToolBar } from "@/plugins/toolbars/CanvasToolBar";
 
 
@@ -23,12 +22,11 @@ const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
   options = { ...defaultFlowCanvasOptions, ...options };
   // options.canvas.nodeTypes = { ...options.canvas.nodeTypes, ...options.extraNodeTypes };
   // options.canvas.nodeTypes = options.canvas.nodeTypes
-
   console.log("FlowCanvas options2", options);
   const ref = useRef<HTMLDivElement>(null);
 
   const [nodes, setNodes, onNodesChange] = useNodesState(options.nodes.map(
-    node => addNodeDefaults(node, options.canvas.defaultNodeOptions || {}, options.layoutDirection || "TB")
+    node => addNodeDefaults(node, options.canvas.defaultNodeOptions || {}, options.layoutDirection)
   ));
   const [edges, setEdges, onEdgesChange] = useEdgesState(options?.edges || []);
 

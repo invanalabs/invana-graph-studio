@@ -9,7 +9,10 @@ import {
 import { Separator } from "@invana/ui/components/ui/separator"
 import { ButtonWithTooltip } from "@invana/ui/components/ui-extended/button-with-tooltip"
 import { useReactFlow, useViewport, BackgroundVariant } from "@xyflow/react";
-import { Eraser, Minus, MoveDown, MoveLeft, MoveRight, MoveUp, Plus } from "lucide-react";
+import { Eraser, MoveDown, MoveLeft, MoveRight, MoveUp } from "lucide-react";
+import useCanvasSettings from "@/hooks/useCanvasSettings";
+import { LayoutDirections } from "@/app/types";
+import { computeHandlePositions } from "@/app/utils";
 // import { cn } from "../../../lib/utils";
 
 
@@ -18,8 +21,9 @@ export const CanvasControls = () => {
   // Background, Erase, defaultEdges
 
   const { zoom } = useViewport();
-  const { zoomTo, zoomIn, zoomOut, fitView, getEdges, setNodes, setEdges } = useReactFlow();
+  const { zoomTo, fitView, getEdges, getNodes, setNodes, setEdges } = useReactFlow();
   const [defaultEdgeType, setDefaultEdgeType] = React.useState('default');
+  const { background, setBackground, setLayoutDirection, layoutDirection } = useCanvasSettings()
 
   const onEdgeTypeChange = (value: string) => {
 
@@ -33,8 +37,11 @@ export const CanvasControls = () => {
   }
 
   const eraseCanvas = () => {
-    setNodes([])
-    setEdges([])
+
+    if (window.confirm("Are you sure you want to erase all this data in canvas ?")) {
+      setNodes([]);
+      setEdges([]);
+    }
   }
 
 
@@ -45,6 +52,15 @@ export const CanvasControls = () => {
     else {
       zoomTo(Number(value) / 100, { duration: 300 });
     }
+  }
+
+  const updateLayoutData = (value: LayoutDirections) => {
+    setLayoutDirection(value)
+    const nodes = getNodes();
+    setNodes(nodes.map(node => {
+      const { sourcePosition, targetPosition } = computeHandlePositions(value);
+      return { ...node, sourcePosition, targetPosition }
+    }))
   }
 
   return (
@@ -63,7 +79,7 @@ export const CanvasControls = () => {
       </Select>
 
       <Select onValueChange={onEdgeTypeChange}>
-        <SelectTrigger className="border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[140px] ">
+        <SelectTrigger className="border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[120px] ">
           <SelectValue placeholder={defaultEdgeType} />
         </SelectTrigger>
         <SelectContent>
@@ -74,24 +90,22 @@ export const CanvasControls = () => {
           <SelectItem value="smoothstep">Smoothstep</SelectItem>
         </SelectContent>
       </Select>
-
       <Separator orientation="vertical" />
-
-      <Select onValueChange={(value) => console.log(value)} defaultValue="left-to-right">
+      <Select onValueChange={updateLayoutData} defaultValue={layoutDirection}>
         <SelectTrigger className="w-[150px] border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
           <SelectValue placeholder="Dagre Options" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="left-to-right">
+          <SelectItem value={"LR"}>
             <span className="flex items-center"><MoveRight className="w-4 h-4 mr-2" /> Left to Right</span>
           </SelectItem>
-          <SelectItem value="right-to-left">
+          <SelectItem value={"RL"}>
             <span className="flex items-center"><MoveLeft className="w-4 h-4 mr-2" /> Right to Left</span>
           </SelectItem>
-          <SelectItem value="top-to-bottom">
+          <SelectItem value={"TB"}>
             <span className="flex items-center"><MoveDown className="w-4 h-4 mr-2" /> Top to Bottom</span>
           </SelectItem>
-          <SelectItem value="bottom-to-top">
+          <SelectItem value={"BT"}>
             <span className="flex items-center"><MoveUp className="w-4 h-4 mr-2" /> Bottom to Top</span>
           </SelectItem>
         </SelectContent>

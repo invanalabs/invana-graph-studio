@@ -15,6 +15,8 @@ export interface CanvasPlugin {
   isHidden: boolean;
 }
 
+export type LayoutDirections = "TB" | "LR" | "BT" | "RL"
+
 export interface FlowCanvasOptions {
   children?: ReactNode;
   canvas: Omit<ReactFlowProps, "nodes" | "edges">;
@@ -26,7 +28,7 @@ export interface FlowCanvasOptions {
   extraNodeTypes: NodeTypes;
   extraEdgeTypes?: EdgeTypes;
   // layout
-  layoutDirection: "TB" | "LR" | "BT" | "RL";
+  layoutDirection: LayoutDirections;
   debug?: boolean;
   background?: BackgroundProps;
   display: {

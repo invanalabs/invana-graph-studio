@@ -1,7 +1,8 @@
 import { Node, Position } from "@xyflow/react"
+import { LayoutDirections } from "./types";
 
 
-export const computeHandlePositions = (direction: string = "LR") => {
+export const computeHandlePositions = (direction: LayoutDirections = "LR") => {
   let sourcePosition: Position;
   let targetPosition: Position;
 
