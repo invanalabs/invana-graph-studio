@@ -18,14 +18,15 @@ type ChangeLoggerProps = {
 
 type ChangeInfoProps = {
   change: NodeChange;
+  className?: string;
 };
 
-export const ChangeInfo: React.FC<ChangeInfoProps> = ({ change }) => {
+export const ChangeInfo: React.FC<ChangeInfoProps> = ({ change, className = '' }) => {
   const id = 'id' in change ? change.id : '-';
   const { type } = change;
 
   return (
-    <div className="mb-3">
+    <div className={"mb-3 " + className}>
       <div>node id: {id}</div>
       <div>
         {type === 'add' ? JSON.stringify(change.item, null, 2) : null}
@@ -67,7 +68,7 @@ export const ChangeLogger: React.FC<ChangeLoggerProps> = ({ limit = 20 }) => {
       {changes.length === 0 ? (
         <NoChanges />
       ) : (
-        changes.map((change, index) => <ChangeInfo key={index} change={change} />)
+        changes.map((change, index) => <ChangeInfo key={index} change={change} className={"border-b pb-1"} />)
       )}
     </>
   );

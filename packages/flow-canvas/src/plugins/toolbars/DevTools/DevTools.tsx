@@ -45,7 +45,7 @@ export const DevTools: React.FC<CanvasPanelProps> = (props) => {
       </Panel>
 
       {changeLoggerActive && (
-        <Panel className="text-xs p-5 bg-white rounded shadow-md overflow-y-auto w-[320px] max-h-[50%] mt-20" position="bottom-right">
+        <Panel className="text-xs p-3 bg-white border shadow-md overflow-y-auto w-[320px] max-h-[50%] mt-20" position="bottom-right">
           <ChangeLogger />
         </Panel>
       )}
