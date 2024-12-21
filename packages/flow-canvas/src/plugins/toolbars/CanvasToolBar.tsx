@@ -1,10 +1,12 @@
 import React from 'react';
+import { ViewportControls } from '../options/viewport/ViewportControls';
 
 
-const CanvasToolBar: React.FC = () => {
+export const CanvasToolBar: React.FC = () => {
+
   return (
-    <div />
+    <>
+      <ViewportControls />
+    </>
   );
 };
-
-export default CanvasToolBar;

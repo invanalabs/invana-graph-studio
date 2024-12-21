@@ -1,17 +1,18 @@
-import { Button, ButtonProps } from "@/components/ui/button"
+import React from "react"
+import { Button, ButtonProps } from "../ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "../ui/tooltip"
 
 
 export interface ButtonWithTooltipProps extends ButtonProps {
   tooltip: React.ReactNode
 }
 
-export default function ButtonWithTooltip(props: ButtonWithTooltipProps) {
+export function ButtonWithTooltip(props: ButtonWithTooltipProps) {
   return (
     <TooltipProvider>
       <Tooltip delayDuration={0}>

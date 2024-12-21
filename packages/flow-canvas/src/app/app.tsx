@@ -7,6 +7,7 @@ import {
   useNodesState,
   useEdgesState,
   Controls,
+  Panel,
 } from "@xyflow/react";
 import { FlowCanvasOptions } from "./types";
 import '@xyflow/react/dist/style.css';
@@ -14,6 +15,7 @@ import { defaultFlowCanvasOptions } from "./defaults";
 import { addNodeDefaults } from "./utils";
 import "../index.css";
 import { DevTools } from "@/plugins/toolbars/DevTools";
+import { CanvasToolBar } from "@/plugins/toolbars/CanvasToolBar";
 
 
 const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
@@ -47,7 +49,10 @@ const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
           {options.display?.plugins?.miniMap && <MiniMap zoomable pannable />}
           {options.display?.plugins?.background && <Background {...options.background} />}
           {options.display?.plugins?.controls && <Controls />}
-          {options.display?.plugins?.devTools && <DevTools position="top-left" className="p-0 border rounded shadow-sm" />}
+          {/* {options.display?.plugins?.devTools && <DevTools position="top-left" className="p-0 border rounded shadow-sm" />} */}
+
+          <Panel position="top-left" className="bg-neutral-800 flex items-center 
+           text-card-foreground transition-colors"> <CanvasToolBar /> </Panel>
           {options.children}
         </ReactFlow>
       </ReactFlowProvider>
