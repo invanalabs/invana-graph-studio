@@ -13,7 +13,7 @@ import '@xyflow/react/dist/style.css';
 import { defaultFlowCanvasOptions } from "./defaults";
 import { addNodeDefaults } from "./utils";
 import "../index.css";
-import { DevTools } from "@/plugins/DevTools/DevTools";
+import { DevTools } from "@/plugins/DevTools";
 
 
 const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
