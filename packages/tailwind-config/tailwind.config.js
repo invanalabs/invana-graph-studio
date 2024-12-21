@@ -6,6 +6,12 @@ module.exports = {
     "dark"
   ],
   theme: {
+    fontSize: {
+      sm: ['12px', '18px'],
+      base: ['14px', '22px'],
+      lg: ['18px', '26px'],
+      xl: ['22px', '30px'],
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
