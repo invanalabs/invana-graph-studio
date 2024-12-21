@@ -8,10 +8,10 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@invana/ui/components/ui/toggle-group"
-import { ChangeLogger } from "./ChangeLogger"
-import { ViewportLogger } from './ViewportLogger';
-import { NodeInspector } from './NodeInspector';
-import { CanvasPanelProps } from '../types';
+import { ChangeLogger } from "../../options/ChangeLogger"
+import { ViewportLogger } from '../../options/ViewportLogger';
+import { NodeInspector } from '../../options/NodeInspector';
+import { CanvasPanelProps } from '../../types';
 
 
 export const DevTools: React.FC<CanvasPanelProps> = (props) => {
