@@ -47,7 +47,7 @@ const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
           {options.display?.plugins?.miniMap && <MiniMap zoomable pannable />}
           {options.display?.plugins?.background && <Background {...options.background} />}
           {options.display?.plugins?.controls && <Controls />}
-          {options.display?.plugins?.devTools && <DevTools />}
+          {options.display?.plugins?.devTools && <DevTools position="top-left" className="p-0 border rounded shadow-sm" />}
           {options.children}
         </ReactFlow>
       </ReactFlowProvider>

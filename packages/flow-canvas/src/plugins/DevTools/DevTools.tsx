@@ -2,7 +2,7 @@ import React, {
   useState,
 } from 'react';
 import {
-  Panel
+  Panel,
 } from '@xyflow/react';
 import {
   ToggleGroup,
@@ -11,10 +11,10 @@ import {
 import { ChangeLogger } from "./ChangeLogger"
 import { ViewportLogger } from './ViewportLogger';
 import { NodeInspector } from './NodeInspector';
+import { CanvasPanelProps } from '../types';
 
 
-
-export function DevTools(): React.ReactNode {
+export const DevTools: React.FC<CanvasPanelProps> = (props) => {
   const [nodeInspectorActive, setNodeInspectorActive] = useState(false);
   const [changeLoggerActive, setChangeLoggerActive] = useState(false);
   const [viewportLoggerActive, setViewportLoggerActive] = useState(false);
@@ -27,7 +27,7 @@ export function DevTools(): React.ReactNode {
 
   return (
     <div>
-      <Panel position="top-left" className="p-0 border rounded shadow-sm">
+      <Panel {...props}>
         <ToggleGroup type="multiple">
           {tools.map(({ active, setActive, label, value }) => (
             <ToggleGroupItem
