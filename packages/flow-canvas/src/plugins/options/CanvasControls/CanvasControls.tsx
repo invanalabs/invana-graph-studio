@@ -44,16 +44,6 @@ export const CanvasControls = () => {
     }
   }
 
-
-  const onZoomChange = (value: string) => {
-    if (value === "fitview") {
-      fitView({ duration: 300 });
-    }
-    else {
-      zoomTo(Number(value) / 100, { duration: 300 });
-    }
-  }
-
   const updateLayoutData = (value: LayoutDirections) => {
     setLayoutDirection(value)
     const nodes = getNodes();
@@ -63,9 +53,13 @@ export const CanvasControls = () => {
     }))
   }
 
+  const onBackgroundChange = (value: BackgroundVariant) => {
+    setBackground({ variant: value });
+  }
+
   return (
     <>
-      <Select onValueChange={onZoomChange}>
+      <Select onValueChange={onBackgroundChange}>
         <SelectTrigger className="border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[100px] ">
           <SelectValue placeholder={(100 * zoom).toFixed(0)} />
         </SelectTrigger>
