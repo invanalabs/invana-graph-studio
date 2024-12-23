@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Select,
   SelectContent,
@@ -8,12 +8,15 @@ import {
 } from "@invana/ui/components/ui/select"
 import { Separator } from "@invana/ui/components/ui/separator"
 import { ButtonWithTooltip } from "@invana/ui/components/ui-extended/button-with-tooltip"
-import { useReactFlow, useViewport } from "@xyflow/react";
+import { ColorMode, useReactFlow, useStoreApi, useViewport } from "@xyflow/react";
 import { Minus, Plus } from "lucide-react";
 // import { cn } from "../../../lib/utils";
 
 
 export const ViewportControls = () => {
+
+
+
 
   const { zoom } = useViewport();
   const { zoomTo, zoomIn, zoomOut, fitView } = useReactFlow();
@@ -29,8 +32,16 @@ export const ViewportControls = () => {
 
   return (
     <>
+      <ButtonWithTooltip
+        variant="ghost"
+        size="icon"
+        onClick={() => zoomOut({ duration: 300 })}
+        tooltip={<p>Zoom out</p>}
+      >
+        <Minus className="h-4 w-4" />
+      </ButtonWithTooltip>
       <Select onValueChange={onZoomChange}>
-        <SelectTrigger className="border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[100px] ">
+        <SelectTrigger className="border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[90px] ">
           <SelectValue placeholder={(100 * zoom).toFixed(0) + "%"} />
         </SelectTrigger>
         <SelectContent>
@@ -43,14 +54,7 @@ export const ViewportControls = () => {
         </SelectContent>
       </Select>
       <Separator orientation="vertical" />
-      <ButtonWithTooltip
-        variant="ghost"
-        size="icon"
-        onClick={() => zoomOut({ duration: 300 })}
-        tooltip={<p>Zoom out</p>}
-      >
-        <Minus className="h-4 w-4" />
-      </ButtonWithTooltip>
+
       <ButtonWithTooltip
         variant="ghost"
         size="icon"
