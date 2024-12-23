@@ -60,7 +60,7 @@ export const CanvasControls = () => {
   const onBackgroundChange = (value: BackgroundVariant) => {
     setBackground({ variant: value });
   }
-  console.log("CanvasControls lockViewport", lockViewport)
+
   return (
     // <ReactFlowProvider>
     <>
