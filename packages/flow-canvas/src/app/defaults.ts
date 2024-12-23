@@ -11,7 +11,7 @@ export const defaultCanvasStyle = {
 
 export const defaultFlowCanvasOptions: FlowCanvasOptions = {
     canvas: {
-        colorMode: "light",
+        colorMode: "system",
         minZoom: 0.1,
         maxZoom: 4,
         fitView: true,
