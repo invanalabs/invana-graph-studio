@@ -18,18 +18,12 @@ import { CanvasToolBar } from "@/plugins/toolbars/CanvasToolBar";
 
 
 const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
-  console.log("FlowCanvas options", options);
   options = { ...defaultFlowCanvasOptions, ...options };
-  // options.canvas.nodeTypes = { ...options.canvas.nodeTypes, ...options.extraNodeTypes };
-  // options.canvas.nodeTypes = options.canvas.nodeTypes
-  console.log("FlowCanvas options2", options);
   const ref = useRef<HTMLDivElement>(null);
-
   const [nodes, setNodes, onNodesChange] = useNodesState(options.nodes.map(
     node => addNodeDefaults(node, options.canvas.defaultNodeOptions || {}, options.layoutDirection)
   ));
   const [edges, setEdges, onEdgesChange] = useEdgesState(options?.edges || []);
-
 
   return (
     <div style={options.style}>

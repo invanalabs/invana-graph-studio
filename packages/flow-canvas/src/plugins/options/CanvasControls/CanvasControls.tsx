@@ -8,27 +8,31 @@ import {
 } from "@invana/ui/components/ui/select"
 import { Separator } from "@invana/ui/components/ui/separator"
 import { ButtonWithTooltip } from "@invana/ui/components/ui-extended/button-with-tooltip"
-import { useReactFlow, useViewport, BackgroundVariant } from "@xyflow/react";
-import { Eraser, MoveDown, MoveLeft, MoveRight, MoveUp } from "lucide-react";
+import { useReactFlow, BackgroundVariant } from "@xyflow/react";
+import { Eraser, Lock, MoveDown, MoveLeft, MoveRight, MoveUp, Unlock } from "lucide-react";
 import useCanvasSettings from "@/hooks/useCanvasSettings";
 import { LayoutDirections } from "@/app/types";
 import { computeHandlePositions } from "@/app/utils";
 // import { cn } from "../../../lib/utils";
+// import { useStoreState, useStoreActions } from "@xyflow/react";
 
 
 export const CanvasControls = () => {
 
+  // const setInteractive = useStoreActions((actions) => actions.setInteractive);
+
   // Background, Erase, defaultEdges
 
-  const { zoom } = useViewport();
-  const { zoomTo, fitView, getEdges, getNodes, setNodes, setEdges } = useReactFlow();
+  const { getEdges, getNodes, setNodes, setEdges } = useReactFlow();
   const [defaultEdgeType, setDefaultEdgeType] = React.useState('default');
-  const { background, setBackground, setLayoutDirection, layoutDirection } = useCanvasSettings()
+  const {
+    background, setBackground,
+    lockViewport, toggleLockViewport,
+    setLayoutDirection, layoutDirection
+  } = useCanvasSettings()
 
   const onEdgeTypeChange = (value: string) => {
-
     setDefaultEdgeType(value);
-
     const edges = getEdges();
     edges.forEach(edge => {
       edge.type = value;
@@ -56,12 +60,13 @@ export const CanvasControls = () => {
   const onBackgroundChange = (value: BackgroundVariant) => {
     setBackground({ variant: value });
   }
-
+  console.log("CanvasControls lockViewport", lockViewport)
   return (
+    // <ReactFlowProvider>
     <>
       <Select onValueChange={onBackgroundChange}>
         <SelectTrigger className="border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[100px] ">
-          <SelectValue placeholder={(100 * zoom).toFixed(0)} />
+          <SelectValue placeholder={background.variant} />
         </SelectTrigger>
         <SelectContent>
           {Object.values(BackgroundVariant).map((variant) => (
@@ -108,6 +113,15 @@ export const CanvasControls = () => {
       <ButtonWithTooltip
         variant="ghost"
         size="icon"
+        onClick={() => toggleLockViewport()}
+        tooltip={<p>{lockViewport ? "Unlock Canvas" : "Lock Canvas"}</p>}
+      >
+        {lockViewport ? <Lock className="h-4 w-4" /> : <Unlock className="h-4 w-4" />}
+      </ButtonWithTooltip>
+      <Separator orientation="vertical" />
+      <ButtonWithTooltip
+        variant="ghost"
+        size="icon"
         onClick={() => eraseCanvas()}
         tooltip={<p>Erase Everything</p>}
       >
@@ -115,5 +129,6 @@ export const CanvasControls = () => {
       </ButtonWithTooltip>
 
     </>
+    // </ReactFlowProvider >
   )
 }
