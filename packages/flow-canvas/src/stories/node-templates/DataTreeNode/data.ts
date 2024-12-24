@@ -1,3 +1,4 @@
+
 export const data = {
   nodes: [{
     id: "2.1",
@@ -6,7 +7,15 @@ export const data = {
       label: "NSE Data (2.1)",
       fields: [
         { label: "identifier", id: "identifier", data_type: "string" },
-        { label: "is_active", id: "is_active", data_type: "string" }
+        {
+          label: "is_active", id: "is_active", data_type: "string",
+          fields: [
+            { label: "candle", id: "candle", data_type: "string" },
+            { label: "title", id: "title", data_type: "string" },
+            { label: "description", id: "description", data_type: "string" },
+            { label: "is_active", id: "is_active", data_type: "bool", }
+          ]
+        }
       ]
     },
     position: { x: -300, y: 0 }
@@ -20,7 +29,7 @@ export const data = {
         { label: "candle", id: "candle", data_type: "string" },
         { label: "title", id: "title", data_type: "string" },
         { label: "description", id: "description", data_type: "string" },
-        { label: "is_active", id: "is_active", data_type: "bool" }
+        { label: "is_active", id: "is_active", data_type: "bool", }
       ]
     },
     position: { x: 100, y: 0 }
