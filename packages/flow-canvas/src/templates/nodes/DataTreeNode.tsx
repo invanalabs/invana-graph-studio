@@ -79,7 +79,7 @@ const DataTreeNode = ({ id, data, selected = false, ...props }: DataTreeNodeProp
 
 
   return (
-    <BaseNodeTemplate id={id} selected={selected} className="min-w-[240px] p-0">
+    <BaseNodeTemplate id={id} selected={selected} className="min-w-[240px] p-0 pb-1">
       {/* <Handle type="source" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Right} id={id} />
       <Handle type="target" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Left} id={id} /> */}
 
