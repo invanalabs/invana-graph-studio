@@ -20,20 +20,20 @@ export type DataTreeNodeProps = NodeProps & {
 }
 
 
-const DataTreeNode = ({ id, data, selected = false }: DataTreeNodeProps) => {
+const DataTreeNode = ({ id, data, selected = false, ...props }: DataTreeNodeProps) => {
 
-  console.log("DataTreeNode", data);
+  console.log("DataTreeNode", data, props);
   const fields = data.fields || [];
 
   const [collapsed, setCollapsed] = useState(false);
 
   return (
     <BaseNodeTemplate id={id} selected={selected} className="min-w-[240px] p-0">
-      <Handle type="source" className="absolute top-5" position={Position.Right} id={id} />
-      <Handle type="target" className="absolute top-5" position={Position.Left} id={id} />
+      <Handle type="source" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Right} id={id} />
+      <Handle type="target" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Left} id={id} />
 
       <div
-        className="cursor-pointer bg-zinc-900 font-bold rounded-t-sm p-1 pl-2 pr-2 nodeField relative border-b border-neutral-700"
+        className="cursor-pointer bg-zinc-900   rounded-t-sm p-1 pl-2 pr-2 nodeField relative border-b border-neutral-700"
         onClick={() => setCollapsed(!collapsed)}
       >
         <div className="flex text-gray-600 dark:text-gray-400 items-center">
@@ -59,8 +59,8 @@ const DataTreeNode = ({ id, data, selected = false }: DataTreeNodeProps) => {
             <span className="mr-2"><File className="h-4 w-4" /></span>
             <div> {field.label} </div>
           </div>
-          <Handle type="source" className="bg-neutral-600 border-neutral-800" position={Position.Right} id={field.id} />
-          <Handle type="target" className="bg-neutral-600 border-neutral-800" position={Position.Left} id={field.id} />
+          <Handle type="source" className="bg-neutral-600 border-neutral-800 rounded-[2px] w-[1px] h-[1px]" position={Position.Right} id={field.id} />
+          <Handle type="target" className="bg-neutral-600 border-neutral-800 rounded-[2px] w-[1px] h-[1px]" position={Position.Left} id={field.id} />
         </div>
       ))}
 
