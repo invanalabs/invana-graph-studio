@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import { Handle, NodeProps, Position } from "@xyflow/react";
 import { BaseNodeTemplate } from "@/components/BaseNodeTemplate";
 import { useState } from "react";
-import { File, Folder, FolderOpen } from "lucide-react";
+import { File, Folder, FolderOpen, Minus, MinusSquare, Plus, PlusSquare } from "lucide-react";
 
 
 export type DataField = {
@@ -40,9 +40,9 @@ export const DataTreeNodeLet = ({ id, label, fields = [], isChild = false, ...pr
 
         <span className="mr-2">
           {collapsed ? (
-            <Folder className="h-4 w-4" />
+            <PlusSquare className="h-4 w-4" />
           ) : (
-            <FolderOpen className="h-4 w-4" />
+            <MinusSquare className="h-4 w-4" />
           )}
         </span>
         <div>{label}</div>
@@ -60,7 +60,7 @@ export const DataTreeNodeLet = ({ id, label, fields = [], isChild = false, ...pr
           key={"i-" + field.label}
         >
           <div className="flex text-sm text-gray-600 dark:text-gray-400 items-center">
-            <span className="mr-2"><File className="h-4 w-4" /></span>
+            {/* <span className="mr-2"><File className="h-4 w-4" /></span> */}
             <div> {field.label} </div>
           </div>
           <Handle type="source" className="bg-neutral-600 border-neutral-800 rounded-[2px] w-[1px] h-[1px]" position={Position.Right} id={field.id} />
