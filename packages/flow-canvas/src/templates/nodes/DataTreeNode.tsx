@@ -33,7 +33,7 @@ const DataTreeNode = ({ id, data, selected = false }: DataTreeNodeProps) => {
       <Handle type="target" className="absolute top-5" position={Position.Left} id={id} />
 
       <div
-        className="mb-2 cursor-pointer bg-zinc-900 font-bold rounded-t-sm p-1 pl-2 pr-2 nodeField relative border-b border-neutral-700"
+        className="cursor-pointer bg-zinc-900 font-bold rounded-t-sm p-1 pl-2 pr-2 nodeField relative border-b border-neutral-700"
         onClick={() => setCollapsed(!collapsed)}
       >
         <div className="flex text-gray-600 dark:text-gray-400 items-center">
@@ -50,7 +50,7 @@ const DataTreeNode = ({ id, data, selected = false }: DataTreeNodeProps) => {
 
       {!collapsed && fields && fields.map((field: DataField, index: number) => (
         <div
-          className={`p-1 ml-6 pl-2 pr-2 nodeField relative ${index !== fields.length - 1 ? ' border-neutral-700' : ''}`}
+          className={`p-1 ml-6 pl-2 pr-2 nodeField relative border-l border-neutral-700 ${index !== fields.length - 1 ? ' border-neutral-700' : ''}`}
           data-node-id={id}
           data-handle-id={field.id}
           key={"i-" + field.label}
