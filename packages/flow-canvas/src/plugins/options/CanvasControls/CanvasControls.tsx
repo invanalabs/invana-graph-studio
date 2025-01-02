@@ -5,9 +5,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@invana/ui/components/ui/select"
-import { Separator } from "@invana/ui/components/ui/separator"
-import { ButtonWithTooltip } from "@invana/ui/components/ui-extended/button-with-tooltip"
+} from "@invana/ui"
+import { Separator } from "@invana/ui"
+import { ButtonWithTooltip } from "@invana/ui"
 import { useReactFlow, BackgroundVariant } from "@xyflow/react";
 import { Eraser, Lock, MoveDown, MoveLeft, MoveRight, MoveUp, Unlock } from "lucide-react";
 import useCanvasSettings from "@/hooks/useCanvasSettings";
