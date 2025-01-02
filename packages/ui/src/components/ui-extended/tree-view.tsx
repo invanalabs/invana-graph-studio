@@ -2,6 +2,7 @@
 import * as React from "react"
 import { ChevronRight } from 'lucide-react'
 import { cn } from "../../lib/utils"
+import { SearchInput } from "./search-input"
 
 export interface TreeItem {
   id: string | number
@@ -14,11 +15,12 @@ export interface TreeItem {
 export interface TreeViewProps {
   style?: React.CSSProperties,
   className?: string,
-  items: TreeItem[]
+  items: TreeItem[],
+  searchable: boolean
 }
 
 
-export function TreeView(props: TreeViewProps) {
+export function TreeView({ searchable = false, ...props }: TreeViewProps) {
   /*
   const exampleData: TreeItem[] = [
     {
@@ -63,13 +65,30 @@ export function TreeView(props: TreeViewProps) {
   ]
 
   */
+
+  const [searchQuery, setSearchQuery] = React.useState<string>('');
+
+  const filterItems = (items: TreeItem[], query: string): TreeItem[] => {
+    if (!query) return items;
+    return items
+      .map(item => ({
+        ...item,
+        children: item.children ? filterItems(item.children, query) : [],
+      }))
+      .filter(item => item.label.toLowerCase().includes(query.toLowerCase()) || (item.children && item.children.length > 0));
+  };
+
+  const filteredItems = filterItems(props.items, searchQuery);
+
   return (
     <div className={cn("rounded-lg border bg-card text-card-foreground shadow-sm w-[240px]", props.className)}
       style={props.style} >
       <div className="p-3">
+        {searchable && <SearchInput value={searchQuery} onChange={setSearchQuery} />}
+
         {/* <h2 className="text-lg font-semibold px-2 mb-2">Left Side</h2> */}
         <div className="space-y-0.5">
-          {props.items.map((item) => (
+          {filteredItems.map((item) => (
             <TreeItem key={item.id} item={item} />
           ))}
         </div>
