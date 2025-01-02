@@ -16,7 +16,8 @@ export interface TreeViewProps {
   style?: React.CSSProperties,
   className?: string,
   items: TreeItem[],
-  searchable: boolean
+  header?: React.ReactElement
+  searchable?: boolean
 }
 
 
@@ -84,6 +85,7 @@ export function TreeView({ searchable = false, ...props }: TreeViewProps) {
     <div className={cn("rounded-lg border bg-card text-card-foreground shadow-sm w-[240px]", props.className)}
       style={props.style} >
       <div className="p-3">
+        {props.header && props.header}
         {searchable && <SearchInput value={searchQuery} onChange={setSearchQuery} />}
 
         {/* <h2 className="text-lg font-semibold px-2 mb-2">Left Side</h2> */}

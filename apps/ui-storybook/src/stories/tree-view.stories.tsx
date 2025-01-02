@@ -73,3 +73,16 @@ export const Searchable: Story = {
     searchable: true
   },
 };
+
+
+
+// // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+export const Header: Story = {
+  args: {
+    items: exampleData,
+    header: <div className=' mb-2 border-b pb-2'>
+      <h1 className='text-xl font-bold'>Header</h1>
+      <p className='text-sm'>Here comes the descriiption for this header.</p>
+    </div>
+  },
+};
