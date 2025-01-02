@@ -23,7 +23,7 @@ const exampleData: TreeItem[] = [
               {
                 id: "1-1-1",
                 icon: <File className="h-4 w-4 shrink-0 text-gray-500" />,
-                label: "Grandchild 1-1-1",
+                label: "Clickable Grandchild 1-1-1",
                 onClick: (id, label) => alert(`Clicked id:${id}; label:${label}`)
               },
               { id: "1-1-2", icon: <File className="h-4 w-4 shrink-0 text-gray-500" />, label: "Grandchild 1-1-2" }
@@ -57,7 +57,9 @@ const meta = {
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   args: {
-    items: exampleData
+    items: exampleData,
+    className: "w-[320px]"
+
   },
 } satisfies Meta<typeof TreeView>;
 

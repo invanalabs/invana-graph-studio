@@ -51,7 +51,7 @@ export function TreeView(props: TreeViewProps) {
 
     */
   return (
-    <div className={cn("rounded-lg border bg-card text-card-foreground shadow-sm w-72", props.className)}
+    <div className={cn("rounded-lg border bg-card text-card-foreground shadow-sm w-[240px]", props.className)}
       style={props.style} >
       <div className="p-3">
         {/* <h2 className="text-lg font-semibold px-2 mb-2">Left Side</h2> */}
