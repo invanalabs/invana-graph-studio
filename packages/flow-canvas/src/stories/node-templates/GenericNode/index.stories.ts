@@ -25,5 +25,6 @@ export const GenericNode: Story = {
   args: {
     nodes: data.nodes,
     edges: data.edges,
+    layoutDirection: "TB"
   },
 };

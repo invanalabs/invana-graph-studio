@@ -4,7 +4,7 @@ export const data = {
   "nodes": [
     {
       "id": "1.1",
-      "type": "DataTypeFieldsNode",
+      "type": "DataFieldsNode",
       "data": {
         "label": "MongoDB (1.1)",
         "fields": [
@@ -21,7 +21,7 @@ export const data = {
     },
     {
       "id": "1.2",
-      "type": "DataTypeFieldsNode",
+      "type": "DataFieldsNode",
       "data": {
         "label": "FileStorage (1.2)",
         "fields": [
@@ -39,7 +39,7 @@ export const data = {
     },
     {
       "id": "2.1",
-      "type": "DataTypeFieldsNode",
+      "type": "DataFieldsNode",
       "data": {
         "label": "NSE Data (2.1)",
         "fields": [
@@ -62,7 +62,7 @@ export const data = {
     },
     {
       "id": "2.2",
-      "type": "DataTypeFieldsNode",
+      "type": "DataFieldsNode",
       "data": {
         "label": "Source1 - Candle Data (2.2)",
         "fields": [
@@ -95,7 +95,7 @@ export const data = {
     },
     {
       "id": "3.1",
-      "type": "DataTypeFieldsNode",
+      "type": "DataFieldsNode",
       "data": {
         "label": "Derived Data (3.1)",
         "fields": [
@@ -128,7 +128,7 @@ export const data = {
     },
     {
       "id": "3.2",
-      "type": "DataTypeFieldsNode",
+      "type": "DataFieldsNode",
       "data": {
         "label": "Derived Data (3.2)",
         "fields": [

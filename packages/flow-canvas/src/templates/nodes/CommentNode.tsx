@@ -20,7 +20,8 @@ const CommentNode = ({ id, data, selected = false }: NodeProps<CommentNode>) => 
     <BaseNodeTemplate
       selected={selected}
       id={id}
-      className="w-[220px] text-card-foreground text-xs dark:!bg-yellow-200 dark:!text-gray-800 !rounded-none !border-none !shadow-none"
+      className="w-[220px] text-card-foreground text-xs  transition-transform  shadow-lg hover:shadow-xl 
+       !bg-yellow-200 dark:!text-gray-800 !rounded-none !border-none !shadow-none"
     >
       {/* <div className="flex"> */}
       <RenderIconOrImg icon={icon} />
