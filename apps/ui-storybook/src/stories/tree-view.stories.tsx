@@ -80,6 +80,7 @@ export const Searchable: Story = {
 export const Header: Story = {
   args: {
     items: exampleData,
+    searchable: true,
     header: <div className=' mb-2 border-b pb-2'>
       <h1 className='text-xl font-bold'>Header</h1>
       <p className='text-sm'>Here comes the descriiption for this header.</p>
