@@ -1,12 +1,13 @@
 "use client"
 import * as React from "react"
-import { ChevronRight, Folder } from 'lucide-react'
+import { ChevronRight } from 'lucide-react'
 import { cn } from "../../lib/utils"
 
 export interface TreeItem {
-  id: string
+  id: string | number
   label: string
-  icon?: React.ReactNode
+  icon?: React.ReactElement<React.ComponentProps<'svg'>> | React.ReactNode
+  onClick?: (id: string | number, label: string) => void
   children?: TreeItem[]
 }
 
@@ -23,10 +24,12 @@ export function TreeView(props: TreeViewProps) {
     {
       id: "1",
       label: "Root 1",
+      icon: <Folder className="h-4 w-4 shrink-0 text-yellow-500" />,
       children: [
         {
           id: "1-1",
           label: "Child 1-1",
+          icon: <Folder className="h-4 w-4 shrink-0 text-yellow-500" />,
           children: [
             { id: "1-1-1", label: "Grandchild 1-1-1" },
             { id: "1-1-2", label: "Grandchild 1-1-2" }
@@ -38,6 +41,7 @@ export function TreeView(props: TreeViewProps) {
     {
       id: "2",
       label: "Root 2",
+      icon: <Folder className="h-4 w-4 shrink-0 text-yellow-500" />,
       children: [
         { id: "2-1", label: "Child 2-1" },
         { id: "2-2", label: "Child 2-2" }
@@ -68,7 +72,10 @@ function TreeItem({ item }: { item: TreeItem }) {
   return (
     <div>
       <button
-        onClick={() => hasChildren && setIsExpanded(!isExpanded)}
+        onClick={() => {
+          if (hasChildren) { setIsExpanded(!isExpanded); }
+          item.onClick?.(item.id, item.label);
+        }}
         className={cn(
           "flex items-center gap-2 w-full rounded-sm px-2 py-1 hover:bg-accent hover:text-accent-foreground",
           hasChildren && "cursor-pointer font-medium"
@@ -81,7 +88,7 @@ function TreeItem({ item }: { item: TreeItem }) {
             )}
           />
         )}
-        {hasChildren && <Folder className="h-4 w-4 shrink-0 text-yellow-500" />}
+        {item.icon}
         <span className="truncate">{item.label}</span>
       </button>
       {hasChildren && isExpanded && (
