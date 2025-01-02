@@ -64,8 +64,8 @@ export const CanvasControls = () => {
   return (
     // <ReactFlowProvider>
     <>
-      <Select onValueChange={onBackgroundChange}>
-        <SelectTrigger className="border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[100px] ">
+      <Select onValueChange={onBackgroundChange} >
+        <SelectTrigger className="h-7 w-7 border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[100px] ">
           <SelectValue placeholder={background.variant} />
         </SelectTrigger>
         <SelectContent>
@@ -78,7 +78,7 @@ export const CanvasControls = () => {
       </Select>
 
       <Select onValueChange={onEdgeTypeChange}>
-        <SelectTrigger className="border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[120px] ">
+        <SelectTrigger className="h-7 w-7 border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[120px] ">
           <SelectValue placeholder={defaultEdgeType} />
         </SelectTrigger>
         <SelectContent>
@@ -91,7 +91,7 @@ export const CanvasControls = () => {
       </Select>
       <Separator orientation="vertical" />
       <Select onValueChange={updateLayoutData} defaultValue={layoutDirection}>
-        <SelectTrigger className="w-[150px] border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
+        <SelectTrigger className="h-7 w-7 w-[150px] border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
           <SelectValue placeholder="Dagre Options" />
         </SelectTrigger>
         <SelectContent>
@@ -112,7 +112,7 @@ export const CanvasControls = () => {
       <Separator orientation="vertical" />
       <ButtonWithTooltip
         variant="ghost"
-        size="icon"
+        size="icon-sm"
         onClick={() => toggleLockViewport()}
         tooltip={<p>{lockViewport ? "Unlock Canvas" : "Lock Canvas"}</p>}
       >
@@ -121,7 +121,7 @@ export const CanvasControls = () => {
       <Separator orientation="vertical" />
       <ButtonWithTooltip
         variant="ghost"
-        size="icon"
+        size="icon-sm"
         onClick={() => eraseCanvas()}
         tooltip={<p>Erase Everything</p>}
       >

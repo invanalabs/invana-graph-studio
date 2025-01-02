@@ -34,14 +34,14 @@ export const ViewportControls = () => {
     <>
       <ButtonWithTooltip
         variant="ghost"
-        size="icon"
+        size="icon-sm"
         onClick={() => zoomOut({ duration: 300 })}
         tooltip={<p>Zoom out</p>}
       >
         <Minus className="h-4 w-4" />
       </ButtonWithTooltip>
       <Select onValueChange={onZoomChange}>
-        <SelectTrigger className="border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[90px] ">
+        <SelectTrigger className="h-7 w-7 border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[90px] ">
           <SelectValue placeholder={(100 * zoom).toFixed(0) + "%"} />
         </SelectTrigger>
         <SelectContent>
@@ -57,7 +57,7 @@ export const ViewportControls = () => {
 
       <ButtonWithTooltip
         variant="ghost"
-        size="icon"
+        size="icon-sm"
         onClick={() => zoomIn({ duration: 300 })}
         tooltip={<p>Zoom In</p>}
       >

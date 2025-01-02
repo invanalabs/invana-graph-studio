@@ -72,7 +72,7 @@ const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
            border border-neutral-300 dark:border-neutral-700 flex items-center transition-colors">
             <ButtonWithTooltip
               variant="ghost"
-              size="icon"
+              size="icon-sm"
               onClick={() => toggleTheme()}
               tooltip={<p>Toggle Theme</p>}
             >
