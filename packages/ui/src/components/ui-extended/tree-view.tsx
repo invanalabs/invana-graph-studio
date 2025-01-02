@@ -2,21 +2,21 @@
 
 import * as React from "react"
 import { ChevronRight, Folder } from 'lucide-react'
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
-interface TreeItem {
+export interface TreeItem {
   id: string
   label: string
   icon?: React.ReactNode
   children?: TreeItem[]
 }
 
-interface FileTreeProps {
+export interface TreeViewProps {
   items?: TreeItem[]
 }
 
 
-export function FileTree({ items = [] }: FileTreeProps) {
+export function TreeView({ items = [] }: TreeViewProps) {
   /*
   const exampleData: TreeItem[] = [
     {
@@ -47,11 +47,11 @@ export function FileTree({ items = [] }: FileTreeProps) {
     */
   return (
     <div className="rounded-lg border bg-card text-card-foreground shadow-sm w-72">
-      <div className="p-2">
-        <h2 className="text-lg font-semibold px-2 py-1">Left Side</h2>
-        <div className="space-y-1">
+      <div className="p-3">
+        {/* <h2 className="text-lg font-semibold px-2 mb-2">Left Side</h2> */}
+        <div className="space-y-0.5">
           {items.map((item) => (
-            <TreeNode key={item.id} item={item} />
+            <TreeItem key={item.id} item={item} />
           ))}
         </div>
       </div>
@@ -59,7 +59,7 @@ export function FileTree({ items = [] }: FileTreeProps) {
   )
 }
 
-function TreeNode({ item }: { item: TreeItem }) {
+function TreeItem({ item }: { item: TreeItem }) {
   const [isExpanded, setIsExpanded] = React.useState(true)
   const hasChildren = item.children && item.children.length > 0
 
@@ -83,9 +83,13 @@ function TreeNode({ item }: { item: TreeItem }) {
         <span className="truncate">{item.label}</span>
       </button>
       {hasChildren && isExpanded && (
-        <div className="ml-4 border-l pl-2">
-          {item.children?.map((child) => (
-            <TreeNode key={child.id} item={child} />
+        <div className="ml-4 pl-4 relative">
+          <div className="absolute left-0 top-0 bottom-0 border-l border-muted-foreground/25" />
+          {item.children?.map((child, index) => (
+            <div key={child.id} className="relative">
+              <div className="absolute -left-4 top-[15px] w-4 border-t border-muted-foreground/25" />
+              <TreeItem key={index} item={child} />
+            </div>
           ))}
         </div>
       )}
