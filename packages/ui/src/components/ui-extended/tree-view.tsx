@@ -1,5 +1,4 @@
 "use client"
-
 import * as React from "react"
 import { ChevronRight, Folder } from 'lucide-react'
 import { cn } from "../../lib/utils"
@@ -12,11 +11,13 @@ export interface TreeItem {
 }
 
 export interface TreeViewProps {
-  items?: TreeItem[]
+  style?: React.CSSProperties,
+  className?: string,
+  items: TreeItem[]
 }
 
 
-export function TreeView({ items = [] }: TreeViewProps) {
+export function TreeView(props: TreeViewProps) {
   /*
   const exampleData: TreeItem[] = [
     {
@@ -46,11 +47,12 @@ export function TreeView({ items = [] }: TreeViewProps) {
 
     */
   return (
-    <div className="rounded-lg border bg-card text-card-foreground shadow-sm w-72">
+    <div className={cn("rounded-lg border bg-card text-card-foreground shadow-sm w-72", props.className)}
+      style={props.style} >
       <div className="p-3">
         {/* <h2 className="text-lg font-semibold px-2 mb-2">Left Side</h2> */}
         <div className="space-y-0.5">
-          {items.map((item) => (
+          {props.items.map((item) => (
             <TreeItem key={item.id} item={item} />
           ))}
         </div>
