@@ -1,3 +1,3 @@
-export * from "./devTools/ChangeLogger";
-export * from "./devTools/NodeInspector";
-export * from "./devTools/ViewportLogger";
+export * from "./DevTools/ChangeLogger";
+export * from "./DevTools/NodeInspector";
+export * from "./DevTools/ViewportLogger";

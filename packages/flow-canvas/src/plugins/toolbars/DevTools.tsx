@@ -8,9 +8,9 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@invana/ui/components/ui/toggle-group"
-import { ChangeLogger } from "../options/devTools/ChangeLogger"
-import { ViewportLogger } from '../options/devTools/ViewportLogger';
-import { NodeInspector } from '../options/devTools/NodeInspector';
+import { ChangeLogger } from "../options/DevTools/ChangeLogger"
+import { ViewportLogger } from '../options/DevTools/ViewportLogger';
+import { NodeInspector } from '../options/DevTools/NodeInspector';
 import { CanvasPanelProps } from '../types';
 
 
