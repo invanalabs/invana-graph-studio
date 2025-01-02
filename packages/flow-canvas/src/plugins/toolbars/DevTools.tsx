@@ -45,7 +45,7 @@ export const DevTools: React.FC<CanvasPanelProps> = (props) => {
       </Panel>
 
       {changeLoggerActive && (
-        <Panel className="text-xs p-3 bg-white border shadow-md overflow-y-auto w-[320px] max-h-[50%] mt-20" position="bottom-right">
+        <Panel className="text-xs p-3 bg-white border shadow-md overflow-y-auto w-[320px] max-h-[50%] mt-20" position="bottom-right" style={{ bottom: '50px', }}>
           <ChangeLogger />
         </Panel>
       )}
@@ -53,7 +53,7 @@ export const DevTools: React.FC<CanvasPanelProps> = (props) => {
       {nodeInspectorActive && <NodeInspector />}
 
       {viewportLoggerActive && (
-        <Panel position="bottom-left" className="text-secondary-foreground">
+        <Panel position="bottom-right" className="text-secondary-foreground" style={{ bottom: '30px', }}>
           <ViewportLogger />
         </Panel>
       )}

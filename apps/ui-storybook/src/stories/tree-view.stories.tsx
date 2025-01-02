@@ -59,7 +59,6 @@ const meta = {
   args: {
     items: exampleData,
     className: "w-[320px]"
-
   },
 } satisfies Meta<typeof TreeView>;
 

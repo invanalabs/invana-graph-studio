@@ -18,7 +18,7 @@ import "../index.css";
 import { CanvasToolBar } from "@/plugins/toolbars/CanvasToolBar";
 import { Moon, Sun } from "lucide-react";
 import { ButtonWithTooltip } from "@invana/ui/components/ui-extended/button-with-tooltip";
-
+import { DevTools } from "@/plugins/toolbars/DevTools";
 
 const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
   options = { ...defaultFlowCanvasOptions, ...options };
@@ -54,33 +54,40 @@ const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
           nodes={nodes}
           edges={edges}
           colorMode={theme}
-
           {...(options.canvas ? Object.fromEntries(
             Object.entries(options.canvas).filter(([key]) => key !== 'defaultNodeOptions' && key !== 'colorMode')
           ) : {})}
         >
-          {options.display?.plugins?.miniMap && <MiniMap zoomable pannable />}
+          {options.display?.plugins?.miniMap && <MiniMap zoomable pannable position="bottom-left" />}
           {options.display?.plugins?.background && <Background {...options.background} />}
           {/* {options.display?.plugins?.controls && <Controls />} */}
-          {/* {options.display?.plugins?.devTools && <DevTools position="top-left" className="p-0 border rounded shadow-sm" />} */}
-          <Panel position="top-left" className="bg-secondary dark:bg-neutral-800 dark:text-card-foreground
+          {options.display?.plugins?.devTools &&
+            <DevTools position="bottom-right" className="p-0 border rounded shadow-sm" />
+          }
+
+          {options.display?.plugins?.controls &&
+            <Panel position="top-left" className="bg-secondary dark:bg-neutral-800 dark:text-card-foreground
            border border-neutral-300 dark:border-neutral-700 flex items-center transition-colors
-           flex items-center"> <CanvasToolBar />
-          </Panel>
+           flex items-center">
+              <CanvasToolBar />
+            </Panel>
+          }
 
-          <Panel position="top-right" className="bg-secondary dark:bg-neutral-800 dark:text-card-foreground
+          {options.display?.plugins?.theme &&
+            <Panel position="top-right" className="bg-secondary dark:bg-neutral-800 dark:text-card-foreground
            border border-neutral-300 dark:border-neutral-700 flex items-center transition-colors">
-            <ButtonWithTooltip
-              variant="ghost"
-              size="icon-sm"
-              onClick={() => toggleTheme()}
-              tooltip={<p>Toggle Theme</p>}
-            >
-              {getActiveTheme() === 'light' ? <Sun className="h-4 w-4" /> :
-                <Moon className="h-4 w-4" />}
-            </ButtonWithTooltip>
+              <ButtonWithTooltip
+                variant="ghost"
+                size="icon-sm"
+                onClick={() => toggleTheme()}
+                tooltip={<p>Toggle Theme</p>}
+              >
+                {getActiveTheme() === 'light' ? <Sun className="h-4 w-4" /> :
+                  <Moon className="h-4 w-4" />}
+              </ButtonWithTooltip>
 
-          </Panel>
+            </Panel>
+          }
 
           {options.children}
         </ReactFlow>

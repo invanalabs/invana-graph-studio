@@ -51,7 +51,8 @@ export const defaultFlowCanvasOptions: FlowCanvasOptions = {
             devTools: true,
             miniMap: true,
             controls: true,
-            background: true
+            background: true,
+            theme: true
         }
     }
 }

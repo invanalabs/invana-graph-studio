@@ -166,56 +166,49 @@ export const data = {
       "source": "1.1",
       "sourceHandle": "crawlerflow",
       "target": "2.1",
-      "targetHandle": "2.1",
-      "type": "step"
+      "targetHandle": "2.1"
     },
     {
       "id": "e0-2",
       "source": "1.2",
       "sourceHandle": "myfile-csv",
       "target": "2.2",
-      "targetHandle": "2.2",
-      "type": "step"
+      "targetHandle": "2.2"
     },
     {
       "id": "e0-3",
       "source": "2.1",
       "sourceHandle": "identifier",
       "target": "3.1",
-      "targetHandle": "identifier",
-      "type": "step"
+      "targetHandle": "identifier"
     },
     {
       "id": "e0-4",
       "source": "2.2",
       "sourceHandle": "candle",
       "target": "3.1",
-      "targetHandle": "candle",
-      "type": "step"
+      "targetHandle": "candle"
     },
     {
       "id": "e0-5",
       "source": "2.2",
       "sourceHandle": "title",
       "target": "3.1",
-      "targetHandle": "title",
-      "type": "step"
+      "targetHandle": "title"
     },
     {
       "id": "e0-6",
       "source": "3.1",
       "sourceHandle": "identifier",
       "target": "3.2",
-      "targetHandle": "identifier",
-      "type": "step"
+      "targetHandle": "identifier"
     },
     {
       "id": "e0-7",
       "source": "3.1",
       "sourceHandle": "description",
       "target": "3.2",
-      "targetHandle": "analysed_field",
-      "type": "step"
+      "targetHandle": "analysed_field"
     }
   ],
   "viewport": {
