@@ -1,6 +1,6 @@
 import { defaultNodeTypes } from "@/templates/nodes"
 import { FlowCanvasOptions } from "./types"
-import { BackgroundVariant, MarkerType } from "@xyflow/react"
+import { BackgroundVariant, ConnectionLineType, MarkerType } from "@xyflow/react"
 
 
 export const defaultCanvasStyle = {
@@ -28,6 +28,7 @@ export const defaultFlowCanvasOptions: FlowCanvasOptions = {
                 // color: '#b1b1b7',
             }
         },
+        connectionLineType: ConnectionLineType.Bezier,
         nodeTypes: defaultNodeTypes
     },
     nodes: [],

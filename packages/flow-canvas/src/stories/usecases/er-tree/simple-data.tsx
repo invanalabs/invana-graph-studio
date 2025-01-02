@@ -1,5 +1,3 @@
-
-
 export const data = {
   "nodes": [
     {
@@ -7,7 +5,7 @@ export const data = {
       "type": "DataTreeNode",
       "data": {
         "label": "MongoDB (1.1)",
-        "fields": [
+        "children": [
           {
             "label": "crawlerflow",
             "id": "crawlerflow"
@@ -24,11 +22,10 @@ export const data = {
       "type": "DataTreeNode",
       "data": {
         "label": "FileStorage (1.2)",
-        "fields": [
+        "children": [
           {
             "label": "myfile.csv",
-            "id": "myfile-csv",
-            "data_type": "string"
+            "id": "myfile-csv"
           }
         ]
       },
@@ -42,16 +39,14 @@ export const data = {
       "type": "DataTreeNode",
       "data": {
         "label": "NSE Data (2.1)",
-        "fields": [
+        "children": [
           {
             "label": "identifier",
-            "id": "identifier",
-            "data_type": "string"
+            "id": "identifier"
           },
           {
             "label": "is_active",
-            "id": "is_active",
-            "data_type": "string"
+            "id": "is_active"
           }
         ]
       },
@@ -65,32 +60,52 @@ export const data = {
       "type": "DataTreeNode",
       "data": {
         "label": "Source1 - Candle Data (2.2)",
-        "fields": [
+
+        "children": [
           {
             "label": "candle",
             "id": "candle",
-            "data_type": "string"
+            "isExpanded": true,
+            "children": [
+              {
+                "label": "open",
+                "id": "open"
+              },
+              {
+                "label": "high",
+                "id": "high"
+              },
+              {
+                "label": "low",
+                "id": "low"
+              },
+              {
+                "label": "close",
+                "id": "close"
+              },
+              {
+                "label": "volume",
+                "id": "volume"
+              }
+            ]
           },
           {
             "label": "title",
-            "id": "title",
-            "data_type": "string"
+            "id": "title"
           },
           {
             "label": "description",
-            "id": "description",
-            "data_type": "string"
+            "id": "description"
           },
           {
             "label": "is_active",
-            "id": "is_active",
-            "data_type": "bool"
+            "id": "is_active"
           }
         ]
       },
       "position": {
         "x": -50.406993557437836,
-        "y": 49.17755469018326
+        "y": -72.17755469018326
       }
     },
     {
@@ -98,26 +113,22 @@ export const data = {
       "type": "DataTreeNode",
       "data": {
         "label": "Derived Data (3.1)",
-        "fields": [
+        "children": [
           {
             "label": "identifier",
-            "id": "identifier",
-            "data_type": "string"
+            "id": "identifier"
           },
           {
             "label": "candle",
-            "id": "candle",
-            "data_type": "string"
+            "id": "candle"
           },
           {
             "label": "title",
-            "id": "title",
-            "data_type": "string"
+            "id": "title"
           },
           {
             "label": "description",
-            "id": "description",
-            "data_type": "string"
+            "id": "description"
           }
         ]
       },
@@ -131,16 +142,14 @@ export const data = {
       "type": "DataTreeNode",
       "data": {
         "label": "Derived Data (3.2)",
-        "fields": [
+        "children": [
           {
             "label": "identifier",
-            "id": "identifier",
-            "data_type": "string"
+            "id": "identifier"
           },
           {
             "label": "analysed_field",
-            "id": "analysed_field",
-            "data_type": "integer"
+            "id": "analysed_field"
           }
         ]
       },
@@ -203,6 +212,22 @@ export const data = {
       "id": "e0-7",
       "source": "3.1",
       "sourceHandle": "description",
+      "target": "3.2",
+      "targetHandle": "analysed_field",
+      "type": "step"
+    },
+    {
+      "id": "e0-8",
+      "source": "2.2",
+      "sourceHandle": "open",
+      "target": "3.1",
+      "targetHandle": "description",
+      "type": "step"
+    },
+    {
+      "id": "e0-9",
+      "source": "2.2",
+      "sourceHandle": "high",
       "target": "3.2",
       "targetHandle": "analysed_field",
       "type": "step"
