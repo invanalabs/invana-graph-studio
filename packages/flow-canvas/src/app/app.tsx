@@ -60,7 +60,7 @@ const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
           {options.display?.plugins?.miniMap && <MiniMap zoomable pannable position="bottom-left" />}
           {options.display?.plugins?.background && <Background {...options.background} />}
           {options.display?.plugins?.devTools &&
-            <DevTools position="bottom-right" className="!px-2 border rounded shadow-sm" />
+            <DevTools position="bottom-right" className=" border rounded shadow-sm" />
           }
 
           {options.display?.plugins?.controls &&
@@ -76,6 +76,7 @@ const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
                 variant="ghost"
                 size="icon-sm"
                 onClick={() => toggleTheme()}
+                className="rounded-none"
                 tooltip={<p>Toggle Theme</p>}
               >
                 {

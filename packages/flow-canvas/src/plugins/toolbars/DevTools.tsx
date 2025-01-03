@@ -12,7 +12,6 @@ import { ChangeLogger } from "../options/DevTools/ChangeLogger"
 import { ViewportLogger } from '../options/DevTools/ViewportLogger';
 import { NodeInspector } from '../options/DevTools/NodeInspector';
 import { CanvasPanelProps } from '../types';
-import { Separator } from '@invana/ui';
 
 
 export const DevTools: React.FC<CanvasPanelProps> = (props) => {
@@ -30,17 +29,17 @@ export const DevTools: React.FC<CanvasPanelProps> = (props) => {
     <div>
       <Panel {...props}>
         <ToggleGroup type="multiple">
-          {tools.map(({ active, setActive, label, value }, index) => (
+          {tools.map(({ active, setActive, label, value }) => (
             <ToggleGroupItem
               key={value}
               value={value}
               onClick={() => setActive((prev) => !prev)}
               aria-pressed={active}
-              className=" text-card-foreground transition-colors duration-300 hover:bg-secondary hover:text-secondary-foreground !h-6
+              className=" text-card-foreground transition-colors rounded-none duration-300 hover:bg-secondary hover:text-secondary-foreground !h-6
               "
             >
               {label}
-              {index < tools.length - 1 && <Separator orientation='vertical' />}
+              {/* {index < tools.length - 1 && <Separator orientation='vertical' />} */}
             </ToggleGroupItem>
           ))}
         </ToggleGroup>
