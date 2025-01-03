@@ -51,8 +51,8 @@ function DataTreeNodeItem({ item }: { item: DataTreeNodeItem }) {
         )}
         {item.icon}
         <span className="truncate">{item.label}</span>
-        <Handle type="source" className="bg-neutral-600 border-neutral-800 rounded-[2px] w-[1px] h-[1px]" position={Position.Right} id={item.id} />
-        <Handle type="target" className="bg-neutral-600 border-neutral-800 rounded-[2px] w-[1px] h-[1px]" position={Position.Left} id={item.id} />
+        <Handle type="source" className="bg-neutral-600 rounded-[2px] w-[1px] h-[1px]" position={Position.Right} id={item.id} />
+        <Handle type="target" className="bg-neutral-600 rounded-[2px] w-[1px] h-[1px]" position={Position.Left} id={item.id} />
 
       </button>
       {hasChildren && isExpanded && (
@@ -69,52 +69,6 @@ function DataTreeNodeItem({ item }: { item: DataTreeNodeItem }) {
     </div>
   )
 }
-
-// export const DataTreeNodeLet = ({ id, label, children = [], isChild = false, ...props }: DataTreeNodeItem) => {
-//   console.log("DataTreeNodeLet", id, label, children, props, isChild);
-//   const [collapsed, setCollapsed] = useState(false);
-
-//   return <>
-//     {/* head */}
-//     <div
-//       className="cursor-pointer bg-zinc-900 rounded-t-sm p-1 pl-2 pr-2 nodeField relative border-b border-neutral-700"
-//       onClick={() => setCollapsed(!collapsed)}
-//     >
-//       <div className="flex text-gray-600 dark:text-gray-400 items-center">
-//         <Handle type="source" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Right} id={id} />
-//         <Handle type="target" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Left} id={id} />
-
-//         <span className="mr-2">
-//           {collapsed ? (
-//             <Folder className="h-4 w-4" />
-//           ) : (
-//             <FolderOpen className="h-4 w-4" />
-//           )}
-//         </span>
-//         <div>{label}</div>
-//       </div>
-//     </div>
-//     {/* children  */}
-//     {!collapsed && children && children.map((field: DataTreeNodeItem, index: number) => (
-
-
-//       <div
-//         className={`p-1 ml-6 pl-2 pr-2 nodeField relative border-l border-neutral-700 ${index !== children.length - 1 ? ' border-neutral-700' : ''}`}
-//         data-node-id={id}
-//         data-handle-id={field.id}
-//         key={"i-" + field.label}
-//       >
-//         <div className="flex text-sm text-gray-600 dark:text-gray-400 items-center">
-//           <span className="mr-2"><File className="h-4 w-4" /></span>
-//           <div> {field.label} </div>
-//         </div>
-//         <Handle type="source" className="bg-neutral-600 border-neutral-800 rounded-[2px] w-[1px] h-[1px]" position={Position.Right} id={field.id} />
-//         <Handle type="target" className="bg-neutral-600 border-neutral-800 rounded-[2px] w-[1px] h-[1px]" position={Position.Left} id={field.id} />
-//       </div>
-//     ))}
-//   </>
-
-// }
 
 
 const DataTreeNode = ({ id, data, selected = false, ...props }: DataTreeNodeProps) => {
@@ -136,12 +90,9 @@ const DataTreeNode = ({ id, data, selected = false, ...props }: DataTreeNodeProp
 
   return (
     <BaseNodeTemplate id={id} selected={selected} className="min-w-[240px] p-0">
-      {/* <Handle type="source" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Right} id={id} />
-      <Handle type="target" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Left} id={id} /> */}
-
       <div
-        className="cursor-pointer bg-zinc-900 rounded-t-sm p-1 pl-2 pr-2 
-        nodeField relative border-b border-neutral-700">
+        className="cursor-pointer relative rounded-t-sm nodeField border-b py-3 px-2
+         bg-background">
         <div className="flex text-gray-600 dark:text-gray-400 items-center">
           <Handle type="source" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Right} id={id} />
           <Handle type="target" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Left} id={id} />
@@ -155,7 +106,7 @@ const DataTreeNode = ({ id, data, selected = false, ...props }: DataTreeNodeProp
 
       <div className={"mx-2 my-2"} >
         {data.searchable &&
-          <SearchInput value={searchQuery} onChange={setSearchQuery} />
+          <SearchInput value={searchQuery} onChange={setSearchQuery} className={"dark:bg-neutral-800"} />
         }
       </div>
 
