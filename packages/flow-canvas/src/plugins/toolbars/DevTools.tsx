@@ -12,6 +12,7 @@ import { ChangeLogger } from "../options/DevTools/ChangeLogger"
 import { ViewportLogger } from '../options/DevTools/ViewportLogger';
 import { NodeInspector } from '../options/DevTools/NodeInspector';
 import { CanvasPanelProps } from '../types';
+import { Separator } from '@invana/ui';
 
 
 export const DevTools: React.FC<CanvasPanelProps> = (props) => {
@@ -28,8 +29,8 @@ export const DevTools: React.FC<CanvasPanelProps> = (props) => {
   return (
     <div>
       <Panel {...props}>
-        <ToggleGroup type="multiple">
-          {tools.map(({ active, setActive, label, value }) => (
+        <ToggleGroup type="multiple" className='h-6'>
+          {tools.map(({ active, setActive, label, value }, index) => (
             <ToggleGroupItem
               key={value}
               value={value}

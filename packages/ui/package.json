@@ -13,7 +13,7 @@
     "build": "tsc -b && vite build",
     "build:styles": "postcss ./src/index.css -o ./dist/invana-ui.css --env production",
     "lint": "eslint .",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6010",
     "build-storybook": "storybook build"
   },
   "dependencies": {

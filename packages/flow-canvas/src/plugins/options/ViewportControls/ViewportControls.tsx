@@ -6,17 +6,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@invana/ui/components/ui/select"
-import { Separator } from "@invana/ui/components/ui/separator"
-import { ButtonWithTooltip } from "@invana/ui/components/ui-extended/button-with-tooltip"
+import { ButtonWithTooltip, Separator } from "@invana/ui"
 import { useReactFlow, useViewport } from "@xyflow/react";
 import { Minus, Plus } from "lucide-react";
-// import { cn } from "../../../lib/utils";
 
 
 export const ViewportControls = () => {
-
-
-
 
   const { zoom } = useViewport();
   const { zoomTo, zoomIn, zoomOut, fitView } = useReactFlow();
@@ -32,15 +27,7 @@ export const ViewportControls = () => {
 
   return (
     <>
-      <ButtonWithTooltip
-        variant="ghost"
-        size="icon-sm"
-        className="rounded-none"
-        onClick={() => zoomOut({ duration: 300 })}
-        tooltip={<p>Zoom out</p>}
-      >
-        <Minus className="h-4 w-4" />
-      </ButtonWithTooltip>
+
       <Select onValueChange={onZoomChange}>
         <SelectTrigger className="h-7 w-7 border-none hover:border-none focus:border-none active:border-none
         rounded-none ring-0 shadow-none !w-[90px] ">
@@ -55,8 +42,17 @@ export const ViewportControls = () => {
           <SelectItem value="fitview">Fit View</SelectItem>
         </SelectContent>
       </Select>
-      <Separator orientation="vertical" />
+      <Separator orientation="vertical" className="h-4" />
 
+      <ButtonWithTooltip
+        variant="ghost"
+        size="icon-sm"
+        className="rounded-none"
+        onClick={() => zoomOut({ duration: 300 })}
+        tooltip={<p>Zoom out</p>}
+      >
+        <Minus className="h-4 w-4" />
+      </ButtonWithTooltip>
       <ButtonWithTooltip
         variant="ghost"
         size="icon-sm"

@@ -10,7 +10,7 @@
     "dist"
   ],
   "scripts": {
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6011",
     "storybook-build": "storybook build",
     "build": "tsc -b && vite build",
     "build:styles": "postcss ./src/index.css -o ./dist/flow-canvas.css --env production",

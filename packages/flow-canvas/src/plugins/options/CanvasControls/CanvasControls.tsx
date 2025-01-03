@@ -18,9 +18,7 @@ import { computeHandlePositions } from "@/app/utils";
 
 
 export const CanvasControls = () => {
-
   // const setInteractive = useStoreActions((actions) => actions.setInteractive);
-
   // Background, Erase, defaultEdges
 
   const { getEdges, getNodes, setNodes, setEdges } = useReactFlow();
@@ -41,7 +39,6 @@ export const CanvasControls = () => {
   }
 
   const eraseCanvas = () => {
-
     if (window.confirm("Are you sure you want to erase all this data in canvas ?")) {
       setNodes([]);
       setEdges([]);
@@ -65,7 +62,7 @@ export const CanvasControls = () => {
     // <ReactFlowProvider>
     <>
       <Select onValueChange={onBackgroundChange} >
-        <SelectTrigger className="h-7 w-7 rounded-none border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[100px] ">
+        <SelectTrigger className="h-7 w-7 rounded-none border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[80px] ">
           <SelectValue placeholder={background.variant} />
         </SelectTrigger>
         <SelectContent>
@@ -78,7 +75,7 @@ export const CanvasControls = () => {
       </Select>
 
       <Select onValueChange={onEdgeTypeChange}>
-        <SelectTrigger className="h-7 w-7 rounded-none border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[120px] ">
+        <SelectTrigger className="h-7 w-7 rounded-none border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[115px] ">
           <SelectValue placeholder={defaultEdgeType} />
         </SelectTrigger>
         <SelectContent>
@@ -89,7 +86,7 @@ export const CanvasControls = () => {
           <SelectItem value="smoothstep">Smoothstep</SelectItem>
         </SelectContent>
       </Select>
-      <Separator orientation="vertical" />
+      <Separator orientation="vertical" className="h-4" />
       <Select onValueChange={updateLayoutData} defaultValue={layoutDirection}>
         <SelectTrigger className="h-7 w-7 w-[150px] rounded-none border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
           <SelectValue placeholder="Dagre Options" />
@@ -109,21 +106,21 @@ export const CanvasControls = () => {
           </SelectItem>
         </SelectContent>
       </Select>
-      <Separator orientation="vertical" />
+      <Separator orientation="vertical" className="h-4" />
       <ButtonWithTooltip
         variant="ghost"
         size="icon-sm"
-        className="rounded-none"
+        className="rounded-none px-4"
         onClick={() => toggleLockViewport()}
         tooltip={<p>{lockViewport ? "Unlock Canvas" : "Lock Canvas"}</p>}
       >
         {lockViewport ? <Lock className="h-4 w-4" /> : <Unlock className="h-4 w-4" />}
       </ButtonWithTooltip>
-      <Separator orientation="vertical" />
+      <Separator orientation="vertical" className="h-4" />
       <ButtonWithTooltip
         variant="ghost"
         size="icon-sm"
-        className="rounded-none"
+        className="rounded-none px-4"
         onClick={() => eraseCanvas()}
         tooltip={<p>Erase Everything</p>}
       >
