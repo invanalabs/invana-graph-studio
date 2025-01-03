@@ -1,19 +1,19 @@
-
 export const data = {
   nodes: [{
     id: "2.1",
     type: "DataTreeNode",
     data: {
       label: "NSE Data (2.1)",
-      fields: [
-        { label: "identifier", id: "identifier", data_type: "string" },
+      searchable: true,
+      children: [
+        { label: "identifier", id: "identifier" },
         {
-          label: "is_active", id: "is_active", data_type: "string",
-          fields: [
-            { label: "candle", id: "candle", data_type: "string" },
-            { label: "title", id: "title", data_type: "string" },
-            { label: "description", id: "description", data_type: "string" },
-            { label: "is_active", id: "is_active", data_type: "bool", }
+          label: "is_active", id: "is_active",
+          children: [
+            { label: "candle", id: "candle" },
+            { label: "title", id: "title" },
+            { label: "description", id: "description" },
+            { label: "is_active", id: "is_active" }
           ]
         }
       ]
@@ -25,11 +25,12 @@ export const data = {
     type: "DataTreeNode",
     data: {
       label: "Source1 - Candle Data (2.2)",
-      fields: [
-        { label: "candle", id: "candle", data_type: "string" },
-        { label: "title", id: "title", data_type: "string" },
-        { label: "description", id: "description", data_type: "string" },
-        { label: "is_active", id: "is_active", data_type: "bool", }
+      searchable: true,
+      children: [
+        { label: "candle", id: "candle" },
+        { label: "title", id: "title" },
+        { label: "description", id: "description" },
+        { label: "is_active", id: "is_active" }
       ]
     },
     position: { x: 100, y: 0 }

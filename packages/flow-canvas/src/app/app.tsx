@@ -6,7 +6,6 @@ import {
   Background,
   useNodesState,
   useEdgesState,
-  Controls,
   Panel,
   ColorMode,
 } from "@xyflow/react";
@@ -20,6 +19,7 @@ import { Moon, Sun } from "lucide-react";
 import { ButtonWithTooltip } from "@invana/ui/components/ui-extended/button-with-tooltip";
 import { DevTools } from "@/plugins/toolbars/DevTools";
 
+
 const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
   options = { ...defaultFlowCanvasOptions, ...options };
   const ref = useRef<HTMLDivElement>(null);
@@ -27,7 +27,6 @@ const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
     node => addNodeDefaults(node, options.canvas.defaultNodeOptions || {}, options.layoutDirection)
   ));
   const [edges, setEdges, onEdgesChange] = useEdgesState(options?.edges || []);
-
 
   const [theme, setTheme] = React.useState<ColorMode>(options.canvas.colorMode || 'system');
 
@@ -60,32 +59,31 @@ const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
         >
           {options.display?.plugins?.miniMap && <MiniMap zoomable pannable position="bottom-left" />}
           {options.display?.plugins?.background && <Background {...options.background} />}
-          {/* {options.display?.plugins?.controls && <Controls />} */}
           {options.display?.plugins?.devTools &&
-            <DevTools position="bottom-right" className="p-0 border rounded shadow-sm" />
+            <DevTools position="bottom-right" className="!px-2 border rounded shadow-sm" />
           }
 
           {options.display?.plugins?.controls &&
-            <Panel position="top-left" className="bg-secondary dark:bg-neutral-800 dark:text-card-foreground
-           border border-neutral-300 dark:border-neutral-700 flex items-center transition-colors
-           flex items-center">
+            <Panel position="top-left" className="transition-colors flex items-center border shadow-sm
+              bg-card text-card-foreground ">
               <CanvasToolBar />
             </Panel>
           }
 
           {options.display?.plugins?.theme &&
-            <Panel position="top-right" className="bg-secondary dark:bg-neutral-800 dark:text-card-foreground
-           border border-neutral-300 dark:border-neutral-700 flex items-center transition-colors">
+            <Panel position="top-right" className=" bg-card text-card-foreground border  flex items-center transition-colors">
               <ButtonWithTooltip
                 variant="ghost"
                 size="icon-sm"
                 onClick={() => toggleTheme()}
                 tooltip={<p>Toggle Theme</p>}
               >
-                {getActiveTheme() === 'light' ? <Sun className="h-4 w-4" /> :
-                  <Moon className="h-4 w-4" />}
+                {
+                  getActiveTheme() === 'light'
+                    ? <Sun className="h-4 w-4" />
+                    : <Moon className="h-4 w-4" />
+                }
               </ButtonWithTooltip>
-
             </Panel>
           }
 

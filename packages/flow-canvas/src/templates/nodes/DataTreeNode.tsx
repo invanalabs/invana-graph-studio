@@ -1,15 +1,16 @@
 import React, { memo } from "react";
 import { Handle, NodeProps, Position } from "@xyflow/react";
 import { BaseNodeTemplate } from "@/components/BaseNodeTemplate";
-import { ChevronRight, File, Folder, FolderOpen } from "lucide-react";
+import { ChevronRight, FolderOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { SearchInput } from "@invana/ui";
 
 
-export type TreeItem = {
+export type DataTreeNodeItem = {
   id: string
   label: string
   icon?: React.ReactNode
-  children?: TreeItem[]
+  children?: DataTreeNodeItem[]
   onClick?: (id: string | number, label: string) => void
   isExpanded?: boolean
 
@@ -17,14 +18,15 @@ export type TreeItem = {
 
 export type DataTreeNodeProps = NodeProps & {
   data: {
-    label: string
     icon?: React.ReactNode
-    children: TreeItem[]
+    label: string
+    children: DataTreeNodeItem[]
+    searchable?: boolean
   }
 }
 
 
-function TreeItem({ item }: { item: TreeItem }) {
+function DataTreeNodeItem({ item }: { item: DataTreeNodeItem }) {
   const [isExpanded, setIsExpanded] = React.useState(item.isExpanded ?? false)
   const hasChildren = item.children && item.children.length > 0
 
@@ -59,7 +61,7 @@ function TreeItem({ item }: { item: TreeItem }) {
           {item.children?.map((child, index) => (
             <div key={child.id} className="relative">
               <div className="absolute -left-4 top-[15px] w-4 border-t border-muted-foreground/25" />
-              <TreeItem key={index} item={child} />
+              <DataTreeNodeItem key={index} item={child} />
             </div>
           ))}
         </div>
@@ -68,7 +70,7 @@ function TreeItem({ item }: { item: TreeItem }) {
   )
 }
 
-// export const DataTreeNodeLet = ({ id, label, children = [], isChild = false, ...props }: TreeItem) => {
+// export const DataTreeNodeLet = ({ id, label, children = [], isChild = false, ...props }: DataTreeNodeItem) => {
 //   console.log("DataTreeNodeLet", id, label, children, props, isChild);
 //   const [collapsed, setCollapsed] = useState(false);
 
@@ -93,7 +95,7 @@ function TreeItem({ item }: { item: TreeItem }) {
 //       </div>
 //     </div>
 //     {/* children  */}
-//     {!collapsed && children && children.map((field: TreeItem, index: number) => (
+//     {!collapsed && children && children.map((field: DataTreeNodeItem, index: number) => (
 
 
 //       <div
@@ -116,8 +118,20 @@ function TreeItem({ item }: { item: TreeItem }) {
 
 
 const DataTreeNode = ({ id, data, selected = false, ...props }: DataTreeNodeProps) => {
-
   console.log("DataTreeNode", data, props);
+  const [searchQuery, setSearchQuery] = React.useState<string>('');
+
+  const filterItems = (items: DataTreeNodeItem[], query: string): DataTreeNodeItem[] => {
+    if (!query) return items;
+    return items
+      .map(item => ({
+        ...item,
+        children: item.children ? filterItems(item.children, query) : [],
+      }))
+      .filter(item => item.label.toLowerCase().includes(query.toLowerCase()) || (item.children && item.children.length > 0));
+  };
+
+  const filteredItems = filterItems(data.children || [], searchQuery);
 
 
   return (
@@ -126,9 +140,8 @@ const DataTreeNode = ({ id, data, selected = false, ...props }: DataTreeNodeProp
       <Handle type="target" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Left} id={id} /> */}
 
       <div
-        className="cursor-pointer bg-zinc-900 rounded-t-sm p-1 pl-2 pr-2 nodeField relative border-b border-neutral-700"
-
-      >
+        className="cursor-pointer bg-zinc-900 rounded-t-sm p-1 pl-2 pr-2 
+        nodeField relative border-b border-neutral-700">
         <div className="flex text-gray-600 dark:text-gray-400 items-center">
           <Handle type="source" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Right} id={id} />
           <Handle type="target" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Left} id={id} />
@@ -140,12 +153,19 @@ const DataTreeNode = ({ id, data, selected = false, ...props }: DataTreeNodeProp
         </div>
       </div>
 
+      <div className={"mx-2 my-2"} >
+        {data.searchable &&
+          <SearchInput value={searchQuery} onChange={setSearchQuery} />
+        }
+      </div>
+
       <div className="space-y-0.5">
-        {data.children.map((item) => (
-          <TreeItem key={item.id} item={item} />
+
+        {filteredItems.map((item) => (
+          <DataTreeNodeItem key={item.id} item={item} />
         ))}
       </div>
-      {/* <TreeItem label={data.label} children={data.children} /> */}
+      {/* <DataTreeNodeItem label={data.label} children={data.children} /> */}
 
     </BaseNodeTemplate >
   );

@@ -60,7 +60,7 @@ export const data = {
       "type": "DataTreeNode",
       "data": {
         "label": "Source1 - Candle Data (2.2)",
-
+        searchable: true,
         "children": [
           {
             "label": "candle",
@@ -113,6 +113,7 @@ export const data = {
       "type": "DataTreeNode",
       "data": {
         "label": "Derived Data (3.1)",
+        "searchable": true,
         "children": [
           {
             "label": "identifier",
