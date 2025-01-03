@@ -99,7 +99,7 @@ export function TreeView({ searchable = false, ...props }: TreeViewProps) {
   )
 }
 
-function TreeItem({ item }: { item: TreeItem }) {
+export function TreeItem({ item }: { item: TreeItem }) {
   const [isExpanded, setIsExpanded] = React.useState(true)
   const hasChildren = item.children && item.children.length > 0
 

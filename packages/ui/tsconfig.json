@@ -7,10 +7,10 @@
         "./src/*"
       ],
       "@invana/ui": [
-        "../../packages/ui/src"
+        "./src"
       ],
       "@invana/ui/*": [
-        "../../packages/ui/src/*"
+        "./src/*"
       ],
     }
   }
