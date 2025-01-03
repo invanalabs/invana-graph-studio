@@ -106,7 +106,7 @@ const DataTreeNode = ({ id, data, selected = false, ...props }: DataTreeNodeProp
 
       <div className={"mx-2 my-2"} >
         {data.searchable &&
-          <SearchInput value={searchQuery} onChange={setSearchQuery} className={"dark:bg-neutral-800"} />
+          <SearchInput value={searchQuery} onChange={setSearchQuery} className={""} />
         }
       </div>
 

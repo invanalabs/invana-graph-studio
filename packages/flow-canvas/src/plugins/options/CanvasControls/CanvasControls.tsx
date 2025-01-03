@@ -65,7 +65,7 @@ export const CanvasControls = () => {
     // <ReactFlowProvider>
     <>
       <Select onValueChange={onBackgroundChange} >
-        <SelectTrigger className="h-7 w-7 border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[100px] ">
+        <SelectTrigger className="h-7 w-7 rounded-none border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[100px] ">
           <SelectValue placeholder={background.variant} />
         </SelectTrigger>
         <SelectContent>
@@ -78,7 +78,7 @@ export const CanvasControls = () => {
       </Select>
 
       <Select onValueChange={onEdgeTypeChange}>
-        <SelectTrigger className="h-7 w-7 border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[120px] ">
+        <SelectTrigger className="h-7 w-7 rounded-none border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[120px] ">
           <SelectValue placeholder={defaultEdgeType} />
         </SelectTrigger>
         <SelectContent>
@@ -91,7 +91,7 @@ export const CanvasControls = () => {
       </Select>
       <Separator orientation="vertical" />
       <Select onValueChange={updateLayoutData} defaultValue={layoutDirection}>
-        <SelectTrigger className="h-7 w-7 w-[150px] border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
+        <SelectTrigger className="h-7 w-7 w-[150px] rounded-none border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
           <SelectValue placeholder="Dagre Options" />
         </SelectTrigger>
         <SelectContent>
@@ -113,6 +113,7 @@ export const CanvasControls = () => {
       <ButtonWithTooltip
         variant="ghost"
         size="icon-sm"
+        className="rounded-none"
         onClick={() => toggleLockViewport()}
         tooltip={<p>{lockViewport ? "Unlock Canvas" : "Lock Canvas"}</p>}
       >
@@ -122,6 +123,7 @@ export const CanvasControls = () => {
       <ButtonWithTooltip
         variant="ghost"
         size="icon-sm"
+        className="rounded-none"
         onClick={() => eraseCanvas()}
         tooltip={<p>Erase Everything</p>}
       >
