@@ -30,7 +30,7 @@ export const DevTools: React.FC<CanvasPanelProps> = (props) => {
     <div>
       <Panel {...props}>
         <ToggleGroup type="multiple" className='h-6'>
-          {tools.map(({ active, setActive, label, value }, index) => (
+          {tools.map(({ active, setActive, label, value }) => (
             <ToggleGroupItem
               key={value}
               value={value}
