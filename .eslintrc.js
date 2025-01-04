@@ -1,5 +1,5 @@
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
   root: true,
-  extends: ["@invana/eslint-config/index.js"],
+  extends: ["@invana/config-eslint/index.js"],
 };

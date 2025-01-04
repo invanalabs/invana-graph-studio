@@ -12,7 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@invana/tailwind-config": "^0.0.0",
+    "@invana/config-tailwind": "^0.0.0",
     "@invana/ui": "^0.0.0",
     "clsx": "^2.1.1",
     "radix-ui": "^1.0.1",

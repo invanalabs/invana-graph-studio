@@ -19,8 +19,8 @@ This Turborepo includes the following packages and apps:
 - `docs`: a vanilla [vite](https://vitejs.dev) ts app
 - `web`: another vanilla [vite](https://vitejs.dev) ts app
 - `@invana/ui`: a stub component & utility library shared by both `web` and `docs` applications
-- `@invana/eslint-config`: shared `eslint` configurations
-- `@invana/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `@invana/config-eslint`: shared `eslint` configurations
+- `@invana/config-typescript`: `tsconfig.json`s used throughout the monorepo
 
 Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
 

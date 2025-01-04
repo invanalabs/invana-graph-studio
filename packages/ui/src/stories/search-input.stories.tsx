@@ -1,12 +1,10 @@
+// import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import "@invana/ui/index.css";
 import { SearchInput } from '@invana/ui';
 
-
-
-
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-const meta = {
+const meta: Meta<typeof SearchInput> = {
   title: 'Components/SearchInput',
   component: SearchInput,
   parameters: {
@@ -16,14 +14,18 @@ const meta = {
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   args: {
-
+    // value: "initial text",
   },
-} satisfies Meta<typeof SearchInput>;
+};
 
 export default meta;
-// type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>;
 
-// // // // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-// export const Default: Story = {
-
-// };
+// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+export const Default: Story = {
+  args: {
+    onChange: (value: string) => {
+      console.log("value", value);
+    }
+  }
+};

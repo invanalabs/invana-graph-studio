@@ -1,5 +1,5 @@
 {
-  "extends": "@invana/typescript-config/tsconfig.base.json",
+  "extends": "../config-typescript/tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

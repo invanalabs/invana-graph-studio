@@ -1,4 +1,4 @@
-import sharedConfig from '../tailwind-config/tailwind.config';
+import sharedConfig from '../config-tailwind/tailwind.config';
 
 /** @type {import('tailwindcss').Config} */
 export const presets = [sharedConfig];

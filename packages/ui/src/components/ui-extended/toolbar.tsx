@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonWithTooltip } from './button-with-tooltip';
-import { Eraser, Lock } from 'lucide-react';
+import { Lock } from 'lucide-react';
 import { Separator } from '../ui/separator';
 
 const Toolbar: React.FC = () => {

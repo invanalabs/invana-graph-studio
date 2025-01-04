@@ -25,7 +25,9 @@
       "@invana/ui/*": [
         "../../packages/ui/src/*"
       ],
-      // "@invana/tailwind-config": ["../../packages/tailwind-config/tailwind.config.js"],
+      "@invana/config-tailwind": [
+        "../../packages/config-tailwind/tailwind.config.js"
+      ],
       // "@/lib": ["../../packages/ui/src/lib"],
       // "@/lib/*": ["../../packages/ui/src/lib/*"]
     },
