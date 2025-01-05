@@ -1,6 +1,7 @@
+import * as React from "react"
 import { BarChart3, Clock, Home, LayoutDashboard, LifeBuoy, Package, Search, Settings, Sun, UserCircle } from 'lucide-react'
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
+import { Button } from "../ui/button"
 import {
   Command,
   CommandDialog,
@@ -10,14 +11,13 @@ import {
   CommandItem,
   CommandList,
   CommandShortcut,
-} from "@/components/ui/command"
+} from "../ui/command"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { cn } from "@/lib/utils"
+} from "../ui/tooltip"
 
 const navigation = [
   { name: "Home", href: "#", icon: Home },
@@ -32,7 +32,7 @@ const secondaryNavigation = [
   { name: "Settings", href: "#", icon: Settings },
 ]
 
-export default function Dashboard() {
+export function Dashboard() {
   const [open, setOpen] = React.useState(false)
   const [theme, setTheme] = React.useState<"light" | "dark">("light")
 
