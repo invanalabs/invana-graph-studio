@@ -1,7 +1,7 @@
 import React, { CSSProperties, memo } from "react";
 import { Node, NodeProps } from "@xyflow/react";
-import { BaseNodeTemplate } from "@/components/BaseNodeTemplate";
-import RenderHTML from "@/components/RenderHTML";
+import { BaseNodeTemplate } from "../../components/BaseNodeTemplate";
+import RenderHTML from "../../components/RenderHTML";
 
 
 export type AnnotationNode = Node<{

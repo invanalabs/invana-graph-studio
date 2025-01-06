@@ -1,8 +1,8 @@
 import React, { memo } from "react";
 import { Handle, NodeProps, Position } from "@xyflow/react";
-import { BaseNodeTemplate } from "@/components/BaseNodeTemplate";
+import { BaseNodeTemplate } from "../../components/BaseNodeTemplate";
 import { ChevronRight, FolderOpen } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 import { SearchInput } from "@invana/ui";
 
 

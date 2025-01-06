@@ -14,10 +14,10 @@ import '@xyflow/react/dist/style.css';
 import { defaultFlowCanvasOptions } from "./defaults";
 import { addNodeDefaults } from "./utils";
 import "../index.css";
-import { CanvasToolBar } from "@/plugins/toolbars/CanvasToolBar";
+import { CanvasToolBar } from "../plugins/toolbars/CanvasToolBar";
 import { Moon, Sun } from "lucide-react";
-import { ButtonWithTooltip } from "@invana/ui/components/ui-extended/button-with-tooltip";
-import { DevTools } from "@/plugins/toolbars/DevTools";
+import { ButtonWithTooltip } from "@invana/ui";
+import { DevTools } from "../plugins/toolbars/DevTools";
 
 
 export const CanvasFlow: React.FC<FlowCanvasOptions> = (options) => {

@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { Handle, NodeProps, Position } from "@xyflow/react";
-import { BaseNodeTemplate } from "@/components/BaseNodeTemplate";
+import { BaseNodeTemplate } from "../../components/BaseNodeTemplate";
 
 
 export type DataField = {

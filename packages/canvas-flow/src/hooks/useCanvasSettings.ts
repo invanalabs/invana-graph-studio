@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { BackgroundProps, BackgroundVariant, useStoreApi } from '@xyflow/react';
-import { LayoutDirections } from '@/app/types';
+import { LayoutDirections } from '../app/types';
 
 
 // interface CanvasSettings {

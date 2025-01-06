@@ -16,10 +16,10 @@
         "../../packages/ui/src/*"
       ],
       "@invana/canvas-flow": [
-        "../canvas-flow/src"
+        "../../packages/canvas-flow/src"
       ],
       "@invana/canvas-flow/*": [
-        "../canvas-flow/src/*"
+        "../../packages/canvas-flow/src/*"
       ]
     },
     "jsx": "react-jsx"

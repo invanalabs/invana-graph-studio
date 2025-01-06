@@ -1,4 +1,4 @@
-import { defaultNodeTypes } from "@/templates/nodes"
+import { defaultNodeTypes } from "../templates/nodes"
 import { FlowCanvasOptions } from "./types"
 import { BackgroundVariant, ConnectionLineType, MarkerType } from "@xyflow/react"
 

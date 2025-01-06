@@ -8,7 +8,6 @@ export const CanvasToolBar: React.FC = () => {
 
   return (
     <>
-
       <ViewportControls />
       <Separator orientation="vertical" className="h-4" />
       <CanvasControls />

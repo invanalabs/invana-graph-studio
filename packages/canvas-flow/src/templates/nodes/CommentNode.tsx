@@ -1,9 +1,9 @@
 import React, { memo } from "react";
 import { Node, NodeProps } from "@xyflow/react";
 import { StickyNoteIcon } from "lucide-react";
-import { BaseNodeTemplate } from "@/components/BaseNodeTemplate";
-import RenderHTML from "@/components/RenderHTML";
-import RenderIconOrImg from "@/components/RenderImageOrIcon";
+import { BaseNodeTemplate } from "../../components/BaseNodeTemplate";
+import RenderHTML from "../../components/RenderHTML";
+import RenderIconOrImg from "../../components/RenderImageOrIcon";
 
 
 export type CommentNode = Node<{

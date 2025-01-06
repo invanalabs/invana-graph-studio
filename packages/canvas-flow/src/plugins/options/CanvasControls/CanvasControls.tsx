@@ -10,11 +10,9 @@ import { Separator } from "@invana/ui"
 import { ButtonWithTooltip } from "@invana/ui"
 import { useReactFlow, BackgroundVariant } from "@xyflow/react";
 import { Eraser, Lock, MoveDown, MoveLeft, MoveRight, MoveUp, Unlock } from "lucide-react";
-import useCanvasSettings from "@/hooks/useCanvasSettings";
-import { LayoutDirections } from "@/app/types";
-import { computeHandlePositions } from "@/app/utils";
-// import { cn } from "../../../lib/utils";
-// import { useStoreState, useStoreActions } from "@xyflow/react";
+import useCanvasSettings from "../../../hooks/useCanvasSettings";
+import { LayoutDirections } from "../../../app/types";
+import { computeHandlePositions } from "../../../app/utils";
 
 
 export const CanvasControls = () => {

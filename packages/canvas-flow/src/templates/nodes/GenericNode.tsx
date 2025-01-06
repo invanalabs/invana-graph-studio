@@ -1,8 +1,8 @@
 import React, { memo } from "react";
-import { BaseNodeTemplate } from "@/components/BaseNodeTemplate";
+import { BaseNodeTemplate } from "../../components/BaseNodeTemplate";
 import { Handle, Node, NodeProps, NodeResizer } from "@xyflow/react";
-import { defaultFlowCanvasOptions } from "@/app/defaults";
-import { computeHandlePositions } from "@/app/utils";
+import { defaultFlowCanvasOptions } from "../../app/defaults";
+import { computeHandlePositions } from "../../app/utils";
 
 
 export type GenericNodeProps = Node<{
