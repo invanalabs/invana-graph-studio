@@ -1,11 +1,12 @@
-import { Button, MainLayout } from "@invana/ui";
+import { MainLayout } from "@/layouts/mainLayout";
+import { Button } from "@invana/ui";
 import { Link } from "react-router-dom";
 
 
 export default function NotFoundPage() {
   return (
 
-    <MainLayout>
+    <MainLayout header={<div>Header</div>} footer={<div>Footer</div>}>
       <div className="flex flex-col h-full items-center justify-center px-4 w-full">
         <div className="max-w-md w-full space-y-8 text-center">
           <div className="relative">

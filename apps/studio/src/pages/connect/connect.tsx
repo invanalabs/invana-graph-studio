@@ -4,12 +4,12 @@ import {
   Badge,
   BookOpenIcon, Database, LightbulbIcon,
   Link,
-  Package,
 } from 'lucide-react';
 import { LANDING_ROUTE, LOCALSTORAGE_KEYS } from '../../constants';
 import { useConnectionStore } from '../../store/connectionStore';
 import { GraphDBConnection } from '../../models';
 import { ConnectForm } from '../../components/forms/connect-form';
+import { LogoComponent } from '../constants';
 
 
 export interface ILearnMoreItem {
@@ -59,7 +59,7 @@ const ConnectPage: React.FC = () => {
   initTheme()
 
   return (
-    <BlankLayout logo={<Package className="h-5 w-5 text-foreground" />}>
+    <BlankLayout logo={LogoComponent} sideBarTopNavitems={[]} sideBarBottomNavitems={[]} storageKey={LOCALSTORAGE_KEYS.THEME}>
       <div className="min-h-screen p-8">
         <div className="max-w-6xl mx-auto space-y-6 mt-[7%]">
           <div>
