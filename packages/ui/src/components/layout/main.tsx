@@ -1,9 +1,8 @@
 import * as React from "react"
 import {
   Activity,
-  BarChart3, Clock, Compass, Database, Home,
-  LifeBuoy, Network, Package, Search, Settings, Sun,
-  UserCircle
+  BarChart3, Compass, Database, Home,
+  Network, Package, Search, Sun,
 } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Button } from "../ui/button"
@@ -38,7 +37,14 @@ const secondaryNavigation = [
   // { name: "Settings", href: "#", icon: Settings },
 ]
 
-export function Dashboard() {
+
+
+export interface MainLayoutProps {
+  children: React.ReactNode
+}
+
+
+export function MainLayout(props: MainLayoutProps) {
   const [open, setOpen] = React.useState(false)
   const [theme, setTheme] = React.useState<"light" | "dark">(() => {
     // Check localStorage first
@@ -174,7 +180,7 @@ export function Dashboard() {
             <div className="flex flex-1 items-center gap-4">
               <div className="flex items-center gap-2 text-foreground">
                 <Package className="h-5 w-5 text-foreground" />
-                <h1 className="hidden text-sm font-medium text-foreground sm:inline-block">Analytics Dashboard</h1>
+                <h1 className="hidden text-sm font-medium text-foreground sm:inline-block">Analytics MainLayout</h1>
               </div>
               <div className="ml-auto flex items-center gap-1 sm:gap-2">
                 <Button
@@ -266,8 +272,10 @@ export function Dashboard() {
             </div>
           </header>
           <main className="flex-1 overflow-auto h-[calc(100vh-80px)] bg-background">
-            <div className="h-full p-4 sm:p-6">
-              <div className="grid gap-4 sm:gap-6">
+            <div className="h-full p-2">
+
+              {props.children}
+              {/* <div className="grid gap-4 sm:gap-6">
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                   <div className="rounded-lg border border-border bg-card p-4 sm:p-6">
                     <div className="flex items-center gap-2">
@@ -301,7 +309,7 @@ export function Dashboard() {
                 <div className="rounded-lg border border-border bg-card">
                   <div className="h-[40vh] w-full" />
                 </div>
-              </div>
+              </div> */}
             </div>
           </main>
           <footer className="flex h-[30px] items-center justify-between border-t border-border bg-background px-4 sm:px-6">
