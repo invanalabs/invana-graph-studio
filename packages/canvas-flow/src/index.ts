@@ -1,2 +1,4 @@
 import "./index.css";
-export * from './app/app'
+export * from './app';
+export * from './components';
+export * from './hooks';
