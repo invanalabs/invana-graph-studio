@@ -1,5 +1,10 @@
 import * as React from "react"
-import { BarChart3, Clock, Home, LayoutDashboard, LifeBuoy, Package, Search, Settings, Sun, UserCircle } from 'lucide-react'
+import {
+  Activity,
+  BarChart3, Clock, Compass, Database, Home,
+  LifeBuoy, Network, Package, Search, Settings, Sun,
+  UserCircle
+} from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Button } from "../ui/button"
 import {
@@ -18,18 +23,19 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "../ui/tooltip"
+import { Separator } from "../ui/separator"
 
 const navigation = [
-  { name: "Home", href: "#", icon: Home },
-  { name: "Dashboard", href: "#", icon: LayoutDashboard },
-  { name: "Analytics", href: "#", icon: BarChart3 },
-  { name: "Products", href: "#", icon: Package },
-  { name: "Activity", href: "#", icon: Clock },
+  { name: "Home", href: "/", icon: Home },
+  { name: "Explorer", href: "/explorer", icon: Compass },
+  { name: "Modeller", href: "/modeller", icon: Network },
+  { name: "Database Connection", href: "/connections", icon: Database },
+  // { name: "Activity", href: "#", icon: Clock },
 ]
 
 const secondaryNavigation = [
-  { name: "Help", href: "#", icon: LifeBuoy },
-  { name: "Settings", href: "#", icon: Settings },
+  { name: "Activity", href: "/activity", icon: Activity },
+  // { name: "Settings", href: "#", icon: Settings },
 ]
 
 export function Dashboard() {
@@ -58,34 +64,43 @@ export function Dashboard() {
       <div className="grid min-h-screen w-full lg:grid-cols-[50px_1fr]">
         <nav className="hidden border-r border-border bg-background lg:block">
           <div className="flex h-[50px] items-center justify-center border-b">
-            <Package className="h-5 w-5 text-foreground" />
+            <a href="">
+              <Package className="h-5 w-5 text-foreground" />
+            </a>
           </div>
-          <div className="flex flex-col justify-between h-[calc(100vh-100px)]">
-            <div className="px-2 py-2">
+          <div className="flex flex-col justify-between h-[calc(100vh-50px)]">
+            <div className="">
               {navigation.map((item) => (
-                <Tooltip key={item.name}>
-                  <TooltipTrigger asChild>
-                    <a
-                      href={item.href}
-                      className="flex h-[50px] w-full items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-                    >
-                      <item.icon className="h-5 w-5" />
-                      <span className="sr-only">{item.name}</span>
-                    </a>
-                  </TooltipTrigger>
-                  <TooltipContent side="right">
-                    {item.name}
-                  </TooltipContent>
-                </Tooltip>
+                <>
+                  <Tooltip key={item.name}>
+                    <TooltipTrigger asChild>
+                      <a
+                        href={item.href}
+                        className="flex h-[50px] w-full items-center justify-center 
+                      rounded-md text-muted-foreground transition-colors 
+                      hover:bg-accent hover:text-accent-foreground px-2 py-2"
+                      >
+                        <item.icon className="h-5 w-5" />
+                        <span className="sr-only">{item.name}</span>
+                      </a>
+                    </TooltipTrigger>
+                    <TooltipContent side="right">
+                      {item.name}
+                    </TooltipContent>
+                  </Tooltip>
+                  <Separator />
+                </>
+
               ))}
             </div>
-            <div className="px-2 py-2">
+            <div className="">
               {secondaryNavigation.map((item) => (
                 <Tooltip key={item.name}>
                   <TooltipTrigger asChild>
                     <a
                       href={item.href}
-                      className="flex h-[50px] w-full items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                      className="flex h-[50px] w-full px-2 py-2 items-center justify-center 
+                      rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                     >
                       <item.icon className="h-5 w-5" />
                       <span className="sr-only">{item.name}</span>
@@ -98,7 +113,7 @@ export function Dashboard() {
               ))}
             </div>
           </div>
-          <div className="border-t">
+          {/* <div className="border-t">
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
@@ -118,7 +133,7 @@ export function Dashboard() {
                 <span className="text-xs text-muted-foreground">john@example.com</span>
               </TooltipContent>
             </Tooltip>
-          </div>
+          </div> */}
         </nav>
         <div className="flex flex-col">
           <header className="flex h-[50px] items-center border-b border-border bg-background px-4 sm:px-6">
@@ -160,6 +175,18 @@ export function Dashboard() {
                   </Command>
                 </CommandDialog>
                 <div className="flex items-center gap-1 sm:gap-2">
+                  <Separator orientation="vertical" className="h-6 ml-2" />
+
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <a href="https://github.com/invana/invana-studio" target="_blank" className="ml-2 mr-2">
+                        <img src="https://img.shields.io/github/stars/invana/invana-studio?style=social"
+                          alt="stars" className="  w-20 " />
+                      </a>
+                    </TooltipTrigger>
+                    <TooltipContent>Stars</TooltipContent>
+                  </Tooltip>
+                  <Separator orientation="vertical" className="h-6" />
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button
@@ -174,7 +201,7 @@ export function Dashboard() {
                     </TooltipTrigger>
                     <TooltipContent>Toggle theme</TooltipContent>
                   </Tooltip>
-                  <Tooltip>
+                  {/* <Tooltip>
                     <TooltipTrigger asChild>
                       <Button
                         variant="ghost"
@@ -186,11 +213,10 @@ export function Dashboard() {
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent>Settings</TooltipContent>
-                  </Tooltip>
-                  <Avatar className="h-8 w-8">
-                    <AvatarImage src="/placeholder-user.jpg" alt="User" />
-                    <AvatarFallback>JD</AvatarFallback>
-                  </Avatar>
+                  </Tooltip> */}
+
+
+
                 </div>
               </div>
             </div>
@@ -236,10 +262,10 @@ export function Dashboard() {
           </main>
           <footer className="flex h-[30px] items-center justify-between border-t border-border bg-background px-4 sm:px-6">
             <p className="text-xs text-muted-foreground sm:text-sm">
-              © 2024 Acme Inc. All rights reserved.
+              © 2024 Invana.
             </p>
             <nav className="flex gap-2 sm:gap-4">
-              <a href="#" className="text-xs text-muted-foreground hover:text-foreground hover:underline sm:text-sm">
+              {/* <a href="#" className="text-xs text-muted-foreground hover:text-foreground hover:underline sm:text-sm">
                 Terms
               </a>
               <a href="#" className="text-xs text-muted-foreground hover:text-foreground hover:underline sm:text-sm">
@@ -247,7 +273,7 @@ export function Dashboard() {
               </a>
               <a href="#" className="text-xs text-muted-foreground hover:text-foreground hover:underline sm:text-sm">
                 Contact
-              </a>
+              </a> */}
             </nav>
           </footer>
         </div>
