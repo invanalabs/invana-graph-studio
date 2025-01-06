@@ -19,13 +19,13 @@ export const MainLayout: React.FC<MainLayoutProps> = (props) => {
       sideBarBottomNavitems={props.sideBarBottomNavitems}
       storageKey={props.storageKey}
     >
-      <header className="flex h-[50px] items-center border-b border-border bg-background px-4 sm:px-6">
+      <header className="flex h-[50px] items-center border-b border-border bg-background px-4">
         {props.header}
       </header>
       <main className="flex-1 overflow-auto h-[calc(100vh-80px)] bg-background">
         {props.children}
       </main>
-      <footer className="flex h-[30px] items-center justify-between border-t border-border bg-background px-4 sm:px-6">
+      <footer className="flex h-[30px] items-center justify-between border-t border-border bg-background px-4">
         {props.footer}
       </footer>
     </BlankLayout>
