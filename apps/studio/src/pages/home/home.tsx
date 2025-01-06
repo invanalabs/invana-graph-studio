@@ -1,18 +1,26 @@
 import React from 'react';
-import { Button, Card, BlankLayout } from '@invana/ui';
+import { Button, Card, BlankLayout, useThemeStore } from '@invana/ui';
 import {
   BookOpenIcon, LightbulbIcon,
   Package,
 } from 'lucide-react';
+import { LOCALSTORAGE_KEYS } from '../../services/constants';
+
 
 
 const HomePage: React.FC = () => {
+
+  const { theme, setTheme, initTheme } = useThemeStore();
+
+  initTheme()
+
+
   return (
     <BlankLayout logo={<Package className="h-5 w-5 text-foreground" />}>
       <div className="min-h-screen p-8">
         <div className="max-w-6xl mx-auto space-y-6 mt-[7%]">
           <div>
-            <h1 className="text-4xl font-semibold mb-2">Invana Studio</h1>
+            <h1 className="text-4xl font-semibold">Invana Studio</h1>
             <h2 className="text-xl font-light">An opensource Thinkers toolkit for curious people.</h2>
           </div>
 

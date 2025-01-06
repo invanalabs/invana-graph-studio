@@ -16,6 +16,6 @@ export * from './components/ui-extended/button-with-tooltip';
 export * from './components/ui-extended/search-input';
 export * from './components/ui-extended/toolbar';
 export * from './components/ui-extended/tree-view';
-export * from './components/layout/main';
-export * from './components/layout/blank';
+export * from './components/layouts';
+export * from './store';
 import "./index.css";
