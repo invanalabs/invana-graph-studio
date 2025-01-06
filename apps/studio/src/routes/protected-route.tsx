@@ -12,7 +12,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   console.log("===activeWorkspace", activeConnection)
   if (!activeConnection) {
     // If connectionUrl doesn't exist, redirect to /connect
-    return <Navigate to={"/?next=" + location.pathname || "/graphbook"} replace />;
+    return <Navigate to={"/connect?next=" + location.pathname || "/graphbook"} replace />;
   }
 
   // If connectionUrl exists, render the children (protected component)

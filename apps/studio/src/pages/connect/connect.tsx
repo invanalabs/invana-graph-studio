@@ -6,7 +6,7 @@ import {
   Link,
   Package,
 } from 'lucide-react';
-import { LOCALSTORAGE_KEYS } from '../../constants';
+import { LANDING_ROUTE, LOCALSTORAGE_KEYS } from '../../constants';
 import { useConnectionStore } from '../../store/connectionStore';
 import { GraphDBConnection } from '../../models';
 import { ConnectForm } from '../../components/forms/connect-form';
@@ -43,16 +43,16 @@ const ConnectPage: React.FC = () => {
 
   const { initTheme } = useThemeStore(LOCALSTORAGE_KEYS.THEME);
   const { connections, setActiveConnection } = useConnectionStore(LOCALSTORAGE_KEYS.CONNECTION);
-  // const [_, forceUpdate] = React.useReducer(x => x + 1, 0);
+  const [_, forceUpdate] = React.useReducer(x => x + 1, 0);
   const [showForm, setShowForm] = React.useState(false);
 
-  // React.useEffect(() => {
-  //   forceUpdate();
-  // }, [connections]);
+  React.useEffect(() => {
+    forceUpdate();
+  }, [connections]);
 
   const switchToConnection = (connectionId: string) => {
     setActiveConnection(connectionId);
-    // window.location.href = "/modeller";
+    window.location.href = LANDING_ROUTE;
 
   }
 
