@@ -18,4 +18,5 @@ export * from './components/ui-extended/toolbar';
 export * from './components/ui-extended/tree-view';
 export * from './components/layouts';
 export * from './store';
+export * from './services'
 import "./index.css";

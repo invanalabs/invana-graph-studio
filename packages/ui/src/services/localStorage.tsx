@@ -1,37 +1,3 @@
-// Base service class for API
-export abstract class APIServiceBase<T> {
-  protected apiUrl: string;
-
-  constructor(apiUrl: string) {
-    this.apiUrl = apiUrl;
-  }
-
-  protected async request(
-    query: string,
-    variables: Record<string, any> = {}
-  ): Promise<T> {
-    try {
-      const response = await fetch(this.apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ query, variables }),
-      });
-
-      const result = await response.json();
-
-      if (result.errors) {
-        throw new Error(result.errors.map((err: any) => err.message).join(', '));
-      }
-
-      return result.data;
-    } catch (error) {
-      console.error('API request error:', error);
-      throw error;
-    }
-  }
-}
 
 
 // Base service class for localStorage
@@ -42,6 +8,7 @@ export class LocalStorageServiceBase<T> {
     return new Promise((resolve) => {
       const data = localStorage.getItem(this.storageKey);
       resolve(data ? JSON.parse(data) : []);
+      return Promise.resolve();
     });
   }
 
@@ -76,6 +43,7 @@ export class LocalStorageServiceBase<T> {
         items[index] = { ...items[index], ...updatedItem };
         return this.saveItems(items);
       }
+      return Promise.resolve(); // Return a resolved promise if the item is not found
     });
   }
 
