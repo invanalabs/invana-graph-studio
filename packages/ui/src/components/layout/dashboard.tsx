@@ -40,7 +40,41 @@ const secondaryNavigation = [
 
 export function Dashboard() {
   const [open, setOpen] = React.useState(false)
-  const [theme, setTheme] = React.useState<"light" | "dark">("light")
+  const [theme, setTheme] = React.useState<"light" | "dark">(() => {
+    // Check localStorage first
+    const stored = localStorage.getItem("theme")
+    if (stored === "light" || stored === "dark") return stored
+
+    // Then check system preference
+    if (typeof window !== "undefined") {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+    }
+
+    return "light"
+  })
+
+  // Apply theme on mount and when it changes
+  React.useEffect(() => {
+    const root = document.documentElement
+    if (theme === "dark") {
+      root.classList.add("dark")
+    } else {
+      root.classList.remove("dark")
+    }
+    localStorage.setItem("theme", theme)
+  }, [theme])
+
+  // Listen for system theme changes
+  React.useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setTheme(e.matches ? "dark" : "light")
+    }
+
+    mediaQuery.addEventListener("change", handleChange)
+    return () => mediaQuery.removeEventListener("change", handleChange)
+  }, [])
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -214,6 +248,16 @@ export function Dashboard() {
                     </TooltipTrigger>
                     <TooltipContent>Settings</TooltipContent>
                   </Tooltip> */}
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Avatar className="h-8 w-8">
+                        <AvatarImage src="/placeholder-user.jpg" alt="User" />
+                        <AvatarFallback>A</AvatarFallback>
+                      </Avatar>
+                    </TooltipTrigger>
+                    <TooltipContent>Anonymous User</TooltipContent>
+                  </Tooltip>
+
 
 
 
