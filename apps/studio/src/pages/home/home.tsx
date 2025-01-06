@@ -10,10 +10,9 @@ import { LOCALSTORAGE_KEYS } from '../../services/constants';
 
 const HomePage: React.FC = () => {
 
-  const { theme, setTheme, initTheme } = useThemeStore();
+  const { initTheme } = useThemeStore(LOCALSTORAGE_KEYS.THEME);
 
   initTheme()
-
 
   return (
     <BlankLayout logo={<Package className="h-5 w-5 text-foreground" />}>
