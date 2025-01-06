@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { data } from "./simple-data";
 import { data as groupdData } from "./grouped-data";
-import CanvasFlow from '../../../app/app';
+import { CanvasFlow } from '../../../app/app';
+import { Edge, Node } from '@xyflow/react';
 
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -28,7 +29,7 @@ export const Basic: Story = {
 export const ERDriagramGrouped: Story = {
   name: "Grouped ER",
   args: {
-    nodes: groupdData.nodes,
-    edges: groupdData.edges
+    nodes: groupdData.nodes as Node[],
+    edges: groupdData.edges as Edge[]
   },
 };

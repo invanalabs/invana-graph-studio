@@ -1,6 +1,7 @@
-import CanvasFlow from '@/app/app';
+import { CanvasFlow } from '@/app/app';
 import type { Meta, StoryObj } from '@storybook/react';
 import { data } from "./data";
+import { Edge, Node } from '@xyflow/react';
 
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -23,7 +24,7 @@ type Story = StoryObj<typeof meta>;
 
 export const LabeledGroupNode: Story = {
   args: {
-    nodes: data.nodes,
-    edges: data.edges,
+    nodes: data.nodes as Node[],
+    edges: data.edges as Edge[],
   },
 };

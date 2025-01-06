@@ -1,4 +1,4 @@
-import CanvasFlow from '@/app/app';
+import { CanvasFlow } from '@/app/app';
 import type { Meta, StoryObj } from '@storybook/react';
 import { data } from "./data";
 

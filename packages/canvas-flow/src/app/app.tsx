@@ -25,7 +25,7 @@ export const CanvasFlow: React.FC<FlowCanvasOptions> = (options) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const defaultNodes = options.nodes.map(
-    node => addNodeDefaults(node, options.canvas.defaultNodeOptions || {}, options.layoutDirection)
+    node => addNodeDefaults(node, options.canvas?.defaultNodeOptions || {}, options.layoutDirection)
   )
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -33,7 +33,7 @@ export const CanvasFlow: React.FC<FlowCanvasOptions> = (options) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [edges, _setEdges, onEdgesChange] = useEdgesState(options?.edges || []);
 
-  const [theme, setTheme] = React.useState<ColorMode>(options.canvas.colorMode || 'system');
+  const [theme, setTheme] = React.useState<ColorMode>(options.canvas?.colorMode || 'system');
 
   const getActiveTheme = () => {
     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
