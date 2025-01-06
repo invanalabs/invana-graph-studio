@@ -2,5 +2,26 @@
   "extends": "../../packages/config-typescript/tsconfig.base.json",
   "include": [
     "src"
-  ]
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@invana/ui": [
+        "../../packages/ui/src"
+      ],
+      "@invana/ui/*": [
+        "../../packages/ui/src/*"
+      ],
+      "@invana/canvas-flow": [
+        "../canvas-flow/src"
+      ],
+      "@invana/canvas-flow/*": [
+        "../canvas-flow/src/*"
+      ]
+    },
+    "jsx": "react-jsx"
+  }
 }

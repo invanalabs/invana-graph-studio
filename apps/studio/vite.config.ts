@@ -10,6 +10,7 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, './src'),
       "@invana/ui": path.resolve(__dirname, '../../packages/ui/src'),
+      "@invana/canvas-flow": path.resolve(__dirname, '../../packages/canvas-flow/src'),
       // "@/lib": path.resolve(__dirname, '../../packages/ui/src/lib')
     },
   }

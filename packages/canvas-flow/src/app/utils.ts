@@ -26,7 +26,7 @@ export const computeHandlePositions = (direction: LayoutDirections = "LR") => {
 }
 
 
-export const addNodeDefaults = (node: Node, nodeDefaults: Partial<Node>, layoutDirection: string = "LR") => {
+export const addNodeDefaults = (node: Node, nodeDefaults: Partial<Node>, layoutDirection: LayoutDirections = "LR") => {
   const defaultPosition = nodeDefaults?.position;
   const { sourcePosition, targetPosition } = computeHandlePositions(layoutDirection);
   delete nodeDefaults.position;

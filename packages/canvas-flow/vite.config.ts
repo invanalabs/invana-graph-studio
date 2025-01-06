@@ -16,13 +16,12 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "src"),
       "@invana/ui": path.resolve(__dirname, "../ui/src"),
-
     },
   },
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src', 'index.ts'),
-      name: "FlowCanvas",
+      name: "CanvasFlow",
       formats: ['es', 'umd'],
       fileName: (ext) => `index.${ext}.js`,
     },

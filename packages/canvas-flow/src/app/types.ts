@@ -15,7 +15,7 @@ export interface CanvasPlugin {
   isHidden: boolean;
 }
 
-export type LayoutDirections = "TB" | "LR" | "BT" | "RL"
+export type LayoutDirections = "TB" | "LR" | "BT" | "RL" | undefined
 
 export interface FlowCanvasOptions {
   children?: ReactNode;

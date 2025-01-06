@@ -22,11 +22,17 @@
     "baseUrl": ".",
     "paths": {
       // "@invana/ui": ["../../packages/ui/src"],
+      "@invana/config-tailwind": [
+        "../../packages/config-tailwind/tailwind.config.js"
+      ],
       "@invana/ui/*": [
         "../../packages/ui/src/*"
       ],
-      "@invana/config-tailwind": [
-        "../../packages/config-tailwind/tailwind.config.js"
+      "@invana/canvas-flow": [
+        "../../packages/canvas-flow/src"
+      ],
+      "@invana/canvas-flow/*": [
+        "../../packages/canvas-flow/src/*"
       ],
       // "@/lib": ["../../packages/ui/src/lib"],
       // "@/lib/*": ["../../packages/ui/src/lib/*"]

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Select,
   SelectContent,
@@ -11,7 +11,7 @@ import { useReactFlow, useViewport } from "@xyflow/react";
 import { Minus, Plus } from "lucide-react";
 
 
-export const ViewportControls = () => {
+export const ViewportControls: React.FC = () => {
 
   const { zoom } = useViewport();
   const { zoomTo, zoomIn, zoomOut, fitView } = useReactFlow();

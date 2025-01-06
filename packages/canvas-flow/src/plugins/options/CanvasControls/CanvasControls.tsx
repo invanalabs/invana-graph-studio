@@ -87,7 +87,7 @@ export const CanvasControls = () => {
         </SelectContent>
       </Select>
       <Separator orientation="vertical" className="h-4" />
-      <Select onValueChange={updateLayoutData} defaultValue={layoutDirection}>
+      <Select onValueChange={(value: string) => updateLayoutData(value as LayoutDirections)} defaultValue={layoutDirection}>
         <SelectTrigger className="h-7 w-7 w-[150px] rounded-none border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
           <SelectValue placeholder="Dagre Options" />
         </SelectTrigger>

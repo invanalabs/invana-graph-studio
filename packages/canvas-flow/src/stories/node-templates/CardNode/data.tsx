@@ -1,7 +1,5 @@
-import React from 'react';
-import { Input } from '@invana/ui/components/ui/input';
-import { Label } from '@invana/ui/components/ui/label';
-import { Button } from '@invana/ui/components/ui/button';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Input, Label, Button } from '@invana/ui';
 import { Building } from 'lucide-react';
 
 

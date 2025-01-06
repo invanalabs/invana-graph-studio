@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { Node, NodeProps } from "@xyflow/react";
 import { BaseNodeTemplate } from "@/components/BaseNodeTemplate";
 

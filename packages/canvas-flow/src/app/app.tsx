@@ -20,13 +20,18 @@ import { ButtonWithTooltip } from "@invana/ui/components/ui-extended/button-with
 import { DevTools } from "@/plugins/toolbars/DevTools";
 
 
-const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
+const CanvasFlow: React.FC<FlowCanvasOptions> = (options) => {
   options = { ...defaultFlowCanvasOptions, ...options };
   const ref = useRef<HTMLDivElement>(null);
-  const [nodes, setNodes, onNodesChange] = useNodesState(options.nodes.map(
+
+  const defaultNodes = options.nodes.map(
     node => addNodeDefaults(node, options.canvas.defaultNodeOptions || {}, options.layoutDirection)
-  ));
-  const [edges, setEdges, onEdgesChange] = useEdgesState(options?.edges || []);
+  )
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [nodes, _setNodes, onNodesChange] = useNodesState(defaultNodes);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [edges, _setEdges, onEdgesChange] = useEdgesState(options?.edges || []);
 
   const [theme, setTheme] = React.useState<ColorMode>(options.canvas.colorMode || 'system');
 
@@ -96,4 +101,4 @@ const FlowCanvas: React.FC<FlowCanvasOptions> = (options) => {
 };
 
 
-export default FlowCanvas;
+export default CanvasFlow;

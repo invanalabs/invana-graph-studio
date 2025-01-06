@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { BackgroundProps, BackgroundVariant, useStoreApi } from '@xyflow/react';
+import { LayoutDirections } from '@/app/types';
 
-type LayoutDirection = 'TB' | 'LR' | 'BT' | 'RL';
 
 // interface CanvasSettings {
 //   background: BackgroundProps;
@@ -35,13 +35,13 @@ const useCanvasSettings = () => {
     size: 1,
   });
 
-  const [layoutDirection, setLayoutDirection_] = useState<LayoutDirection>('TB');
+  const [layoutDirection, setLayoutDirection_] = useState<LayoutDirections>('TB');
 
   const setBackground = useCallback((newBackground: Partial<BackgroundProps>) => {
     setBackground_((prev) => ({ ...prev, ...newBackground }));
   }, []);
 
-  const setLayoutDirection = useCallback((newDirection: LayoutDirection) => {
+  const setLayoutDirection = useCallback((newDirection: LayoutDirections) => {
     setLayoutDirection_(newDirection);
   }, []);
 

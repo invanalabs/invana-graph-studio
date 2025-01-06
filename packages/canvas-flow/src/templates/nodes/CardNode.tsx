@@ -12,7 +12,7 @@ export type CardNodeProps = Node<{
 }>;
 
 
-const CardNode = ({ id, data, selected = false }: NodeProps<CardNodeProps>) => {
+const CardNode: React.FC<NodeProps<CardNodeProps>> = ({ id, data, selected = false }: NodeProps<CardNodeProps>) => {
   console.log("CardNode", data)
   return (
     <BaseNodeTemplate
