@@ -41,6 +41,7 @@ const secondaryNavigation = [
 
 export interface MainLayoutProps {
   children: React.ReactNode
+  headerTitle: React.ReactNode
 }
 
 
@@ -179,8 +180,7 @@ export function MainLayout(props: MainLayoutProps) {
           <header className="flex h-[50px] items-center border-b border-border bg-background px-4 sm:px-6">
             <div className="flex flex-1 items-center gap-4">
               <div className="flex items-center gap-2 text-foreground">
-                <Package className="h-5 w-5 text-foreground" />
-                <h1 className="hidden text-sm font-medium text-foreground sm:inline-block">Analytics MainLayout</h1>
+                {props.headerTitle}
               </div>
               <div className="ml-auto flex items-center gap-1 sm:gap-2">
                 <Button

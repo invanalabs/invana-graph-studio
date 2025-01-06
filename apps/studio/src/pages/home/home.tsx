@@ -1,15 +1,14 @@
 import React from 'react';
-import { MainLayout, Button, Card, Badge, Separator, } from '@invana/ui';
+import { Button, Card, BlankLayout } from '@invana/ui';
 import {
-  BookOpenIcon, FileIcon, FolderOpen, GitFork,
-  PiIcon as PythonIcon, GithubIcon, LightbulbIcon, Link,
-  Database
+  BookOpenIcon, LightbulbIcon,
+  Package,
 } from 'lucide-react';
 
 
 const HomePage: React.FC = () => {
   return (
-    <MainLayout>
+    <BlankLayout logo={<Package className="h-5 w-5 text-foreground" />}>
       <div className="min-h-screen p-8">
         <div className="max-w-6xl mx-auto space-y-6 mt-[7%]">
           <div>
@@ -97,7 +96,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
-    </MainLayout>
+    </BlankLayout>
   );
 };
 

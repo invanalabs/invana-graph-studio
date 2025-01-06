@@ -17,4 +17,5 @@ export * from './components/ui-extended/search-input';
 export * from './components/ui-extended/toolbar';
 export * from './components/ui-extended/tree-view';
 export * from './components/layout/main';
+export * from './components/layout/blank';
 import "./index.css";
