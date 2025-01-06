@@ -15,7 +15,8 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
-      "@invana/ui": path.resolve(__dirname, "../ui/src"),
+      "@invana/canvas-flow": path.resolve(__dirname, "src"),
+      "@invana/ui": path.resolve(__dirname, "../ui/src")
     },
   },
   build: {

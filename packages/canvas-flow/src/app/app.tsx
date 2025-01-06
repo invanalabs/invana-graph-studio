@@ -20,7 +20,7 @@ import { ButtonWithTooltip } from "@invana/ui/components/ui-extended/button-with
 import { DevTools } from "@/plugins/toolbars/DevTools";
 
 
-const CanvasFlow: React.FC<FlowCanvasOptions> = (options) => {
+export const CanvasFlow: React.FC<FlowCanvasOptions> = (options) => {
   options = { ...defaultFlowCanvasOptions, ...options };
   const ref = useRef<HTMLDivElement>(null);
 
@@ -101,4 +101,3 @@ const CanvasFlow: React.FC<FlowCanvasOptions> = (options) => {
 };
 
 
-export default CanvasFlow;

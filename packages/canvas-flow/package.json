@@ -10,12 +10,12 @@
     "dist"
   ],
   "scripts": {
-    "storybook": "storybook dev -p 6011",
-    "storybook-build": "storybook build",
     "build": "tsc -b && vite build",
+    "build-storybook": "storybook build",
     "build:styles": "postcss ./src/index.css -o ./dist/flow-canvas.css --env production",
     "lint": "eslint .",
-    "build-storybook": "storybook build"
+    "storybook": "storybook dev -p 6011",
+    "storybook-build": "storybook build"
   },
   "dependencies": {
     "@invana/ui": "^0.0.0",

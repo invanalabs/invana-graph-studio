@@ -11,10 +11,11 @@
   ],
   "scripts": {
     "build": "tsc -b && vite build",
+    "build-storybook": "storybook build",
     "build:styles": "postcss ./src/index.css -o ./dist/invana-ui.css --env production",
     "lint": "eslint .",
     "storybook": "storybook dev -p 6010",
-    "build-storybook": "storybook build"
+    "storybook-build": "storybook build"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.2",
