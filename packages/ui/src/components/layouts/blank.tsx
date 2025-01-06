@@ -22,7 +22,7 @@ export interface BlankLayoutProps {
 }
 
 
-export function BlankLayout(props: BlankLayoutProps) {
+export const BlankLayout: React.FC<BlankLayoutProps> = (props) => {
 
   return (
     <TooltipProvider delayDuration={0}>

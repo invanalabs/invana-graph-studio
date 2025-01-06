@@ -21,7 +21,7 @@ export interface TreeViewProps {
 }
 
 
-export function TreeView({ searchable = false, ...props }: TreeViewProps) {
+export const TreeView: React.FC<TreeViewProps> = ({ searchable = false, ...props }) => {
   /*
   const exampleData: TreeItem[] = [
     {

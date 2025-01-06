@@ -11,7 +11,7 @@ const ExplorerPage: React.FC = () => {
         <Compass className='h-4 w-4' /> <span className='font-bold'>Explorer</span>
       </>
     }>
-      <CanvasFlow />
+      <CanvasFlow nodes={[]} edges={[]} />
     </MainLayout>
   );
 };
