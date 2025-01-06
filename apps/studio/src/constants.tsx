@@ -6,3 +6,5 @@ export const LOCALSTORAGE_KEYS = {
     CONNECTION: "CONNECTION",
 
 }
+
+export const SUPPORTED_QUERY_LANGUAGES = ['gremlin', 'cypher'];

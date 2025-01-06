@@ -8,6 +8,7 @@ interface GraphDBConnectionState {
   connections: GraphDBConnection[];
   getConnections: () => Promise<GraphDBConnection[]>;
   createConnection: (connection: Omit<GraphDBConnection, 'id'>) => Promise<GraphDBConnection>;
+  isConnectionNameExists: (name: string) => boolean;
 }
 
 
@@ -29,6 +30,9 @@ export const useConnectionStore = (storeName: string) =>
           }));
           return newGraphDBConnection;
         },
+        isConnectionNameExists: (name: string) => {
+          return get().connections.some((connection) => connection.name === name);
+        }
       }),
       {
         name: storeName, // Name of the localStorage key

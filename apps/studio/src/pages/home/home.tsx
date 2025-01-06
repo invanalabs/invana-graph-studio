@@ -2,13 +2,13 @@ import React from 'react';
 import { Button, Card, BlankLayout, useThemeStore } from '@invana/ui';
 import {
   Badge,
-  BookOpenIcon, LightbulbIcon,
+  BookOpenIcon, Database, LightbulbIcon,
   Package,
 } from 'lucide-react';
 import { LOCALSTORAGE_KEYS } from '../../constants';
 import { useConnectionStore } from '../../store/connectionStore';
 import { GraphDBConnection } from '../../models';
-import { LoginForm } from '../../components/forms/login-form';
+import { ConnectForm } from '../../components/forms/connect-form';
 
 
 export interface ILearnMoreItem {
@@ -42,6 +42,11 @@ const HomePage: React.FC = () => {
 
   const { initTheme } = useThemeStore(LOCALSTORAGE_KEYS.THEME);
   const { connections } = useConnectionStore(LOCALSTORAGE_KEYS.CONNECTION);
+  const [_, forceUpdate] = React.useReducer(x => x + 1, 0);
+
+  React.useEffect(() => {
+    forceUpdate();
+  }, [connections]);
 
   initTheme()
 
@@ -58,19 +63,21 @@ const HomePage: React.FC = () => {
             {/* Start Section */}
             <div className="space-y-6">
               <div>
+                <ConnectForm />
 
-                <LoginForm />
+              </div>
+              <div>
                 <h3 className="mb-4 text-lg"> Recent Connections</h3>
                 <div className="space-y-2">
                   {connections.length === 0 ? (
                     <p className="text-zinc-500">There are no connections.</p>
                   ) : (
-                    connections.map((connection: GraphDBConnection, index: number) => (
+                    connections.slice(-3).map((connection: GraphDBConnection, index: number) => (
                       <div key={index} className="group">
                         <Button variant={"ghost"} className="w-full justify-start p-0 hover:bg-transparent text-blue-400 hover:text-blue-300">
-                          {connection.name}
+                          <Database /> {connection.name} - [{connection.queryLanguage}]
                         </Button>
-                        <p className="text-xs text-zinc-500">~/Projects/Invana/invana/connection-{index + 1}</p>
+                        <p className="text-xs text-zinc-500">{connection.hosturl}</p>
                       </div>
                     ))
                   )}
