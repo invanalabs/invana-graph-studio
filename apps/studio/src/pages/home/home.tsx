@@ -8,7 +8,7 @@ import {
 import { LOCALSTORAGE_KEYS } from '../../constants';
 import { useConnectionStore } from '../../store/connectionStore';
 import { GraphDBConnection } from '../../models';
-
+import { LoginForm } from '../../components/forms/login-form';
 
 
 export interface ILearnMoreItem {
@@ -58,6 +58,8 @@ const HomePage: React.FC = () => {
             {/* Start Section */}
             <div className="space-y-6">
               <div>
+
+                <LoginForm />
                 <h3 className="mb-4 text-lg"> Recent Connections</h3>
                 <div className="space-y-2">
                   {connections.length === 0 ? (
