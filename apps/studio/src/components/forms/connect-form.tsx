@@ -4,7 +4,7 @@ import { useConnectionStore } from '../../store/connectionStore';
 import { LOCALSTORAGE_KEYS } from '../../constants';
 import { SupportedQueryLanguages } from '../../models';
 
-export const ConnectForm = () => {
+export const ConnectForm = ({ setShowForm }) => {
   const [requiresAuth, setRequiresAuth] = useState(false);
   const { createConnection, isConnectionNameExists } = useConnectionStore(LOCALSTORAGE_KEYS.CONNECTION);
 
@@ -105,9 +105,10 @@ export const ConnectForm = () => {
           )}
         </CardContent>
         <CardFooter>
-          <Button type="submit" className=" bg-primary text-primary-foreground hover:bg-primary/90">
+          <Button type="submit" variant={'default'}>
             Connect
           </Button>
+          <Button variant={'outline'} className='!p-4 ml-4' onClick={() => setShowForm(false)}>Close</Button>
         </CardFooter>
       </form>
     </Card>
