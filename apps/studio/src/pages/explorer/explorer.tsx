@@ -8,9 +8,8 @@ import { ReactFlowProvider } from '@invana/canvas-flow';
 import { data } from './dummy-data'
 import { AppHeader, AppFooter, AppMain } from '@invana/ui/themes/app'
 
+
 const ExplorerPage: React.FC = () => {
-
-
 
   return (
     <BlankLayout
