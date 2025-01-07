@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator, DropdownMenuTrigger, Input, Separator,
   Tooltip, TooltipContent, TooltipTrigger
 } from '@invana/ui';
-import { ChevronDown, Database, Plus, Search } from 'lucide-react';
+import { ChevronDown, Database, LogOut, Plus, Search } from 'lucide-react';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -88,6 +88,16 @@ const AppHeaderRight: React.FC = () => {
           </DropdownMenuContent>
         </DropdownMenu>
         : <></>}
+      <Separator orientation="vertical" className="h-6 ml-2" />
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button variant={"ghost"} className="px-2 py-2 ">
+            <LogOut className=' h-4 ' />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>Logout</TooltipContent>
+      </Tooltip>
       {/* <Tooltip>
         <TooltipTrigger asChild>
           <Avatar className="h-8 w-8">

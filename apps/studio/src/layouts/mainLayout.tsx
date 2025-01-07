@@ -1,6 +1,5 @@
 import React from 'react';
 import { BlankLayout, BlankLayoutProps, useThemeStore } from '@invana/ui';
-import { LOCALSTORAGE_KEYS } from '@/constants';
 
 
 export interface MainLayoutProps extends BlankLayoutProps {
@@ -10,7 +9,7 @@ export interface MainLayoutProps extends BlankLayoutProps {
 }
 
 export const MainLayout: React.FC<MainLayoutProps> = (props) => {
-  const { initTheme } = useThemeStore(LOCALSTORAGE_KEYS.THEME);
+  const { initTheme } = useThemeStore();
   initTheme()
   return (
     <BlankLayout

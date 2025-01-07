@@ -24,7 +24,6 @@ export interface BlankLayoutProps {
   logo: React.ReactNode;
   sideBarTopNavitems?: SideBarNavitemProps[];
   sideBarBottomNavitems?: SideBarNavitemProps[];
-  storageKey: string;
 }
 
 
@@ -52,7 +51,7 @@ export const BlankLayout: React.FC<BlankLayoutProps> = (props) => {
                         <a
                           href={item.href}
                           className="flex h-[50px] w-full items-center justify-center 
-                      rounded-md text-muted-foreground transition-colors 
+                      text-muted-foreground transition-colors 
                       hover:bg-accent hover:text-accent-foreground px-2 py-2"
                         >
                           <item.icon className="h-5 w-5" />
@@ -62,7 +61,7 @@ export const BlankLayout: React.FC<BlankLayoutProps> = (props) => {
                         <button
                           onClick={item.onClick}
                           className="flex h-[50px] w-full items-center justify-center 
-                      rounded-md text-muted-foreground transition-colors 
+                      text-muted-foreground transition-colors 
                       hover:bg-accent hover:text-accent-foreground px-2 py-2"
                         >
                           <item.icon className="h-5 w-5" />
@@ -70,7 +69,7 @@ export const BlankLayout: React.FC<BlankLayoutProps> = (props) => {
                       ) : (
                         <div
                           className="flex h-[50px] w-full items-center justify-center 
-                      rounded-md text-muted-foreground transition-colors 
+                      text-muted-foreground transition-colors 
                       hover:bg-accent hover:text-accent-foreground px-2 py-2"
                         >
                           <item.icon className="h-5 w-5" />
@@ -93,7 +92,7 @@ export const BlankLayout: React.FC<BlankLayoutProps> = (props) => {
                     <a
                       href={item.href}
                       className="flex h-[50px] w-full px-2 py-2 items-center justify-center 
-                      rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                      text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                     >
                       <item.icon className="h-5 w-5" />
                       <span className="sr-only">{item.name}</span>
@@ -109,8 +108,8 @@ export const BlankLayout: React.FC<BlankLayoutProps> = (props) => {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="flex h-[50px] w-full px-2 py-2 items-center justify-center 
-                      rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                    className="flex h-[50px] w-full px-2 py-2 items-center justify-center rounded-none
+                      text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                     onClick={toggleTheme}
                   >
                     {theme === "dark" ? (

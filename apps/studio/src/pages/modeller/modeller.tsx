@@ -2,15 +2,15 @@ import { Network } from 'lucide-react';
 import React from 'react';
 import { CanvasFlow, CanvasToolBar, defaultFlowCanvasOptions } from '@invana/canvas-flow';
 import { LogoComponent, sideBarBottomNavitems, sideBarTopNavitems } from '../constants';
-import { LOCALSTORAGE_KEYS, ProductInfo } from '@/constants';
+import { ProductInfo } from '@/constants';
 import {
-  Avatar, AvatarFallback, AvatarImage, BlankLayout, Separator,
-  Tooltip, TooltipContent, TooltipTrigger
+  BlankLayout
 } from '@invana/ui';
 import { ReactFlowProvider } from '@invana/canvas-flow';
 import { data } from '../explorer/dummy-data'
 import { AppHeader, AppFooter, AppMain } from '@invana/ui/themes/app'
 import useTheme from '@invana/ui/hooks/useTheme';
+import AppHeaderRight from '@/components/header/app-header-right';
 
 
 const ModellerPage: React.FC = () => {
@@ -22,7 +22,6 @@ const ModellerPage: React.FC = () => {
       logo={LogoComponent}
       sideBarBottomNavitems={sideBarBottomNavitems}
       sideBarTopNavitems={sideBarTopNavitems}
-      storageKey={LOCALSTORAGE_KEYS.THEME}
     >
 
       <ReactFlowProvider fitView>
@@ -34,27 +33,7 @@ const ModellerPage: React.FC = () => {
             <CanvasToolBar />
           }
           right={
-            <>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <a href="https://github.com/invana/invana-studio" target="_blank" className="ml-2 mr-2">
-                    <img src="https://img.shields.io/github/stars/invana/invana-studio?style=social"
-                      alt="stars" className="  w-20 " />
-                  </a>
-                </TooltipTrigger>
-                <TooltipContent>Stars</TooltipContent>
-              </Tooltip>
-              <Separator orientation="vertical" className="h-6 ml-2" />
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Avatar className="h-8 w-8">
-                    <AvatarImage src="/placeholder-user.jpg" alt="User" />
-                    <AvatarFallback className='bg-emerald-700 text-white font-bold'>A</AvatarFallback>
-                  </Avatar>
-                </TooltipTrigger>
-                <TooltipContent>Anonymous User</TooltipContent>
-              </Tooltip>
-            </>
+            <AppHeaderRight />
           }
         >
 
