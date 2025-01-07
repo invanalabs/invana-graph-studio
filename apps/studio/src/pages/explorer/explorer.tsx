@@ -10,7 +10,7 @@ import { ReactFlowProvider } from '@invana/canvas-flow';
 import { data } from './dummy-data'
 import { AppHeader, AppFooter, AppMain } from '@invana/ui/themes/app'
 import useTheme from '@invana/ui/hooks/useTheme';
-import AppHeaderRight from '@/components/header/app-header-right';
+import AppHeaderRight from '@/ui/header/app-header-right';
 
 
 const ExplorerPage: React.FC = () => {

@@ -8,7 +8,7 @@ import {
 import { LANDING_ROUTE, LOCALSTORAGE_KEYS } from '../../constants';
 import { useConnectionStore } from '../../store/connectionStore';
 import { GraphDBConnection } from '../../models';
-import { ConnectForm } from '../../components/forms/connect-form';
+import { ConnectForm } from '../../ui/forms/connect-form';
 import { LogoComponent } from '../constants';
 import useConnections from '@/hooks/useConnection';
 

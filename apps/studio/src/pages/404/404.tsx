@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { LogoComponent, sideBarBottomNavitems, sideBarTopNavitems } from "../constants";
 import { AppFooter, AppHeader, AppMain } from "@invana/ui/themes/app";
 import { PanelTop } from "lucide-react";
-import AppHeaderRight from "@/components/header/app-header-right";
+import AppHeaderRight from "@/ui/header/app-header-right";
 import { ProductInfo } from "@/constants";
 
 
