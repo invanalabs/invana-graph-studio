@@ -1,7 +1,6 @@
-import { Compass, Search } from 'lucide-react';
-import React, { useRef } from 'react';
-import { CanvasFlow, CanvasToolBar, ReactFlowInstance } from '@invana/canvas-flow';
-import { MainLayout } from '@/layouts/mainLayout';
+import { Compass } from 'lucide-react';
+import React from 'react';
+import { CanvasFlow, CanvasToolBar } from '@invana/canvas-flow';
 import { LogoComponent, sideBarBottomNavitems, sideBarTopNavitems } from '../constants';
 import { LOCALSTORAGE_KEYS } from '@/constants';
 import { Avatar, AvatarFallback, AvatarImage, BlankLayout, Separator, Tooltip, TooltipContent, TooltipTrigger } from '@invana/ui';
@@ -32,14 +31,6 @@ const ExplorerPage: React.FC = () => {
             <div className="flex-1 flex justify-center items-center gap-1 sm:gap-2">
               {/* header middle */}
               <CanvasToolBar />
-
-
-              {/* <div style={{ width: '300px', padding: '20px' }}>
-              <h3>External Controls</h3>
-              <button onClick={handleZoomIn}>Zoom In</button>
-              <button onClick={handleZoomOut}>Zoom Out</button>
-            </div> */}
-
             </div>
             <div className="flex items-center gap-1 sm:gap-2">
               {/* header right */}
@@ -66,18 +57,16 @@ const ExplorerPage: React.FC = () => {
           </div>
         </AppHeader>
 
-
-
         <AppMain>
           <CanvasFlow nodes={data.nodes} edges={data.edges} style={{ width: '100%', height: '100%' }} />
         </AppMain>
+
         <AppFooter>
           <div className="text-muted-foreground">
             Footer
           </div>
         </AppFooter>
       </ReactFlowProvider>
-
     </BlankLayout >
   );
 };
