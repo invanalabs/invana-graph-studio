@@ -1,22 +1,21 @@
 import type { Meta } from '@storybook/react';
-import { BlankLayout, SideBarNavitemProps } from '@invana/ui';
+import { BlankLayout } from '@invana/ui';
+import type { SideBarNavitemProps } from '@invana/ui';
 import {
   Activity, Compass, Database, Home,
   Network,
   Settings
 } from 'lucide-react'
-import "@invana/ui/index.css";
 
 
-
-const navigation: SideBarNavitemProps[] = [
+const sideBarTopNavitems: SideBarNavitemProps[] = [
   { name: "Home", href: "/", icon: Home },
   { name: "Explorer", href: "/explorer", icon: Compass },
   { name: "Modeller", href: "/modeller", icon: Network },
   { name: "Database Connection", href: "/connections", icon: Database },
 ]
 
-const secondaryNavigation: SideBarNavitemProps[] = [
+const sideBarBottomNavitems: SideBarNavitemProps[] = [
   { name: "Activity", href: "/activity", icon: Activity },
   { name: "Settings", href: "#", icon: Settings },
 ]
@@ -31,8 +30,8 @@ const meta = {
   tags: ['autodocs'],
   args: {
     logo: <Compass className='h-4 w-4' />,
-    sideBarTopNavitems: navigation,
-    sideBarBottomNavitems: secondaryNavigation,
+    sideBarTopNavitems: sideBarTopNavitems,
+    sideBarBottomNavitems: sideBarBottomNavitems,
     children: <div>Main Content here</div>,
   },
 } satisfies Meta<typeof BlankLayout>;
