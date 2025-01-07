@@ -1,6 +1,4 @@
-import { MainLayout } from "@/layouts/mainLayout";
 import { BlankLayout, Button } from "@invana/ui";
-import useTheme from "@invana/ui/hooks/useTheme";
 import { Link } from "react-router-dom";
 import { LogoComponent, sideBarBottomNavitems, sideBarTopNavitems } from "../constants";
 import { AppFooter, AppHeader, AppMain } from "@invana/ui/themes/app";
@@ -10,8 +8,6 @@ import { ProductInfo } from "@/constants";
 
 
 export default function NotFoundPage() {
-
-  const { theme } = useTheme();
 
   return (
     <BlankLayout

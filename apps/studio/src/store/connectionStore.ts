@@ -13,7 +13,7 @@ interface GraphDBConnectionState {
 
   getActiveConnection: () => GraphDBConnection | undefined;
   activeConnectionId: string | undefined;
-  setActiveConnectionId: (id: string) => void;
+  setActiveConnectionId: (id: string | undefined) => void;
 
 }
 
@@ -40,7 +40,7 @@ export const useConnectionStore = create(
         return get().connections.some((connection) => connection.name === name);
       },
       activeConnectionId: undefined,
-      setActiveConnectionId: (id: string) => {
+      setActiveConnectionId: (id) => {
         console.log("setting active connection", id);
         set(() => ({
           activeConnectionId: id

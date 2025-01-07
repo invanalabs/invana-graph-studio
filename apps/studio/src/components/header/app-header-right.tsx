@@ -30,6 +30,10 @@ const AppHeaderRight: React.FC = () => {
     navigate(LANDING_ROUTE)
   }
 
+  const logoutConnection = () => {
+    setActiveConnectionId(undefined)
+  }
+
   const activeConnection = getActiveConnection()
 
 
@@ -92,7 +96,7 @@ const AppHeaderRight: React.FC = () => {
 
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button variant={"ghost"} className="px-2 py-2 ">
+          <Button variant={"ghost"} onClick={logoutConnection} className="px-2 py-2 ">
             <LogOut className=' h-4 ' />
           </Button>
         </TooltipTrigger>
