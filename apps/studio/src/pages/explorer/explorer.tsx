@@ -22,13 +22,12 @@ const ExplorerPage: React.FC = () => {
       logo={LogoComponent}
       sideBarBottomNavitems={sideBarBottomNavitems}
       sideBarTopNavitems={sideBarTopNavitems}
-      storageKey={LOCALSTORAGE_KEYS.THEME}
     >
 
       <ReactFlowProvider fitView>
         <AppHeader
           left={
-            <><Compass className='h-4 w-4' /> <span className='font-bold'>Explorer</span></>
+            <><Compass className='h-4 w-4' /> <span className='font-bold'>Invana | Explorer</span></>
           }
           center={
             <CanvasToolBar />

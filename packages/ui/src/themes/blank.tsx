@@ -37,7 +37,7 @@ export const BlankLayout: React.FC<BlankLayoutProps> = (props) => {
       <div className="grid min-h-screen w-full lg:grid-cols-[50px_1fr]">
         <nav className="hidden border-r border-border bg-background lg:block">
           <div className="flex h-[50px] items-center justify-center border-b">
-            <a href="">
+            <a href="/">
               <Package className="h-5 w-5 text-foreground" />
             </a>
           </div>
