@@ -46,7 +46,7 @@ export const BlankLayout: React.FC<BlankLayoutProps> = (props) => {
           <div className="flex flex-col justify-between h-[calc(100vh-50px)]">
             <div className="">
               {props.sideBarTopNavitems?.map((item) => (
-                <>
+                <React.Fragment key={item.name}>
                   <Tooltip key={item.name}>
                     <TooltipTrigger asChild>
                       {item.href ? (
@@ -57,6 +57,7 @@ export const BlankLayout: React.FC<BlankLayoutProps> = (props) => {
                       hover:bg-accent hover:text-accent-foreground px-2 py-2"
                         >
                           <item.icon className="h-5 w-5" />
+                          {/* <p className="text-xss">{item.name}</p> */}
                         </a>
                       ) : item.onClick ? (
                         <button
@@ -76,15 +77,13 @@ export const BlankLayout: React.FC<BlankLayoutProps> = (props) => {
                           <item.icon className="h-5 w-5" />
                         </div>
                       )}
-
-
                     </TooltipTrigger>
                     <TooltipContent side="right">
                       {item.name}
                     </TooltipContent>
                   </Tooltip>
                   <Separator />
-                </>
+                </React.Fragment>
 
               ))}
             </div>

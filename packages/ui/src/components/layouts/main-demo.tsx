@@ -45,7 +45,7 @@ export interface MainLayoutProps {
 }
 
 
-export const MainLayout: React.FC<MainLayoutProps> = (props: MainLayoutProps) => {
+export const MainLayout: React.FC<MainLayoutProps> = (props) => {
   const [open, setOpen] = React.useState(false)
   const [theme, setTheme] = React.useState<"light" | "dark">(() => {
     // Check localStorage first

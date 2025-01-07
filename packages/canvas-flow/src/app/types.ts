@@ -1,7 +1,8 @@
 import type { ReactNode, CSSProperties } from "react";
 import {
   Node, Edge, NodeTypes, EdgeTypes, ReactFlowProps as ReactFlowPropsOriginal,
-  BackgroundProps
+  BackgroundProps,
+  ReactFlowInstance
 } from "@xyflow/react"
 
 
@@ -21,6 +22,7 @@ export interface CanvasPlugin {
 export type LayoutDirections = "TB" | "LR" | "BT" | "RL" | undefined
 
 export interface FlowCanvasOptions {
+  ref?: React.MutableRefObject<ReactFlowInstance | null>
   canvas?: Omit<ReactFlowProps, "nodes" | "edges">;
   children?: ReactNode;
   style?: CSSProperties;
