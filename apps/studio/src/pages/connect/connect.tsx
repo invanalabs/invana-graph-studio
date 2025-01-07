@@ -95,7 +95,7 @@ const ConnectPage: React.FC = () => {
                     connections.slice(-3).map((connection: GraphDBConnection, index: number) => (
                       <div key={index} className="group">
                         <Button variant={"ghost"} onClick={() => switchToConnection(connection.id)}
-                          className="w-full justify-start p-0 hover:bg-transparent text-blue-400 hover:text-blue-300">
+                          className="w-full justify-start p-0 hover:bg-transparent text-blue-500 dark:text-blue-400 hover:text-blue-300">
                           <Database /> {connection.name} - [{connection.queryLanguage}]
                         </Button>
                         <p className="text-xs text-zinc-500">{connection.hosturl}</p>
