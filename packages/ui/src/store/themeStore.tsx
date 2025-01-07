@@ -10,6 +10,9 @@ interface ThemeState {
 }
 
 
+const storeName = "themeStore"
+
+
 const getInitialTheme = (storeName: string) => {
   if (typeof window !== 'undefined' && window.localStorage) {
     const storedTheme = window.localStorage.getItem(storeName);
@@ -21,33 +24,32 @@ const getInitialTheme = (storeName: string) => {
   return prefersDark ? 'dark' : 'light';
 };
 
-export const useThemeStore = (storeName: string) =>
-  create(
-    persist<ThemeState>(
-      (set, get) => ({
-        theme: getInitialTheme(storeName), // Default theme based on localStorage or system setting
-        setTheme: (theme: 'light' | 'dark') => {
-          set(() => ({ theme }));
-          get().initTheme();
-        },
-        toggleTheme: () => {
-          const { theme, setTheme } = get();
-          const newTheme = theme === 'dark' ? 'light' : 'dark';
-          setTheme(newTheme);
-        },
-        initTheme: () => {
-          if (get().theme === "dark") {
-            document.documentElement.classList.add('dark');
-            document.documentElement.style.setProperty("color-scheme", "dark");
-          } else {
-            document.documentElement.classList.remove('dark');
-            document.documentElement.style.removeProperty("color-scheme");
-          }
+export const useThemeStore = create(
+  persist<ThemeState>(
+    (set, get) => ({
+      theme: getInitialTheme(storeName), // Default theme based on localStorage or system setting
+      setTheme: (theme: 'light' | 'dark') => {
+        set(() => ({ theme }));
+        get().initTheme();
+      },
+      toggleTheme: () => {
+        const { theme, setTheme } = get();
+        const newTheme = theme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+      },
+      initTheme: () => {
+        if (get().theme === "dark") {
+          document.documentElement.classList.add('dark');
+          document.documentElement.style.setProperty("color-scheme", "dark");
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.style.removeProperty("color-scheme");
         }
-      }),
-      {
-        name: storeName, // Name of the localStorage key
-        // getStorage: () => localStorage, // Specify localStorage
       }
-    )
-  ).getState()
+    }),
+    {
+      name: storeName, // Name of the localStorage key
+      // getStorage: () => localStorage, // Specify localStorage
+    }
+  )
+)

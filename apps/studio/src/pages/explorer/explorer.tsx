@@ -1,12 +1,13 @@
 import { Compass } from 'lucide-react';
 import React from 'react';
-import { CanvasFlow, CanvasToolBar } from '@invana/canvas-flow';
+import { CanvasFlow, CanvasToolBar, defaultFlowCanvasOptions } from '@invana/canvas-flow';
 import { LogoComponent, sideBarBottomNavitems, sideBarTopNavitems } from '../constants';
 import { LOCALSTORAGE_KEYS } from '@/constants';
-import { Avatar, AvatarFallback, AvatarImage, BlankLayout, Separator, Tooltip, TooltipContent, TooltipTrigger } from '@invana/ui';
+import { Avatar, AvatarFallback, AvatarImage, BlankLayout, Separator, Tooltip, TooltipContent, TooltipTrigger, useThemeStore } from '@invana/ui';
 import { ReactFlowProvider } from '@invana/canvas-flow';
 import { data } from './dummy-data'
 import { AppHeader, AppFooter, AppMain } from '@invana/ui/themes/app'
+import useTheme from '@invana/ui/hooks/useTheme';
 
 
 
@@ -14,6 +15,9 @@ import { AppHeader, AppFooter, AppMain } from '@invana/ui/themes/app'
 const ExplorerPage: React.FC = () => {
 
 
+  const { theme } = useTheme()
+
+  console.log("=====ExplorerPage theme", theme)
 
   return (
     <BlankLayout
@@ -51,7 +55,7 @@ const ExplorerPage: React.FC = () => {
                 <TooltipTrigger asChild>
                   <Avatar className="h-8 w-8">
                     <AvatarImage src="/placeholder-user.jpg" alt="User" />
-                    <AvatarFallback>A</AvatarFallback>
+                    <AvatarFallback className='bg-emerald-700 text-white font-bold'>A</AvatarFallback>
                   </Avatar>
                 </TooltipTrigger>
                 <TooltipContent>Anonymous User</TooltipContent>
@@ -63,6 +67,7 @@ const ExplorerPage: React.FC = () => {
         <AppMain>
           <CanvasFlow nodes={data.nodes} edges={data.edges}
             style={{ width: '100%', height: '100%' }}
+            canvas={{ ...defaultFlowCanvasOptions.canvas, colorMode: theme }}
             display={{
               plugins: {
                 devTools: false,

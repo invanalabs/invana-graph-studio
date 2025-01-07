@@ -9,6 +9,7 @@ import {
 import { Separator } from "../components/ui/separator"
 import { useThemeStore } from "../store"
 import { Button } from "../components/ui"
+import useTheme from "../hooks/useTheme"
 
 
 export interface SideBarNavitemProps {
@@ -29,7 +30,7 @@ export interface BlankLayoutProps {
 
 export const BlankLayout: React.FC<BlankLayoutProps> = (props) => {
 
-  const { theme, initTheme, toggleTheme } = useThemeStore(props.storageKey);
+  const { theme, initTheme, toggleTheme } = useTheme();
 
   initTheme();
 

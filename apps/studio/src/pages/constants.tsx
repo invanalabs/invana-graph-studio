@@ -1,6 +1,6 @@
 import { SideBarNavitemProps } from "@invana/ui";
 import { Activity, Compass, Database, Home, Network, Package, Settings } from "lucide-react";
-import { toggleTheme } from "../store/themeStore";
+
 
 export const LogoComponent = <Package className="h-5 w-5 text-foreground" />
 
