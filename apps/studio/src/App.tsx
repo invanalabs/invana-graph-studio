@@ -1,4 +1,4 @@
-import "@invana/ui/index.css";
+
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import NotFoundPage from './pages/404/404';
 import ConnectPage from "./pages/connect/connect";

@@ -1,5 +1,5 @@
 {
-  "extends": "../../packages/config-typescript/tsconfig.base.json",
+  "extends": "@invana/config-typescript/tsconfig.base.json",
   "include": [
     "src"
   ],

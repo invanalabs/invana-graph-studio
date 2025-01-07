@@ -23,7 +23,7 @@
     "paths": {
       // "@invana/ui": ["../../packages/ui/src"],
       "@invana/config-tailwind": [
-        "../../packages/config-tailwind/tailwind.config.js"
+        "../../packages/config-tailwind"
       ],
       "@invana/ui/*": [
         "../../packages/ui/src/*"

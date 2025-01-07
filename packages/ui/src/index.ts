@@ -3,4 +3,4 @@ export * from './components/ui-extended';
 export * from './themes';
 export * from './store';
 export * from './services'
-import "./index.css";
+import '@invana/config-tailwind/index.css';

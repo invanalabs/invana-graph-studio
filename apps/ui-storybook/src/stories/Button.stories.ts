@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import "@invana/ui/index.css";
+
 import { Button } from '@invana/ui';
 
 

@@ -12,7 +12,6 @@ import { FlowCanvasOptions } from "./types";
 import '@xyflow/react/dist/style.css';
 import { defaultFlowCanvasOptions } from "./defaults";
 import { addNodeDefaults } from "./utils";
-import "../index.css";
 import { CanvasToolBar } from "../plugins/toolbars/CanvasToolBar";
 import { Moon, Sun } from "lucide-react";
 import { ButtonWithTooltip } from "@invana/ui";

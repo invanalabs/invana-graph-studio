@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import "@invana/ui/index.css";
+
 import { TreeView, TreeItem } from '@invana/ui';
 import { File, Folder } from 'lucide-react'
 

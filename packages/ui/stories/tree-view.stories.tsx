@@ -1,7 +1,7 @@
 import { TreeItem, TreeView } from '@invana/ui';
 import type { Meta, StoryObj } from '@storybook/react';
 import { File, Folder } from 'lucide-react'
-import "@invana/ui/index.css";
+
 
 
 const exampleData: TreeItem[] = [

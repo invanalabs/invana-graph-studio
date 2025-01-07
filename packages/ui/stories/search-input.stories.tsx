@@ -1,6 +1,5 @@
 // import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import "@invana/ui/index.css";
 import { SearchInput } from '@invana/ui';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
