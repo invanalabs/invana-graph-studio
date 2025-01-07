@@ -5,6 +5,8 @@ import {
   Network,
   Settings
 } from 'lucide-react'
+import "@invana/ui/index.css";
+
 
 
 const navigation: SideBarNavitemProps[] = [
