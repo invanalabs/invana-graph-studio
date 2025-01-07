@@ -1,4 +1,5 @@
-import type { Meta } from '@storybook/react';
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { BlankLayout } from '@invana/ui';
 
 
@@ -16,4 +17,12 @@ const meta = {
 } satisfies Meta<typeof BlankLayout>;
 
 export default meta;
-// type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>;
+
+// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+export const BlankLayout2: Story = {
+  args: {
+    // primary: true,
+    // variant: 'secondary',
+  },
+};

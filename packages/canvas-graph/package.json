@@ -1,5 +1,5 @@
 {
-  "name": "@invana/canvas-flow",
+  "name": "@invana/canvas-graph",
   "version": "0.0.0",
   "type": "module",
   "main": "dist/index.umd.js",
@@ -12,14 +12,14 @@
   "scripts": {
     "build": "tsc -b && vite build",
     "build-storybook": "storybook build",
-    "build:styles": "postcss ./src/index.css -o ./dist/canvas-flow.css --env production",
+    "build:styles": "postcss ./src/index.css -o ./dist/canvas-graph.css --env production",
     "lint": "eslint .",
-    "storybook": "storybook dev -p 6011",
+    "storybook": "storybook dev -p 6012",
     "storybook-build": "storybook build"
   },
   "dependencies": {
+    "@antv/graphin": "^3.0.4",
     "@invana/ui": "^0.0.0",
-    "@xyflow/react": "^12.3.6",
     "lucide-react": "^0.468.0"
   },
   "peerDependencies": {
