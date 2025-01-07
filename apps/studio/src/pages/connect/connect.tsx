@@ -44,7 +44,10 @@ const ConnectPage: React.FC = () => {
 
   const { initTheme } = useThemeStore();
   const { connections, setActiveConnectionId } = useConnections();
-  const [showForm, setShowForm] = React.useState(false);
+  const [showForm, setShowForm] = React.useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('newConnection') === 'true';
+  });
 
   const switchToConnection = (connectionId: string) => {
     setActiveConnectionId(connectionId);
@@ -67,7 +70,7 @@ const ConnectPage: React.FC = () => {
             {/* Start Section */}
             <div className="space-y-6">
               <div>
-                {showForm || connections.length === 0 && <ConnectForm setShowForm={setShowForm} />}
+                {showForm && <ConnectForm setShowForm={setShowForm} />}
               </div>
               <div>
                 <h3 className="mb-4 text-lg"> Recent Connections</h3>

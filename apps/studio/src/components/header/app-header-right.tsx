@@ -81,7 +81,7 @@ const AppHeaderRight: React.FC = () => {
             ))}
             <DropdownMenuSeparator />
             <DropdownMenuItem className="cursor-pointer">
-              <Link to={"/connect"} className="inline-flex">
+              <Link to={"/connect?newConnection=true"} className="inline-flex">
                 <Plus className="mr-2 h-4 w-4" />Add Connection
               </Link>
             </DropdownMenuItem>
