@@ -7,7 +7,6 @@ import {
   TooltipTrigger,
 } from "../components/ui/tooltip"
 import { Separator } from "../components/ui/separator"
-import { useThemeStore } from "../store"
 import { Button } from "../components/ui"
 import useTheme from "../hooks/useTheme"
 
@@ -18,6 +17,7 @@ export interface SideBarNavitemProps {
   onClick?: () => void
   icon: React.ElementType
 }
+
 
 export interface BlankLayoutProps {
   children: React.ReactNode;
@@ -31,9 +31,7 @@ export interface BlankLayoutProps {
 export const BlankLayout: React.FC<BlankLayoutProps> = (props) => {
 
   const { theme, initTheme, toggleTheme } = useTheme();
-
   initTheme();
-
 
   return (
     <TooltipProvider delayDuration={0}>

@@ -3,21 +3,19 @@ import React from 'react';
 import { CanvasFlow, CanvasToolBar, defaultFlowCanvasOptions } from '@invana/canvas-flow';
 import { LogoComponent, sideBarBottomNavitems, sideBarTopNavitems } from '../constants';
 import { LOCALSTORAGE_KEYS } from '@/constants';
-import { Avatar, AvatarFallback, AvatarImage, BlankLayout, Separator, Tooltip, TooltipContent, TooltipTrigger, useThemeStore } from '@invana/ui';
+import {
+  Avatar, AvatarFallback, AvatarImage, BlankLayout, Separator,
+  Tooltip, TooltipContent, TooltipTrigger
+} from '@invana/ui';
 import { ReactFlowProvider } from '@invana/canvas-flow';
 import { data } from './dummy-data'
 import { AppHeader, AppFooter, AppMain } from '@invana/ui/themes/app'
 import useTheme from '@invana/ui/hooks/useTheme';
 
 
-
-
 const ExplorerPage: React.FC = () => {
 
-
   const { theme } = useTheme()
-
-  console.log("=====ExplorerPage theme", theme)
 
   return (
     <BlankLayout
@@ -28,19 +26,15 @@ const ExplorerPage: React.FC = () => {
     >
 
       <ReactFlowProvider fitView>
-        <AppHeader>
-          <div className="flex flex-1 items-center gap-4">
-            <div className="flex items-center gap-2 text-foreground text-xl">
-              {/* header left */}
-              <Compass className='h-4 w-4' /> <span className='font-bold'>Explorer</span>
-            </div>
-
-            <div className="flex-1 flex justify-center items-center gap-1 sm:gap-2">
-              {/* header middle */}
-              <CanvasToolBar />
-            </div>
-            <div className="flex items-center gap-1 sm:gap-2">
-              {/* header right */}
+        <AppHeader
+          left={
+            <><Compass className='h-4 w-4' /> <span className='font-bold'>Explorer</span></>
+          }
+          center={
+            <CanvasToolBar />
+          }
+          right={
+            <>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <a href="https://github.com/invana/invana-studio" target="_blank" className="ml-2 mr-2">
@@ -60,8 +54,10 @@ const ExplorerPage: React.FC = () => {
                 </TooltipTrigger>
                 <TooltipContent>Anonymous User</TooltipContent>
               </Tooltip>
-            </div>
-          </div>
+            </>
+          }
+        >
+
         </AppHeader>
 
         <AppMain>
