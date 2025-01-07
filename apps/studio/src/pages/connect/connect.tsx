@@ -52,7 +52,6 @@ const ConnectPage: React.FC = () => {
   const switchToConnection = (connectionId: string) => {
     setActiveConnectionId(connectionId);
     window.location.href = LANDING_ROUTE;
-
   }
 
   initTheme()
