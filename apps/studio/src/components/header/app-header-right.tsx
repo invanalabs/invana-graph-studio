@@ -46,7 +46,7 @@ const AppHeaderRight: React.FC = () => {
               alt="stars" className="  w-20 " />
           </a>
         </TooltipTrigger>
-        <TooltipContent>Stars</TooltipContent>
+        <TooltipContent>Star or Fork this project</TooltipContent>
       </Tooltip>
       <Separator orientation="vertical" className="h-6 ml-2" />
 

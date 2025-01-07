@@ -27,7 +27,7 @@ const ModellerPage: React.FC = () => {
       <ReactFlowProvider fitView>
         <AppHeader
           left={
-            <><Network className='h-4 w-4' /> <span className='font-bold'>Modeller</span></>
+            <><Network className='h-4 w-4' /> <span className='font-bold'>Invana | Modeller</span></>
           }
           center={
             <CanvasToolBar />

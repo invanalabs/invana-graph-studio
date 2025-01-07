@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, BlankLayout, useThemeStore } from '@invana/ui';
+import { Button, Card, BlankLayout, useThemeStore, Tooltip, TooltipContent, TooltipTrigger } from '@invana/ui';
 import {
   Badge,
   BookOpenIcon, Database, LightbulbIcon,
@@ -58,12 +58,27 @@ const ConnectPage: React.FC = () => {
   initTheme()
 
   return (
-    <BlankLayout logo={LogoComponent} sideBarTopNavitems={[]} sideBarBottomNavitems={[]} storageKey={LOCALSTORAGE_KEYS.THEME}>
-      <div className="min-h-screen p-8">
+    <BlankLayout logo={LogoComponent} sideBarTopNavitems={[]} sideBarBottomNavitems={[]}>
+      <div className="min-h-screen p-4">
+
+        <div className="flex justify-end">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <a href="https://github.com/invana/invana-studio" target="_blank" className="ml-2 mr-2">
+                <img src="https://img.shields.io/github/stars/invana/invana-studio?style=social"
+                  alt="stars" className="  w-20 " />
+              </a>
+            </TooltipTrigger>
+            <TooltipContent>Star or Fork this project</TooltipContent>
+          </Tooltip>
+        </div>
         <div className="max-w-6xl mx-auto space-y-6 mt-[7%]">
           <div>
             <h1 className="text-4xl font-semibold">Invana Studio</h1>
-            <h2 className="text-xl font-light">An opensource Thinkers toolkit for curious people.</h2>
+            <h2 className="text-2xl font-light">
+              An opensource Thinkers toolkit for curious people.
+            </h2>
+            <p className='text-zinc-500 mt-3'>Taxonomies | Ontologies | Knowledge Graphs and more.</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-16" >

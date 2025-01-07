@@ -16,7 +16,6 @@ export const MainLayout: React.FC<MainLayoutProps> = (props) => {
       logo={props.logo}
       sideBarTopNavitems={props.sideBarTopNavitems}
       sideBarBottomNavitems={props.sideBarBottomNavitems}
-      storageKey={props.storageKey}
     >
       <header className="flex h-[50px] items-center border-b border-border bg-background px-4">
         {props.header}
