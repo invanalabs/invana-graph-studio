@@ -1,11 +1,11 @@
-import { CanvasFlow } from '../../../app/app';
+import { CanvasFlow } from '../../../src/app/app';
 import type { Meta, StoryObj } from '@storybook/react';
 import { data } from "./data";
 
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'NodeTemplates/DataTreeNode',
+  title: 'NodeTemplates/CommentNode',
   component: CanvasFlow,
   parameters: {
     layout: 'fullscreen',
@@ -21,10 +21,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 
-export const DataTreeNode: Story = {
+export const CommentNode: Story = {
   args: {
     nodes: data.nodes,
     edges: data.edges,
-    layoutDirection: "LR"
   },
 };
