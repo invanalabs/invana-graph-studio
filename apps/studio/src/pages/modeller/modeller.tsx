@@ -1,10 +1,10 @@
-import { MainLayout } from '@invana/ui';
+import { MainLayout } from '@/layouts/mainLayout';
 import { Network } from 'lucide-react';
 import React from 'react';
 
 const ModellerPage: React.FC = () => {
   return (
-    <MainLayout headerTitle={
+    <MainLayout logo={
       <>
         <Network className='h-4 w-4' /> <span className='font-bold'>Modeller</span>
       </>

@@ -5,10 +5,10 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../ui/tooltip"
-import { Separator } from "../ui/separator"
-import { useThemeStore } from "../../store"
-import { Button } from "../ui"
+} from "../components/ui/tooltip"
+import { Separator } from "../components/ui/separator"
+import { useThemeStore } from "../store"
+import { Button } from "../components/ui"
 
 
 export interface SideBarNavitemProps {

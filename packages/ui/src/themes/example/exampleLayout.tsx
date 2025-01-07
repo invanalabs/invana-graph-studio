@@ -4,8 +4,8 @@ import {
   BarChart3, Compass, Database, Home,
   Network, Package, Search, Sun,
 } from 'lucide-react'
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
-import { Button } from "../ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "../../components/ui/avatar"
+import { Button } from "../../components/ui/button"
 import {
   Command,
   CommandDialog,
@@ -15,14 +15,14 @@ import {
   CommandItem,
   CommandList,
   CommandShortcut,
-} from "../ui/command"
+} from "../../components/ui/command"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../ui/tooltip"
-import { Separator } from "../ui/separator"
+} from "../../components/ui/tooltip"
+import { Separator } from "../../components/ui/separator"
 
 const navigation = [
   { name: "Home", href: "/", icon: Home },
@@ -39,13 +39,13 @@ const secondaryNavigation = [
 
 
 
-export interface MainLayoutProps {
+export interface ExampleLayoutProps {
   children: React.ReactNode
   headerTitle: React.ReactNode
 }
 
 
-export const MainLayout: React.FC<MainLayoutProps> = (props) => {
+export const ExampleLayout: React.FC<ExampleLayoutProps> = (props) => {
   const [open, setOpen] = React.useState(false)
   const [theme, setTheme] = React.useState<"light" | "dark">(() => {
     // Check localStorage first
