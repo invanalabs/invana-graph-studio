@@ -10,8 +10,10 @@ interface GraphDBConnectionState {
   getConnections: () => Promise<GraphDBConnection[]>;
   createConnection: (connection: Omit<GraphDBConnection, 'id'>) => Promise<GraphDBConnection>;
   isConnectionNameExists: (name: string) => boolean;
-  activeConnection: string | undefined;
-  setActiveConnection: (id: string) => void;
+
+  getActiveConnection: () => GraphDBConnection | undefined;
+  activeConnectionId: string | undefined;
+  setActiveConnectionId: (id: string) => void;
 
 }
 
@@ -37,12 +39,15 @@ export const useConnectionStore = create(
       isConnectionNameExists: (name: string) => {
         return get().connections.some((connection) => connection.name === name);
       },
-      activeConnection: undefined,
-      setActiveConnection: (id: string) => {
+      activeConnectionId: undefined,
+      setActiveConnectionId: (id: string) => {
         console.log("setting active connection", id);
         set(() => ({
-          activeConnection: id
+          activeConnectionId: id
         }))
+      },
+      getActiveConnection: () => {
+        return get().connections.find((connection) => connection.id === get().activeConnectionId);
       }
     }),
     {

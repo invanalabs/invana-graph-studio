@@ -7,9 +7,9 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const { activeConnection } = useConnectionStore()
-  console.log("===activeWorkspace", activeConnection)
-  if (!activeConnection) {
+  const { activeConnectionId } = useConnectionStore()
+  console.log("===activeWorkspace", activeConnectionId)
+  if (!activeConnectionId) {
     // If connectionUrl doesn't exist, redirect to /connect
     return <Navigate to={"/connect?next=" + location.pathname || "/graphbook"} replace />;
   }

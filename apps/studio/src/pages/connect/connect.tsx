@@ -43,11 +43,11 @@ const learnMoreItems: ILearnMoreItem[] = [
 const ConnectPage: React.FC = () => {
 
   const { initTheme } = useThemeStore();
-  const { connections, setActiveConnection } = useConnections();
+  const { connections, setActiveConnectionId } = useConnections();
   const [showForm, setShowForm] = React.useState(false);
 
   const switchToConnection = (connectionId: string) => {
-    setActiveConnection(connectionId);
+    setActiveConnectionId(connectionId);
     window.location.href = LANDING_ROUTE;
 
   }

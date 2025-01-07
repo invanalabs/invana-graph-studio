@@ -9,17 +9,19 @@ const useConnections = () => {
   const createConnection = useConnectionStore((state) => state.createConnection);
 
   const isConnectionNameExists = useConnectionStore((state) => state.isConnectionNameExists);
-  const activeConnection = useConnectionStore((state) => state.activeConnection);
-  const setActiveConnection = useConnectionStore((state) => state.setActiveConnection);
 
+  const activeConnectionId = useConnectionStore((state) => state.activeConnectionId);
+  const setActiveConnectionId = useConnectionStore((state) => state.setActiveConnectionId);
+  const getActiveConnection = useConnectionStore((state) => state.getActiveConnection);
 
   return {
     connections,
     getConnections,
     createConnection,
     isConnectionNameExists,
-    activeConnection,
-    setActiveConnection,
+    activeConnectionId,
+    setActiveConnectionId,
+    getActiveConnection
   };
 };
 

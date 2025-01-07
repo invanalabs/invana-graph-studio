@@ -6,7 +6,7 @@ import { LANDING_ROUTE } from '@/constants';
 
 export const ConnectForm = ({ setShowForm }) => {
   const [requiresAuth, setRequiresAuth] = useState(false);
-  const { createConnection, setActiveConnection, isConnectionNameExists } = useConnectionStore();
+  const { createConnection, setActiveConnectionId, isConnectionNameExists } = useConnectionStore();
 
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -25,7 +25,7 @@ export const ConnectForm = ({ setShowForm }) => {
     }
 
     createConnection(connectionData).then((conn) => {
-      setActiveConnection(conn.id);
+      setActiveConnectionId(conn.id);
       window.location.href = LANDING_ROUTE;
 
     })
