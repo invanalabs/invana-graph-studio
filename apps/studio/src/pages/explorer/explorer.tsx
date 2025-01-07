@@ -2,7 +2,7 @@ import { Compass } from 'lucide-react';
 import React from 'react';
 import { CanvasFlow, CanvasToolBar, defaultFlowCanvasOptions } from '@invana/canvas-flow';
 import { LogoComponent, sideBarBottomNavitems, sideBarTopNavitems } from '../constants';
-import { LOCALSTORAGE_KEYS } from '@/constants';
+import { LOCALSTORAGE_KEYS, ProductInfo } from '@/constants';
 import {
   Avatar, AvatarFallback, AvatarImage, BlankLayout, Separator,
   Tooltip, TooltipContent, TooltipTrigger
@@ -11,11 +11,13 @@ import { ReactFlowProvider } from '@invana/canvas-flow';
 import { data } from './dummy-data'
 import { AppHeader, AppFooter, AppMain } from '@invana/ui/themes/app'
 import useTheme from '@invana/ui/hooks/useTheme';
+import { useConnectionStore } from '@/store/connectionStore';
 
 
 const ExplorerPage: React.FC = () => {
 
-  const { theme } = useTheme()
+  const { theme } = useTheme();
+  const { connections } = useConnectionStore();
 
   return (
     <BlankLayout
@@ -76,10 +78,10 @@ const ExplorerPage: React.FC = () => {
           />
         </AppMain>
 
-        <AppFooter>
-          <div className="text-muted-foreground">
-            Footer
-          </div>
+        <AppFooter
+          right={ProductInfo}
+        >
+
         </AppFooter>
       </ReactFlowProvider>
     </BlankLayout >

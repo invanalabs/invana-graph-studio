@@ -10,6 +10,7 @@ import { useConnectionStore } from '../../store/connectionStore';
 import { GraphDBConnection } from '../../models';
 import { ConnectForm } from '../../components/forms/connect-form';
 import { LogoComponent } from '../constants';
+import useConnections from '@/hooks/useConnection';
 
 
 export interface ILearnMoreItem {
@@ -41,14 +42,9 @@ const learnMoreItems: ILearnMoreItem[] = [
 
 const ConnectPage: React.FC = () => {
 
-  const { initTheme } = useThemeStore(LOCALSTORAGE_KEYS.THEME);
-  const { connections, setActiveConnection } = useConnectionStore(LOCALSTORAGE_KEYS.CONNECTION);
-  const [_, forceUpdate] = React.useReducer(x => x + 1, 0);
+  const { initTheme } = useThemeStore();
+  const { connections, setActiveConnection } = useConnections();
   const [showForm, setShowForm] = React.useState(false);
-
-  React.useEffect(() => {
-    forceUpdate();
-  }, [connections]);
 
   const switchToConnection = (connectionId: string) => {
     setActiveConnection(connectionId);

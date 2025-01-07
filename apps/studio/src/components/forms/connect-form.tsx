@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Label, Input, Checkbox, Button, Select, SelectTrigger, SelectValue, SelectItem, SelectContent, Card, CardHeader, CardTitle, CardContent, CardFooter } from '@invana/ui';
 import { useConnectionStore } from '../../store/connectionStore';
-import { LOCALSTORAGE_KEYS } from '../../constants';
 import { SupportedQueryLanguages } from '../../models';
+import { LANDING_ROUTE } from '@/constants';
 
 export const ConnectForm = ({ setShowForm }) => {
   const [requiresAuth, setRequiresAuth] = useState(false);
-  const { createConnection, isConnectionNameExists } = useConnectionStore(LOCALSTORAGE_KEYS.CONNECTION);
+  const { createConnection, setActiveConnection, isConnectionNameExists } = useConnectionStore();
 
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -23,7 +23,12 @@ export const ConnectForm = ({ setShowForm }) => {
       alert('Connection with the same name already exists');
       return;
     }
-    createConnection(connectionData);
+
+    createConnection(connectionData).then((conn) => {
+      setActiveConnection(conn.id);
+      window.location.href = LANDING_ROUTE;
+
+    })
   };
 
   return (

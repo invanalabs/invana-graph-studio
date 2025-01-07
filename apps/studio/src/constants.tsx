@@ -6,7 +6,7 @@ export const LOCALSTORAGE_KEYS = {
     CONNECTION: "CONNECTION",
 }
 
-
+export const ProductInfo = "Invana (c) 2025"
 export const LANDING_ROUTE = '/explorer';
 
 export const SUPPORTED_QUERY_LANGUAGES = ['gremlin', 'cypher'];
