@@ -13,12 +13,12 @@ module.exports = {
       sm: '0.875rem',     // 14px
       lg: '1rem',         // 16px
       xl: '1.125rem',     // 18px
-      '2xl': '1.575rem',  // 22px
+      '2xl': '1.75rem',  // 22px
       '3xl': '1.925rem',  // 26px
-      '4xl': '4rem',      // 32px
-      '5xl': '5.5rem',    // 40px
-      '6xl': '6rem',      // 48px
-      '7xl': '7.75rem',   // 60px
+      '4xl': '2.6rem',      // 32px
+      '5xl': '3.5rem',    // 40px
+      '6xl': '4rem',      // 48px
+      '7xl': '6rem',   // 60px
     },
     extend: {
       colors: {

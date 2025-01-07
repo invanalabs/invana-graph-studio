@@ -15,19 +15,25 @@ import { fetchGraphQLData } from '@/services/runQueryService';
 import { serializeToGraph } from '@/services/serializer.utils';
 
 
-
 const ExplorerPage: React.FC = () => {
 
   const { theme } = useTheme();
   const [data, setData] = React.useState({ nodes: [], edges: [] });
 
   React.useEffect(() => {
-    fetchGraphQLData("g.V().limit(2).toList()").then(d => {
+    runQuery()
+  }, []);
+
+  const runQuery = () => {
+    const randInt = Math.floor(Math.random() * 10) + 1;
+
+    fetchGraphQLData(`g.V().limit(${randInt}).toList()`).then(d => {
       const response = serializeToGraph(d.data);
       console.log("response", response);
       setData(response);
     });
-  }, []);
+
+  }
 
   console.log("===data2", data)
 
@@ -53,7 +59,6 @@ const ExplorerPage: React.FC = () => {
         </AppHeader>
 
         <AppMain>
-
           {data.nodes.length > 0 ?
             <CanvasFlow nodes={data ? data.nodes : []} edges={data ? data.edges : []}
               style={{ width: '100%', height: '100%' }}
