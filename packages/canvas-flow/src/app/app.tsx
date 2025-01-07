@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import {
   ReactFlow,
-  ReactFlowProvider,
   MiniMap,
   Background,
   useNodesState,
@@ -51,52 +50,50 @@ export const CanvasFlow: React.FC<FlowCanvasOptions> = (options) => {
 
   return (
     <div style={options.style}>
-      <ReactFlowProvider fitView>
-        <ReactFlow
-          ref={ref}
-          onNodesChange={onNodesChange}
-          onEdgesChange={onEdgesChange}
-          nodes={nodes}
-          edges={edges}
-          colorMode={theme}
-          {...(options.canvas ? Object.fromEntries(
-            Object.entries(options.canvas).filter(([key]) => key !== 'defaultNodeOptions' && key !== 'colorMode')
-          ) : {})}
-        >
-          {options.display?.plugins?.miniMap && <MiniMap zoomable pannable position="bottom-left" />}
-          {options.display?.plugins?.background && <Background {...options.background} />}
-          {options.display?.plugins?.devTools &&
-            <DevTools position="bottom-right" className=" border rounded shadow-sm" />
-          }
+      <ReactFlow
+        ref={ref}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        nodes={nodes}
+        edges={edges}
+        colorMode={theme}
+        {...(options.canvas ? Object.fromEntries(
+          Object.entries(options.canvas).filter(([key]) => key !== 'defaultNodeOptions' && key !== 'colorMode')
+        ) : {})}
+      >
+        {options.display?.plugins?.miniMap && <MiniMap zoomable pannable position="bottom-left" />}
+        {options.display?.plugins?.background && <Background {...options.background} />}
+        {options.display?.plugins?.devTools &&
+          <DevTools position="bottom-right" className=" border rounded shadow-sm" />
+        }
 
-          {options.display?.plugins?.controls &&
-            <Panel position="top-left" className="transition-colors flex items-center border shadow-sm
+        {options.display?.plugins?.controls &&
+          <Panel position="top-left" className="transition-colors flex items-center border shadow-sm
               bg-card text-card-foreground ">
-              <CanvasToolBar />
-            </Panel>
-          }
+            <CanvasToolBar />
+          </Panel>
+        }
 
-          {options.display?.plugins?.theme &&
-            <Panel position="top-right" className=" bg-card text-card-foreground border  flex items-center transition-colors">
-              <ButtonWithTooltip
-                variant="ghost"
-                size="icon-sm"
-                onClick={() => toggleTheme()}
-                className="rounded-none"
-                tooltip={<p>Toggle Theme</p>}
-              >
-                {
-                  getActiveTheme() === 'light'
-                    ? <Sun className="h-4 w-4" />
-                    : <Moon className="h-4 w-4" />
-                }
-              </ButtonWithTooltip>
-            </Panel>
-          }
+        {options.display?.plugins?.theme &&
+          <Panel position="top-right" className=" bg-card text-card-foreground border  flex items-center transition-colors">
+            <ButtonWithTooltip
+              variant="ghost"
+              size="icon-sm"
+              onClick={() => toggleTheme()}
+              className="rounded-none"
+              tooltip={<p>Toggle Theme</p>}
+            >
+              {
+                getActiveTheme() === 'light'
+                  ? <Sun className="h-4 w-4" />
+                  : <Moon className="h-4 w-4" />
+              }
+            </ButtonWithTooltip>
+          </Panel>
+        }
 
-          {options.children}
-        </ReactFlow>
-      </ReactFlowProvider>
+        {options.children}
+      </ReactFlow>
     </div>
   );
 };

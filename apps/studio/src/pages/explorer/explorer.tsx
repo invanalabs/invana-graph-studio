@@ -9,7 +9,11 @@ import { data } from './dummy-data'
 import { AppHeader, AppFooter, AppMain } from '@invana/ui/themes/app'
 
 
+
+
 const ExplorerPage: React.FC = () => {
+
+
 
   return (
     <BlankLayout
@@ -19,7 +23,7 @@ const ExplorerPage: React.FC = () => {
       storageKey={LOCALSTORAGE_KEYS.THEME}
     >
 
-      <ReactFlowProvider>
+      <ReactFlowProvider fitView>
         <AppHeader>
           <div className="flex flex-1 items-center gap-4">
             <div className="flex items-center gap-2 text-foreground text-xl">
@@ -57,7 +61,18 @@ const ExplorerPage: React.FC = () => {
         </AppHeader>
 
         <AppMain>
-          <CanvasFlow nodes={data.nodes} edges={data.edges} style={{ width: '100%', height: '100%' }} />
+          <CanvasFlow nodes={data.nodes} edges={data.edges}
+            style={{ width: '100%', height: '100%' }}
+            display={{
+              plugins: {
+                devTools: false,
+                miniMap: true,
+                controls: false,
+                background: true,
+                theme: true
+              }
+            }}
+          />
         </AppMain>
 
         <AppFooter>
