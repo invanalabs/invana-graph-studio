@@ -15,5 +15,5 @@ export const sideBarTopNavitems: SideBarNavitemProps[] = [
 
 export const sideBarBottomNavitems: SideBarNavitemProps[] = [
   // { name: "Activity", href: "/activity", icon: Activity },
-  { name: "Invana", href: "https://invana.io", icon: CircleHelp },
+  { name: "Invana", href: "https://invana.ai", icon: CircleHelp },
 ]
