@@ -2,20 +2,34 @@ import { Compass } from 'lucide-react';
 import React from 'react';
 import { CanvasFlow, CanvasToolBar, defaultFlowCanvasOptions } from '@invana/canvas-flow';
 import { LogoComponent, sideBarBottomNavitems, sideBarTopNavitems } from '../constants';
-import { LOCALSTORAGE_KEYS, ProductInfo } from '@/constants';
+import { ProductInfo } from '@/constants';
 import {
   BlankLayout
 } from '@invana/ui';
 import { ReactFlowProvider } from '@invana/canvas-flow';
-import { data } from './dummy-data'
+// import { data } from './dummy-data'
 import { AppHeader, AppFooter, AppMain } from '@invana/ui/themes/app'
 import useTheme from '@invana/ui/hooks/useTheme';
 import AppHeaderRight from '@/ui/header/app-header-right';
+import { fetchGraphQLData } from '@/services/runQueryService';
+import { serializeToGraph } from '@/services/serializer.utils';
+
 
 
 const ExplorerPage: React.FC = () => {
 
   const { theme } = useTheme();
+  const [data, setData] = React.useState({ nodes: [], edges: [] });
+
+  React.useEffect(() => {
+    fetchGraphQLData("g.V().limit(2).toList()").then(d => {
+      const response = serializeToGraph(d.data);
+      console.log("response", response);
+      setData(response);
+    });
+  }, []);
+
+  console.log("===data2", data)
 
   return (
     <BlankLayout
@@ -36,23 +50,25 @@ const ExplorerPage: React.FC = () => {
             <AppHeaderRight />
           }
         >
-
         </AppHeader>
 
         <AppMain>
-          <CanvasFlow nodes={data.nodes} edges={data.edges}
-            style={{ width: '100%', height: '100%' }}
-            canvas={{ ...defaultFlowCanvasOptions.canvas, colorMode: theme }}
-            display={{
-              plugins: {
-                devTools: false,
-                miniMap: true,
-                controls: false,
-                background: true,
-                theme: true
-              }
-            }}
-          />
+
+          {data.nodes.length > 0 ?
+            <CanvasFlow nodes={data ? data.nodes : []} edges={data ? data.edges : []}
+              style={{ width: '100%', height: '100%' }}
+              canvas={{ ...defaultFlowCanvasOptions.canvas, colorMode: theme }}
+              display={{
+                plugins: {
+                  devTools: false,
+                  miniMap: true,
+                  controls: false,
+                  background: true,
+                  theme: true
+                }
+              }}
+            />
+            : <></>}
         </AppMain>
 
         <AppFooter
