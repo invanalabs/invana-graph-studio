@@ -5,6 +5,7 @@ import ConnectPage from "./pages/connect/connect";
 import ProtectedRoute from "./routes/protected-route";
 import ModellerPage from "./pages/modeller/modeller";
 import ExplorerPage from "./pages/explorer/explorer";
+import { LANDING_ROUTE } from './constants';
 
 
 const App = () => {
@@ -12,7 +13,7 @@ const App = () => {
     <Router>
       <Routes>
 
-        <Route path="/" element={<ProtectedRoute><Navigate to={"/modeller"} /></ProtectedRoute>} />
+        <Route path="/" element={<ProtectedRoute><Navigate to={LANDING_ROUTE} /></ProtectedRoute>} />
         {/* <Route path="/" element={<ProtectedRoute><Navigate to={"/explorer"} /></ProtectedRoute>} /> */}
         <Route path="/connect" element={<ConnectPage />} />
         <Route path="/modeller" element={<ProtectedRoute><ModellerPage /></ProtectedRoute>} />
