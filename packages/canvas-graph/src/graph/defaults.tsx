@@ -10,6 +10,7 @@ export const defaultOptions: GraphOptions = {
     'drag-canvas',
     'zoom-canvas',
     'drag-element',
+
     {
       type: 'hover-activate',
       degree: 1, // 👈🏻 Activate relations.
@@ -21,12 +22,16 @@ export const defaultOptions: GraphOptions = {
       mode: 'default',
     }, // needs shift
   ],
-  layout: defaultLayoutsOptions.find((item) => item.type === 'circular'),
+  layout: defaultLayoutsOptions.find((item) => item.type === 'grid'),
   plugins: [
     { type: 'grid-line', key: 'grid-line', follow: true },
     {
       type: 'minimap',
       size: [240, 160],
+    },
+    {
+      type: 'history',
+      key: 'history',
     },
   ],
   data: {

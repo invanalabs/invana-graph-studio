@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Graph } from "@antv/g6";
+import { Graph, History } from "@antv/g6";
 import { useGraphin } from "@antv/graphin";
 import {
   ButtonWithTooltip, Select, SelectContent, SelectItem,
   SelectTrigger, SelectValue, Separator
 } from "@invana/ui";
-import { Eraser, Lock, Minus, Plus, Unlock } from "lucide-react";
+import { Eraser, Lock, Minus, MoveLeft, MoveRight, Plus, RefreshCcw, Unlock } from "lucide-react";
 
 interface ZoomControlsProps {
   graph?: Graph | null;
@@ -20,6 +20,7 @@ export const ZoomControls: React.FC<ZoomControlsProps> = ({ graph, className }) 
   if (!graph) {
     graph = contextGraph;
   }
+  const history: History | undefined = graph?.getPluginInstance('history');
 
   const getIsLocked = () => {
     const behaviors = graph?.getBehaviors() || [];
@@ -73,6 +74,9 @@ export const ZoomControls: React.FC<ZoomControlsProps> = ({ graph, className }) 
       setIsLocked(true)
     }
   }
+
+
+
 
   return (
     <div className={`zoom-controls transition-colors flex items-center shadow-sm
@@ -133,6 +137,43 @@ export const ZoomControls: React.FC<ZoomControlsProps> = ({ graph, className }) 
       >
         {isLocked ? <Unlock className="h-4 w-4" /> : <Lock className="h-4 w-4 text-gray-400" />}
       </ButtonWithTooltip>
+      <Separator orientation="vertical" className="h-4" />
+      <ButtonWithTooltip
+        variant="ghost"
+        size="icon-sm"
+        className="rounded-none"
+        onClick={() => {
+          if (history?.canUndo()) {
+            history?.undo()
+          }
+        }}
+        tooltip={<p>Undo</p>}
+      >
+        <MoveLeft className="h-4 w-4  " />
+      </ButtonWithTooltip>
+      <ButtonWithTooltip
+        variant="ghost"
+        size="icon-sm"
+        className="rounded-none"
+        onClick={() => graph?.render()}
+        tooltip={<p>Redraw</p>}
+      >
+        <RefreshCcw className="h-4 w-4 " />
+      </ButtonWithTooltip>
+      <ButtonWithTooltip
+        variant="ghost"
+        size="icon-sm"
+        className="rounded-none"
+        onClick={() => {
+          if (history?.canRedo()) {
+            history?.redo()
+          }
+        }}
+        tooltip={<p>Redo</p>}
+      >
+        <MoveRight className="h-4 w-4 " />
+      </ButtonWithTooltip>
+      <Separator orientation="vertical" className="h-4" />
 
     </div>
   );
