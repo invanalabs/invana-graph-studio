@@ -40,6 +40,9 @@
       "@invana/canvas-graph/*": [
         "../../packages/canvas-graph/src/*"
       ],
+      "@invana/example-datasets/*": [
+        "../../packages/example-datasets/*"
+      ],
       // "@/lib": ["../../packages/ui/src/lib"],
       // "@/lib/*": ["../../packages/ui/src/lib/*"]
     },

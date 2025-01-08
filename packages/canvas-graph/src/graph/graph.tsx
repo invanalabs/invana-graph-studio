@@ -1,34 +1,19 @@
 import React from 'react';
 import { Graphin } from '@antv/graphin';
-// import {
-//   DragCanvas, ZoomCanvas, ClickSelect, BrushSelect,
-//   DragNode, LassoSelect, DragCombo,
-//   ActivateRelations, Hoverable
-// } from '@antv/graphin/es/behaviors';
-
-// import { MiniMap } from '@antv/graphin/es/components'
-
-// const { MiniMap, ContextMenu, SnapLine } = Components;
+import { GraphOptions } from '@antv/g6';
+import { defaultOptions } from './defaults';
+import { ZoomControls } from '../plugins/';
 
 
-export const CanvasGraph: React.FC = () => {
+export const CanvasGraph: React.FC = (props) => {
+  const options: GraphOptions = { ...defaultOptions, ...props }
+
   return (
     <Graphin
-      options={{
-        autoResize: true,
-        data: {
-          nodes: [
-            { id: 'node-1', style: { x: 50, y: 100 } },
-            { id: 'node-2', style: { x: 150, y: 100 } },
-          ],
-          edges: [{ id: 'edge-1', source: 'node-1', target: 'node-2' }],
-        },
-        behaviors: ['drag-canvas', 'zoom-canvas', 'drag-element'],
-      }}
+      style={{ width: 'calc(100% - 2px)', height: 'calc(100vh )' }}
+      options={options}
     >
-
-      {/* <MiniMap /> */}
-
+      <ZoomControls />
     </Graphin>
   );
 }

@@ -15,7 +15,9 @@ export default defineConfig({
   resolve: {
     alias: {
       "@invana/canvas-graph": path.resolve(__dirname, "src"),
-      "@invana/ui": path.resolve(__dirname, "../ui/src")
+      "@invana/ui": path.resolve(__dirname, "../ui/src"),
+      "@invana/canvas-datasets": path.resolve(__dirname, "../canvas-datasets")
+
     },
   },
   build: {

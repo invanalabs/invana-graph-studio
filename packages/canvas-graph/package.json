@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@antv/graphin": "^3.0.4",
+    "@invana/example-datasets": "^0.0.0",
     "@invana/ui": "^0.0.0",
     "lucide-react": "^0.468.0"
   },
