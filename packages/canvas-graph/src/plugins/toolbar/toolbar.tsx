@@ -13,16 +13,16 @@ import {
 } from "lucide-react";
 import { defaultLayoutsOptions } from "@invana/canvas-graph/graph/layouts";
 
-interface ZoomControlsProps {
+interface CanvasToolBarProps {
   graph?: Graph | null;
   className?: string;
 }
 
-export const ZoomControls: React.FC<ZoomControlsProps> = ({ graph, className }) => {
+export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ graph, className }) => {
 
   const { graph: contextGraph } = useGraphin(); // Access the graph instance from context
 
-  console.log("ZoomControls -> graph", graph)
+  console.log("CanvasToolBar -> graph", graph)
   if (!graph) {
     graph = contextGraph;
   }
