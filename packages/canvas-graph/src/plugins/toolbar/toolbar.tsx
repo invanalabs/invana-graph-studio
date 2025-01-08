@@ -7,7 +7,10 @@ import {
   ToggleGroup,
   ToggleGroupItem
 } from "@invana/ui";
-import { Bold, CircleDashed, Eraser, Italic, LayoutGrid, Lock, Minus, MoveLeft, MoveRight, Network, Plus, RefreshCcw, Share2, Underline, Unlock } from "lucide-react";
+import {
+  CircleDashed, Eraser, LayoutGrid, Lock, Minus,
+  MoveLeft, MoveRight, Network, Plus, RefreshCcw, Share2, Unlock
+} from "lucide-react";
 import { defaultLayoutsOptions } from "@invana/canvas-graph/graph/layouts";
 
 interface ZoomControlsProps {
