@@ -1,11 +1,20 @@
 import React from "react";
-import { GraphinContext } from "@antv/graphin";
+import { Graph } from "@antv/g6";
+import { useGraphin } from "@antv/graphin";
 import { Button } from "@invana/ui";
 
+interface ZoomControlsProps {
+  graph?: Graph | null;
+}
 
-export const ZoomControls: React.FC = () => {
+export const ZoomControls: React.FC<ZoomControlsProps> = ({ graph }) => {
 
-  const { graph } = React.useContext(GraphinContext); // Access the graph instance from context
+  const { graph: contextGraph } = useGraphin(); // Access the graph instance from context
+
+  console.log("ZoomControls -> graph", graph)
+  if (!graph) {
+    graph = contextGraph;
+  }
 
   const zoomIn = () => {
     const currentZoom = graph?.getZoom();

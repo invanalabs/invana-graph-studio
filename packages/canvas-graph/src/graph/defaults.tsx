@@ -1,5 +1,5 @@
 import { GraphOptions } from '@antv/g6';
-
+import { defaultLayoutsOptions } from './layouts';
 
 export const defaultOptions: GraphOptions = {
   autoResize: true,
@@ -21,11 +21,7 @@ export const defaultOptions: GraphOptions = {
       mode: 'default',
     }, // needs shift
   ],
-  layout: {
-    type: 'force',
-    preventOverlap: true,
-    nodeSize: 24,
-  },
+  layout: defaultLayoutsOptions.find((item) => item.type === 'circular'),
   plugins: [
     { type: 'grid-line', key: 'grid-line', follow: true },
     {

@@ -1,4 +1,4 @@
-export const layoutsOptions = [
+export const defaultLayoutsOptions = [
   {
     type: 'graphin-force',
     label: 'graphin-force',
