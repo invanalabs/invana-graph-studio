@@ -3,9 +3,12 @@ import { Graph, History } from "@antv/g6";
 import { useGraphin } from "@antv/graphin";
 import {
   ButtonWithTooltip, Select, SelectContent, SelectItem,
-  SelectTrigger, SelectValue, Separator
+  SelectTrigger, SelectValue, Separator,
+  ToggleGroup,
+  ToggleGroupItem
 } from "@invana/ui";
-import { Eraser, Lock, Minus, MoveLeft, MoveRight, Plus, RefreshCcw, Unlock } from "lucide-react";
+import { Bold, CircleDashed, Eraser, Italic, LayoutGrid, Lock, Minus, MoveLeft, MoveRight, Network, Plus, RefreshCcw, Share2, Underline, Unlock } from "lucide-react";
+import { defaultLayoutsOptions } from "@invana/canvas-graph/graph/layouts";
 
 interface ZoomControlsProps {
   graph?: Graph | null;
@@ -72,6 +75,16 @@ export const ZoomControls: React.FC<ZoomControlsProps> = ({ graph, className }) 
       const updatedBehaviors = [...behaviors, 'drag-element'];
       graph?.setBehaviors(updatedBehaviors);
       setIsLocked(true)
+    }
+  }
+
+
+  const updateLayout = (layoutName: string) => {
+    const layoutConfig = defaultLayoutsOptions.find((item) => item.type === layoutName);
+    console.log("updateLayout -> layoutConfig", layoutConfig)
+    if (layoutConfig) {
+      graph?.setLayout(layoutConfig);
+      graph?.render()
     }
   }
 
@@ -174,6 +187,54 @@ export const ZoomControls: React.FC<ZoomControlsProps> = ({ graph, className }) 
         <MoveRight className="h-4 w-4 " />
       </ButtonWithTooltip>
       <Separator orientation="vertical" className="h-4" />
+
+      <ToggleGroup type="single" onValueChange={(value) => updateLayout(value)} >
+        <ToggleGroupItem value="force">
+          <ButtonWithTooltip
+            variant="ghost"
+            size="icon-sm"
+            className="rounded-none"
+            tooltip={<p>Force Layout</p>}
+          >
+            <Share2 className="h-4 w-4" />
+          </ButtonWithTooltip>
+        </ToggleGroupItem>
+        <ToggleGroupItem value="circular">
+          <ButtonWithTooltip
+            variant="ghost"
+            size="icon-sm"
+            className="rounded-none"
+            tooltip={<p>Circlular Layout</p>}
+          >
+            <CircleDashed className="h-4 w-4" />
+          </ButtonWithTooltip>
+        </ToggleGroupItem>
+
+        <ToggleGroupItem value="grid">
+          <ButtonWithTooltip
+            variant="ghost"
+            size="icon-sm"
+            className="rounded-none"
+            tooltip={<p>Grid Layout</p>}
+          >
+            <LayoutGrid className="h-4 w-4" />
+          </ButtonWithTooltip>
+        </ToggleGroupItem>
+
+
+        <ToggleGroupItem value="dagre">
+          <ButtonWithTooltip
+            variant="ghost"
+            size="icon-sm"
+            className="rounded-none rotate-270"
+            tooltip={<p>Dagre Layout</p>}
+          >
+            <Network className="h-4 w-4" />
+          </ButtonWithTooltip>
+        </ToggleGroupItem>
+
+
+      </ToggleGroup>
 
     </div>
   );

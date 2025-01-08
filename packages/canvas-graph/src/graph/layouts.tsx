@@ -6,6 +6,7 @@ export const defaultLayoutsOptions = [
   {
     type: 'grid',
     label: 'grid',
+    align: 'CENTER',   // Alignment of the nodes
     // begin: [0, 0], // Optional
     preventOverlap: true, // Optional, must be used with nodeSize
     preventOverlapPadding: 20, // Optional
@@ -16,6 +17,11 @@ export const defaultLayoutsOptions = [
     // sortBy: 'degree', // Optional
     workerEnabled: true, // Optional, enable web-worker
   },
+  // {
+  //   type: 'orthogonal',  // Set the layout type to orthogonal
+  //   directed: true,      // Optional: Specify if edges are directed
+  //   sortByCombo: false   // Optional: Control if edges should follow combo structures
+  // },
   {
     type: 'circular',
     label: 'circular',

@@ -1,11 +1,12 @@
 import { GraphOptions } from '@antv/g6';
 import { defaultLayoutsOptions } from './layouts';
 
+export const DEFAULT_LAYOUT = 'grid'
+
 export const defaultOptions: GraphOptions = {
   autoResize: true,
   autoFit: 'center',
-  animation: true,
-
+  animation: false,
   behaviors: [
     'drag-canvas',
     'zoom-canvas',
@@ -22,7 +23,20 @@ export const defaultOptions: GraphOptions = {
       mode: 'default',
     }, // needs shift
   ],
-  layout: defaultLayoutsOptions.find((item) => item.type === 'grid'),
+  layout: defaultLayoutsOptions.find((item) => item.type === DEFAULT_LAYOUT),
+  node: {
+    // size: [80, 40],
+    style: {
+      fill: '#0fbb60',
+      stroke: '#5B8FF9'
+    }
+  },
+  edge: {
+    style: {
+      stroke: '#A3B1BF',
+      lineWidth: 2
+    }
+  },
   plugins: [
     { type: 'grid-line', key: 'grid-line', follow: true },
     {
