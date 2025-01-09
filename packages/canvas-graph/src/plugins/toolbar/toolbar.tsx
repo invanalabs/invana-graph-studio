@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Graph, History } from "@antv/g6";
-import { useGraphin } from "@antv/graphin";
+// import { useGraphin } from "@antv/graphin";
 import {
   ButtonWithTooltip, Select, SelectContent, SelectItem,
   SelectTrigger, SelectValue, Separator,
@@ -20,12 +20,12 @@ interface CanvasToolBarProps {
 
 export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ graph, className }) => {
 
-  const { graph: contextGraph } = useGraphin(); // Access the graph instance from context
+  // const { graph: contextGraph } = useGraphin(); // Access the graph instance from context
 
   console.log("CanvasToolBar -> graph", graph)
-  if (!graph) {
-    graph = contextGraph;
-  }
+  // if (!graph) {
+  //   graph = contextGraph;
+  // }
   const history: History | undefined = graph?.getPluginInstance('history');
 
   const getIsLocked = () => {
@@ -95,8 +95,8 @@ export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ graph, className }
 
 
   return (
-    <div className={`zoom-controls transition-colors flex items-center shadow-sm
-              bg-transparent text-card-foreground ${className || ''}`} >
+    <div className={`zoom-controls transition-colors items-center shadow-sm
+              bg-transparent text-card-foreground flex-1 flex justify-center gap-1 sm:gap-2 ${className || ''}`} >
       <Select onValueChange={onZoomChange}>
         <SelectTrigger className="h-7 w-7 border-none hover:border-none focus:border-none active:border-none
         rounded-none ring-0 shadow-none !w-[95px] ">
@@ -151,7 +151,7 @@ export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ graph, className }
         onClick={() => toggleLockCanvas()}
         tooltip={<p>{isLocked ? 'Unlock canvas' : 'Lock canvas'}</p>}
       >
-        {isLocked ? <Unlock className="h-4 w-4" /> : <Lock className="h-4 w-4 text-gray-400" />}
+        {isLocked ? <Unlock className="h-4 w-4" /> : <Lock className="h-4 w-4  " />}
       </ButtonWithTooltip>
       <Separator orientation="vertical" className="h-4" />
       <ButtonWithTooltip

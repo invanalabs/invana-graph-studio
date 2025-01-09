@@ -4,7 +4,7 @@ import { LogoComponent, sideBarBottomNavitems, sideBarTopNavitems } from "../con
 import { AppFooter, AppHeader, AppMain } from "@invana/ui/themes/app";
 import { PanelTop } from "lucide-react";
 import AppHeaderRight from "@/ui/header/app-header-right";
-import { ProductInfo } from "@/constants";
+import { ProductCopyRightInfo } from "@/constants";
 
 
 export default function NotFoundPage() {
@@ -18,7 +18,10 @@ export default function NotFoundPage() {
 
       <AppHeader
         left={
-          <><PanelTop className='h-4 w-4' /> <span className='font-bold'>Page Not Found</span></>
+          <>
+            {/* <PanelTop className='h-4 w-4' />  */}
+            <span className='font-bold'>Page Not Found</span>
+          </>
         }
 
         right={
@@ -57,7 +60,7 @@ export default function NotFoundPage() {
       </AppMain>
 
       <AppFooter
-        right={ProductInfo}
+        right={ProductCopyRightInfo}
       >
 
       </AppFooter>

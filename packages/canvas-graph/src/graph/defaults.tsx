@@ -1,5 +1,6 @@
 import { GraphOptions } from '@antv/g6';
 import { defaultLayoutsOptions } from './layouts';
+// import G6 from '@antv/g6';
 
 export const DEFAULT_LAYOUT = 'grid'
 
@@ -24,24 +25,40 @@ export const defaultOptions: GraphOptions = {
     }, // needs shift
   ],
   layout: defaultLayoutsOptions.find((item) => item.type === DEFAULT_LAYOUT),
+  theme: 'dark',
   node: {
     // size: [80, 40],
-    style: {
-      fill: '#0fbb60',
-      stroke: '#5B8FF9'
-    }
+    // style: {
+    //   fill: '#0fbb60',
+    //   stroke: '#5B8FF9',
+    //   size: 25
+    // },
+    palette: {
+      type: 'group',
+      field: 'cluster',
+    },
   },
   edge: {
     style: {
-      stroke: '#A3B1BF',
-      lineWidth: 2
+      stroke: '#343434',
+      lineWidth: 1
     }
   },
   plugins: [
-    { type: 'grid-line', key: 'grid-line', follow: true },
+    // {
+    //   type: 'grid-line', key: 'grid-line', follow: true, lineStyle: {
+    //     stroke: '#222222', // Set grid line color
+    //     lineWidth: 1, // Set line width
+    //   },
+    // },
     {
       type: 'minimap',
       size: [240, 160],
+      className: 'minimap',
+      // delegateStyle: {
+      //   fill: 'rgba(0, 0, 0, 0.1)',
+      //   stroke: '#5B8FF9',
+      // },
     },
     {
       type: 'history',

@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@invana/canvas-graph": "^0.0.0",
     "@invana/ui": "^0.0.0",
     "lucide-react": "^0.469.0",
     "react": "^18.3.1",

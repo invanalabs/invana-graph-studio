@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { BlankLayout } from '@invana/ui';
 
@@ -22,7 +22,7 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const BlankLayout2: Story = {
   args: {
-    // primary: true,
-    // variant: 'secondary',
+    children: <div>Main Content here</div>,
+    logo: <div>Logo here</div>,
   },
 };

@@ -1,7 +1,7 @@
 import { Compass } from 'lucide-react';
 import React from 'react';
 import { LogoComponent, sideBarBottomNavitems, sideBarTopNavitems } from '../constants';
-import { ProductInfo } from '@/constants';
+import { ProductCopyRightInfo, ProductName } from '@/constants';
 import {
   BlankLayout
 } from '@invana/ui';
@@ -15,6 +15,7 @@ import { serializeToGraph } from '@/services/serializer.utils';
 import { CanvasGraph, CanvasToolBar, defaultOptions } from '@invana/canvas-graph';
 import { Graph } from '@antv/g6';
 import { flightData } from '@invana/example-datasets'
+// import '@invana/canvas-graph/dist/index.css'
 
 
 const ExplorerPage: React.FC = () => {
@@ -52,7 +53,12 @@ const ExplorerPage: React.FC = () => {
       <ReactFlowProvider fitView>
         <AppHeader
           left={
-            <><Compass className='h-4 w-4' /> <span className='font-bold'>Invana | Explorer</span></>
+            <>
+              {/* <Compass className='h-4 w-4' /> */}
+              <span className='font-bold mr-2'>{ProductName}</span>
+              <span className='mr-2'>|</span>
+              <span>Explorer</span>
+            </>
           }
           center={
             <CanvasToolBar graph={graph} />
@@ -68,7 +74,7 @@ const ExplorerPage: React.FC = () => {
         </AppMain>
 
         <AppFooter
-          right={ProductInfo}
+          right={ProductCopyRightInfo}
         >
 
         </AppFooter>

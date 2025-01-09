@@ -2,7 +2,7 @@ import { Network } from 'lucide-react';
 import React from 'react';
 import { CanvasFlow, CanvasToolBar, defaultFlowCanvasOptions } from '@invana/canvas-flow';
 import { LogoComponent, sideBarBottomNavitems, sideBarTopNavitems } from '../constants';
-import { ProductInfo } from '@/constants';
+import { ProductCopyRightInfo, ProductName } from '@/constants';
 import {
   BlankLayout
 } from '@invana/ui';
@@ -27,7 +27,12 @@ const ModellerPage: React.FC = () => {
       <ReactFlowProvider fitView>
         <AppHeader
           left={
-            <><Network className='h-4 w-4' /> <span className='font-bold'>Invana | Modeller</span></>
+            <>
+              {/* <Network className='h-4 w-4' /> */}
+              <span className='font-bold mr-2'>{ProductName}</span>
+              <span className='mr-2'>|</span>
+              <span>Modeller</span>
+            </>
           }
           center={
             <CanvasToolBar />
@@ -56,7 +61,7 @@ const ModellerPage: React.FC = () => {
         </AppMain>
 
         <AppFooter
-          right={ProductInfo}
+          right={ProductCopyRightInfo}
         >
 
         </AppFooter>
