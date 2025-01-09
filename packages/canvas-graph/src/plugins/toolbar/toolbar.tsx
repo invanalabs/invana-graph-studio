@@ -18,13 +18,19 @@ interface CanvasToolBarProps {
   className?: string;
 }
 
+
+const animation = {
+  duration: 500,
+  easing: 'linear',
+};
+
 export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ graph, className }) => {
 
   // const { graph: contextGraph } = useGraphin(); // Access the graph instance from context
 
   console.log("CanvasToolBar -> graph", graph)
   // if (!graph) {
-  //   graph = contextGraph;
+  //   return
   // }
   const history: History | undefined = graph?.getPluginInstance('history');
 
@@ -40,17 +46,17 @@ export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ graph, className }
   const zoomIn = () => {
     const currentZoom = graph?.getZoom();
     if (currentZoom)
-      graph?.zoomTo(currentZoom + 0.2);
+      graph?.zoomTo(currentZoom + 0.2, animation);
   };
 
   const zoomOut = () => {
     const currentZoom = graph?.getZoom();
     if (currentZoom)
-      graph?.zoomTo(currentZoom - 0.2);
+      graph?.zoomTo(currentZoom - 0.2, animation);
   };
 
   const fitView = () => {
-    graph?.fitView();
+    graph?.fitView({}, animation);
   };
 
   const onZoomChange = (value: string) => {
@@ -97,6 +103,44 @@ export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ graph, className }
   return (
     <div className={`zoom-controls transition-colors items-center shadow-sm
               bg-transparent text-card-foreground flex-1 flex justify-center gap-1 sm:gap-2 ${className || ''}`} >
+
+      <ButtonWithTooltip
+        variant="ghost"
+        size="icon-sm"
+        className="rounded-none"
+        onClick={() => {
+          if (history?.canUndo()) {
+            history?.undo()
+          }
+        }}
+        tooltip={<p>Undo</p>}
+      >
+        <MoveLeft className="h-4 w-4  " />
+      </ButtonWithTooltip>
+      <ButtonWithTooltip
+        variant="ghost"
+        size="icon-sm"
+        className="rounded-none"
+        onClick={() => graph?.render()}
+        tooltip={<p>Redraw</p>}
+      >
+        <RefreshCcw className="h-4 w-4 " />
+      </ButtonWithTooltip>
+      <ButtonWithTooltip
+        variant="ghost"
+        size="icon-sm"
+        className="rounded-none"
+        onClick={() => {
+          if (history?.canRedo()) {
+            history?.redo()
+          }
+        }}
+        tooltip={<p>Redo</p>}
+      >
+        <MoveRight className="h-4 w-4 " />
+      </ButtonWithTooltip>
+      <Separator orientation="vertical" className="h-4" />
+
       <Select onValueChange={onZoomChange}>
         <SelectTrigger className="h-7 w-7 border-none hover:border-none focus:border-none active:border-none
         rounded-none ring-0 shadow-none !w-[95px] ">
@@ -154,45 +198,9 @@ export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ graph, className }
         {isLocked ? <Unlock className="h-4 w-4" /> : <Lock className="h-4 w-4  " />}
       </ButtonWithTooltip>
       <Separator orientation="vertical" className="h-4" />
-      <ButtonWithTooltip
-        variant="ghost"
-        size="icon-sm"
-        className="rounded-none"
-        onClick={() => {
-          if (history?.canUndo()) {
-            history?.undo()
-          }
-        }}
-        tooltip={<p>Undo</p>}
-      >
-        <MoveLeft className="h-4 w-4  " />
-      </ButtonWithTooltip>
-      <ButtonWithTooltip
-        variant="ghost"
-        size="icon-sm"
-        className="rounded-none"
-        onClick={() => graph?.render()}
-        tooltip={<p>Redraw</p>}
-      >
-        <RefreshCcw className="h-4 w-4 " />
-      </ButtonWithTooltip>
-      <ButtonWithTooltip
-        variant="ghost"
-        size="icon-sm"
-        className="rounded-none"
-        onClick={() => {
-          if (history?.canRedo()) {
-            history?.redo()
-          }
-        }}
-        tooltip={<p>Redo</p>}
-      >
-        <MoveRight className="h-4 w-4 " />
-      </ButtonWithTooltip>
-      <Separator orientation="vertical" className="h-4" />
 
       <ToggleGroup type="single" onValueChange={(value) => updateLayout(value)} >
-        <ToggleGroupItem value="force">
+        <ToggleGroupItem value="gForce">
           <ButtonWithTooltip
             variant="ghost"
             size="icon-sm"

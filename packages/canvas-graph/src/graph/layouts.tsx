@@ -6,7 +6,7 @@ export const defaultLayoutsOptions = [
   {
     type: 'grid',
     label: 'grid',
-    align: 'CENTER',   // Alignment of the nodes
+    // align: 'CENTER',   // Alignment of the nodes
     // begin: [0, 0], // Optional
     preventOverlap: true, // Optional, must be used with nodeSize
     preventOverlapPadding: 20, // Optional
@@ -14,7 +14,7 @@ export const defaultLayoutsOptions = [
     // condense: false, // Optional
     // rows: 5, // Optional
     // cols: 5, // Optional
-    // sortBy: 'degree', // Optional
+    sortBy: 'degree', // Optional
     workerEnabled: true, // Optional, enable web-worker
   },
   // {
@@ -57,7 +57,7 @@ export const defaultLayoutsOptions = [
 
     preventOverlap: true,
     // center: [200, 200], // Optional, default is the center of the graph
-    linkDistance: 50, // Optional, edge length
+    linkDistance: 100, // Optional, edge length
     nodeStrength: 30, // Optional
     edgeStrength: 0.8, // Optional
     collideStrength: 0.8, // Optional

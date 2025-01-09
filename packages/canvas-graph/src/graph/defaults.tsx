@@ -6,7 +6,7 @@ export const DEFAULT_LAYOUT = 'grid'
 
 export const defaultOptions: GraphOptions = {
   autoResize: true,
-  autoFit: 'center',
+  autoFit: 'view', // 'view' | 'graph' | 'center'
   animation: false,
   behaviors: [
     'drag-canvas',
@@ -24,9 +24,28 @@ export const defaultOptions: GraphOptions = {
       mode: 'default',
     }, // needs shift
   ],
+  // transforms: [
+  //   {
+  //     type: 'map-node-size',
+  //     scale: 'linear',
+  //     maxSize: 60,
+  //     minSize: 20,
+  //     mapLabelSize: [12, 24]
+  //   },
+  // ],
   layout: defaultLayoutsOptions.find((item) => item.type === DEFAULT_LAYOUT),
   theme: 'dark',
-  node: {
+  background: '#222222',
+  node: { // https://g6.antv.antgroup.com/en/examples/element/label/#background
+    // type: "graphin-circle",
+    style: {
+      halo: true,
+      labelText: (d) => d.id,
+      labelPosition: 'bottom',
+      fillOpacity: 0.85,
+      strokeOpacity: 1
+
+    },
     // size: [80, 40],
     // style: {
     //   fill: '#0fbb60',
@@ -35,14 +54,31 @@ export const defaultOptions: GraphOptions = {
     // },
     palette: {
       type: 'group',
-      field: 'cluster',
+      field: 'groupName',
     },
   },
-  edge: {
+  edge: {  // https://g6.antv.antgroup.com/en/examples/element/label/#background
+    type: 'line',
     style: {
+      labelText: (d) => d.id,
+      // labelBackground: true,
+      labelTextAlign: 'center',
+      // labelTextStroke: 'red',
+      labelAutoRotate: true,
+      labelBackgroundOpacity: 0.8,
+      // labelBackgroundStroke: '#9ec9ff',
+      labelFill: '#949494',
+
+      endArrow: true,
+      // edge: {
+      //   style: {
       stroke: '#343434',
       lineWidth: 1
-    }
+    },
+    palette: {
+      type: 'group',
+      field: 'groupName',
+    },
   },
   plugins: [
     // {
@@ -55,6 +91,7 @@ export const defaultOptions: GraphOptions = {
       type: 'minimap',
       size: [240, 160],
       className: 'minimap',
+      // position: 'bottomLeft',
       // delegateStyle: {
       //   fill: 'rgba(0, 0, 0, 0.1)',
       //   stroke: '#5B8FF9',

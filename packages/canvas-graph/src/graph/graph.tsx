@@ -1,6 +1,6 @@
 import React from 'react';
 import { Graphin } from '@antv/graphin';
-import { Graph, GraphOptions } from '@antv/g6';
+import { Graph, GraphOptions, IEvent, NodeEvent } from '@antv/g6';
 import { defaultOptions } from './defaults';
 // import { CanvasToolBar } from '../plugins/';
 
@@ -33,6 +33,21 @@ export interface CanvasGraphProps {
 export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
   const options: GraphOptions = { ...defaultOptions, ...props.options }
   // const [graph, setGraph] = React.useState<Graph | null>(null);
+
+
+
+  props.graph?.on(NodeEvent.POINTER_ENTER, (event: IEvent) => {
+    console.log('POINTER_ENTER event', event);
+    // graph.updateNodeData([{ id: target.id, style: { labelText: 'Hover me!', fill: '#5B8FF9', labelFill: 'black' } }]);
+    // graph.draw();
+  });
+
+  props.graph?.on(NodeEvent.POINTER_OUT, (event: IEvent) => {
+    console.log('POINTER_OUT event', event);
+    // graph.updateNodeData([{ id: target.id, style: { labelText: 'Hover me!', fill: '#5B8FF9', labelFill: 'black' } }]);
+    // graph.draw();
+  });
+
   return (
     <>
       <div style={props?.style || {}}>

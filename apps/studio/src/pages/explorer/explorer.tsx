@@ -61,7 +61,7 @@ const ExplorerPage: React.FC = () => {
             </>
           }
           center={
-            <CanvasToolBar graph={graph} />
+            graph && <CanvasToolBar graph={graph} />
           }
           right={
             <AppHeaderRight />
