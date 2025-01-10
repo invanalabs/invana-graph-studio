@@ -1,6 +1,9 @@
 import { GraphOptions } from '@antv/g6';
 import { defaultLayoutsOptions } from './layouts';
-// import G6 from '@antv/g6';
+import { DRAG_CANVAS, ZOOM_CANVAS, DRAG_ELEMENT, HOVER_ACTIVATE, CLICK_SELECT, BRUSH_SELECT } from '../options/behaviors';
+import { MAP_NODE_SIZE } from '../options/transforms';
+import { DEFAULT_EDGE_STYLE, DEFAULT_NODE_STYLE } from '../options/elements';
+import { GRID_PLUGIN, HISTORY_PLUGIN, MINIMAP_PLUGIN } from '../options/plugins';
 
 export const DEFAULT_LAYOUT = 'grid'
 
@@ -9,120 +12,28 @@ export const defaultOptions: GraphOptions = {
   autoFit: 'view', // 'view' | 'graph' | 'center'
   animation: false,
   behaviors: [
-    'drag-canvas',
-    'zoom-canvas',
-    'drag-element',
-
-    {
-      type: 'hover-activate',
-      degree: 1, // 👈🏻 Activate relations.
-      state: 'highlight',
-      inactiveState: 'dim',
-    },
-    { type: 'click-select', multiple: true, trigger: ['shift'] },
-    {
-      type: 'brush-select',
-      immediately: true,
-      mode: 'default',
-    }, // needs shift
+    DRAG_CANVAS,
+    ZOOM_CANVAS,
+    DRAG_ELEMENT,
+    HOVER_ACTIVATE,
+    CLICK_SELECT,
+    BRUSH_SELECT
   ],
-  // transforms: [
-  //   {
-  //     type: 'map-node-size',
-  //     scale: 'linear',
-  //     maxSize: 60,
-  //     minSize: 20,
-  //     mapLabelSize: [12, 24]
-  //   },
-  // ],
+  transforms: [
+    MAP_NODE_SIZE
+  ],
   layout: defaultLayoutsOptions.find((item) => item.type === DEFAULT_LAYOUT),
   theme: 'dark',
   background: '#222222',
-  node: { // https://g6.antv.antgroup.com/en/examples/element/label/#background
-    // type: "graphin-circle",
-    style: {
-      // halo: true,
-      labelText: (d) => d.id,
-      labelPosition: 'bottom',
-      fillOpacity: 0.85,
-      strokeOpacity: 1
-
-    },
-    // size: [80, 40],
-    // style: {
-    //   fill: '#0fbb60',
-    //   stroke: '#5B8FF9',
-    //   size: 25
-    // },
-    palette: {
-      type: 'group',
-      field: 'groupName',
-    },
-  },
-  edge: {  // https://g6.antv.antgroup.com/en/examples/element/label/#background
-    type: 'line',
-    style: {
-      labelText: (d) => {
-        if (d.id) return d.id
-        else return d.source + '-' + d.target
-      },
-      // labelBackground: true,
-      labelTextAlign: 'center',
-      // labelTextStroke: 'red',
-      labelAutoRotate: true,
-      labelBackgroundOpacity: 0.8,
-      // labelBackgroundStroke: '#9ec9ff',
-      labelFill: '#646464',
-
-      endArrow: true,
-      // edge: {
-      //   style: {
-      stroke: '#343434',
-      lineWidth: 1
-    },
-    palette: {
-      type: 'group',
-      field: 'groupName',
-    },
-  },
+  node: DEFAULT_NODE_STYLE,
+  edge: DEFAULT_EDGE_STYLE,
   plugins: [
-    // {
-    //   type: 'grid-line', key: 'grid-line', follow: true, lineStyle: {
-    //     stroke: '#222222', // Set grid line color
-    //     lineWidth: 1, // Set line width
-    //   },
-    // },
-    {
-      type: 'minimap',
-      size: [240, 160],
-      className: 'minimap',
-      // position: 'bottomLeft',
-      // delegateStyle: {
-      //   fill: 'rgba(0, 0, 0, 0.1)',
-      //   stroke: '#5B8FF9',
-      // },
-    },
-    {
-      type: 'history',
-      key: 'history',
-    },
+    MINIMAP_PLUGIN,
+    HISTORY_PLUGIN,
+    GRID_PLUGIN
   ],
   data: {
     nodes: [],
     edges: []
-  },
-  // data: {
-  //   nodes: [{ id: 'node-0' }, { id: 'node-1' }, { id: 'node-2' }, { id: 'node-3' }, { id: 'node-4' }, { id: 'node-5' }],
-  //   edges: [
-  //     { source: 'node-0', target: 'node-1' },
-  //     { source: 'node-0', target: 'node-2' },
-  //     { source: 'node-0', target: 'node-3' },
-  //     { source: 'node-0', target: 'node-4' },
-  //     { source: 'node-1', target: 'node-0' },
-  //     { source: 'node-2', target: 'node-0' },
-  //     { source: 'node-3', target: 'node-0' },
-  //     { source: 'node-4', target: 'node-0' },
-  //     { source: 'node-5', target: 'node-0' },
-  //   ],
-  // },
+  }
 }

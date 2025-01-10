@@ -94,6 +94,13 @@ export const defaultLayoutsOptions = [
     gpuEnabled: false, // Optional, enable GPU parallel computing, supported in G6 4.0
   },
   {
+    type: 'd3-force',
+    collide: {
+      // Prevent nodes from overlapping by specifying a collision radius for each node.
+      radius: (d) => d.size / 2,
+    },
+  },
+  {
     type: 'concentric',
     label: 'concentric',
     maxLevelDiff: 0.5,
