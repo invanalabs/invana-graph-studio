@@ -48,6 +48,30 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
     // graph.draw();
   });
 
+
+  // props.graph?.on(NodeEvent.CLICK, (event: IEvent) => {
+  //   console.log('node.CLICK event', event);
+  //   // graph.updateNodeData([{ id: target.id, style: { labelText: 'Hover me!', fill: '#5B8FF9', labelFill: 'black' } }]);
+  //   // graph.draw();
+  // });
+
+  // Event listener for right-click on nodes
+  props.graph?.on(NodeEvent.CONTEXT_MENU, (evt) => {
+    console.log('CONTEXT_MENU event', evt);
+    // evt.preventDefault();
+    // const { canvasX, canvasY } = evt;
+
+    // // Show the context menu
+    // contextMenu.style.left = `${canvasX}px`;
+    // contextMenu.style.top = `${canvasY}px`;
+    // contextMenu.style.visibility = 'visible';
+
+    // // Close the menu when clicking outside
+    // document.addEventListener('click', () => {
+    //   contextMenu.style.visibility = 'hidden';
+    // }, { once: true });
+  });
+
   return (
     <>
       <div style={props?.style || {}}>

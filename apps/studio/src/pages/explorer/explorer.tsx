@@ -14,7 +14,7 @@ import { fetchGraphQLData } from '@/services/runQueryService';
 import { serializeToGraph } from '@/services/serializer.utils';
 import { CanvasGraph, CanvasToolBar, defaultOptions } from '@invana/canvas-graph';
 import { Graph } from '@antv/g6';
-import { flightData } from '@invana/example-datasets'
+import { flightData, lesMiserablesData } from '@invana/example-datasets'
 // import '@invana/canvas-graph/dist/index.css'
 
 
@@ -41,7 +41,7 @@ const ExplorerPage: React.FC = () => {
 
   console.log("===data2", data)
 
-  const options = { ...defaultOptions, data: flightData }
+  const options = { ...defaultOptions, data: lesMiserablesData }
 
   return (
     <BlankLayout

@@ -16,6 +16,8 @@ export const defaultOptions: GraphOptions = {
     {
       type: 'hover-activate',
       degree: 1, // 👈🏻 Activate relations.
+      state: 'highlight',
+      inactiveState: 'dim',
     },
     { type: 'click-select', multiple: true, trigger: ['shift'] },
     {
@@ -39,7 +41,7 @@ export const defaultOptions: GraphOptions = {
   node: { // https://g6.antv.antgroup.com/en/examples/element/label/#background
     // type: "graphin-circle",
     style: {
-      halo: true,
+      // halo: true,
       labelText: (d) => d.id,
       labelPosition: 'bottom',
       fillOpacity: 0.85,
@@ -60,14 +62,17 @@ export const defaultOptions: GraphOptions = {
   edge: {  // https://g6.antv.antgroup.com/en/examples/element/label/#background
     type: 'line',
     style: {
-      labelText: (d) => d.id,
+      labelText: (d) => {
+        if (d.id) return d.id
+        else return d.source + '-' + d.target
+      },
       // labelBackground: true,
       labelTextAlign: 'center',
       // labelTextStroke: 'red',
       labelAutoRotate: true,
       labelBackgroundOpacity: 0.8,
       // labelBackgroundStroke: '#9ec9ff',
-      labelFill: '#949494',
+      labelFill: '#646464',
 
       endArrow: true,
       // edge: {
