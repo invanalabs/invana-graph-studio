@@ -5,6 +5,8 @@ export const DEFAULT_NODE_STYLE: NodeOptions = { // https://g6.antv.antgroup.com
     halo: true,
     labelText: (d) => d.id,
     labelPosition: 'bottom',
+    labelAutoRotate: true,
+    labelTextColor: '#646464',
     fillOpacity: 0.85,
     strokeOpacity: 1
 

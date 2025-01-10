@@ -24,13 +24,13 @@ export const defaultOptions: GraphOptions = {
   ],
   layout: defaultLayoutsOptions.find((item) => item.type === DEFAULT_LAYOUT),
   theme: 'dark',
-  background: '#222222',
+  // background: '#222222',
   node: DEFAULT_NODE_STYLE,
   edge: DEFAULT_EDGE_STYLE,
   plugins: [
     MINIMAP_PLUGIN,
     HISTORY_PLUGIN,
-    GRID_PLUGIN
+    // GRID_PLUGIN
   ],
   data: {
     nodes: [],
