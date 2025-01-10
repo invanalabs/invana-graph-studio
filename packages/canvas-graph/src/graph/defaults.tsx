@@ -23,7 +23,7 @@ export const defaultOptions: GraphOptions = {
     MAP_NODE_SIZE
   ],
   layout: defaultLayoutsOptions.find((item) => item.type === DEFAULT_LAYOUT),
-  theme: 'dark',
+  // theme: 'dark',
   // background: '#222222',
   node: DEFAULT_NODE_STYLE,
   edge: DEFAULT_EDGE_STYLE,

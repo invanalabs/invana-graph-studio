@@ -3,7 +3,7 @@
 export const LOCALSTORAGE_KEYS = {
     THEME: "INVANA_THEME",
     GRAPHBOOK: "GRAPHBOOK",
-    CONNECTION: "CONNECTION",
+    CONNECTION: "CONNECTION"
 }
 
 export const ProductName = "Invana Studio"

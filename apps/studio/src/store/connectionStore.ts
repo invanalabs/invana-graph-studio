@@ -5,7 +5,7 @@ import { GraphDBConnection } from '../models';
 import { LOCALSTORAGE_KEYS } from '@/constants';
 
 
-interface GraphDBConnectionState {
+export interface GraphDBConnectionState {
   connections: GraphDBConnection[];
   getConnections: () => Promise<GraphDBConnection[]>;
   createConnection: (connection: Omit<GraphDBConnection, 'id'>) => Promise<GraphDBConnection>;
