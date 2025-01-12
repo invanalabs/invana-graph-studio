@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Graphin, useGraphin } from '@antv/graphin';
 import { Graph, GraphOptions, IEvent, NodeEvent } from '@antv/g6';
 import { defaultOptions } from './defaults';
-import GraphService from '../services/graphService';
+import GraphStore from '../graphStore/graphStore';
 import { CanvasToolBar } from '../plugins';
 // import { CanvasToolBar } from '../plugins/';
 
@@ -28,6 +28,7 @@ export interface CanvasGraphProps {
   options?: GraphOptions;
   style?: React.CSSProperties;
   graph: Graph;
+  dataManager?: GraphData
   onReady?: (graph: Graph) => void;
   header?: boolean;
 }
@@ -52,8 +53,8 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
   });
 
 
-  const graphService = new GraphService(props.graph);
-  // const graphService = new GraphService(graph);
+  const graphStore = new GraphStore(props.graph);
+  // const GraphStore = new GraphStore(graph);
 
 
   // props.graph?.on(NodeEvent.CLICK, (event: IEvent) => {
@@ -83,6 +84,9 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
 
 
 
+
+
+
   return (
     <div style={props?.style || {}}>
       {header && <CanvasToolBar graph={props.graph} />}
@@ -92,7 +96,7 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
           if (onReady) {
             onReady(graph);
           }
-          // graphService.setTheme('dark');
+          // graphStore.setTheme('dark');
         }}
         style={style}
         options={graphOptions}
