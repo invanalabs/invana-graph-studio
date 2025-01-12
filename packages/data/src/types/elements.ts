@@ -14,17 +14,17 @@ export interface ICanvasElement {
   properties: IProperties[];
 }
 
-export interface INode extends ICanvasElement {
+export interface ICanvasNode extends ICanvasElement {
   x: number;
   y: number;
 }
 
-export interface IEdge extends ICanvasElement {
+export interface ICanvasEdge extends ICanvasElement {
   source: string;
   target: string;
 }
 
 export interface IGraphData {
-  nodes: INode[];
-  edges: IEdge[];
+  nodes: ICanvasNode[];
+  edges: ICanvasEdge[];
 }

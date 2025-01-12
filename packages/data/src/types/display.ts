@@ -17,10 +17,7 @@ export interface ICanvasTextDisplay {
   textOpacity: number;
 }
 
-
-export interface ICanvasLabelDisplay extends ICanvasNodeShapeDisplayBase, ICanvasTextDisplay {
-
-}
+export interface ICanvasLabelDisplay extends ICanvasNodeShapeDisplayBase, ICanvasTextDisplay { }
 
 export interface ICanvasNodeShapeDisplay extends ICanvasNodeShapeDisplayBase {
   iconFont: string
@@ -30,17 +27,7 @@ export interface ICanvasNodeShapeDisplay extends ICanvasNodeShapeDisplayBase {
   iconOpacity: number;
   iconRotate: number;
   animated: boolean;
-
 }
-
-
-
-
-export interface ICanvasNodeDisplay {
-  shape: ICanvasNodeShapeDisplay;
-  label: ICanvasLabelDisplay;
-}
-
 
 export interface ICanvasEdgeShapeDisplay {
   strokeColor: IColor;
@@ -52,12 +39,16 @@ export interface ICanvasEdgeShapeDisplay {
   animated: boolean;
 }
 
-export interface ICanvasEdgeDisplay {
-  shape: ICanvasEdgeShapeDisplay;
+export interface ICanvasNodeDisplay {
+  shape: ICanvasNodeShapeDisplay;
   label: ICanvasLabelDisplay;
 }
 
-
+export interface ICanvasEdgeDisplay {
+  shape: ICanvasEdgeShapeDisplay;
+  labelField: string
+  label: ICanvasLabelDisplay;
+}
 
 export interface ICanvasBg {
   bgColor?: IColor;
@@ -69,5 +60,6 @@ export interface ICanvasDisplay {
   bg: ICanvasBg;
   nodes: ICanvasNodeDisplay[];
   edges: ICanvasEdgeDisplay[];
+  theme: 'light' | 'dark' | 'system';
 }
 

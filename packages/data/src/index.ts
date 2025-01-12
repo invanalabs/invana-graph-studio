@@ -1,4 +1,6 @@
 import Graph from 'graphology';
+import { ICanvasNode } from './types';
+
 
 
 export class GraphData {
@@ -9,7 +11,7 @@ export class GraphData {
   }
 
   // Create a node
-  addNode(nodeId: string, attributes: object = {}): void {
+  addNode(node: ICanvasNode): void {
     this.graph.addNode(nodeId, attributes);
   }
 
