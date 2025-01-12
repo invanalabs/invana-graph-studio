@@ -1,7 +1,9 @@
-import React from 'react';
-import { Graphin } from '@antv/graphin';
+import React, { useEffect } from 'react';
+import { Graphin, useGraphin } from '@antv/graphin';
 import { Graph, GraphOptions, IEvent, NodeEvent } from '@antv/g6';
 import { defaultOptions } from './defaults';
+import GraphService from '../services/graphService';
+import { CanvasToolBar } from '../plugins';
 // import { CanvasToolBar } from '../plugins/';
 
 
@@ -23,30 +25,35 @@ import { defaultOptions } from './defaults';
 // }
 
 export interface CanvasGraphProps {
-  options: GraphOptions;
+  options?: GraphOptions;
   style?: React.CSSProperties;
-  graph?: Graph | null;
+  graph: Graph;
   onReady?: (graph: Graph) => void;
+  header?: boolean;
 }
 
 
+
 export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
-  const options: GraphOptions = { ...defaultOptions, ...props.options }
+  const { options, style, graph, onReady, header = false } = props;
+  const graphOptions: GraphOptions = { ...defaultOptions, ...options }
   // const [graph, setGraph] = React.useState<Graph | null>(null);
 
-
-
-  props.graph?.on(NodeEvent.POINTER_ENTER, (event: IEvent) => {
+  graph?.on(NodeEvent.POINTER_ENTER, (event: IEvent) => {
     console.log('POINTER_ENTER event', event);
     // graph.updateNodeData([{ id: target.id, style: { labelText: 'Hover me!', fill: '#5B8FF9', labelFill: 'black' } }]);
     // graph.draw();
   });
 
-  props.graph?.on(NodeEvent.POINTER_OUT, (event: IEvent) => {
+  graph?.on(NodeEvent.POINTER_OUT, (event: IEvent) => {
     console.log('POINTER_OUT event', event);
     // graph.updateNodeData([{ id: target.id, style: { labelText: 'Hover me!', fill: '#5B8FF9', labelFill: 'black' } }]);
     // graph.draw();
   });
+
+
+  const graphService = new GraphService(props.graph);
+  // const graphService = new GraphService(graph);
 
 
   // props.graph?.on(NodeEvent.CLICK, (event: IEvent) => {
@@ -72,18 +79,34 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
     // }, { once: true });
   });
 
+
+
+
+
   return (
     <>
       <div style={props?.style || {}}>
+
+        {header && <CanvasToolBar graph={props.graph} />}
+
+
         <Graphin
           onReady={(graph) => {
             // setGraph(graph);
-            if (props.onReady) {
-              props.onReady(graph);
+
+
+            if (onReady) {
+              onReady(graph);
             }
+
+
+            graphService.setTheme('light');
+
           }}
-          options={options}
+          style={style}
+          options={graphOptions}
         >
+
         </Graphin>
       </div>
     </>

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { NodeData, EdgeData, ComboData } from '@antv/g6';
+import { NodeData, EdgeData, ComboData, NodeOptions, EdgeOptions } from '@antv/g6';
 
 
 export type ThemeOptions = 'dark' | 'light' | 'system';
@@ -18,6 +18,12 @@ export interface ICanvasGraphStore {
   addCombo: (combo: ComboData) => void;
 
   clear: () => void;
+
+  nodeSettings: NodeOptions[],
+  setNodeSettings: (settings: NodeOptions[]) => void;
+
+  edgeSettings: EdgeOptions[],
+  setEgdeSettings: (settings: EdgeOptions[]) => void,
 }
 
 const storeName = 'canvas-graph-store';
@@ -46,6 +52,17 @@ export const useCanvasGraphStore = create(
       },
 
       clear: () => set({ nodes: [], edges: [], combos: [] }),
+
+      nodeSettings: [],
+      setNodeSettings: (settings: NodeOptions[]) => {
+        set({ nodeSettings: settings })
+      },
+
+      edgeSettings: [],
+      setEgdeSettings: (settings: EdgeOptions[]) => {
+        set({ edgeSettings: settings })
+      }
+
     }),
     {
       name: storeName
