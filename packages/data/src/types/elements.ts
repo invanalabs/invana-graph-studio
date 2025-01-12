@@ -1,4 +1,4 @@
-
+import { ICanvasEdgeDisplay, ICanvasNodeDisplay } from "./display";
 
 export type IPropertiesData = string | number | boolean | object | IPropertiesData[];
 
@@ -7,19 +7,21 @@ export interface IProperties {
   [key: string]: IPropertiesData
 }
 
+export type ICanvasItemID = string | number;
+
 export interface ICanvasElement {
-  id: string;
+  id: ICanvasItemID;
   type: string;
   displayLabel: string;
-  properties: IProperties[];
+  properties: IProperties;
 }
 
-export interface ICanvasNode extends ICanvasElement {
+export interface ICanvasNode extends ICanvasElement, ICanvasNodeDisplay {
   x: number;
   y: number;
 }
 
-export interface ICanvasEdge extends ICanvasElement {
+export interface ICanvasEdge extends ICanvasElement, ICanvasEdgeDisplay {
   source: string;
   target: string;
 }

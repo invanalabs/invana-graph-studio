@@ -5,9 +5,9 @@ export interface ICanvasNodeShapeDisplayBase {
   bgColor: IColor;
   bgOpacity: number;
   bgPadding: number;
-  bgBorderColor: IColor;
-  bgBorderWidth: number;
-  bgBorderRadius: number;
+  borderColor: IColor;
+  BorderWidth: number;
+  borderRadius: number;
 
   dottedBorder: boolean;
   dottedBorderSpacing: number;
@@ -49,12 +49,13 @@ export interface ICanvasEdgeShapeDisplay {
 export interface ICanvasNodeDisplay {
   shape: ICanvasNodeShapeDisplay;
   label: ICanvasLabelDisplay;
+  labelField: string
 }
 
 export interface ICanvasEdgeDisplay {
   shape: ICanvasEdgeShapeDisplay;
-  labelField: string
   label: ICanvasLabelDisplay;
+  labelField: string
 }
 
 export interface ICanvasBg {
