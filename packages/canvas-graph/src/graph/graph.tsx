@@ -84,31 +84,20 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
 
 
   return (
-    <>
-      <div style={props?.style || {}}>
-
-        {header && <CanvasToolBar graph={props.graph} />}
-
-
-        <Graphin
-          onReady={(graph) => {
-            // setGraph(graph);
-
-
-            if (onReady) {
-              onReady(graph);
-            }
-
-
-            graphService.setTheme('light');
-
-          }}
-          style={style}
-          options={graphOptions}
-        >
-
-        </Graphin>
-      </div>
-    </>
+    <div style={props?.style || {}}>
+      {header && <CanvasToolBar graph={props.graph} />}
+      <Graphin
+        onReady={(graph) => {
+          // setGraph(graph);
+          if (onReady) {
+            onReady(graph);
+          }
+          // graphService.setTheme('dark');
+        }}
+        style={style}
+        options={graphOptions}
+      >
+      </Graphin>
+    </div>
   );
 }

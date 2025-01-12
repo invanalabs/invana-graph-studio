@@ -22,10 +22,6 @@ graph.addEdge({ id: '1-3', from: '1', to: '3', label: 'Edge 1-3' });
 graph.addEdge({ id: '2-1', from: '2', to: '1', label: 'Edge 2-1' });
 
 
-
-
-
-
 // Event listeners
 graph.on('nodeAdded', (node) => {
   console.log('Node added:', node);
