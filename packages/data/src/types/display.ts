@@ -8,6 +8,9 @@ export interface ICanvasNodeShapeDisplayBase {
   bgBorderColor: IColor;
   bgBorderWidth: number;
   bgBorderRadius: number;
+
+  dottedBorder: boolean;
+  dottedBorderSpacing: number;
 }
 
 export interface ICanvasTextDisplay {
@@ -36,7 +39,11 @@ export interface ICanvasEdgeShapeDisplay {
   strokeArrowheadSize: string;
   strokeArrowheadColor: IColor;
   strokeArrowheadOpacity: number;
+
   animated: boolean;
+
+  dottedBorder: boolean;
+  dottedBorderSpacing: number;
 }
 
 export interface ICanvasNodeDisplay {

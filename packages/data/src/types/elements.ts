@@ -3,7 +3,6 @@
 export type IPropertiesData = string | number | boolean | object | IPropertiesData[];
 
 
-
 export interface IProperties {
   [key: string]: IPropertiesData
 }
@@ -11,6 +10,7 @@ export interface IProperties {
 export interface ICanvasElement {
   id: string;
   type: string;
+  displayLabel: string;
   properties: IProperties[];
 }
 
