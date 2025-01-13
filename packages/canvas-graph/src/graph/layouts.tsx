@@ -1,3 +1,6 @@
+import { NodeData } from '@antv/g6';
+
+
 export const defaultLayoutsOptions = [
   {
     type: 'graphin-force',
@@ -96,16 +99,18 @@ export const defaultLayoutsOptions = [
   {
     type: 'd3-force',
     collide: {
-      // Prevent nodes from overlapping by specifying a collision radius for each node.
-      radius: (d: any) => d.size / 2,
+      //   // Prevent nodes from overlapping by specifying a collision radius for each node.
+      radius: (d: NodeData) => {
+        return d.style && Array.isArray(d.style.size) ? d.style.size[0] * 2 : (typeof d.style.size === 'number' ? d.style.size : 0)
+      }
     },
-    link: {
-      distance: 150,
-      strength: 2
-    },
-    preventOverlap: true,
-    nodeStrength: -30,   // Repulsion force between nodes
-    linkDistance: 100,   // Distance between connected nodes
+    // link: {
+    //   distance: 150,
+    //   strength: 2
+    // },
+    // preventOverlap: true,
+    // nodeStrength: -100,   // Repulsion force between nodes
+    // linkDistance: 100,   // Distance between connected nodes
     // collide: {
     //   radius: 40,
     // },
