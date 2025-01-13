@@ -29,9 +29,7 @@ export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ graph, className }
   // const { graph: contextGraph } = useGraphin(); // Access the graph instance from context
 
   console.log("CanvasToolBar -> graph", graph)
-  // if (!graph) {
-  //   return
-  // }
+
   const history: History | undefined = graph?.getPluginInstance('history');
 
   const getIsLocked = () => {
@@ -98,7 +96,9 @@ export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ graph, className }
   }
 
 
-
+  if (!graph) {
+    return
+  }
 
   return (
     <div className={`zoom-controls transition-colors items-center shadow-sm

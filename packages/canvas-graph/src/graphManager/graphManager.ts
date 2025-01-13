@@ -43,7 +43,7 @@ export class GraphManager {
       console.log("node", node);
       if (node) {
         const g6Node = convert_icanvas_node_to_g6_node(node);
-        console.log("g6Node", g6Node);
+        // console.log("g6Node", g6Node);
         this.g6graph.addNodeData([g6Node])
       }
     });
@@ -60,7 +60,7 @@ export class GraphManager {
     this.graphStore.data.on('edgeAdded', ({ key }) => {
       console.log(`Edge created: ${key}`);
       const edge = this.graphStore.fineEdgeById(key);
-      console.log("edge", edge);
+      // console.log("edge", edge);
       if (edge) {
         const g6Edge = convert_icanvas_edge_to_g6_edge(edge);
         console.log("g6Edge", g6Edge);
