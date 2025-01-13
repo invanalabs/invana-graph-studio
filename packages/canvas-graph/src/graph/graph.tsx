@@ -85,6 +85,7 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
 
   console.log("props.initialData", props.initialData);
 
+  //@ts-ignore
   const graphManager = props.graphManager ? props.graphManager : new GraphManager(null);
 
 
