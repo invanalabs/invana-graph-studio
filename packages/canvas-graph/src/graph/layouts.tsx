@@ -97,7 +97,7 @@ export const defaultLayoutsOptions = [
     type: 'd3-force',
     collide: {
       // Prevent nodes from overlapping by specifying a collision radius for each node.
-      radius: (d) => d.size / 2,
+      radius: (d: any) => d.size / 2,
     },
   },
   {

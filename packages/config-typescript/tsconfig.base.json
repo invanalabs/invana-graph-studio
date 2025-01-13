@@ -45,6 +45,9 @@
       ],
       "@invana/data-store/*": [
         "../../packages/data-store/src/*"
+      ],
+      "@invana/data-store": [
+        "../../packages/data-store/src"
       ]
       // "@/lib": ["../../packages/ui/src/lib"],
       // "@/lib/*": ["../../packages/ui/src/lib/*"]

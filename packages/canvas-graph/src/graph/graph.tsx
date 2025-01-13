@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { Graphin, useGraphin } from '@antv/graphin';
+import React from 'react';
+import { Graphin } from '@antv/graphin';
 import { Graph, GraphOptions, IEvent, NodeEvent } from '@antv/g6';
 import { defaultOptions } from './defaults';
-import GraphStore from '../graphStore/graphStore';
+// import { GraphStore } from '../graphStore';
 import { CanvasToolBar } from '../plugins';
-import { GraphDataStore } from '@invana/data-store';
+import { GraphManager } from '../graphManager';
 // import { CanvasToolBar } from '../plugins/';
 
 
@@ -28,17 +28,17 @@ import { GraphDataStore } from '@invana/data-store';
 export interface CanvasGraphProps {
   options?: GraphOptions;
   style?: React.CSSProperties;
-  graph: Graph;
-  dataStore?: GraphDataStore
-  onReady?: (graph: Graph) => void;
+  graph?: Graph;
+  graphManager?: GraphManager; //comes with inbuilt graphStore or user can pass their own
+  onReady?: (graphManager: GraphManager) => void;
   header?: boolean;
 }
 
-
-
 export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
   const { options, style, graph, onReady, header = false } = props;
-  const graphOptions: GraphOptions = { ...defaultOptions, ...options }
+  const graphOptions: GraphOptions = { ...defaultOptions, ...options };
+  // const [graphStore, setGraphStore] = React.useState<GraphStore | null>(null);
+
   // const [graph, setGraph] = React.useState<Graph | null>(null);
 
   graph?.on(NodeEvent.POINTER_ENTER, (event: IEvent) => {
@@ -54,7 +54,6 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
   });
 
 
-  const graphStore = new GraphStore(props.graph);
   // const GraphStore = new GraphStore(graph);
 
 
@@ -95,7 +94,11 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
         onReady={(graph) => {
           // setGraph(graph);
           if (onReady) {
-            onReady(graph);
+            const graphManager = props.graphManager ? props.graphManager : new GraphManager(graph);
+            if (props.graphManager) {
+              graphManager.setGraph(graph);
+            }
+            onReady(graphManager);
           }
           // graphStore.setTheme('dark');
         }}

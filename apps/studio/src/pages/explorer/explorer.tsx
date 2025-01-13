@@ -22,7 +22,7 @@ const ExplorerPage: React.FC = () => {
 
   const { theme } = useTheme();
   const [data, setData] = React.useState({ nodes: [], edges: [] });
-  const [graph, setGraph] = React.useState<Graph | null>(null);
+  const [graphStore, setGraphStore] = React.useState<GraphStore | null>(null);
 
   // React.useEffect(() => {
   //   runQuery()

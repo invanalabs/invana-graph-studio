@@ -7,16 +7,16 @@ export class GraphDataCRUD extends GraphBase {
   // Create a node
   addNode(node: ICanvasNode): void {
     const { id, ...attributes } = node;
-    if (this.graph.hasNode(id)) {
+    if (this.data.hasNode(id)) {
       throw new Error(`Node with id ${id} already exist.`);
     }
-    this.graph.addNode(id, attributes);
+    this.data.addNode(id, attributes);
   }
 
   // Read a node
   readNodeById(id: ICanvasItemID): ICanvasNode | undefined {
-    if (this.graph.hasNode(id)) {
-      const attributes = this.graph.getNodeAttributes(id);
+    if (this.data.hasNode(id)) {
+      const attributes = this.data.getNodeAttributes(id);
       return { id, ...attributes } as ICanvasNode
     }
     return undefined;
@@ -24,28 +24,28 @@ export class GraphDataCRUD extends GraphBase {
 
   // Update a node
   _updateNode(id: ICanvasItemID, attributes: Partial<Omit<ICanvasNode, 'id'>>): void {
-    if (!this.graph.hasNode(id)) {
+    if (!this.data.hasNode(id)) {
       throw new Error(`Node with id ${id} does not exist.`);
     }
-    this.graph.mergeNodeAttributes(id, attributes);
+    this.data.mergeNodeAttributes(id, attributes);
   }
 
   updateNodeProperties(id: ICanvasItemID, properties: IProperties): void {
-    if (!this.graph.hasNode(id)) {
+    if (!this.data.hasNode(id)) {
       throw new Error(`Node with id ${id} does not exist.`);
     }
     this._updateNode(id, { properties })
   }
 
   updateNodePosition(id: ICanvasItemID, x: number, y: number): void {
-    if (!this.graph.hasNode(id)) {
+    if (!this.data.hasNode(id)) {
       throw new Error(`Node with id ${id} does not exist.`);
     }
     this._updateNode(id, { x, y })
   }
 
   updateNodeDisplay(id: ICanvasItemID, display: ICanvasNodeDisplay): void {
-    if (!this.graph.hasNode(id)) {
+    if (!this.data.hasNode(id)) {
       throw new Error(`Node with id ${id} does not exist.`);
     }
     this._updateNode(id, { ...display })
@@ -53,42 +53,42 @@ export class GraphDataCRUD extends GraphBase {
 
   // Delete a node
   deleteNode(id: ICanvasItemID): void {
-    if (!this.graph.hasNode(id)) {
+    if (!this.data.hasNode(id)) {
       throw new Error(`Node with id ${id} does not exist.`);
     }
-    this.graph.dropNode(id);
+    this.data.dropNode(id);
   }
 
   // Create an edge
   addEdge(edge: ICanvasEdge): void {
     const { id, source, target, ...attributes } = edge;
-    if (this.graph.hasEdge(id)) {
+    if (this.data.hasEdge(id)) {
       throw new Error(`Edge with id ${id} already exist.`);
     }
-    this.graph.addEdgeWithKey(id, source, target, attributes);
+    this.data.addEdgeWithKey(id, source, target, attributes);
   }
 
 
   // Update an edge
   _updateEdge(id: ICanvasItemID, edge: Partial<Omit<ICanvasEdge, 'id' | 'source' | 'target'>>): void {
-    if (!this.graph.hasEdge(id)) {
+    if (!this.data.hasEdge(id)) {
       throw new Error(`Edge with id ${id} does not exist.`);
     }
-    this.graph.updateEdgeAttributes(id, (attributes) => ({
+    this.data.updateEdgeAttributes(id, (attributes) => ({
       ...attributes, // Retain existing attributes
       ...edge // Update with new attributes
     }));
   }
 
   updateEdgeProperties(id: ICanvasItemID, properties: IProperties): void {
-    if (!this.graph.hasEdge(id)) {
+    if (!this.data.hasEdge(id)) {
       throw new Error(`Edge with id ${id} does not exist.`);
     }
     this._updateEdge(id, { properties })
   }
 
   updateEdgeDisplay(id: ICanvasItemID, display: ICanvasEdgeDisplay): void {
-    if (!this.graph.hasEdge(id)) {
+    if (!this.data.hasEdge(id)) {
       throw new Error(`Edge with id ${id} does not exist.`);
     }
     this._updateEdge(id, { ...display })
@@ -96,21 +96,21 @@ export class GraphDataCRUD extends GraphBase {
 
   // Read an edge
   readEdgeById(id: ICanvasItemID): ICanvasEdge | undefined {
-    if (!this.graph.hasEdge(id)) {
+    if (!this.data.hasEdge(id)) {
       throw new Error(`Edge with id ${id} does not exist.`);
     }
-    const source = this.graph.source(id);
-    const target = this.graph.target(id);
-    const attributes = this.graph.getEdgeAttributes(id);
+    const source = this.data.source(id);
+    const target = this.data.target(id);
+    const attributes = this.data.getEdgeAttributes(id);
     return { id, source, target, ...attributes } as ICanvasEdge;
   }
 
   // Delete an edge
   deleteEdge(id: ICanvasItemID): void {
-    if (!this.graph.hasEdge(id)) {
+    if (!this.data.hasEdge(id)) {
       throw new Error(`Edge with id ${id} does not exist.`);
     }
-    this.graph.dropEdge(id);
+    this.data.dropEdge(id);
   }
 }
 

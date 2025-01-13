@@ -8,14 +8,14 @@ import Graph from "graphology";
 
 export class GraphBase {
 
-  graph: Graph;
+  data: Graph;
 
   constructor() {
-    this.graph = new Graph();
+    this.data = new Graph();
   }
 
   public getGraph(): Graph {
-    return this.graph;
+    return this.data;
   }
 
 

@@ -9,11 +9,11 @@ export const HOVER_ACTIVATE = {
   degree: 1,
   state: 'highlight',
   inactiveState: 'dim',
-  onHover: (event) => {
+  onHover: (event: any) => {
     console.log("====onHover", event)
     event.view.setCursor('pointer');
   },
-  onHoverEnd: (event) => {
+  onHoverEnd: (event: any) => {
     event.view.setCursor('default');
   },
 }
