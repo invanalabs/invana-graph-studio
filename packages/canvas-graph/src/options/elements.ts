@@ -6,8 +6,8 @@ export const DEFAULT_NODE_STYLE: NodeOptions = { // https://g6.antv.antgroup.com
     labelText: (d) => d.id,
     labelPosition: 'bottom',
     labelAutoRotate: true,
-    labelTextColor: '#646464',
-    fillOpacity: 0.85,
+    // labelTextColor: '#646464',
+    fillOpacity: 0.90,
     strokeOpacity: 1
 
   },
@@ -19,7 +19,7 @@ export const DEFAULT_NODE_STYLE: NodeOptions = { // https://g6.antv.antgroup.com
   // },
   palette: {
     type: 'group',
-    field: 'groupName',
+    field: 'type',
   },
 }
 
@@ -36,16 +36,16 @@ export const DEFAULT_EDGE_STYLE: EdgeOptions = {  // https://g6.antv.antgroup.co
     labelAutoRotate: true,
     labelBackgroundOpacity: 0.8,
     // labelBackgroundStroke: '#9ec9ff',
-    labelFill: '#646464',
+    // labelFill: '#646464',
 
     endArrow: true,
     // edge: {
     //   style: {
-    stroke: '#343434',
+    // stroke: '#343434',
     lineWidth: 1
   },
   palette: {
     type: 'group',
-    field: 'groupName',
+    field: 'type',
   },
 }

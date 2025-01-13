@@ -9,7 +9,7 @@ export const defaultLayoutsOptions = [
     // align: 'CENTER',   // Alignment of the nodes
     // begin: [0, 0], // Optional
     preventOverlap: true, // Optional, must be used with nodeSize
-    preventOverlapPadding: 20, // Optional
+    preventOverlapPadding: 30, // Optional
     // nodeSize: 30, // Optional
     // condense: false, // Optional
     // rows: 5, // Optional
@@ -99,6 +99,16 @@ export const defaultLayoutsOptions = [
       // Prevent nodes from overlapping by specifying a collision radius for each node.
       radius: (d: any) => d.size / 2,
     },
+    link: {
+      distance: 150,
+      strength: 2
+    },
+    preventOverlap: true,
+    nodeStrength: -30,   // Repulsion force between nodes
+    linkDistance: 100,   // Distance between connected nodes
+    // collide: {
+    //   radius: 40,
+    // },
   },
   {
     type: 'concentric',
@@ -118,8 +128,13 @@ export const defaultLayoutsOptions = [
     // workerEnabled: false, // Optional, enable web-worker
   },
   {
-    type: 'dagre',
+    type: 'antv-dagre',
     label: 'dagre',
+
+    nodeSize: [60, 30],
+    nodesep: 60,
+    ranksep: 40,
+    controlPoints: true,
     rankdir: 'LR', // Optional, default is the center of the graph
     // align: 'DL', // Optional
     // nodesep: 20, // Optional

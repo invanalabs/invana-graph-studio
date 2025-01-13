@@ -201,7 +201,7 @@ export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ getGraph, classNam
       <Separator orientation="vertical" className="h-4" />
 
       <ToggleGroup type="single" onValueChange={(value) => updateLayout(value)} >
-        <ToggleGroupItem value="gForce">
+        <ToggleGroupItem value="d3-force">
           <ButtonWithTooltip
             variant="ghost"
             size="icon-sm"
@@ -234,7 +234,7 @@ export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ getGraph, classNam
         </ToggleGroupItem>
 
 
-        <ToggleGroupItem value="dagre">
+        <ToggleGroupItem value="antv-dagre">
           <ButtonWithTooltip
             variant="ghost"
             size="icon-sm"
