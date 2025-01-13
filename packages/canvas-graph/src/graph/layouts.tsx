@@ -101,7 +101,13 @@ export const defaultLayoutsOptions = [
     collide: {
       //   // Prevent nodes from overlapping by specifying a collision radius for each node.
       radius: (d: NodeData) => {
-        return d.style && Array.isArray(d.style.size) ? d.style.size[0] * 2 : (typeof d.style.size === 'number' ? d.style.size : 0)
+        const size = d.style?.size
+        if (Array.isArray(size) && size.length > 0) {
+          return size[0] * 2
+        } else {
+          return 20
+        }
+        // return d.style && Array.isArray(d.style.size) ? d.style.size[0] * 2 : (typeof d.style.size === 'number' ? d.style.size : 0)
       }
     },
     // link: {
@@ -114,6 +120,7 @@ export const defaultLayoutsOptions = [
     // collide: {
     //   radius: 40,
     // },
+
   },
   {
     type: 'concentric',
