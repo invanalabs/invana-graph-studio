@@ -15,21 +15,25 @@ export interface ICanvasNodeShapeDisplayBase {
 
 export interface ICanvasTextDisplay {
   textColor: IColor;
-  textSize: number;
-  textFont: string;
+  textFontSize: number;
+  textFontWeight: string;
+  textFontFamily: string;
   textOpacity: number;
 }
 
 export interface ICanvasLabelDisplay extends ICanvasNodeShapeDisplayBase, ICanvasTextDisplay { }
 
 export interface ICanvasNodeShapeDisplay extends ICanvasNodeShapeDisplayBase {
-  iconFont: string
+  type: string;
+  size: number;
+  animated: boolean;
+
+  iconFontFamily: string;
   iconCode: string;
   iconColor: IColor;
   iconSize: number;
   iconOpacity: number;
   iconRotate: number;
-  animated: boolean;
 }
 
 export interface ICanvasEdgeShapeDisplay {
@@ -47,15 +51,15 @@ export interface ICanvasEdgeShapeDisplay {
 }
 
 export interface ICanvasNodeDisplay {
-  shape: ICanvasNodeShapeDisplay;
-  label: ICanvasLabelDisplay;
-  labelField: string
+  shape?: Partial<ICanvasNodeShapeDisplay>;
+  label?: Partial<ICanvasLabelDisplay>;
+  labelField?: string
 }
 
 export interface ICanvasEdgeDisplay {
-  shape: ICanvasEdgeShapeDisplay;
-  label: ICanvasLabelDisplay;
-  labelField: string
+  shape?: Partial<ICanvasEdgeShapeDisplay>;
+  label?: Partial<ICanvasLabelDisplay>;
+  labelField?: string
 }
 
 export interface ICanvasBg {

@@ -1,8 +1,23 @@
 import { GraphBase } from './base';
-import { ICanvasEdge, ICanvasEdgeDisplay, ICanvasItemID, ICanvasNode, ICanvasNodeDisplay, IProperties } from '../types';
+import { ICanvasData, ICanvasEdge, ICanvasEdgeDisplay, ICanvasItemID, ICanvasNode, ICanvasNodeDisplay, IProperties } from '../types';
 
 
 export class GraphDataCRUD extends GraphBase {
+
+
+  addData(data: ICanvasData, callback: () => void = () => { }) {
+    console.log("addData", data);
+    data.nodes.forEach(node => {
+      this.addNode(node);
+    })
+    data.edges.forEach(edge => {
+      this.addEdge(edge);
+    })
+    if (callback) {
+      callback();
+    }
+  }
+
 
   // Create a node
   addNode(node: ICanvasNode): void {
@@ -14,12 +29,12 @@ export class GraphDataCRUD extends GraphBase {
   }
 
   // Read a node
-  readNodeById(id: ICanvasItemID): ICanvasNode | undefined {
-    if (this.data.hasNode(id)) {
-      const attributes = this.data.getNodeAttributes(id);
-      return { id, ...attributes } as ICanvasNode
+  fineNodeById(id: ICanvasItemID): ICanvasNode | undefined {
+    if (!this.data.hasNode(id)) {
+      throw new Error(`Node with id ${id} does not exist.`);
     }
-    return undefined;
+    const attributes = this.data.getNodeAttributes(id);
+    return { id, ...attributes } as ICanvasNode
   }
 
   // Update a node
@@ -95,7 +110,7 @@ export class GraphDataCRUD extends GraphBase {
   }
 
   // Read an edge
-  readEdgeById(id: ICanvasItemID): ICanvasEdge | undefined {
+  fineEdgeById(id: ICanvasItemID): ICanvasEdge | undefined {
     if (!this.data.hasEdge(id)) {
       throw new Error(`Edge with id ${id} does not exist.`);
     }

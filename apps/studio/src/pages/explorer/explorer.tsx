@@ -72,7 +72,9 @@ const ExplorerPage: React.FC = () => {
         </AppHeader>
 
         <AppMain>
-          <CanvasGraph style={{ width: "100%", height: "100%" }} graphManager={graphManager}
+          <CanvasGraph style={{ width: "100%", height: "100%" }}
+            graphManager={graphManager}
+            initialData={lesMiserablesData}
             // onReady={setGraph}
             options={options} />
         </AppMain>

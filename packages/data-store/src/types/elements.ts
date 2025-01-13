@@ -7,18 +7,18 @@ export interface IProperties {
   [key: string]: IPropertiesData
 }
 
-export type ICanvasItemID = string | number;
+export type ICanvasItemID = string;
 
 export interface ICanvasElement {
   id: ICanvasItemID;
   type: string;
-  displayLabel: string;
   properties: IProperties;
+  displayLabel?: string;
 }
 
 export interface ICanvasNode extends ICanvasElement, ICanvasNodeDisplay {
-  x: number;
-  y: number;
+  x?: number;
+  y?: number;
 }
 
 export interface ICanvasEdge extends ICanvasElement, ICanvasEdgeDisplay {
@@ -26,7 +26,7 @@ export interface ICanvasEdge extends ICanvasElement, ICanvasEdgeDisplay {
   target: string;
 }
 
-export interface IGraphData {
+export interface ICanvasData {
   nodes: ICanvasNode[];
   edges: ICanvasEdge[];
 }

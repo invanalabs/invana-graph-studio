@@ -20,10 +20,10 @@ type Story = StoryObj<typeof meta>;
 export const HelloWorld: Story = {
   args: {
     options: {
-      data: {
-        nodes: flightData.nodes,
-        edges: flightData.edges,
-      }
+    },
+    initialData: {
+      nodes: flightData.nodes,
+      edges: flightData.edges,
     },
     header: true,
     style: { "width": "100%", "height": "calc(100vh - 40px)" }

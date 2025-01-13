@@ -5,6 +5,7 @@ import { defaultOptions } from './defaults';
 // import { GraphStore } from '../graphStore';
 import { CanvasToolBar } from '../plugins';
 import { GraphManager } from '../graphManager';
+import { ICanvasData } from '@invana/data-store';
 // import { CanvasToolBar } from '../plugins/';
 
 
@@ -26,7 +27,8 @@ import { GraphManager } from '../graphManager';
 // }
 
 export interface CanvasGraphProps {
-  options?: GraphOptions;
+  initialData: ICanvasData;
+  options?: Omit<GraphOptions, 'data'>;
   style?: React.CSSProperties;
   graph?: Graph;
   graphManager?: GraphManager; //comes with inbuilt graphStore or user can pass their own
@@ -36,7 +38,7 @@ export interface CanvasGraphProps {
 
 export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
   console.log("CanvasGraph props", props);
-  const { options, style, graph, onReady, header = false } = props;
+  const { options, style, graph, header = false } = props;
   const graphOptions: GraphOptions = { ...defaultOptions, ...options };
   // const [graphStore, setGraphStore] = React.useState<GraphStore | null>(null);
 
@@ -81,23 +83,33 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
     // }, { once: true });
   });
 
+  console.log("props.initialData", props.initialData);
+
+  const graphManager = props.graphManager ? props.graphManager : new GraphManager(null);
+
+
   return (
     <div style={props?.style || {}}>
       {header && <CanvasToolBar graph={props.graph} />}
       <Graphin
         onReady={(graph) => {
           // setGraph(graph);
-          if (onReady) {
-            // const graphManager = props.graphManager ? props.graphManager : new GraphManager(graph);
-            const graphManager = new GraphManager(graph);
-            // if (props.graphManager) {
-            //   graphManager.setGraph(graph);
-            // }
-            onReady(graphManager);
+          // if (onReady) {
+          //   // const graphManager = new GraphManager(graph);
+          //   // // if (props.graphManager) {
+          //   // //   graphManager.setGraph(graph);
+          //   // // }
+          //   // onReady(graphManager);
+          // }
+          if (graphManager) {
+            graphManager.setGraph(graph);
           }
-          if (props.graphManager) {
-            props.graphManager.setGraph(graph);
-          }
+
+          graphManager?.graphStore.addData(
+            props.initialData ?? { 'nodes': [], 'edges': [] },
+            () => graphManager?.g6graph.render()
+          );
+
           // graphStore.setTheme('dark');
         }}
         style={style}

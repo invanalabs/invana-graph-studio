@@ -1,398 +1,289 @@
-export const flightData = {
-  "nodes": [
-    {
-      "id": "F1-1",
-      "data": {
+import { ICanvasData } from "@invana/data-store/types"
+
+export const data = {
+  "nodes":
+    [
+      {
+        "id": "F1-1",
         "groupName": "Flight Number",
         "label": "F1-1"
-      }
-    },
-    {
-      "id": "Marshall Islands",
-      "data": {
+      },
+      {
+        "id": "Marshall Islands",
         "groupName": "Launch Site",
         "label": "Marshall Islands"
-      }
-    },
-    {
-      "id": "Falcon 1",
-      "data": {
+      },
+      {
+        "id": "Falcon 1",
         "groupName": "Vehicle Type",
         "label": "Falcon 1"
-      }
-    },
-    {
-      "id": "United States",
-      "data": {
+      },
+      {
+        "id": "United States",
         "groupName": "Customer Country",
         "label": "United States"
-      }
-    },
-    {
-      "id": "F1-2",
-      "data": {
+      },
+      {
+        "id": "F1-2",
         "groupName": "Flight Number",
         "label": "F1-2"
-      }
-    },
-    {
-      "id": "F1-3",
-      "data": {
+      },
+      {
+        "id": "F1-3",
         "groupName": "Flight Number",
         "label": "F1-3"
-      }
-    },
-    {
-      "id": "F1-4",
-      "data": {
+      },
+      {
+        "id": "F1-4",
         "groupName": "Flight Number",
         "label": "F1-4"
-      }
-    },
-    {
-      "id": "",
-      "data": {
+      },
+      {
+        "id": "",
         "groupName": "Customer Country",
         "label": ""
-      }
-    },
-    {
-      "id": "F1-5",
-      "data": {
+      },
+      {
+        "id": "F1-5",
         "groupName": "Flight Number",
         "label": "F1-5"
-      }
-    },
-    {
-      "id": "Malaysia",
-      "data": {
+      },
+      {
+        "id": "Malaysia",
         "groupName": "Customer Country",
         "label": "Malaysia"
-      }
-    },
-    {
-      "id": "F9-1",
-      "data": {
+      },
+      {
+        "id": "F9-1",
         "groupName": "Flight Number",
         "label": "F9-1"
-      }
-    },
-    {
-      "id": "Cape Canaveral AFS LC-40",
-      "data": {
+      },
+      {
+        "id": "Cape Canaveral AFS LC-40",
         "groupName": "Launch Site",
         "label": "Cape Canaveral AFS LC-40"
-      }
-    },
-    {
-      "id": "Falcon 9 (v1.0)",
-      "data": {
+      },
+      {
+        "id": "Falcon 9 (v1.0)",
         "groupName": "Vehicle Type",
         "label": "Falcon 9 (v1.0)"
-      }
-    },
-    {
-      "id": "F9-2",
-      "data": {
+      },
+      {
+        "id": "F9-2",
         "groupName": "Flight Number",
         "label": "F9-2"
-      }
-    },
-    {
-      "id": "F9-3",
-      "data": {
+      },
+      {
+        "id": "F9-3",
         "groupName": "Flight Number",
         "label": "F9-3"
-      }
-    },
-    {
-      "id": "F9-4",
-      "data": {
+      },
+      {
+        "id": "F9-4",
         "groupName": "Flight Number",
         "label": "F9-4"
-      }
-    },
-    {
-      "id": "F9-5",
-      "data": {
+      },
+      {
+        "id": "F9-5",
         "groupName": "Flight Number",
         "label": "F9-5"
-      }
-    },
-    {
-      "id": "F9-6",
-      "data": {
+      },
+      {
+        "id": "F9-6",
         "groupName": "Flight Number",
         "label": "F9-6"
-      }
-    },
-    {
-      "id": "Vandenberg AFB SLC-4E",
-      "data": {
+      },
+      {
+        "id": "Vandenberg AFB SLC-4E",
         "groupName": "Launch Site",
         "label": "Vandenberg AFB SLC-4E"
-      }
-    },
-    {
-      "id": "Falcon 9 (v1.1)",
-      "data": {
+      },
+      {
+        "id": "Falcon 9 (v1.1)",
         "groupName": "Vehicle Type",
         "label": "Falcon 9 (v1.1)"
-      }
-    },
-    {
-      "id": "Canada",
-      "data": {
+      },
+      {
+        "id": "Canada",
         "groupName": "Customer Country",
         "label": "Canada"
-      }
-    },
-    {
-      "id": "F9-7",
-      "data": {
+      },
+      {
+        "id": "F9-7",
         "groupName": "Flight Number",
         "label": "F9-7"
-      }
-    },
-    {
-      "id": "Luxembourg",
-      "data": {
+      },
+      {
+        "id": "Luxembourg",
         "groupName": "Customer Country",
         "label": "Luxembourg"
-      }
-    },
-    {
-      "id": "F9-8",
-      "data": {
+      },
+      {
+        "id": "F9-8",
         "groupName": "Flight Number",
         "label": "F9-8"
-      }
-    },
-    {
-      "id": "Thailand",
-      "data": {
+      },
+      {
+        "id": "Thailand",
         "groupName": "Customer Country",
         "label": "Thailand"
-      }
-    },
-    {
-      "id": "F9-9",
-      "data": {
+      },
+      {
+        "id": "F9-9",
         "groupName": "Flight Number",
         "label": "F9-9"
-      }
-    },
-    {
-      "id": "F9-10",
-      "data": {
+      },
+      {
+        "id": "F9-10",
         "groupName": "Flight Number",
         "label": "F9-10"
-      }
-    },
-    {
-      "id": "F9-11",
-      "data": {
+      },
+      {
+        "id": "F9-11",
         "groupName": "Flight Number",
         "label": "F9-11"
-      }
-    },
-    {
-      "id": "China",
-      "data": {
+      },
+      {
+        "id": "China",
         "groupName": "Customer Country",
         "label": "China"
-      }
-    },
-    {
-      "id": "F9-12",
-      "data": {
+      },
+      {
+        "id": "F9-12",
         "groupName": "Flight Number",
         "label": "F9-12"
-      }
-    },
-    {
-      "id": "F9-13",
-      "data": {
+      },
+      {
+        "id": "F9-13",
         "groupName": "Flight Number",
         "label": "F9-13"
-      }
-    },
-    {
-      "id": "F9-14",
-      "data": {
+      },
+      {
+        "id": "F9-14",
         "groupName": "Flight Number",
         "label": "F9-14"
-      }
-    },
-    {
-      "id": "F9-15",
-      "data": {
+      },
+      {
+        "id": "F9-15",
         "groupName": "Flight Number",
         "label": "F9-15"
-      }
-    },
-    {
-      "id": "F9-16",
-      "data": {
+      },
+      {
+        "id": "F9-16",
         "groupName": "Flight Number",
         "label": "F9-16"
-      }
-    },
-    {
-      "id": "Bermuda",
-      "data": {
+      },
+      {
+        "id": "Bermuda",
         "groupName": "Customer Country",
         "label": "Bermuda"
-      }
-    },
-    {
-      "id": "France (Mexico)",
-      "data": {
+      },
+      {
+        "id": "France (Mexico)",
         "groupName": "Customer Country",
         "label": "France (Mexico)"
-      }
-    },
-    {
-      "id": "F9-17",
-      "data": {
+      },
+      {
+        "id": "F9-17",
         "groupName": "Flight Number",
         "label": "F9-17"
-      }
-    },
-    {
-      "id": "F9-18",
-      "data": {
+      },
+      {
+        "id": "F9-18",
         "groupName": "Flight Number",
         "label": "F9-18"
-      }
-    },
-    {
-      "id": "Turkmenistan",
-      "data": {
+      },
+      {
+        "id": "Turkmenistan",
         "groupName": "Customer Country",
         "label": "Turkmenistan"
-      }
-    },
-    {
-      "id": "F9-19",
-      "data": {
+      },
+      {
+        "id": "F9-19",
         "groupName": "Flight Number",
         "label": "F9-19"
-      }
-    },
-    {
-      "id": "FT-1",
-      "data": {
+      },
+      {
+        "id": "FT-1",
         "groupName": "Flight Number",
         "label": "FT-1"
-      }
-    },
-    {
-      "id": "Falcon 9 Full Thrust (v1.2)",
-      "data": {
+      },
+      {
+        "id": "Falcon 9 Full Thrust (v1.2)",
         "groupName": "Vehicle Type",
         "label": "Falcon 9 Full Thrust (v1.2)"
-      }
-    },
-    {
-      "id": "F9-21",
-      "data": {
+      },
+      {
+        "id": "F9-21",
         "groupName": "Flight Number",
         "label": "F9-21"
-      }
-    },
-    {
-      "id": "FT-2",
-      "data": {
+      },
+      {
+        "id": "FT-2",
         "groupName": "Flight Number",
         "label": "FT-2"
-      }
-    },
-    {
-      "id": "FT-3",
-      "data": {
+      },
+      {
+        "id": "FT-3",
         "groupName": "Flight Number",
         "label": "FT-3"
-      }
-    },
-    {
-      "id": "FT-4",
-      "data": {
+      },
+      {
+        "id": "FT-4",
         "groupName": "Flight Number",
         "label": "FT-4"
-      }
-    },
-    {
-      "id": "Japan",
-      "data": {
+      },
+      {
+        "id": "Japan",
         "groupName": "Customer Country",
         "label": "Japan"
-      }
-    },
-    {
-      "id": "FT-5",
-      "data": {
+      },
+      {
+        "id": "FT-5",
         "groupName": "Flight Number",
         "label": "FT-5"
-      }
-    },
-    {
-      "id": "FT-6",
-      "data": {
+      },
+      {
+        "id": "FT-6",
         "groupName": "Flight Number",
         "label": "FT-6"
-      }
-    },
-    {
-      "id": "FT-7",
-      "data": {
+      },
+      {
+        "id": "FT-7",
         "groupName": "Flight Number",
         "label": "FT-7"
-      }
-    },
-    {
-      "id": "FT-8",
-      "data": {
+      },
+      {
+        "id": "FT-8",
         "groupName": "Flight Number",
         "label": "FT-8"
-      }
-    },
-    {
-      "id": "FT-9",
-      "data": {
+      },
+      {
+        "id": "FT-9",
         "groupName": "Flight Number",
         "label": "FT-9"
-      }
-    },
-    {
-      "id": "Israel",
-      "data": {
+      },
+      {
+        "id": "Israel",
         "groupName": "Customer Country",
         "label": "Israel"
-      }
-    },
-    {
-      "id": "FT-10",
-      "data": {
+      },
+      {
+        "id": "FT-10",
         "groupName": "Flight Number",
         "label": "FT-10"
-      }
-    },
-    {
-      "id": "FT-11",
-      "data": {
+      },
+      {
+        "id": "FT-11",
         "groupName": "Flight Number",
         "label": "FT-11"
-      }
-    },
-    {
-      "id": "Kennedy Space Center LC-39A",
-      "data": {
+      },
+      {
+        "id": "Kennedy Space Center LC-39A",
         "groupName": "Launch Site",
         "label": "Kennedy Space Center LC-39A"
       }
-    }
-  ],
+    ],
   "edges"
     :
     [
@@ -1167,4 +1058,31 @@ export const flightData = {
         "label": "used_vehicle"
       }
     ]
+}
+
+
+
+
+
+export const flightData: ICanvasData = {
+  nodes: data.nodes.map((node: any) => {
+    // console.log("node", node)
+    return {
+      id: node.id,
+      type: node.groupName,
+      properties: {
+        name: node.label
+      }
+    }
+  }),
+  edges: data.edges.map((edge: any) => {
+    return {
+      id: `${edge.source}-${edge.target}`,
+      type: edge.groupName,
+      source: edge.source,
+      target: edge.target,
+      properties: {
+      }
+    }
+  })
 }

@@ -1,4 +1,6 @@
-export const lesMiserablesData = {
+import { ICanvasData, ICanvasEdge, ICanvasNode } from "@invana/data-store/types"
+
+export const data = {
   "nodes": [
     { "id": "Myriel", "group": 1 },
     { "id": "Napoleon", "group": 1 },
@@ -78,7 +80,7 @@ export const lesMiserablesData = {
     { "id": "Brujon", "group": 4 },
     { "id": "Mme.Hucheloup", "group": 8 }
   ],
-  "links": [
+  "edges": [
     { "source": "Napoleon", "target": "Myriel", "value": 1 },
     { "source": "Mlle.Baptistine", "target": "Myriel", "value": 8 },
     { "source": "Mme.Magloire", "target": "Myriel", "value": 10 },
@@ -335,3 +337,31 @@ export const lesMiserablesData = {
     { "source": "Mme.Hucheloup", "target": "Enjolras", "value": 1 }
   ]
 }
+
+
+export const lesMiserablesData: ICanvasData = {
+  nodes: data.nodes.map((node: any) => {
+    // console.log("node", node)
+    return {
+      id: node.id,
+      type: node.group,
+      properties: {
+        group: node.group
+      }
+    }
+  }),
+  edges: data.edges.map((edge: any) => {
+    return {
+      id: `${edge.source}-${edge.target}`,
+      type: edge.value.toString(),
+      source: edge.source,
+      target: edge.target,
+      properties: {
+        value: edge.value
+      }
+    }
+  })
+}
+
+
+
