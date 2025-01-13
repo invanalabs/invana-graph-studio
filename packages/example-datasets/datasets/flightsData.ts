@@ -1066,7 +1066,7 @@ export const flightData: ICanvasData = {
     // console.log("node", node)
     return {
       id: node.id,
-      // type: node.groupName.toString(),
+      type: node.groupName.toString(),
       properties: {
         name: node.label
       }
@@ -1075,7 +1075,7 @@ export const flightData: ICanvasData = {
   edges: flightDataRaw.edges.map((edge: any) => {
     return {
       id: `${edge.source}-${edge.target}`,
-      // type: edge.groupName,
+      type: edge.groupName,
       source: edge.source,
       target: edge.target,
       properties: {}

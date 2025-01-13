@@ -66,7 +66,7 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = forwardRef((props, ref) =
     getGraph: () => {
       console.log("getGraph called", localRef.current);
       return localRef.current;
-    }
+    },
   }));
 
 
@@ -113,7 +113,7 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = forwardRef((props, ref) =
 
   return (
     <div style={props?.style || {}}>
-      {graph && header && <CanvasToolBar graph={graph} />}
+      {graph && header && <CanvasToolBar getGraph={() => graph} />}
       <MemoizedGraphin
         ref={localRef}
         onReady={(graph) => {
@@ -125,7 +125,6 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = forwardRef((props, ref) =
             props.initialData ?? { 'nodes': [], 'edges': [] },
             () => graphManager?.g6graph.render()
           );
-
           setGraph(graph);
           // graphRef.current = graph;
           if (props.onReady) {

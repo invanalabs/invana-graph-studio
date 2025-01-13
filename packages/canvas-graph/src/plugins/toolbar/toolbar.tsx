@@ -31,7 +31,7 @@ export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ getGraph, classNam
   console.log("CanvasToolBar -> graph", getGraph())
 
 
-  const history: History | undefined = getGraph()?.getPluginInstance('history');
+  const history: History | undefined = getGraph()?.getPluginInstance('history') as History;
 
   const getIsLocked = () => {
     const behaviors = getGraph()?.getBehaviors() || [];
