@@ -10,7 +10,7 @@ import { AppHeader, AppFooter, AppMain } from '@invana/ui/themes/app'
 import AppHeaderRight from '@/ui/header/app-header-right';
 import { CanvasGraph, CanvasToolBar, defaultOptions, GraphManager } from '@invana/canvas-graph';
 import { flightData } from '@invana/example-datasets'
-
+import { Graph } from '@antv/g6';
 
 const ExplorerPage: React.FC = () => {
 
@@ -23,7 +23,7 @@ const ExplorerPage: React.FC = () => {
 
 
   const [isReady, setIsReady] = useState(false);
-  const containerRef = useRef<{ getGraph: () => any } | null>(null);
+  const containerRef = useRef<{ getGraph: () => Graph } | null>(null);
   const graphManagerRef = useRef(null);
 
 
@@ -77,8 +77,13 @@ const ExplorerPage: React.FC = () => {
               <span>Explorer</span>
             </>
           }
+
           center={
-            isReady && <CanvasToolBar graph={containerRef.current?.getGraph()} />
+            // isReady && <CanvasToolBar graph={containerRef.current?.getGraph()} />
+            <>
+              {/* {!isReady && <span>Loading...{containerRef.current?.getGraph()}</span>} */}
+              {isReady && containerRef.current && <CanvasToolBar getGraph={containerRef.current.getGraph()} />}
+            </>
           }
           right={
             <AppHeaderRight />

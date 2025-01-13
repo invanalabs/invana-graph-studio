@@ -14,7 +14,7 @@ import {
 import { defaultLayoutsOptions } from "@invana/canvas-graph/graph/layouts";
 
 interface CanvasToolBarProps {
-  graph?: Graph | null;
+  getGraph: () => Graph;
   className?: string;
 }
 
@@ -24,37 +24,38 @@ const animation = {
   easing: 'linear',
 };
 
-export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ graph, className }) => {
+export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ getGraph, className }) => {
 
   // const { graph: contextGraph } = useGraphin(); // Access the graph instance from context
 
-  console.log("CanvasToolBar -> graph", graph)
+  console.log("CanvasToolBar -> graph", getGraph())
 
-  const history: History | undefined = graph?.getPluginInstance('history');
+
+  const history: History | undefined = getGraph()?.getPluginInstance('history');
 
   const getIsLocked = () => {
-    const behaviors = graph?.getBehaviors() || [];
+    const behaviors = getGraph()?.getBehaviors() || [];
     return !behaviors.includes('drag-element')
   }
 
   const [isLocked, setIsLocked] = useState<true | false>(getIsLocked())
 
-  const zoom = graph?.getZoom() ?? 1;
+  const zoom = getGraph()?.getZoom() ?? 1;
 
   const zoomIn = () => {
-    const currentZoom = graph?.getZoom();
+    const currentZoom = getGraph()?.getZoom();
     if (currentZoom)
-      graph?.zoomTo(currentZoom + 0.2, animation);
+      getGraph()?.zoomTo(currentZoom + 0.2, animation);
   };
 
   const zoomOut = () => {
-    const currentZoom = graph?.getZoom();
+    const currentZoom = getGraph()?.getZoom();
     if (currentZoom)
-      graph?.zoomTo(currentZoom - 0.2, animation);
+      getGraph()?.zoomTo(currentZoom - 0.2, animation);
   };
 
   const fitView = () => {
-    graph?.fitView({}, animation);
+    getGraph()?.fitView({}, animation);
   };
 
   const onZoomChange = (value: string) => {
@@ -62,25 +63,25 @@ export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ graph, className }
       fitView();
     }
     else {
-      graph?.zoomTo(Number(value) / 100);
+      getGraph()?.zoomTo(Number(value) / 100);
     }
   };
 
   const eraseCanvas = () => {
-    graph?.clear();
+    getGraph()?.clear();
   }
 
 
   const toggleLockCanvas = () => {
     // remove drag-element from behaviours
-    const behaviors = graph?.getBehaviors() || [];
+    const behaviors = getGraph()?.getBehaviors() || [];
     if (getIsLocked()) {
       const updatedBehaviors = behaviors.filter(b => b !== 'drag-element');
-      graph?.setBehaviors(updatedBehaviors);
+      getGraph()?.setBehaviors(updatedBehaviors);
       setIsLocked(false)
     } else {
       const updatedBehaviors = [...behaviors, 'drag-element'];
-      graph?.setBehaviors(updatedBehaviors);
+      getGraph()?.setBehaviors(updatedBehaviors);
       setIsLocked(true)
     }
   }
@@ -90,13 +91,13 @@ export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ graph, className }
     const layoutConfig = defaultLayoutsOptions.find((item) => item.type === layoutName);
     console.log("updateLayout -> layoutConfig", layoutConfig)
     if (layoutConfig) {
-      graph?.setLayout(layoutConfig);
-      graph?.render()
+      getGraph()?.setLayout(layoutConfig);
+      getGraph()?.render()
     }
   }
 
 
-  // if (!graph) {
+  // if (!getGraph()) {
   //   return
   // }
 
@@ -121,7 +122,7 @@ export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ graph, className }
         variant="ghost"
         size="icon-sm"
         className="rounded-none"
-        onClick={() => graph?.render()}
+        onClick={() => getGraph()?.render()}
         tooltip={<p>Redraw</p>}
       >
         <RefreshCcw className="h-4 w-4 " />
