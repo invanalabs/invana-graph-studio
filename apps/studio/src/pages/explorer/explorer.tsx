@@ -79,19 +79,22 @@ const ExplorerPage: React.FC = () => {
           }
 
           center={
-            // isReady && <CanvasToolBar graph={containerRef.current?.getGraph()} />
             <>
-              {/* {!isReady && <span>Loading...{containerRef.current?.getGraph()}</span>} */}
-              {isReady && containerRef.current && <CanvasToolBar getGraph={containerRef.current.getGraph()} />}
+              {isReady && containerRef.current && <CanvasToolBar getGraph={containerRef.current.getGraph} />}
             </>
           }
           right={
-            <AppHeaderRight />
+            <>
+              <AppHeaderRight />
+            </>
+
           }
         >
         </AppHeader>
 
         <AppMain>
+
+
 
           <CanvasGraph
             ref={containerRef}

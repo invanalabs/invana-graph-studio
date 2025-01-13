@@ -128,7 +128,7 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = forwardRef((props, ref) =
           setGraph(graph);
           // graphRef.current = graph;
           if (props.onReady) {
-            // props.onReady();
+            props.onReady();
           } else {
             console.log("CanvasGraph -> onReady", "no onReady callback")
           }
