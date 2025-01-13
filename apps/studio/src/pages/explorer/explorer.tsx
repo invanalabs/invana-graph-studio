@@ -1,4 +1,3 @@
-import { Compass } from 'lucide-react';
 import React from 'react';
 import { LogoComponent, sideBarBottomNavitems, sideBarTopNavitems } from '../constants';
 import { ProductCopyRightInfo, ProductName } from '@/constants';
@@ -6,23 +5,26 @@ import {
   BlankLayout
 } from '@invana/ui';
 import { ReactFlowProvider } from '@invana/canvas-flow';
-import { data } from './dummy-data'
 import { AppHeader, AppFooter, AppMain } from '@invana/ui/themes/app'
-import useTheme from '@invana/ui/hooks/useTheme';
+// import useTheme from '@invana/ui/hooks/useTheme';
 import AppHeaderRight from '@/ui/header/app-header-right';
-import { fetchGraphQLData } from '@/services/runQueryService';
-import { serializeToGraph } from '@/services/serializer.utils';
-import { CanvasGraph, CanvasToolBar, defaultOptions } from '@invana/canvas-graph';
-import { Graph } from '@antv/g6';
-import { flightData, lesMiserablesData } from '@invana/example-datasets'
+import { CanvasGraph, CanvasToolBar, defaultOptions, GraphManager } from '@invana/canvas-graph';
+import { lesMiserablesData } from '@invana/example-datasets'
 // import '@invana/canvas-graph/dist/index.css'
 
 
 const ExplorerPage: React.FC = () => {
 
-  const { theme } = useTheme();
-  const [data, setData] = React.useState({ nodes: [], edges: [] });
-  const [graphStore, setGraphStore] = React.useState<GraphStore | null>(null);
+  // const { theme } = useTheme();
+  // const [data, setData] = React.useState({ nodes: [], edges: [] });
+  // const [graphManager, setGraphManager] = React.useState<GraphManager | null>(null);
+  // const initGraphManager = React.useCallback((manager: GraphManager) => {
+  //   setGraphManager(manager);
+  // }, []);
+
+  const graphManager = new GraphManager(null);
+
+  // const [graph, setGraph] = React.useState<Graph>(null);
 
   // React.useEffect(() => {
   //   runQuery()
@@ -39,7 +41,7 @@ const ExplorerPage: React.FC = () => {
 
   // }
 
-  console.log("===data2", data)
+  // console.log("===data2", data)
 
   const options = { ...defaultOptions, data: lesMiserablesData }
 
@@ -61,7 +63,7 @@ const ExplorerPage: React.FC = () => {
             </>
           }
           center={
-            graph && <CanvasToolBar graph={graph} />
+            graphManager && <CanvasToolBar graph={graphManager.graph} />
           }
           right={
             <AppHeaderRight />
@@ -70,7 +72,9 @@ const ExplorerPage: React.FC = () => {
         </AppHeader>
 
         <AppMain>
-          <CanvasGraph style={{ width: "100%", height: "100%" }} onReady={setGraph} options={options} />
+          <CanvasGraph style={{ width: "100%", height: "100%" }} graphManager={graphManager}
+            // onReady={setGraph}
+            options={options} />
         </AppMain>
 
         <AppFooter

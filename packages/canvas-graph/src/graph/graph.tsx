@@ -35,6 +35,7 @@ export interface CanvasGraphProps {
 }
 
 export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
+  console.log("CanvasGraph props", props);
   const { options, style, graph, onReady, header = false } = props;
   const graphOptions: GraphOptions = { ...defaultOptions, ...options };
   // const [graphStore, setGraphStore] = React.useState<GraphStore | null>(null);
@@ -80,13 +81,6 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
     // }, { once: true });
   });
 
-
-
-
-
-
-
-
   return (
     <div style={props?.style || {}}>
       {header && <CanvasToolBar graph={props.graph} />}
@@ -94,11 +88,15 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
         onReady={(graph) => {
           // setGraph(graph);
           if (onReady) {
-            const graphManager = props.graphManager ? props.graphManager : new GraphManager(graph);
-            if (props.graphManager) {
-              graphManager.setGraph(graph);
-            }
+            // const graphManager = props.graphManager ? props.graphManager : new GraphManager(graph);
+            const graphManager = new GraphManager(graph);
+            // if (props.graphManager) {
+            //   graphManager.setGraph(graph);
+            // }
             onReady(graphManager);
+          }
+          if (props.graphManager) {
+            props.graphManager.setGraph(graph);
           }
           // graphStore.setTheme('dark');
         }}

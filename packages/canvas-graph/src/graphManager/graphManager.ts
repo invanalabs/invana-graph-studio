@@ -8,7 +8,7 @@ import { GraphStore } from '@invana/data-store/index'
 
 export class GraphManager {
 
-  private graph: Graph;
+  graph!: Graph;
   graphStore: GraphStore;
 
   constructor(graph: Graph, graphStore?: GraphStore) {
