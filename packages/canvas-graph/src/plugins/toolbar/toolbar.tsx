@@ -96,9 +96,9 @@ export const CanvasToolBar: React.FC<CanvasToolBarProps> = ({ graph, className }
   }
 
 
-  if (!graph) {
-    return
-  }
+  // if (!graph) {
+  //   return
+  // }
 
   return (
     <div className={`zoom-controls transition-colors items-center shadow-sm

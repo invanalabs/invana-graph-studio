@@ -30,19 +30,20 @@ export interface CanvasGraphProps {
   initialData: ICanvasData;
   options?: Omit<GraphOptions, 'data'>;
   style?: React.CSSProperties;
-  graph?: Graph;
+  // graph?: Graph;
   graphManager?: GraphManager; //comes with inbuilt graphStore or user can pass their own
-  onReady?: (graphManager: GraphManager) => void;
+  onReady?: () => void;
   header?: boolean;
 }
 
 export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
   console.log("CanvasGraph props", props);
-  const { options, style, graph, header = false } = props;
+  const { options, style, header = false } = props;
   const graphOptions: GraphOptions = { ...defaultOptions, ...options };
   // const [graphStore, setGraphStore] = React.useState<GraphStore | null>(null);
 
-  // const [graph, setGraph] = React.useState<Graph | null>(null);
+  const [graph, setGraph] = React.useState<Graph | null>(null);
+  // const graphRef = React.useRef<Graph | null>(props.graph ?? null);
 
   graph?.on(NodeEvent.POINTER_ENTER, (event: IEvent) => {
     console.log('POINTER_ENTER event', event);
@@ -67,7 +68,7 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
   // });
 
   // Event listener for right-click on nodes
-  props.graph?.on(NodeEvent.CONTEXT_MENU, (evt) => {
+  graph?.on(NodeEvent.CONTEXT_MENU, (evt) => {
     console.log('CONTEXT_MENU event', evt);
     // evt.preventDefault();
     // const { canvasX, canvasY } = evt;
@@ -84,24 +85,14 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
   });
 
   console.log("props.initialData", props.initialData);
-
   //@ts-ignore
   const graphManager = props.graphManager ? props.graphManager : new GraphManager(null);
 
-
   return (
     <div style={props?.style || {}}>
-      {header && <CanvasToolBar graph={props.graph} />}
+      {graph && header && <CanvasToolBar graph={graph} />}
       <Graphin
         onReady={(graph) => {
-          // setGraph(graph);
-          // if (onReady) {
-          //   // const graphManager = new GraphManager(graph);
-          //   // // if (props.graphManager) {
-          //   // //   graphManager.setGraph(graph);
-          //   // // }
-          //   // onReady(graphManager);
-          // }
           if (graphManager) {
             graphManager.setGraph(graph);
           }
@@ -111,7 +102,11 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
             () => graphManager?.g6graph.render()
           );
 
-          // graphStore.setTheme('dark');
+          setGraph(graph);
+          // graphRef.current = graph;
+          if (props.onReady) {
+            props.onReady();
+          }
         }}
         style={style}
         options={graphOptions}
