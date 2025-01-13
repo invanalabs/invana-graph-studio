@@ -7,6 +7,10 @@ import { HISTORY_PLUGIN, MINIMAP_PLUGIN } from '../options/plugins';
 
 export const DEFAULT_LAYOUT = 'grid'
 
+
+const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const theme = prefersDark ? 'dark' : 'light';
+
 export const defaultOptions: GraphOptions = {
   autoResize: true,
   autoFit: 'view', // 'view' | 'graph' | 'center'
@@ -23,8 +27,8 @@ export const defaultOptions: GraphOptions = {
     MAP_NODE_SIZE
   ],
   layout: defaultLayoutsOptions.find((item) => item.type === DEFAULT_LAYOUT),
-  // theme: 'dark',
-  // background: '#222222',
+  theme: theme,
+  background: theme === 'dark' ? '#222222' : '#ffffff',
   node: DEFAULT_NODE_STYLE,
   edge: DEFAULT_EDGE_STYLE,
   plugins: [
