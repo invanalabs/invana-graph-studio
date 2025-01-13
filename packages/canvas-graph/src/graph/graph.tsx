@@ -4,6 +4,7 @@ import { Graph, GraphOptions, IEvent, NodeEvent } from '@antv/g6';
 import { defaultOptions } from './defaults';
 import GraphStore from '../graphStore/graphStore';
 import { CanvasToolBar } from '../plugins';
+import { GraphDataStore } from '@invana/data-store';
 // import { CanvasToolBar } from '../plugins/';
 
 
@@ -28,7 +29,7 @@ export interface CanvasGraphProps {
   options?: GraphOptions;
   style?: React.CSSProperties;
   graph: Graph;
-  dataManager?: GraphData
+  dataStore?: GraphDataStore
   onReady?: (graph: Graph) => void;
   header?: boolean;
 }

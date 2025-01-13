@@ -16,10 +16,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "graphology": "^0.25.4",
-    "graphology-types": "^0.24.8"
+    "graphology": "^0.25.4"
   },
   "devDependencies": {
+    "graphology-types": "^0.24.8",
     "@types/node": "^22.10.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"

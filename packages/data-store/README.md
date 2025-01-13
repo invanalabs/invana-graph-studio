@@ -4,10 +4,10 @@
 
 ```typescript
 
-import {GraphDataStore } from 'src/'
+import { GraphDataStore } from 'src/'
 
 
-const graph = new GrapGraphDataStorehData()
+const graph = new GraphDataStore()
 
 // Create nodes
 const node1 = graph.addNode({ id: '1', label: 'Node 1' });
