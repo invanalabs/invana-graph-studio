@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { LogoComponent, sideBarBottomNavitems, sideBarTopNavitems } from '../constants';
 import { ProductCopyRightInfo, ProductName } from '@/constants';
 import {
@@ -9,8 +9,7 @@ import { AppHeader, AppFooter, AppMain } from '@invana/ui/themes/app'
 // import useTheme from '@invana/ui/hooks/useTheme';
 import AppHeaderRight from '@/ui/header/app-header-right';
 import { CanvasGraph, CanvasToolBar, defaultOptions, GraphManager } from '@invana/canvas-graph';
-import { lesMiserablesData } from '@invana/example-datasets'
-// import '@invana/canvas-graph/dist/index.css'
+import { flightData } from '@invana/example-datasets'
 
 
 const ExplorerPage: React.FC = () => {
@@ -22,7 +21,22 @@ const ExplorerPage: React.FC = () => {
   //   setGraphManager(manager);
   // }, []);
 
-  const graphManager = new GraphManager(null);
+
+  const [isReady, setIsReady] = useState(false);
+  const containerRef = useRef<{ getGraph: () => any } | null>(null);
+  const graphManagerRef = useRef(null);
+
+
+  // useEffect(() => {
+  //   // Initialize graphManager here and set it to graphManagerRef.current
+  //   // Example:
+  //   // graphManagerRef.current = new GraphManager();
+  //   setIsReady(true);
+  // }, []);
+
+
+
+  // const graphManager = new GraphManager(null);
 
   // const [graph, setGraph] = React.useState<Graph>(null);
 
@@ -43,8 +57,9 @@ const ExplorerPage: React.FC = () => {
 
   // console.log("===data2", data)
 
-  const options = { ...defaultOptions, data: lesMiserablesData }
+  const options = { ...defaultOptions }
 
+  console.log("ExplorerPage")
   return (
     <BlankLayout
       logo={LogoComponent}
@@ -63,7 +78,7 @@ const ExplorerPage: React.FC = () => {
             </>
           }
           center={
-            graphManager && <CanvasToolBar graph={graphManager.graph} />
+            isReady && <CanvasToolBar graph={containerRef.current?.getGraph()} />
           }
           right={
             <AppHeaderRight />
@@ -72,11 +87,18 @@ const ExplorerPage: React.FC = () => {
         </AppHeader>
 
         <AppMain>
-          <CanvasGraph style={{ width: "100%", height: "100%" }}
-            graphManager={graphManager}
-            initialData={lesMiserablesData}
-            // onReady={setGraph}
-            options={options} />
+
+          <CanvasGraph
+            ref={containerRef}
+            style={{ width: "100%", height: "100%" }}
+            graphManager={graphManagerRef.current}
+            initialData={flightData}
+            onReady={() => {
+              console.log("onReady")
+              setIsReady(true)
+            }}
+            options={options}
+          />
         </AppMain>
 
         <AppFooter

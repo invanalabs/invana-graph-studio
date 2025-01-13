@@ -18,6 +18,10 @@ export class GraphManager {
     this.initDataListeners();
   }
 
+  getGraph(): Graph {
+    return this.g6graph;
+  }
+
   setGraph(g6graph: Graph) {
     this.g6graph = g6graph;
   }

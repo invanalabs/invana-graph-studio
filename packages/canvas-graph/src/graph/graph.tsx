@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import { Graphin } from '@antv/graphin';
 import { Graph, GraphOptions, IEvent, NodeEvent } from '@antv/g6';
 import { defaultOptions } from './defaults';
@@ -36,14 +36,39 @@ export interface CanvasGraphProps {
   header?: boolean;
 }
 
-export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
-  console.log("CanvasGraph props", props);
+
+const MemoizedGraphin = React.memo(Graphin);
+
+
+export const CanvasGraph: React.FC<CanvasGraphProps> = forwardRef((props, ref) => {
+  console.log("CanvasGraph props", props, "======")
+  console.log("CanvasGraph ref", ref);
+  console.log("CanvasGraph graphManager", props.graphManager)
   const { options, style, header = false } = props;
+
+  const localRef = useRef<Graph | null>(null);
+  //@ts-ignore
+  const graphManager = props.graphManager ? props.graphManager : new GraphManager(null);
+
+
   const graphOptions: GraphOptions = { ...defaultOptions, ...options };
   // const [graphStore, setGraphStore] = React.useState<GraphStore | null>(null);
 
   const [graph, setGraph] = React.useState<Graph | null>(null);
   // const graphRef = React.useRef<Graph | null>(props.graph ?? null);
+
+
+  useImperativeHandle(ref, () => ({
+    // Expose methods or properties to the parent component
+    get: () => {
+      console.log('someMethod called');
+    },
+    getGraph: () => {
+      console.log("getGraph called", localRef.current);
+      return localRef.current;
+    }
+  }));
+
 
   graph?.on(NodeEvent.POINTER_ENTER, (event: IEvent) => {
     console.log('POINTER_ENTER event', event);
@@ -85,13 +110,12 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
   });
 
   console.log("props.initialData", props.initialData);
-  //@ts-ignore
-  const graphManager = props.graphManager ? props.graphManager : new GraphManager(null);
 
   return (
     <div style={props?.style || {}}>
       {graph && header && <CanvasToolBar graph={graph} />}
-      <Graphin
+      <MemoizedGraphin
+        ref={localRef}
         onReady={(graph) => {
           if (graphManager) {
             graphManager.setGraph(graph);
@@ -105,13 +129,15 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = (props) => {
           setGraph(graph);
           // graphRef.current = graph;
           if (props.onReady) {
-            props.onReady();
+            // props.onReady();
+          } else {
+            console.log("CanvasGraph -> onReady", "no onReady callback")
           }
         }}
         style={style}
         options={graphOptions}
       >
-      </Graphin>
+      </MemoizedGraphin>
     </div>
   );
-}
+})
