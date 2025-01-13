@@ -1,6 +1,6 @@
 import { ICanvasData } from "@invana/data-store/types"
 
-export const data = {
+export const flightDataRaw = {
   "nodes":
     [
       {
@@ -1061,28 +1061,24 @@ export const data = {
 }
 
 
-
-
-
 export const flightData: ICanvasData = {
-  nodes: data.nodes.map((node: any) => {
+  nodes: flightDataRaw.nodes.map((node: any) => {
     // console.log("node", node)
     return {
       id: node.id,
-      type: node.groupName,
+      type: node.groupName.toString(),
       properties: {
         name: node.label
       }
     }
   }),
-  edges: data.edges.map((edge: any) => {
+  edges: flightDataRaw.edges.map((edge: any) => {
     return {
       id: `${edge.source}-${edge.target}`,
       type: edge.groupName,
       source: edge.source,
       target: edge.target,
-      properties: {
-      }
+      properties: {}
     }
   })
 }

@@ -1,6 +1,6 @@
-import { ICanvasData, ICanvasEdge, ICanvasNode } from "@invana/data-store/types"
+import { ICanvasData } from "@invana/data-store"
 
-export const data = {
+export const lesMiserablesDataRaw = {
   "nodes": [
     { "id": "Myriel", "group": 1 },
     { "id": "Napoleon", "group": 1 },
@@ -338,19 +338,18 @@ export const data = {
   ]
 }
 
-
 export const lesMiserablesData: ICanvasData = {
-  nodes: data.nodes.map((node: any) => {
+  nodes: lesMiserablesDataRaw.nodes.map((node: any) => {
     // console.log("node", node)
     return {
       id: node.id,
-      type: node.group,
+      type: node.group.toString(),
       properties: {
         group: node.group
       }
     }
   }),
-  edges: data.edges.map((edge: any) => {
+  edges: lesMiserablesDataRaw.edges.map((edge: any) => {
     return {
       id: `${edge.source}-${edge.target}`,
       type: edge.value.toString(),
