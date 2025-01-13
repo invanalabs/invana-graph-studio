@@ -3,7 +3,7 @@
 import {
   Graph
 } from '@antv/g6';
-import { GraphStore } from '@invana/data-store'
+import { GraphStore } from '@invana/data-store/index'
 
 
 export class GraphManager {
