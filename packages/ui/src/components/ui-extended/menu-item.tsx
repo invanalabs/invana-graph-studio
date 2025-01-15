@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ChevronRight, LucideIcon } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 
 
 export interface MenuItem {
@@ -15,15 +15,14 @@ export interface MenuItem {
 export interface MenuItemProps extends MenuItem {
   level?: number
 }
-
-export function MenuItem({
+export const MenuItem: React.FC<MenuItemProps> = ({
   label,
   icon: Icon,
   shortcut,
   children,
   level = 0,
   href
-}: MenuItemProps) {
+}) => {
   const hasChildren = children && children.length > 0
   const ButtonOrLink = href ? 'a' : 'button'
 
