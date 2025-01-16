@@ -39,7 +39,7 @@ export const TOOLTIP_PLUGIN = {
     // console.log("TOOLTIP_PLUGIN node", node);
     const content = document.createElement('div');
     content.innerHTML = `
-        <div class="max-w-xs p-4 bg-white shadow-md rounded-lg border border-gray-200 w-[200px]">
+        <div class="max-w-xs p-4 bg-white shadow-md rounded-md border border-gray-200 w-[280px]">
           <div class="space-y-2">
             <h3 class="text-lg font-semibold text-gray-800">${node.label}</h3>
             <p><strong>ID:</strong> ${node.id}</p>
