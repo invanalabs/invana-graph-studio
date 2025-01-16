@@ -1,20 +1,24 @@
 import { BaseContextMenu } from "./abstract";
-import { GraphEvent } from '@antv/g6';
+import { GraphEvent, CanvasEvent, NodeEvent } from '@antv/g6';
 
 export class NodeContextMenu extends BaseContextMenu {
   protected bindEvents() {
     if (!this.graph) return;
-    this.graph.on('node:contextmenu', (evt: any) => {
+
+    console.log("contextMenu set")
+    this.graph.on(NodeEvent.CONTEXT_MENU, (evt: any) => {
       evt.preventDefault();
-      const { canvasX, canvasY, item } = evt;
+      console.log('CONTEXT_MENU event', evt);
+      const { canvas, item } = evt;
+      console.log("CONTEXT_MENU canvasX, canvasY", canvas.x, canvas.y);
       const content = `
         <div style="padding: 8px; cursor: pointer;" data-action="edit">Edit Node</div>
         <div style="padding: 8px; cursor: pointer;" data-action="delete">Delete Node</div>
       `;
-      this.showMenu(canvasX, canvasY, content);
+      this.showMenu(canvas.x, canvas.y, content);
     });
 
-    this.graph.on('canvas:click', () => this.hideMenu());
+    this.graph.on(CanvasEvent.CLICK, () => this.hideMenu());
   }
 
   protected handleMenuClick(event: MouseEvent) {

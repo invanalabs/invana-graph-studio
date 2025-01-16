@@ -33,7 +33,7 @@ export const TOOLTIP_PLUGIN = {
   enable: true,
   trigger: 'hover',
   getContent: (e: IElementEvent, items: NodeData | EdgeData | ComboData[]): Promise<HTMLElement | string> => {
-    console.log("TOOLTIP_PLUGIN e", e, items);
+    // console.log("TOOLTIP_PLUGIN e", e, items);
     if (!items || items.length === 0) return Promise.resolve("");
     const node = Array.isArray(items) ? items[0] as NodeData : items as NodeData;
     // console.log("TOOLTIP_PLUGIN node", node);

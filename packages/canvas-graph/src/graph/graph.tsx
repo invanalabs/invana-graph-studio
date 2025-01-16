@@ -97,34 +97,35 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = forwardRef((props, ref) =
   // });
 
   // Event listener for right-click on nodes
-  graph?.on(NodeEvent.CONTEXT_MENU, (evt: IEvent) => {
-    console.log('CONTEXT_MENU event', evt);
-    // (evt.originalEvent as MouseEvent).preventDefault();
+  // graph?.on(NodeEvent.CONTEXT_MENU, (evt: IEvent) => {
+  //   console.log('CONTEXT_MENU event', evt);
+  //   // (evt.originalEvent as MouseEvent).preventDefault();
 
-    const menuItems: MenuItem[] = [
-      {
-        id: 'files',
-        label: 'Files',
-        // icon: File,
-        shortcut: '⌘F',
-        children: [
-          {
-            id: 'shared',
-            label: 'Shared Files',
-            icon: FolderOpen,
-            shortcut: '⌘S',
-          },
-          {
-            id: 'recent',
-            label: 'Recent Files',
-            // icon: File,
-            shortcut: '⌘R',
-          }
-        ]
-      }
-    ];
-    < NestedMenu menuItems={menuItems} />
-  });
+  //   const menuItems: MenuItem[] = [
+  //     {
+  //       id: 'files',
+  //       label: 'Files',
+  //       // icon: File,
+  //       shortcut: '⌘F',
+  //       children: [
+  //         {
+  //           id: 'shared',
+  //           label: 'Shared Files',
+  //           icon: FolderOpen,
+  //           shortcut: '⌘S',
+  //         },
+  //         {
+  //           id: 'recent',
+  //           label: 'Recent Files',
+  //           // icon: File,
+  //           shortcut: '⌘R',
+  //         }
+  //       ]
+  //     }
+  //   ];
+  //   < NestedMenu menuItems={menuItems} />
+  // });
+
 
   console.log("props.initialData", props.initialData);
 
