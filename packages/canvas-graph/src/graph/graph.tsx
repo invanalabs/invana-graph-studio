@@ -9,7 +9,8 @@ import { ICanvasData } from '@invana/data-store';
 import { NestedMenu } from '@invana/ui';
 import { MenuItem } from '@invana/ui';
 import { FolderOpen } from 'lucide-react';
-import { NodeContextMenu } from '../plugins/contextMenus/node';
+// import { NodeContextMenu } from '../plugins/contextMenus/node';
+import { NodeContextMenu } from '../plugins/node';
 // import { CanvasToolBar } from '../plugins/';
 
 
@@ -140,8 +141,8 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = forwardRef((props, ref) =
           }
 
 
-          const nodeMenu = new NodeContextMenu();
-          nodeMenu.init(graph);
+          // const nodeMenu = new NodeContextMenu();
+          // nodeMenu.init(graph);
 
           graphManager?.graphStore.addData(
             props.initialData ?? { 'nodes': [], 'edges': [] },
@@ -158,6 +159,8 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = forwardRef((props, ref) =
         style={style}
         options={graphOptions}
       >
+
+        <NodeContextMenu />
       </MemoizedGraphin>
     </div>
   );
