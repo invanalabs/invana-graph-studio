@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Graphin, ContextMenu, GraphinContext } from '@antv/graphin';
+import { GraphinContext } from '@antv/graphin';
 import { Card } from '@invana/ui';
 import { NodeEvent } from '@antv/g6';
 
 export const NodeContextMenu: React.FC = () => {
   const { graph } = React.useContext(GraphinContext);
 
-  if (!graph) return
+  // if (!graph) return
 
   const [contextMenuData, setContextMenuData] = useState<{
     visible: boolean;
@@ -42,8 +42,10 @@ export const NodeContextMenu: React.FC = () => {
   };
 
   React.useEffect(() => {
+    //@ts-ignore
     graph.on(NodeEvent.CONTEXT_MENU, handleNodeContextMenu);
     return () => {
+      //@ts-ignore
       graph.off(NodeEvent.CONTEXT_MENU, handleNodeContextMenu);
     };
   }, [graph]);

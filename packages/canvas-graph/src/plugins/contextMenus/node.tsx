@@ -1,5 +1,6 @@
 import { BaseContextMenu } from "./abstract";
-import { GraphEvent, CanvasEvent, NodeEvent } from '@antv/g6';
+import { CanvasEvent, NodeEvent } from '@antv/g6';
+
 
 export class NodeContextMenu extends BaseContextMenu {
   protected bindEvents() {
@@ -9,6 +10,7 @@ export class NodeContextMenu extends BaseContextMenu {
     this.graph.on(NodeEvent.CONTEXT_MENU, (evt: any) => {
       evt.preventDefault();
       console.log('CONTEXT_MENU event', evt);
+      //@ts-ignore
       const { canvas, item } = evt;
       console.log("CONTEXT_MENU canvasX, canvasY", canvas.x, canvas.y);
       const content = `

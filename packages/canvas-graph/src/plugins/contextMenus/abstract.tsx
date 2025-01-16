@@ -1,4 +1,4 @@
-import G6, { Graph, GraphEvent, Item } from '@antv/g6';
+import { Graph } from '@antv/g6';
 
 export abstract class BaseContextMenu {
   protected container: HTMLElement | null = null;

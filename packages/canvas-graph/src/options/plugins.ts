@@ -1,7 +1,4 @@
 import { IElementEvent, NodeData, EdgeData, ComboData } from '@antv/g6';
-import { Card } from '@invana/ui';
-import React from 'react';
-import { createRoot } from 'react-dom/client';
 
 
 export const MINIMAP_PLUGIN = {
@@ -32,6 +29,7 @@ export const TOOLTIP_PLUGIN = {
   type: 'tooltip',
   enable: true,
   trigger: 'hover',
+  //@ts-ignore
   getContent: (e: IElementEvent, items: NodeData | EdgeData | ComboData[]): Promise<HTMLElement | string> => {
     // console.log("TOOLTIP_PLUGIN e", e, items);
     if (!items || items.length === 0) return Promise.resolve("");
