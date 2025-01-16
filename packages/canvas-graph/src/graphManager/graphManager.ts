@@ -42,9 +42,9 @@ export class GraphManager {
 
     // node
     this.graphStore.data.on('nodeAdded', ({ key }) => {
-      console.log(`Node created: ${key}`);
+      // console.log(`Node created: ${key}`);
       const node = this.graphStore.fineNodeById(key);
-      console.log("node", node);
+      // console.log("node", node);
       if (node) {
         const g6Node = convert_icanvas_node_to_g6_node(node);
         // console.log("g6Node", g6Node);
@@ -62,12 +62,12 @@ export class GraphManager {
 
     // edge
     this.graphStore.data.on('edgeAdded', ({ key }) => {
-      console.log(`Edge created: ${key}`);
+      // console.log(`Edge created: ${key}`);
       const edge = this.graphStore.fineEdgeById(key);
       // console.log("edge", edge);
       if (edge) {
         const g6Edge = convert_icanvas_edge_to_g6_edge(edge);
-        console.log("g6Edge", g6Edge);
+        // console.log("g6Edge", g6Edge);
         this.g6graph.addEdgeData([g6Edge])
       }
 

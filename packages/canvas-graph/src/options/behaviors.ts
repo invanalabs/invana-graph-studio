@@ -10,7 +10,7 @@ export const HOVER_ACTIVATE = {
   state: 'highlight',
   inactiveState: 'dim',
   onHover: (event: any) => {
-    console.log("====onHover", event)
+    // console.log("====onHover", event)
     event.view.setCursor('pointer');
   },
   onHoverEnd: (event: any) => {

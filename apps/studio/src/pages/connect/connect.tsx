@@ -5,8 +5,8 @@ import {
   BookOpenIcon, Database, LightbulbIcon,
   Link,
 } from 'lucide-react';
-import { LANDING_ROUTE, LOCALSTORAGE_KEYS } from '../../constants';
-import { useConnectionStore } from '../../store/connectionStore';
+import { LANDING_ROUTE } from '../../constants';
+// import { useConnectionStore } from '../../store/connectionStore';
 import { GraphDBConnection } from '../../models';
 import { ConnectForm } from '../../ui/forms/connect-form';
 import { LogoComponent } from '../constants';

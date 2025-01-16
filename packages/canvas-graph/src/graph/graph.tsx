@@ -6,6 +6,10 @@ import { defaultOptions } from './defaults';
 import { CanvasToolBar } from '../plugins';
 import { GraphManager } from '../graphManager';
 import { ICanvasData } from '@invana/data-store';
+import { NestedMenu } from '@invana/ui';
+import { MenuItem } from '@invana/ui';
+import { FolderOpen } from 'lucide-react';
+import { NodeContextMenu } from '../plugins/contextMenus/node';
 // import { CanvasToolBar } from '../plugins/';
 
 
@@ -70,17 +74,17 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = forwardRef((props, ref) =
   }));
 
 
-  graph?.on(NodeEvent.POINTER_ENTER, (event: IEvent) => {
-    console.log('POINTER_ENTER event', event);
-    // graph.updateNodeData([{ id: target.id, style: { labelText: 'Hover me!', fill: '#5B8FF9', labelFill: 'black' } }]);
-    // graph.draw();
-  });
+  // graph?.on(NodeEvent.POINTER_ENTER, (event: IEvent) => {
+  //   console.log('POINTER_ENTER event', event);
+  //   // graph.updateNodeData([{ id: target.id, style: { labelText: 'Hover me!', fill: '#5B8FF9', labelFill: 'black' } }]);
+  //   // graph.draw();
+  // });
 
-  graph?.on(NodeEvent.POINTER_OUT, (event: IEvent) => {
-    console.log('POINTER_OUT event', event);
-    // graph.updateNodeData([{ id: target.id, style: { labelText: 'Hover me!', fill: '#5B8FF9', labelFill: 'black' } }]);
-    // graph.draw();
-  });
+  // graph?.on(NodeEvent.POINTER_OUT, (event: IEvent) => {
+  //   console.log('POINTER_OUT event', event);
+  //   // graph.updateNodeData([{ id: target.id, style: { labelText: 'Hover me!', fill: '#5B8FF9', labelFill: 'black' } }]);
+  //   // graph.draw();
+  // });
 
 
   // const GraphStore = new GraphStore(graph);
@@ -93,20 +97,33 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = forwardRef((props, ref) =
   // });
 
   // Event listener for right-click on nodes
-  graph?.on(NodeEvent.CONTEXT_MENU, (evt) => {
+  graph?.on(NodeEvent.CONTEXT_MENU, (evt: IEvent) => {
     console.log('CONTEXT_MENU event', evt);
-    // evt.preventDefault();
-    // const { canvasX, canvasY } = evt;
+    // (evt.originalEvent as MouseEvent).preventDefault();
 
-    // // Show the context menu
-    // contextMenu.style.left = `${canvasX}px`;
-    // contextMenu.style.top = `${canvasY}px`;
-    // contextMenu.style.visibility = 'visible';
-
-    // // Close the menu when clicking outside
-    // document.addEventListener('click', () => {
-    //   contextMenu.style.visibility = 'hidden';
-    // }, { once: true });
+    const menuItems: MenuItem[] = [
+      {
+        id: 'files',
+        label: 'Files',
+        // icon: File,
+        shortcut: '⌘F',
+        children: [
+          {
+            id: 'shared',
+            label: 'Shared Files',
+            icon: FolderOpen,
+            shortcut: '⌘S',
+          },
+          {
+            id: 'recent',
+            label: 'Recent Files',
+            // icon: File,
+            shortcut: '⌘R',
+          }
+        ]
+      }
+    ];
+    < NestedMenu menuItems={menuItems} />
   });
 
   console.log("props.initialData", props.initialData);
@@ -120,6 +137,10 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = forwardRef((props, ref) =
           if (graphManager) {
             graphManager.setGraph(graph);
           }
+
+
+          const nodeMenu = new NodeContextMenu();
+          nodeMenu.init(graph);
 
           graphManager?.graphStore.addData(
             props.initialData ?? { 'nodes': [], 'edges': [] },

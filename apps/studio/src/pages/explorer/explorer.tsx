@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { LogoComponent, sideBarBottomNavitems, sideBarTopNavitems } from '../constants';
 import { ProductCopyRightInfo, ProductName } from '@/constants';
 import {
@@ -8,7 +8,7 @@ import { ReactFlowProvider } from '@invana/canvas-flow';
 import { AppHeader, AppFooter, AppMain } from '@invana/ui/themes/app'
 // import useTheme from '@invana/ui/hooks/useTheme';
 import AppHeaderRight from '@/ui/header/app-header-right';
-import { CanvasGraph, CanvasToolBar, defaultOptions, GraphManager } from '@invana/canvas-graph';
+import { CanvasGraph, CanvasToolBar, defaultOptions } from '@invana/canvas-graph';
 import { flightData } from '@invana/example-datasets'
 import { Graph } from '@antv/g6';
 
