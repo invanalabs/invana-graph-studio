@@ -39,14 +39,14 @@ export const TOOLTIP_PLUGIN = {
     // console.log("TOOLTIP_PLUGIN node", node);
     const content = document.createElement('div');
     content.innerHTML = `
-    <div>
-    <h2 className="text-2xl font-bold">${node.label}</h2>
-    <p className="text-muted-foreground">${node.type}</p>
-    </div>
-    <div className="flex items-center space-x-2 text-sm">
-      <span className="text-muted-foreground">ID:</span>
-      <Badge variant="secondary">${node.id}</Badge>
-    </div>
+        <div class="max-w-xs p-4 bg-white shadow-md rounded-lg border border-gray-200 w-[200px]">
+          <div class="space-y-2">
+            <h3 class="text-lg font-semibold text-gray-800">${node.label}</h3>
+            <p><strong>ID:</strong> ${node.id}</p>
+            <p><strong>Label:</strong> ${node.type}</p>
+          </div>
+        </div>
+
     `;
     return Promise.resolve(content);
   }
