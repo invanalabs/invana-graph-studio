@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
-import { GraphinContext } from '@antv/graphin';
+// import { GraphinContext } from '@antv/graphin';
 import { Card } from '@invana/ui';
-import { NodeEvent } from '@antv/g6';
+import { Graph, NodeEvent } from '@antv/g6';
 
-export const NodeContextMenu: React.FC = () => {
-  const { graph } = React.useContext(GraphinContext);
+
+interface NodeContextMenuProps {
+  getGraph: () => Graph;
+  className?: string;
+}
+
+
+
+
+export const NodeContextMenu: React.FC<NodeContextMenuProps> = ({ getGraph, className }) => {
+  // const { graph } = React.useContext(GraphinContext);
 
   // if (!graph) return
+
+  const graph = getGraph();
+  console.log("NodeContextMenu -> graph", graph)
 
   const [contextMenuData, setContextMenuData] = useState<{
     visible: boolean;
@@ -20,10 +32,11 @@ export const NodeContextMenu: React.FC = () => {
     nodeData: null,
   });
 
+
   const handleNodeContextMenu = (e: any) => {
     e.preventDefault(); // Prevent the default browser context menu
-    const { item, canvas } = e;
-    console.log('handleNodeContextMenu CONTEXT_MENU event', e, item, canvas);
+    const { canvas } = e;
+    console.log('handleNodeContextMenu CONTEXT_MENU event', e, canvas);
     // const model = item.getModel();
 
     setContextMenuData({
@@ -41,14 +54,23 @@ export const NodeContextMenu: React.FC = () => {
     });
   };
 
-  React.useEffect(() => {
-    //@ts-ignore
-    graph.on(NodeEvent.CONTEXT_MENU, handleNodeContextMenu);
-    return () => {
-      //@ts-ignore
-      graph.off(NodeEvent.CONTEXT_MENU, handleNodeContextMenu);
-    };
-  }, [graph]);
+
+
+  // graph.on('edge:contextmenu', (evt) => {
+  //   const edge = evt.item;  // The edge on which the context menu was triggered
+  //   console.log('Edge right-clicked:', edge);
+  // });
+  graph.on(NodeEvent.CONTEXT_MENU, handleNodeContextMenu);
+
+
+  // React.useEffect(() => {
+  //   //@ts-ignore
+  //   graph.on(NodeEvent.CONTEXT_MENU, handleNodeContextMenu);
+  //   return () => {
+  //     //@ts-ignore
+  //     graph.off(NodeEvent.CONTEXT_MENU, handleNodeContextMenu);
+  //   };
+  // }, [graph]);
 
   console.log("contextMenu graph", graph)
 
@@ -71,12 +93,8 @@ export const NodeContextMenu: React.FC = () => {
           <Card>
             <div>
               <h3 className="font-bold">Node Information</h3>
-              <p>
-                <strong>ID:</strong> {contextMenuData.nodeData.id}
-              </p>
-              <p>
-                <strong>Label:</strong> {contextMenuData.nodeData.label || 'N/A'}
-              </p>
+              <p><strong>ID:</strong> {contextMenuData.nodeData.id}</p>
+              <p><strong>Label:</strong> {contextMenuData.nodeData.label || 'N/A'}</p>
               <p className="text-gray-600">Right-click menu actions can go here.</p>
             </div>
           </Card>

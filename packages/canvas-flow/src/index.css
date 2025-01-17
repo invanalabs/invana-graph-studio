@@ -1,3 +1,10 @@
 .react-flow.dark {
   --xy-background-color-default: transparent !important;
 }
+
+.tooltip {
+  box-shadow: none !important;
+  border: none !important;
+  padding: none !important;
+  background: none !important;
+}

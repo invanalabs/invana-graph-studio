@@ -9,7 +9,7 @@ export const sideBarTopNavitems: SideBarNavitemProps[] = [
   // { name: "Home", href: "/home", icon: Home },
   { name: "Explorer", href: "/explorer", icon: Compass },
   { name: "Modeller", href: "/modeller", icon: Network },
-  { name: "Database Connection", href: "/connections", icon: Database },
+  { name: "Data Management", href: "/connections", icon: Database },
   // { name: "Activity", href: "#", icon: Clock },
 ]
 

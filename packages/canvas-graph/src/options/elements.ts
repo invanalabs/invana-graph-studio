@@ -26,17 +26,18 @@ export const DEFAULT_NODE_STYLE: NodeOptions = { // https://g6.antv.antgroup.com
 export const DEFAULT_EDGE_STYLE: EdgeOptions = {  // https://g6.antv.antgroup.com/en/examples/element/label/#background
   type: 'line',
   style: {
-    labelText: (d) => {
-      if (d.id) return d.id
-      else return d.source + '-' + d.target
-    },
+    // labelText: (d) => {
+    //   if (d.id) return d.id
+    //   else return d.source + '-' + d.target
+    // },
     // labelBackground: true,
     labelTextAlign: 'center',
     // labelTextStroke: 'red',
     labelAutoRotate: true,
     labelBackgroundOpacity: 0.8,
     // labelBackgroundStroke: '#9ec9ff',
-    // labelFill: '#646464',
+    labelFill: '#646464',
+    opacity: 0.3,
 
     endArrow: true,
     // edge: {

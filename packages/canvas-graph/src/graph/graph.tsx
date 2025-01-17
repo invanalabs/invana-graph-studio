@@ -130,6 +130,8 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = forwardRef((props, ref) =
   return (
     <div style={props?.style || {}}>
       {graph && header && <CanvasToolBar getGraph={() => graph} />}
+      {graph && <NodeContextMenu getGraph={() => graph} />}
+
       <MemoizedGraphin
         ref={localRef}
         onReady={(graph) => {
@@ -157,7 +159,6 @@ export const CanvasGraph: React.FC<CanvasGraphProps> = forwardRef((props, ref) =
         options={graphOptions}
       >
 
-        <NodeContextMenu />
       </MemoizedGraphin>
     </div>
   );

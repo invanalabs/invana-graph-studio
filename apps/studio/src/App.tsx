@@ -7,7 +7,7 @@ import ModellerPage from "./pages/modeller/modeller";
 import ExplorerPage from "./pages/explorer/explorer";
 import { LANDING_ROUTE } from './constants';
 import '@invana/config-tailwind/index.css';
-
+import '@invana/canvas-graph/index.css';
 
 const App = () => {
   return (

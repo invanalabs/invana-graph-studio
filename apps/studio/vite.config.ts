@@ -11,6 +11,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, './src'),
       "@invana/ui": path.resolve(__dirname, '../../packages/ui/src'),
       "@invana/canvas-flow": path.resolve(__dirname, '../../packages/canvas-flow/src'),
+      "@invana/canvas-graph": path.resolve(__dirname, '../../packages/canvas-graph/src'),
       // "@/lib": path.resolve(__dirname, '../../packages/ui/src/lib')
     },
   }

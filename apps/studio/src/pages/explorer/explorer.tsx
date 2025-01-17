@@ -10,7 +10,15 @@ import { AppHeader, AppFooter, AppMain } from '@invana/ui/themes/app'
 import AppHeaderRight from '@/ui/header/app-header-right';
 import { CanvasGraph, CanvasToolBar, defaultOptions } from '@invana/canvas-graph';
 import { flightData } from '@invana/example-datasets'
+import { SearchIcon } from 'lucide-react'
 import { Graph } from '@antv/g6';
+import { QueryForm } from '@/ui/forms/query-form';
+
+
+
+
+
+
 
 const ExplorerPage: React.FC = () => {
 
@@ -26,6 +34,16 @@ const ExplorerPage: React.FC = () => {
   const containerRef = useRef<{ getGraph: () => Graph } | null>(null);
   const graphManagerRef = useRef(null);
 
+  const [showQueryModal, setShowQueryModal] = useState(false);
+
+  if (!sideBarTopNavitems.some(item => item.name === "Search")) {
+    sideBarTopNavitems.push({
+      name: "Search", onClick: () => {
+        console.log("Search clicked")
+        setShowQueryModal(true)
+      }, icon: SearchIcon
+    });
+  }
 
   // useEffect(() => {
   //   // Initialize graphManager here and set it to graphManagerRef.current
@@ -57,14 +75,15 @@ const ExplorerPage: React.FC = () => {
 
   // console.log("===data2", data)
 
+  console.log("=====showQueryModal", showQueryModal)
   const options = { ...defaultOptions }
 
   console.log("ExplorerPage")
   return (
     <BlankLayout
       logo={LogoComponent}
-      sideBarBottomNavitems={sideBarBottomNavitems}
       sideBarTopNavitems={sideBarTopNavitems}
+      sideBarBottomNavitems={sideBarBottomNavitems}
     >
 
       <ReactFlowProvider fitView>
@@ -93,6 +112,12 @@ const ExplorerPage: React.FC = () => {
         </AppHeader>
 
         <AppMain>
+
+
+
+
+          {showQueryModal && <QueryForm />}
+
 
 
 

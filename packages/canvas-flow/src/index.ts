@@ -5,3 +5,4 @@ export * from './plugins';
 export * from './templates';
 import '@invana/config-tailwind/index.css';
 import './index.css';
+// import '@invana/canvas-flow/index.css'

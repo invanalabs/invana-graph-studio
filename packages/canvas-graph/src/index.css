@@ -8,3 +8,14 @@
   border: none !important;
   box-shadow: none !important;
 }
+
+.minimap,
+.minimap div {
+  border: 1px solid #555 !important;
+}
+
+.minimap {
+  background: #333 !important;
+  opacity: 0.85 !important;
+
+}
