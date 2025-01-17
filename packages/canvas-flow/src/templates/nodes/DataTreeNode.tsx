@@ -1,7 +1,7 @@
-import React, { memo } from "react";
+import React, { memo, ReactNode } from "react";
 import { Handle, NodeProps, Position } from "@xyflow/react";
 import { BaseNodeTemplate } from "../../components/BaseNodeTemplate";
-import { ChevronRight, FolderOpen } from "lucide-react";
+import { ChevronRight, Folder, FolderOpen } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { SearchInput } from "@invana/ui";
 
@@ -18,8 +18,10 @@ export type DataTreeNodeItem = {
 
 export type DataTreeNodeProps = NodeProps & {
   data: {
+    id: string
+    headerTitle: React.ReactNode
     icon?: React.ReactNode
-    label: string
+    headerDescription?: React.ReactNode
     children: DataTreeNodeItem[]
     searchable?: boolean
   }
@@ -27,11 +29,11 @@ export type DataTreeNodeProps = NodeProps & {
 
 
 function DataTreeNodeItem({ item }: { item: DataTreeNodeItem }) {
-  const [isExpanded, setIsExpanded] = React.useState(item.isExpanded ?? false)
+  const [isExpanded, setIsExpanded] = React.useState(item.isExpanded ?? true)
   const hasChildren = item.children && item.children.length > 0
 
   return (
-    <div>
+    <div >
       <button
         onClick={() => {
           if (hasChildren) { setIsExpanded(!isExpanded); }
@@ -89,19 +91,25 @@ const DataTreeNode = ({ id, data, selected = false, ...props }: DataTreeNodeProp
 
 
   return (
-    <BaseNodeTemplate id={id} selected={selected} className="min-w-[240px] p-0">
+    <BaseNodeTemplate id={id} selected={selected} className="w-[260px] p-0">
       <div
-        className="cursor-pointer relative rounded-t-sm nodeField border-b py-3 px-2
-         bg-background">
-        <div className="flex text-gray-600 dark:text-gray-400 items-center">
-          <Handle type="source" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Right} id={id} />
-          <Handle type="target" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Left} id={id} />
+        className="cursor-pointer relative rounded-t-sm nodeField border-b py-2 px-3
+         bg-background mb-3">
+        <Handle type="source" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Right} id={id} />
+        <Handle type="target" className="absolute top-5 rounded-[2px] z-[1000]" position={Position.Left} id={id} />
 
-          <span className="mr-2">
-            <FolderOpen className="h-4 w-4" />
+        <div className="flex">
+
+          <span className="flex items-center gap-2">
+            {data.icon &&
+              <span>
+                {data.icon}
+              </span>
+            }
+            {data.headerTitle}
           </span>
-          <div>{data.label}</div>
         </div>
+        {data.headerDescription && <p className="text-xs text-gray-500">{data.headerDescription}</p>}
       </div>
 
       <div className={"mx-2 my-2"} >
@@ -110,7 +118,7 @@ const DataTreeNode = ({ id, data, selected = false, ...props }: DataTreeNodeProp
         }
       </div>
 
-      <div className="space-y-0.5">
+      <div className="space-y-0.5 mb-3">
 
         {filteredItems.map((item) => (
           <DataTreeNodeItem key={item.id} item={item} />
