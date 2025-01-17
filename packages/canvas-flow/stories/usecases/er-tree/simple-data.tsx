@@ -1,233 +1,228 @@
-export const data = {
-  "nodes": [
-    {
-      "id": "1.1",
-      "type": "DataTreeNode",
-      "data": {
-        "label": "MongoDB (1.1)",
-        "children": [
-          {
-            "label": "crawlerflow",
-            "id": "crawlerflow"
-          }
-        ]
-      },
-      "position": {
-        "x": -374.97885451264744,
-        "y": 287.68869493757217
-      }
+import { DataTreeNodeProps } from "@invana/canvas-flow/templates/nodes/DataTreeNode";
+import { Edge } from "@xyflow/react";
+import { Database, File, Folder } from "lucide-react";
+import React from "react";
+
+
+export const data: { nodes: DataTreeNodeProps[], edges: Edge[] } = {
+  nodes: [{
+    id: "1",
+    type: "DataTreeNode",
+    data: {
+      headerTitle: "SQL Database",
+      headerDescription: "This node represents a SQL Database.",
+      icon: <Database className="h-4 w-4" />,
+      searchable: true,
+      children: [
+        {
+          label: "Table 1",
+          id: "table-1",
+          icon: <File className="h-4 w-4 shrink-0 text-gray-500" />
+        },
+        {
+          label: "Table 2",
+          id: "table-2",
+          icon: <File className="h-4 w-4 shrink-0 text-gray-500" />
+        }
+      ]
     },
-    {
-      "id": "1.2",
-      "type": "DataTreeNode",
-      "data": {
-        "label": "FileStorage (1.2)",
-        "children": [
-          {
-            "label": "myfile.csv",
-            "id": "myfile-csv"
-          }
-        ]
-      },
-      "position": {
-        "x": -376.208293379902,
-        "y": 88.51959844232988
-      }
+    position: { x: -300, y: 0 }
+  },
+  {
+    id: "2",
+    type: "DataTreeNode",
+    data: {
+      headerTitle: "CSV Files",
+      headerDescription: "This node represents a collection of CSV files.",
+      icon: <Folder className="h-4 w-4" />,
+      searchable: true,
+      children: [
+        {
+          label: "File 1",
+          id: "file-1",
+          icon: <File className="h-4 w-4 shrink-0 text-gray-500" />
+        },
+        {
+          label: "File 2",
+          id: "file-2",
+          icon: <File className="h-4 w-4 shrink-0 text-gray-500" />
+        }
+      ]
     },
-    {
-      "id": "2.1",
-      "type": "DataTreeNode",
-      "data": {
-        "label": "NSE Data (2.1)",
-        "children": [
-          {
-            "label": "identifier",
-            "id": "identifier"
-          },
-          {
-            "label": "is_active",
-            "id": "is_active"
-          }
-        ]
-      },
-      "position": {
-        "x": -50.406993557437914,
-        "y": 331.948494158737
-      }
+    position: { x: 100, y: 0 }
+  }
+    ,
+  {
+    id: "3",
+    type: "DataTreeNode",
+    data: {
+      headerTitle: "Table 1",
+      headerDescription: "This node represents Table 1.",
+      icon: <File className="h-4 w-4" />,
+      searchable: true,
+      children: [
+        {
+          label: "Columns",
+          id: "columns-1",
+          icon: <File className="h-4 w-4 shrink-0 text-gray-500" />,
+          children: [
+            { label: "Column 1", id: "column-1-1", icon: <File className="h-4 w-4 shrink-0 text-gray-500" /> },
+            { label: "Column 2", id: "column-1-2", icon: <File className="h-4 w-4 shrink-0 text-gray-500" /> }
+          ]
+        },
+        {
+          label: "Extra_info",
+          id: 'extra_info-1',
+          icon: <File className="h-4 w-4 shrink-0 text-gray-500" />,
+
+          children: [
+            {
+              label: "Indexes",
+              id: "indexes-1",
+              icon: <File className="h-4 w-4 shrink-0 text-gray-500" />,
+              children: [
+                { label: "Index 1", id: "index-1-1", icon: <File className="h-4 w-4 shrink-0 text-gray-500" /> },
+                { label: "Index 2", id: "index-1-2", icon: <File className="h-4 w-4 shrink-0 text-gray-500" /> }
+              ]
+            },
+            {
+              label: "Views",
+              id: "views-1",
+              icon: <File className="h-4 w-4 shrink-0 text-gray-500" />,
+              children: [
+                { label: "View 1", id: "view-1-1", icon: <File className="h-4 w-4 shrink-0 text-gray-500" /> },
+                { label: "View 2", id: "view-1-2", icon: <File className="h-4 w-4 shrink-0 text-gray-500" /> }
+              ]
+            }
+          ]
+        }
+
+      ]
     },
-    {
-      "id": "2.2",
-      "type": "DataTreeNode",
-      "data": {
-        "label": "Source1 - Candle Data (2.2)",
-        searchable: true,
-        "children": [
-          {
-            "label": "candle",
-            "id": "candle",
-            "isExpanded": true,
-            "children": [
-              {
-                "label": "open",
-                "id": "open"
-              },
-              {
-                "label": "high",
-                "id": "high"
-              },
-              {
-                "label": "low",
-                "id": "low"
-              },
-              {
-                "label": "close",
-                "id": "close"
-              },
-              {
-                "label": "volume",
-                "id": "volume"
-              }
-            ]
-          },
-          {
-            "label": "title",
-            "id": "title"
-          },
-          {
-            "label": "description",
-            "id": "description"
-          },
-          {
-            "label": "is_active",
-            "id": "is_active"
-          }
-        ]
-      },
-      "position": {
-        "x": -50.406993557437836,
-        "y": -72.17755469018326
-      }
+    position: { x: -100, y: 200 }
+  },
+  {
+    id: "4",
+    type: "DataTreeNode",
+    data: {
+      headerTitle: "Table 2",
+      headerDescription: "This node represents Table 2.",
+      icon: <File className="h-4 w-4" />,
+      searchable: true,
+      children: [
+        {
+          label: "Columns",
+          id: "columns-2",
+          icon: <File className="h-4 w-4 shrink-0 text-gray-500" />,
+          children: [
+            { label: "Column 1", id: "column-2-1", icon: <File className="h-4 w-4 shrink-0 text-gray-500" /> },
+            { label: "Column 2", id: "column-2-2", icon: <File className="h-4 w-4 shrink-0 text-gray-500" /> }
+          ]
+        },
+        {
+          label: "Extra_info",
+          id: 'extra_info-2',
+          icon: <File className="h-4 w-4 shrink-0 text-gray-500" />,
+          children: [
+            {
+              label: "Indexes",
+              id: "indexes-2",
+              icon: <File className="h-4 w-4 shrink-0 text-gray-500" />,
+              children: [
+                { label: "Index 1", id: "index-2-1", icon: <File className="h-4 w-4 shrink-0 text-gray-500" /> },
+                { label: "Index 2", id: "index-2-2", icon: <File className="h-4 w-4 shrink-0 text-gray-500" /> }
+              ]
+            },
+            {
+              label: "Views",
+              id: "views-2",
+              icon: <File className="h-4 w-4 shrink-0 text-gray-500" />,
+              children: [
+                { label: "View 1", id: "view-2-1", icon: <File className="h-4 w-4 shrink-0 text-gray-500" /> },
+                { label: "View 2", id: "view-2-2", icon: <File className="h-4 w-4 shrink-0 text-gray-500" /> }
+              ]
+            }
+          ]
+
+        }
+
+      ]
     },
-    {
-      "id": "3.1",
-      "type": "DataTreeNode",
-      "data": {
-        "label": "Derived Data (3.1)",
-        "searchable": true,
-        "children": [
-          {
-            "label": "identifier",
-            "id": "identifier"
-          },
-          {
-            "label": "candle",
-            "id": "candle"
-          },
-          {
-            "label": "title",
-            "id": "title"
-          },
-          {
-            "label": "description",
-            "id": "description"
-          }
-        ]
-      },
-      "position": {
-        "x": 331.948494158737,
-        "y": 179.49807461916893
-      }
+    position: { x: 300, y: 200 }
+  },
+  {
+    id: "5",
+    type: "DataTreeNode",
+    data: {
+      headerTitle: "Reports",
+      headerDescription: "These are the report based both tables.",
+      icon: <File className="h-4 w-4" />,
+      searchable: true,
+      children: [
+        {
+          id: "report-1",
+          label: "Report 1",
+          icon: <File className="h-4 w-4 shrink-0 text-gray-500" />,
+          children: [
+            { label: "Column 1", id: "column-5-1", icon: <File className="h-4 w-4 shrink-0 text-gray-500" /> },
+            { label: "Column 2", id: "column-5-2", icon: <File className="h-4 w-4 shrink-0 text-gray-500" /> }
+          ]
+        },
+      ]
+
+
     },
-    {
-      "id": "3.2",
-      "type": "DataTreeNode",
-      "data": {
-        "label": "Derived Data (3.2)",
-        "children": [
-          {
-            "label": "identifier",
-            "id": "identifier"
-          },
-          {
-            "label": "analysed_field",
-            "id": "analysed_field"
-          }
-        ]
-      },
-      "position": {
-        "x": 796.9580873611033,
-        "y": 216.08262286679
-      }
-    }
+    position: { x: 500, y: 200 }
+
+  }
   ],
-  "edges": [
+  edges: [
     {
-      "id": "e0-1",
-      "source": "1.1",
-      "sourceHandle": "crawlerflow",
-      "target": "2.1",
-      "targetHandle": "2.1"
+      id: "2-file-1",
+      source: "2",
+      sourceHandle: "file-1",
+      target: "1",
+      targetHandle: "table-1"
     },
     {
-      "id": "e0-2",
-      "source": "1.2",
-      "sourceHandle": "myfile-csv",
-      "target": "2.2",
-      "targetHandle": "2.2"
+      id: "2-file-2",
+      source: "2",
+      sourceHandle: "file-2",
+      target: "1",
+      targetHandle: "table-2"
     },
     {
-      "id": "e0-3",
-      "source": "2.1",
-      "sourceHandle": "identifier",
-      "target": "3.1",
-      "targetHandle": "identifier"
+      id: "table-1-3",
+      source: "1",
+      sourceHandle: "table-1",
+      target: "3",
     },
     {
-      "id": "e0-4",
-      "source": "2.2",
-      "sourceHandle": "candle",
-      "target": "3.1",
-      "targetHandle": "candle"
+      id: "table-2-4",
+      source: "1",
+      sourceHandle: "table-2",
+      target: "4",
+    },
+
+    {
+      id: "3-column-5-1",
+      source: "3",
+      sourceHandle: "index-1-1",
+      target: "5",
+      targetHandle: "column-5-1"
     },
     {
-      "id": "e0-5",
-      "source": "2.2",
-      "sourceHandle": "title",
-      "target": "3.1",
-      "targetHandle": "title"
-    },
-    {
-      "id": "e0-6",
-      "source": "3.1",
-      "sourceHandle": "identifier",
-      "target": "3.2",
-      "targetHandle": "identifier"
-    },
-    {
-      "id": "e0-7",
-      "source": "3.1",
-      "sourceHandle": "description",
-      "target": "3.2",
-      "targetHandle": "analysed_field"
-    },
-    {
-      "id": "e0-8",
-      "source": "2.2",
-      "sourceHandle": "open",
-      "target": "3.1",
-      "targetHandle": "description"
-    },
-    {
-      "id": "e0-9",
-      "source": "2.2",
-      "sourceHandle": "high",
-      "target": "3.2",
-      "targetHandle": "analysed_field"
+      id: "5-column-5-1",
+      source: "4",
+      sourceHandle: "view-2-1",
+      target: "5",
+      targetHandle: "column-5-2"
     }
+
   ],
-  "viewport": {
-    "x": 413.7305422421646,
-    "y": 210.08971667578632,
-    "zoom": 0.8133791981321252
+  viewport: {
+    x: 413.7305422421646,
+    y: 210.08971667578632,
+    zoom: 0.8133791981321252
   }
 }

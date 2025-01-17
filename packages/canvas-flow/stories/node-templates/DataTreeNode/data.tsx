@@ -3,54 +3,6 @@ import { Folder, File, Database } from 'lucide-react'
 import React from "react";
 
 
-// export const data: DataTreeNodeProps[] = [
-//   {
-//     id: '0',
-//     label: "Root",
-//     // style: { width: "200px" },
-//     isExpanded: true,
-
-//     icon: <Folder className="h-4 w-4 shrink-0 text-yellow-500" />,
-//     children: [
-//       {
-//         id: "1",
-//         label: "Root 1",
-//         icon: <Folder className="h-4 w-4 shrink-0 text-yellow-500" />,
-//         isExpanded: true,
-//         children: [
-//           {
-//             id: "1-1",
-//             label: "Child 1-1",
-//             icon: <Folder className="h-4 w-4 shrink-0 text-yellow-500" />,
-//             children: [
-//               {
-//                 id: "1-1-1",
-//                 icon: <File className="h-4 w-4 shrink-0 text-gray-500" />,
-//                 label: "Clickable Grandchild 1-1-1",
-//                 onClick: (id, label) => alert(`Clicked id:${id}; label:${label}`)
-//               },
-//               { id: "1-1-2", icon: <File className="h-4 w-4 shrink-0 text-gray-500" />, label: "Grandchild 1-1-2" }
-//             ]
-//           },
-//           { id: "1-2", icon: <File className="h-4 w-4 shrink-0 text-gray-500" />, label: "Child 1-2" }
-//         ]
-//       },
-//       {
-//         id: "2",
-//         label: "Root 2",
-//         icon: <Folder className="h-4 w-4 shrink-0 text-yellow-500" />,
-//         children: [
-//           { id: "2-1", icon: <File className="h-4 w-4 shrink-0 text-gray-500" />, label: "Child 2-1" },
-//           { id: "2-2", icon: <File className="h-4 w-4 shrink-0 text-gray-500" />, label: "Child 2-2" }
-//         ]
-//       }
-//     ]
-//   }
-
-// ]
-
-
-
 export const data = {
   nodes: [{
     id: "2.1",
