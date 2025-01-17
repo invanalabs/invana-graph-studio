@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { Node, NodeProps } from "@xyflow/react";
 import { BaseNodeTemplate } from "../../components/BaseNodeTemplate";
+import React from 'react';
 
 
 export type LabeledGroupNode = Node<{
@@ -8,7 +9,7 @@ export type LabeledGroupNode = Node<{
 }>;
 
 
-const LabeledGroupNode = ({ id, data, selected = false, ...props }: NodeProps<LabeledGroupNode>) => {
+const LabeledGroupNode: React.FC<NodeProps<LabeledGroupNode>> = ({ id, data, selected = false, ...props }) => {
   console.log("LabeledGroupNode", id, data, selected, props.width);
   return (
     <BaseNodeTemplate id={id} selected={selected}
