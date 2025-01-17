@@ -9,6 +9,7 @@ export interface TreeItem {
   label: string
   icon?: React.ReactElement<React.ComponentProps<'svg'>> | React.ReactNode
   onClick?: (id: string | number, label: string) => void
+  isExpanded?: boolean
   children?: TreeItem[]
 }
 
@@ -100,7 +101,7 @@ export const TreeView: React.FC<TreeViewProps> = ({ searchable = false, ...props
 }
 
 export const TreeItem: React.FC<{ item: TreeItem }> = ({ item }) => {
-  const [isExpanded, setIsExpanded] = React.useState(true)
+  const [isExpanded, setIsExpanded] = React.useState(item.isExpanded || false)
   const hasChildren = item.children && item.children.length > 0
 
   return (

@@ -9,12 +9,15 @@ const exampleData: TreeItem[] = [
     id: 0,
     label: "Root",
     // style: { width: "200px" },
+    isExpanded: true,
+
     icon: <Folder className="h-4 w-4 shrink-0 text-yellow-500" />,
     children: [
       {
         id: "1",
         label: "Root 1",
         icon: <Folder className="h-4 w-4 shrink-0 text-yellow-500" />,
+        isExpanded: true,
         children: [
           {
             id: "1-1",
