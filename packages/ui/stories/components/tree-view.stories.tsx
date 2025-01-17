@@ -1,13 +1,14 @@
 import { TreeItem, TreeView } from '@invana/ui';
 import type { Meta, StoryObj } from '@storybook/react';
 import { File, Folder } from 'lucide-react'
-// import React from 'react';
+import React from 'react';
 
 
 const exampleData: TreeItem[] = [
   {
     id: 0,
     label: "Root",
+    // style: { width: "200px" },
     icon: <Folder className="h-4 w-4 shrink-0 text-yellow-500" />,
     children: [
       {
@@ -58,7 +59,8 @@ const meta = {
   tags: ['autodocs'],
   args: {
     items: exampleData,
-    className: "w-[320px]"
+    className: "w-[320px]",
+    style: { width: "320px" }
   },
 } satisfies Meta<typeof TreeView>;
 
